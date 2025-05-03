@@ -1,0 +1,70 @@
+version: "1"
+services:
+  app:
+    build:
+      args:
+        user: mdfebumk
+        uid: 1000
+      context: ./
+      dockerfile: dev.Dockerfile
+    image: mdfebumk
+    container_name: mdfebumkdevelopment-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - mdfebumkdevelopment-db-mysql
+    networks:
+      - mdfebumkdevelopment
+
+  mdfebumkdevelopment-db-mysql:
+    image: mysql:8.0
+    container_name: mdfebumkdevelopment-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: dev_mdfebumk
+      MYSQL_ROOT_PASSWORD: MLtalBcE867g
+      MYSQL_PASSWORD: MLtalBcE867g
+      MYSQL_USER: mdfebumk
+      SERVICE_TAGS: development
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mdfebumk-compose/mysql:/docker-entrypoint-initdb.d
+      - ./mdfebumk-compose/mysql/logs:/var/log/mysql
+      - ./mdfebumk-compose/mysql/data:/var/lib/mysql
+    networks:
+      - mdfebumkdevelopment
+
+  nginx:
+    image: nginx:alpine
+    container_name: mdfebumkdevelopment-nginx
+    restart: unless-stopped
+    ports:
+      - 8084:80
+    volumes:
+      - ./:/var/www
+      - ./mdfebumk-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - mdfebumkdevelopment
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: mdfebumkdevelopment-phpmyadmin
+    ports:
+      - 8085:80
+    links:
+      - mdfebumkdevelopment-db-mysql
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mdfebumkdevelopment-db-mysql
+      PMA_USER: mdfebumk
+      PMA_PASSWORD: MLtalBcE867g
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    networks:
+      - mdfebumkdevelopment
+
+networks:
+  mdfebumkdevelopment:
+    driver: bridge
