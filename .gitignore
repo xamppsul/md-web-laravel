@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/mdfebumk-compose
 /vendor
 .env
 .env.backup
