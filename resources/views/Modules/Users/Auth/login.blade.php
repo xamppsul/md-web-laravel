@@ -42,6 +42,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
+                                            <a href="{{ route('user.view.login') }}"
+                                                class="link-primary float-end">Forgot Password ?</a>
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="please enter password" name="password">
