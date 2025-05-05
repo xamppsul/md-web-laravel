@@ -104,7 +104,12 @@ mdfebumk-rollback:
 mdfebumk-key-generate:
 	php artisan key:generate
 mdfebumk-config-refresh:
+	php artisan route:clear
 	php artisan config:clear
-	php artisan config:cache
+	php artisan cache:clear
+	php artisan view:clear
+mdfebumk-composer-dump-autoload:
+	composer dump-autoload
+mdfebumk-config-optimize:
 	php artisan optimize
 #=========================================== END::exec local app ============================
