@@ -22,7 +22,8 @@
                                 </div>
                                 <div class="form_container">
 
-                                    <form class="app-form">
+                                    <form class="app-form" action="{{ route('do.login') }}" method="POST">
+                                        @csrf
                                         <div class="mb-3 text-center">
                                             <h3>MD Febi UMK</h3>
                                             <p class="f-s-12 text-secondary">Get started with our app, just login with
@@ -43,8 +44,7 @@
                                             <label class="form-check-label" for="formCheck1">remember me</label> --}}
                                         </div>
                                         <div>
-                                            <a href="{{ route('view.login') }}" role="button"
-                                                class="btn btn-primary w-100">Login</a>
+                                            <button class="btn btn-primary w-100">Login</button>
                                         </div>
                                         {{-- <div class="app-divider-v justify-content-center">
                                             <p>OR</p>
