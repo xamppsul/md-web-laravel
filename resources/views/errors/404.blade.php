@@ -17,7 +17,8 @@
                     </div>
                 </div>
             </div>
-            <a role="button" href="{{ route('index') }}" class="btn btn-lg btn-primary"><i class="ti ti-home"></i> Back
+            <a role="button" href="{{ route('user.view.login') }}" class="btn btn-lg btn-primary"><i
+                    class="ti ti-home"></i> Back
                 To Home</a>
         </div>
     </div>

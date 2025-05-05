@@ -1,4 +1,4 @@
-@section('title', 'Login')
+@section('title', 'User Login')
 @include('layout.head')
 
 @include('layout.css')
