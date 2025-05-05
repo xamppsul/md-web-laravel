@@ -7,8 +7,11 @@ use Illuminate\Http\RedirectResponse;
 interface Usecase_intefaces
 {
     public function loginCase(
+        //authentication request(login)
+        $authRequestLogin,
+        //validate request
         $request,
         array $rulesLogin,
         array $rulesLoginMessage,
-    ): RedirectResponse;
+    ): string;
 }
