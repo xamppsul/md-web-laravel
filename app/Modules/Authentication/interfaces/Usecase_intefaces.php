@@ -2,4 +2,7 @@
 
 namespace App\Modules\Authentication\interfaces;
 
-interface Usecase_intefaces {}
+interface Usecase_intefaces
+{
+    public function loginCase();
+}

@@ -17,4 +17,9 @@ class Handler extends Usecase implements Handler_intefaces
     {
         return view('Modules.Users.Auth.login');
     }
+
+    public function login()
+    {
+        return $this->loginCase();
+    }
 }
