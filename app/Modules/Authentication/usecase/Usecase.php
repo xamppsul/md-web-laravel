@@ -36,8 +36,8 @@ class Usecase extends Services implements Usecase_intefaces
         array $rulesForgotPassword,
         array $rulesForgotPasswordMessage
     ): string {
+        $authRequestForgotPassword->forgotPasswordRequest($request, $rulesForgotPassword, $rulesForgotPasswordMessage);
         try {
-            $authRequestForgotPassword->forgotPasswordRequest($request, $rulesForgotPassword, $rulesForgotPasswordMessage);
             return $this->userForgotPasswordService();
         } catch (\Exception $e) {
             return redirect()->route('user.view.login')->with('error', $e->getMessage());
