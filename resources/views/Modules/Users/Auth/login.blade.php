@@ -42,8 +42,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
-                                            <a href="{{ route('user.view.login') }}"
-                                                class="link-primary float-end">Forgot Password ?</a>
+                                            <a data-bs-toggle="modal" class="link-primary float-end"
+                                                data-bs-target="#exampleModalScrollable">Forgot Password ?</a>
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="please enter password" name="password">
@@ -82,12 +82,43 @@
                 <!-- Login to your Account end -->
             </main>
             <!-- Body main section ends -->
+            <!-- scrollable-modal-start -->
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                id="exampleModalScrollable" tabindex="-1">
+                <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel3">Scroll Modal</h5>
+                            <button aria-label="Close" class="btn-close m-0 fs-5" data-bs-dismiss="modal"
+                                type="button"></button>
+                        </div>
+                        <div class="modal-body h-90">
+                            <p><i class="ti ti-chevron-right text-secondary f-w-600"></i> However, reviewers
+                                tend to
+                                be distracted by comprehensible content, say, a random text copied from a
+                                newspaper or
+                                the internet. The are likely to focus on the text, disregarding the layout
+                                and its
+                                elements</p>
+
+
+                            <p><i class="ti ti-chevron-right text-secondary f-w-600"></i> It was found by
+                                Richard McClintock, a philologist, director of publications at
+                                Hampden-Sydney College in Virginia; he searched for citings of consectetur
+                                in classical Latin literature, a term of remarkably low frequency in that
+                                literary corpus.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light-primary" type="button">Save changes</button>
+                            <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- scrollable-modal-end -->
         </div>
     </div>
 
 </body>
-@section('script')
-
-    <!-- Bootstrap js-->
-    <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
-@endsection
+@include('layout.script')
