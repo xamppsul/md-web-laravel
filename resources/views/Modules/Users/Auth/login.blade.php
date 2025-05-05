@@ -30,11 +30,11 @@
                                                 email and password.</p>
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Email address</label>
-                                            <input class="form-control @error('email') is-invalid @enderror"
-                                                placeholder="please enter email" name="email"
-                                                value="{{ old('email') }}">
-                                            @error('email')
+                                            <label class="form-label">Email or username</label>
+                                            <input class="form-control @error('umail') is-invalid @enderror"
+                                                placeholder="please enter username or email" name="umail"
+                                                value="{{ old('umail') }}">
+                                            @error('umail')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>

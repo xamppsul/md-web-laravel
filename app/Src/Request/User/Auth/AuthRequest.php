@@ -17,4 +17,17 @@ class AuthRequest
     ): array {
         return $request->validate($rulesLogin, $rulesLoginMessage);
     }
+
+    /**
+     * @method forgotPasswordRequest
+     * @return array
+     */
+
+    public function forgotPasswordRequest(
+        Request $request,
+        array $rulesForgotPassword,
+        array $rulesForgotPasswordMessage
+    ): array {
+        return $request->validate($rulesForgotPassword, $rulesForgotPasswordMessage);
+    }
 }

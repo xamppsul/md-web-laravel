@@ -45,6 +45,11 @@ class Handler extends Usecase implements Handler_intefaces
             $this->constant->rulesLoginMessage(),
         );
     }
+
+    /**
+     * @method userForgotPassword
+     */
+    public function userForgotPassword() {}
     /**
      * ================================================================================================================================================================
      * feature: auth admin
