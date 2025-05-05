@@ -38,7 +38,7 @@
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control">
                                         </div>
-                                        <div class="mb-3 form-check">
+                                        <div class="mb-2 form-check">
                                             {{-- <input type="checkbox" class="form-check-input" id="formCheck1">
                                             <label class="form-check-label" for="formCheck1">remember me</label> --}}
                                         </div>
