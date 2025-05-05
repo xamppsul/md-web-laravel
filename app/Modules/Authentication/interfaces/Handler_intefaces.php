@@ -2,4 +2,10 @@
 
 namespace App\Modules\Authentication\interfaces;
 
-interface Handler_intefaces {}
+use Illuminate\Contracts\View\View;
+
+interface Handler_intefaces
+{
+
+    public function viewLogin(): View;
+}
