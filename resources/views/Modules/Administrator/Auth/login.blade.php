@@ -31,7 +31,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-5 text-center text-lg-start">
-                                            <h2 class="text-primary f-w-600">Welcome To Administrator! </h2>
+                                            <h2 class="text-primary f-w-600">Welcome To Login Administrator! </h2>
                                             <p>Sign in with your username or email</p>
                                         </div>
                                     </div>
