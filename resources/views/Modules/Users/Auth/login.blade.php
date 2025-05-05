@@ -15,14 +15,14 @@
                         <div class="col-12 p-0">
                             <div class="login-form-container">
                                 <div class="mb-4">
-                                    <a class="logo d-inline-block" href="{{ route('view.login') }}">
+                                    <a class="logo d-inline-block" href="{{ route('user.view.login') }}">
                                         <img src="{{ asset('../assets/images/logo/umk.png') }}" width="100"
                                             alt="#">
                                     </a>
                                 </div>
                                 <div class="form_container">
 
-                                    <form class="app-form" action="{{ route('do.login') }}" method="POST">
+                                    <form class="app-form" action="{{ route('user.do.login') }}" method="POST">
                                         @csrf
                                         <div class="mb-3 text-center">
                                             <h3>MD Febi UMK</h3>
