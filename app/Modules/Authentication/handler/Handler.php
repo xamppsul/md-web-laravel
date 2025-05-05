@@ -17,12 +17,12 @@ class Handler extends Usecase implements Handler_intefaces
         private AuthRequest $authRequest,
     ) {}
 
-    public function viewLogin(): View
+    public function viewUserLogin(): View
     {
         return view('Modules.Users.Auth.login');
     }
 
-    public function login()
+    public function userLogin()
     {
         return $this->loginCase(
             //authentication request(login)
