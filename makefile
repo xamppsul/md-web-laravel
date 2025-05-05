@@ -82,6 +82,8 @@ prod-docker-mdfebumk-composer:
 
 #=========================================== BEGIN::exec local app ============================
 #run app mdfebumk via shell
+mdfebumk-serve-port:
+	php -S localhost:8089 -t public
 mdfebumk-serve:
 	php artisan serve
 #migrate schema
