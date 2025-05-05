@@ -24,12 +24,14 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             return $this->userLoginService();
         } catch (\Exception $e) {
-            return redirect()->route('view.login')->with('error', $e->getMessage());
+            return redirect()->route('user.view.login')->with('error', $e->getMessage());
         }
     }
 
     public function userForgotPasswordCase(
+        //authentication forgot password
         $authRequestForgotPassword,
+        //validate request forgot password
         $request,
         array $rulesForgotPassword,
         array $rulesForgotPasswordMessage
@@ -38,7 +40,7 @@ class Usecase extends Services implements Usecase_intefaces
             $authRequestForgotPassword->forgotPasswordRequest($request, $rulesForgotPassword, $rulesForgotPasswordMessage);
             return $this->userForgotPasswordService();
         } catch (\Exception $e) {
-            return redirect()->route('view.forgot.password')->with('error', $e->getMessage());
+            return redirect()->route('user.view.login')->with('error', $e->getMessage());
         }
     }
     /**

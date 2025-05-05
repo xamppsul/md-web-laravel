@@ -114,7 +114,7 @@
                             <div class="modal-footer">
                                 <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
                                 </button>
-                                <button class="btn btn-light-primary" type="button">Submit</button>
+                                <button class="btn btn-light-primary" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
