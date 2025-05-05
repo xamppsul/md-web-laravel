@@ -8,4 +8,6 @@ interface Handler_intefaces
 {
     public function viewUserLogin(): View;
     public function userLogin();
+    public function viewAdminLogin(): View;
+    public function adminLogin();
 }

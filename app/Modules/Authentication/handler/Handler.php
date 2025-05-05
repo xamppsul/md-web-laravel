@@ -17,14 +17,26 @@ class Handler extends Usecase implements Handler_intefaces
         private AuthRequest $authRequest,
     ) {}
 
+    /**
+     * ================================================================================================================================================================
+     * feature: auth user
+     * ================================================================================================================================================================
+     */
+    /**
+     * @method viewUserLogin
+     * @return View
+     */
     public function viewUserLogin(): View
     {
         return view('Modules.Users.Auth.login');
     }
 
+    /**
+     * @method userLogin
+     */
     public function userLogin()
     {
-        return $this->loginCase(
+        return $this->userLoginCase(
             //authentication request(login)
             $this->authRequest,
             //validate request login
@@ -33,4 +45,23 @@ class Handler extends Usecase implements Handler_intefaces
             $this->constant->rulesLoginMessage(),
         );
     }
+    /**
+     * ================================================================================================================================================================
+     * feature: auth admin
+     * ================================================================================================================================================================
+     */
+
+    /**
+     * @method viewAdminLogin
+     * @return View
+     */
+    public function viewAdminLogin(): View
+    {
+        return view('');
+    }
+
+    /**
+     * @method adminLogin
+     */
+    public function adminLogin() {}
 }

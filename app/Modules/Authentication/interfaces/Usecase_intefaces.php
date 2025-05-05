@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 
 interface Usecase_intefaces
 {
-    public function loginCase(
+    public function userLoginCase(
         //authentication request(login)
         $authRequestLogin,
         //validate request

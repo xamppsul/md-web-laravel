@@ -7,7 +7,7 @@ use App\Modules\Authentication\services\Services;
 
 class Usecase extends Services implements Usecase_intefaces
 {
-    public function loginCase(
+    public function userLoginCase(
         //authentication request(login)
         $authRequestLogin,
         //validate request login
@@ -17,7 +17,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): string {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
         try {
-            return $this->loginService();
+            return $this->userLoginService();
         } catch (\Exception $e) {
             return redirect()->route('view.login')->with('error', $e->getMessage());
         }
