@@ -3,4 +3,4 @@
 use App\Modules\Authentication\handler\Handler;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [Handler::class, 'viewLogin'])->name('login');
+Route::get('/', [Handler::class, 'viewLogin'])->name('view.login');

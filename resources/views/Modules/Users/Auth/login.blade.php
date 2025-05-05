@@ -15,7 +15,7 @@
                         <div class="col-12 p-0">
                             <div class="login-form-container">
                                 <div class="mb-4">
-                                    <a class="logo d-inline-block" href="{{ route('login') }}">
+                                    <a class="logo d-inline-block" href="{{ route('view.login') }}">
                                         <img src="{{ asset('../assets/images/logo/umk.png') }}" width="100"
                                             alt="#">
                                     </a>
@@ -43,7 +43,7 @@
                                             <label class="form-check-label" for="formCheck1">remember me</label> --}}
                                         </div>
                                         <div>
-                                            <a href="{{ route('login') }}" role="button"
+                                            <a href="{{ route('view.login') }}" role="button"
                                                 class="btn btn-primary w-100">Login</a>
                                         </div>
                                         {{-- <div class="app-divider-v justify-content-center">

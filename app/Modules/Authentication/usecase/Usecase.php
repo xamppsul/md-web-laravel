@@ -7,5 +7,10 @@ use App\Modules\Authentication\services\Services;
 
 class Usecase extends Services implements Usecase_intefaces
 {
-    public function loginCase() {}
+    public function loginCase()
+    {
+        try {
+        } catch (\Exception $e) {
+        }
+    }
 }
