@@ -43,7 +43,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
                                             <a data-bs-toggle="modal" class="link-primary float-end"
-                                                data-bs-target="#exampleModalScrollable">Forgot Password ?</a>
+                                                data-bs-target="#forgotPasswordModals">Forgot Password ?</a>
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="please enter password" name="password">
@@ -82,41 +82,45 @@
                 <!-- Login to your Account end -->
             </main>
             <!-- Body main section ends -->
-            <!-- scrollable-modal-start -->
-            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
-                id="exampleModalScrollable" tabindex="-1">
-                <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+            <!--small/default-modal-start -->
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="forgotPasswordModals"
+                tabindex="-1">
+                <div class="modal-dialog app_modal_sm">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel3">Scroll Modal</h5>
-                            <button aria-label="Close" class="btn-close m-0 fs-5" data-bs-dismiss="modal"
-                                type="button"></button>
+                        <div class="modal-header bg-primary-800">
+                            <h1 class="modal-title fs-5 text-white" id="exampleModal2">Forgot Password</h1>
+                            <button aria-label="Close" class="fs-5 border-0 bg-none  text-white" data-bs-dismiss="modal"
+                                type="button"><i class="fa-solid fa-xmark fs-3"></i></button>
                         </div>
-                        <div class="modal-body h-90">
-                            <p><i class="ti ti-chevron-right text-secondary f-w-600"></i> However, reviewers
-                                tend to
-                                be distracted by comprehensible content, say, a random text copied from a
-                                newspaper or
-                                the internet. The are likely to focus on the text, disregarding the layout
-                                and its
-                                elements</p>
-
-
-                            <p><i class="ti ti-chevron-right text-secondary f-w-600"></i> It was found by
-                                Richard McClintock, a philologist, director of publications at
-                                Hampden-Sydney College in Virginia; he searched for citings of consectetur
-                                in classical Latin literature, a term of remarkably low frequency in that
-                                literary corpus.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-light-primary" type="button">Save changes</button>
-                            <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
-                            </button>
-                        </div>
+                        <form class="app-form" action="{{ route('user.do.login') }}" method="POST">
+                            <div class="modal-body text-center">
+                                @csrf
+                                <img alt="" class="rounded-pill object-fit-cover h-90 w-90 b-r-10"
+                                    src="../assets/images/modals/06.jpg">
+                                <div class="mb-3">
+                                    <label class="form-label">Please insert valid email address for reset
+                                        password</label>
+                                    <input class="form-control @error('email') is-invalid @enderror"
+                                        placeholder="please enter email" name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <!-- <h5 class="mb-0 mt-3">Good Morning!</h5> -->
+                                <!-- <p>Hi, Aaron Gish ! Congratulations.</p> -->
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+                                </button>
+                                <button class="btn btn-light-primary" type="button">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- scrollable-modal-end -->
+            <!--small/default-modal-end -->
         </div>
     </div>
 
