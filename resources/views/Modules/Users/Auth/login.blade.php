@@ -44,7 +44,7 @@
                                         </div>
                                         <div>
                                             <a href="{{ route('login') }}" role="button"
-                                                class="btn btn-primary w-100">Submit</a>
+                                                class="btn btn-primary w-100">Login</a>
                                         </div>
                                         {{-- <div class="app-divider-v justify-content-center">
                                             <p>OR</p>
