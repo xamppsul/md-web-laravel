@@ -33,7 +33,7 @@
                                             <label class="form-label">Email or username</label>
                                             <input class="form-control @error('umail') is-invalid @enderror"
                                                 placeholder="please enter username or email" name="umail"
-                                                value="{{ old('umail') }}">
+                                                value="{{ old('umail') }}" autocomplete="umail" autofocus>
                                             @error('umail')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

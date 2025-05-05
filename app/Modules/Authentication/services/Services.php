@@ -9,11 +9,16 @@ class Services extends Repository implements Services_interfaces
 {
     public function userLoginService(): string
     {
-        return 'halo login';
+        return 'halo login user';
     }
 
     public function userForgotPasswordService(): string
     {
         return 'halo forgot password';
+    }
+
+    public function adminloginService(): string
+    {
+        return 'halo login admin';
     }
 }

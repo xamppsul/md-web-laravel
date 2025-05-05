@@ -48,4 +48,20 @@ class Usecase extends Services implements Usecase_intefaces
      * feature: auth admin
      * ================================================================================================================================================================
      */
+
+    public function adminLoginCase(
+        //authentication request(admin login)
+        $authRequestLogin,
+        //validate request
+        $request,
+        array $rulesLogin,
+        array $rulesLoginMessage
+    ): string {
+        $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
+        try {
+            return $this->adminloginService();
+        } catch (\Exception $e) {
+            return redirect()->route('admin.view.login')->with('error', $e->getMessage());
+        }
+    }
 }

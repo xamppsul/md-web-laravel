@@ -78,5 +78,15 @@ class Handler extends Usecase implements Handler_intefaces
     /**
      * @method adminLogin
      */
-    public function adminLogin() {}
+    public function adminLogin()
+    {
+        return $this->adminLoginCase(
+            //authentication request(admin login)
+            $this->authRequest,
+            //validate request
+            $this->request,
+            $this->constant->rulesLogin(),
+            $this->constant->rulesLoginMessage(),
+        );
+    }
 }

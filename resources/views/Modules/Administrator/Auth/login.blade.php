@@ -27,7 +27,8 @@
                     </div>
                     <div class="col-lg-6 form-contentbox">
                         <div class="form-container">
-                            <form class="app-form">
+                            <form class="app-form" action="{{ route('admin.do.login') }}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-5 text-center text-lg-start">
@@ -37,16 +38,26 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username Or Email</label>
-                                            <input type="text" class="form-control"
+                                            <label for="umail" class="form-label">Username Or Email</label>
+                                            <input type="text"
+                                                class="form-control @error('umail') is-invalid @enderror" name="umail"
+                                                value="{{ old('umail') }}" autocomplete="umail" autofocus
                                                 placeholder="Enter Your Email Or Username" id="username">
+                                            @error('umail')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control"
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" value="{{ old('password') }}" autocomplete="password"
                                                 placeholder="Enter Your Password" id="password">
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-12">
