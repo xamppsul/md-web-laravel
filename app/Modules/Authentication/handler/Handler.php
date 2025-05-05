@@ -49,7 +49,17 @@ class Handler extends Usecase implements Handler_intefaces
     /**
      * @method userForgotPassword
      */
-    public function userForgotPassword() {}
+    public function userForgotPassword()
+    {
+        return $this->userForgotPasswordCase(
+            //forgot password request
+            $this->authRequest,
+            //validate request forgot password
+            $this->request,
+            $this->constant->rulesForgotPassword(),
+            $this->constant->rulesForgotPasswordMessage(),
+        );
+    }
     /**
      * ================================================================================================================================================================
      * feature: auth admin

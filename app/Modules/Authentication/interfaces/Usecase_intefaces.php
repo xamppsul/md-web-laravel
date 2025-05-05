@@ -14,4 +14,13 @@ interface Usecase_intefaces
         array $rulesLogin,
         array $rulesLoginMessage,
     ): string;
+
+    public function userForgotPasswordCase(
+        //authentication request(forgot password)
+        $authRequestForgotPassword,
+        //validate request
+        $request,
+        array $rulesForgotPassword,
+        array $rulesForgotPasswordMessage,
+    ): string;
 }

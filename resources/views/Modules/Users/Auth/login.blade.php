@@ -92,11 +92,11 @@
                             <button aria-label="Close" class="fs-5 border-0 bg-none  text-white" data-bs-dismiss="modal"
                                 type="button"><i class="fa-solid fa-xmark fs-3"></i></button>
                         </div>
-                        <form class="app-form" action="{{ route('user.do.login') }}" method="POST">
+                        <form class="app-form" action="{{ route('user.do.forgot.password') }}" method="POST">
                             <div class="modal-body text-center">
                                 @csrf
-                                <img alt="" class="rounded-pill object-fit-cover h-90 w-90 b-r-10"
-                                    src="../assets/images/modals/06.jpg">
+                                <img alt="img-background" class="rounded-pill object-fit-cover h-90 w-90 b-r-10"
+                                    src="{{ asset('assets/images/modals/06.jpg') }}">
                                 <div class="mb-3">
                                     <label class="form-label">Please insert valid email address for reset
                                         password</label>

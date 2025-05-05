@@ -7,8 +7,13 @@ use App\Modules\Authentication\repository\Repository;
 
 class Services extends Repository implements Services_interfaces
 {
-    public function userLoginService()
+    public function userLoginService(): string
     {
-        return 'halo';
+        return 'halo login';
+    }
+
+    public function userForgotPasswordService(): string
+    {
+        return 'halo forgot password';
     }
 }
