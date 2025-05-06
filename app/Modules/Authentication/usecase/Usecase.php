@@ -20,11 +20,19 @@ class Usecase extends Services implements Usecase_intefaces
         $request,
         array $rulesLogin,
         array $rulesLoginMessage,
+        //domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
     ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
+
         try {
             return $this->userLoginService();
         } catch (\Exception $e) {
+            //insert log error event error
+            $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
             return redirect()->route('user.view.login')->with('error', $e->getMessage());
         }
     }
@@ -38,6 +46,7 @@ class Usecase extends Services implements Usecase_intefaces
         array $rulesForgotPasswordMessage
     ): RedirectResponse {
         $authRequestForgotPassword->forgotPasswordRequest($request, $rulesForgotPassword, $rulesForgotPasswordMessage);
+
         try {
             return $this->userForgotPasswordService();
         } catch (\Exception $e) {
@@ -59,6 +68,7 @@ class Usecase extends Services implements Usecase_intefaces
         array $rulesLoginMessage
     ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
+
         try {
             return $this->adminloginService();
         } catch (\Exception $e) {

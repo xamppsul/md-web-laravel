@@ -6,6 +6,7 @@ use Illuminate\Contracts\View\View;
 use App\Modules\Authentication\usecase\Usecase;
 use App\Src\Constant\Authentication\ConstantAuth;
 use App\Modules\Authentication\interfaces\Handler_intefaces;
+use App\Src\Domain\User\AuthDomain;
 use App\Src\Request\User\Auth\AuthRequest;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class Handler extends Usecase implements Handler_intefaces
         private ConstantAuth $constant,
         private Request $request,
         private AuthRequest $authRequest,
+        private AuthDomain $authDomain,
     ) {}
 
     /**
@@ -43,6 +45,11 @@ class Handler extends Usecase implements Handler_intefaces
             $this->request,
             $this->constant->rulesLogin(),
             $this->constant->rulesLoginMessage(),
+            //domain auth
+            $this->authDomain,
+            //log insert
+            $this->constant->NamingRoute($this->request),
+            $this->constant->CurrentPath($this->request),
         );
     }
 

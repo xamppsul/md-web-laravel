@@ -13,6 +13,12 @@ interface Usecase_intefaces
         $request,
         array $rulesLogin,
         array $rulesLoginMessage,
+        //domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
+
     ): RedirectResponse;
 
     public function userForgotPasswordCase(

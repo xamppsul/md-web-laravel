@@ -59,4 +59,24 @@ class ConstantAuth
             'email.min' => 'Email must be at least 6 characters',
         ];
     }
+
+    /**
+     * @method NamingRoute
+     * @return string
+     */
+
+    public function NamingRoute($request): string
+    {
+        return $request->route()->getName();
+    }
+
+    /**
+     * @method CurrentPath
+     * @return string
+     */
+
+    public function CurrentPath($request): string
+    {
+        return $request->path();
+    }
 }
