@@ -50,6 +50,9 @@ class Handler extends Usecase implements Handler_intefaces
             //log insert
             $this->constant->NamingRoute($this->request),
             $this->constant->CurrentPath($this->request),
+            //validate login attempt
+            $this->constant->MESSAGE_ERROR_LOGIN_USERNAME_OR_EMAIL_AND_PASSWORD,
+            $this->constant->SUCCESS_LOGIN_MESSAGE,
         );
     }
 

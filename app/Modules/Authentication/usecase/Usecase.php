@@ -25,11 +25,18 @@ class Usecase extends Services implements Usecase_intefaces
         //log insert
         string $route,
         string $path,
+        //validate login attempt
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
     ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
 
         try {
-            return $this->userLoginService();
+            return $this->userLoginService(
+                $request,
+                $messageErrorLoginUsernameOrEmail,
+                $successLoginMessage
+            );
         } catch (\Exception $e) {
             //insert log error event error
             $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');

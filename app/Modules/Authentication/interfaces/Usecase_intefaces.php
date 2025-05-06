@@ -18,6 +18,9 @@ interface Usecase_intefaces
         //log insert
         string $route,
         string $path,
+        //validate login attempt
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
 
     ): RedirectResponse;
 

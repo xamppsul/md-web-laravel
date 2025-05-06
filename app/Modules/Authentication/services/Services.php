@@ -18,8 +18,11 @@ class Services extends Repository implements Services_interfaces
      * @method userLoginService
      * @return RedirectResponse
      */
-    public function userLoginService(): RedirectResponse
-    {
+    public function userLoginService(
+        $request,
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
+    ): RedirectResponse {
         return redirect()->route('user.view.login')->with('success', 'login success');
     }
     /**

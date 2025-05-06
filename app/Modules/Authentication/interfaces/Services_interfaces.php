@@ -7,7 +7,11 @@ use Illuminate\Http\RedirectResponse;
 interface Services_interfaces
 {
 
-    public function userLoginService(): RedirectResponse;
+    public function userLoginService(
+        $request,
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
+    ): RedirectResponse;
     public function userForgotPasswordService(): RedirectResponse;
     public function adminloginService(): RedirectResponse;
 }

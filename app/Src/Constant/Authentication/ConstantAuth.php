@@ -79,4 +79,17 @@ class ConstantAuth
     {
         return $request->path();
     }
+
+    /**
+     * @var string $SUCCESS_LOGIN_MESSAGE
+     * @return string
+     */
+    public string $SUCCESS_LOGIN_MESSAGE = 'Berhasil Login, Selamat datang di halaman dashboard';
+
+    /**
+     * @var string $MESSAGE_ERROR_LOGIN_USERNAME_OR_EMAIL
+     * @return string
+     */
+
+    public string $MESSAGE_ERROR_LOGIN_USERNAME_OR_EMAIL_AND_PASSWORD = 'Gagal login, email atau username dan password salah';
 }
