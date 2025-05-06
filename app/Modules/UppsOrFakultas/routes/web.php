@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/upps-fakultas', function () {
-    return 'hello dari upps fakultas';
+Route::middleware(['throttle:30,1', 'auth:user'])->group(function () {
+    Route::get('/upps-fakultas', function () {
+        return 'hello dari upps fakultas';
+    });
 });
