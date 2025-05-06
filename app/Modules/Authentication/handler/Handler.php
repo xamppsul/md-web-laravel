@@ -8,7 +8,9 @@ use App\Src\Constant\Authentication\ConstantAuth;
 use App\Modules\Authentication\interfaces\Handler_intefaces;
 use App\Src\Domain\User\AuthDomain;
 use App\Src\Request\User\Auth\AuthRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends Usecase implements Handler_intefaces
 {
@@ -26,11 +28,11 @@ class Handler extends Usecase implements Handler_intefaces
      */
     /**
      * @method viewUserLogin
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function viewUserLogin(): View
+    public function viewUserLogin(): View|RedirectResponse
     {
-        return view('Modules.Users.Auth.login');
+        return !Auth::guard('user')->check() ? view('Modules.Users.Auth.login') : redirect()->route('user.view.dashboard')->with('success', 'login success');
     }
 
     /**

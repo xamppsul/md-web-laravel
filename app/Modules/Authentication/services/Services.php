@@ -23,7 +23,12 @@ class Services extends Repository implements Services_interfaces
         string $messageErrorLoginUsernameOrEmail,
         string $successLoginMessage,
     ): RedirectResponse {
-        return redirect()->route('user.view.login')->with('success', 'login success');
+        if (!$this->ValidateLoginByExistingEmailOrUsernameRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request))) {
+            return redirect()->route('user.view.login')->with('error', $messageErrorLoginUsernameOrEmail);
+        }
+
+        $this->GenerateSessionLoginRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
+        return $this->RedirectLoginSuccessRepository($successLoginMessage);
     }
     /**
      * @method userForgotPasswordService

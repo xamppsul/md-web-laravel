@@ -17,6 +17,6 @@ class AuthDomain
         string $path,
         string $type,
     ): void {
-        DB::insert('insert into log (message,route,path,type,created_at,updated_at) values (?, ?, ?, ?, ?, ?)', [$message, $route, $path, $type, now(), now()]);
+        DB::insert('insert into logs (message,route,path,type,created_at,updated_at) values (?, ?, ?, ?, ?, ?)', [$message, $route, $path, $type, now(), now()]);
     }
 }
