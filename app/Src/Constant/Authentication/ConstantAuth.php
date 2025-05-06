@@ -16,7 +16,7 @@ class ConstantAuth
     {
         return [
             'umail' => 'required|string|min:6',
-            'password' => 'required|min:6|max:20',
+            'password' => 'required|min:6',
         ];
     }
 
@@ -32,7 +32,6 @@ class ConstantAuth
             'umail.string' => 'Would be string',
             'password.required' => 'Password is required',
             'password.min' => 'Password must be at least 6 characters',
-            'password.max' => 'Password must be at most 20 characters',
         ];
     }
 
