@@ -33,6 +33,8 @@ class Usecase extends Services implements Usecase_intefaces
         //validate login attempt
         string $messageErrorLoginUsernameOrEmail,
         string $successLoginMessage,
+        //user session
+        $userSession,
     ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
 
@@ -40,12 +42,15 @@ class Usecase extends Services implements Usecase_intefaces
             return $this->userLoginService(
                 $request,
                 $messageErrorLoginUsernameOrEmail,
-                $successLoginMessage
+                $successLoginMessage,
+                $authDomain,
+                $route,
+                $path,
             );
         } catch (\Exception $e) {
             //insert log error event error
             $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
-            return redirect()->route('user.view.login')->with('error', $e->getMessage());
+            return redirect()->route('user.view.login')->with('error', 'kesalahan sistem login, silahkan coba lagi!');
         }
     }
 

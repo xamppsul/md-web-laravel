@@ -22,12 +22,18 @@ class Services extends Repository implements Services_interfaces
         $request,
         string $messageErrorLoginUsernameOrEmail,
         string $successLoginMessage,
+        //auth domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
     ): RedirectResponse {
         if (!$this->ValidateLoginByExistingEmailOrUsernameRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request))) {
             return redirect()->route('user.view.login')->with('error', $messageErrorLoginUsernameOrEmail);
         }
 
-        $this->GenerateSessionLoginRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
+        $userSession = $this->GenerateSessionLoginRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
+        $authDomain->DomainLogInsert($successLoginMessage . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
         return $this->RedirectLoginSuccessRepository($successLoginMessage);
     }
     /**

@@ -11,6 +11,11 @@ interface Services_interfaces
         $request,
         string $messageErrorLoginUsernameOrEmail,
         string $successLoginMessage,
+        //auth domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
     ): RedirectResponse;
     public function userForgotPasswordService(): RedirectResponse;
     public function adminloginService(): RedirectResponse;
