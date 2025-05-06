@@ -16,6 +16,12 @@
 @endsection
 @section('main-content')
     <div class="container-fluid mt-3">
+        @session('success')
+            <div class="flash-data-success" data-flashdata-success="{{ $value }}"></div>
+        @endsession
+        @session('error')
+            <div class="flash-data-error" data-flashdata-error="{{ $value }}"></div>
+        @endsession
         <div class="row">
 
             <div class="col-lg-6 col-xxl-4">

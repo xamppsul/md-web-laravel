@@ -5,6 +5,12 @@
 
 <body class="sign-in-bg">
     <div class="app-wrapper d-block">
+        @session('success')
+            <div class="flash-data-success" data-flashdata-success="{{ $value }}"></div>
+        @endsession
+        @session('error')
+            <div class="flash-data-error" data-flashdata-error="{{ $value }}"></div>
+        @endsession
         <div class="main-container">
             <!-- Body main section starts -->
             <div class="container">
@@ -106,9 +112,4 @@
 
 
 </body>
-@section('script')
-
-
-    <!-- Bootstrap js-->
-    <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
-@endsection
+@include('layout.script')
