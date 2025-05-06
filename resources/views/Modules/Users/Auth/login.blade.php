@@ -20,6 +20,12 @@
                                             alt="#">
                                     </a>
                                 </div>
+                                @session('success')
+                                    <div class="flash-data-success" data-flashdata-success="{{ $value }}"></div>
+                                @endsession
+                                @session('error')
+                                    <div class="flash-data-error" data-flashdata-error="{{ $value }}"></div>
+                                @endsession
                                 <div class="form_container">
 
                                     <form class="app-form" action="{{ route('user.do.login') }}" method="POST">
@@ -59,11 +65,16 @@
                                         </div>
                                         <div>
                                             <button class="btn btn-primary w-100">Login</button>
+                                            {{-- <button class="btn btn-light-light btn-md" id="click_15" type="button">
+                                                Click Now
+                                            </button> --}}
                                         </div>
-                                        {{-- <div class="app-divider-v justify-content-center">
+
+                                        <div class="col-sm-12 col-md-6 col-xl-4">
+                                            {{-- <div class="app-divider-v justify-content-center">
                                             <p>OR</p>
                                         </div> --}}
-                                        {{-- <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-primary icon-btn b-r-5 m-1"><i
                                                         class="ti ti-brand-facebook text-white"></i></button>
