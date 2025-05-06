@@ -53,6 +53,25 @@ class Repository implements Repository_interfaces
     }
 
     /**
+     * @method UserLoggoutSessionRepository
+     * @return void
+     */
+    public function UserLoggoutSessionRepository(): void
+    {
+        Auth::guard('user')->logout();
+    }
+
+    /**
+     * @method RedirectLogoutSuccessRepository
+     * @return RedirectResponse
+     * //balik ke halaman login user after success logout
+     */
+    public function RedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse
+    {
+        return redirect()->intended('/')->with('success', $messageSuccessLogout);
+    }
+
+    /**
      * ================================================================================================================================================================
      * feature: auth admin
      * ================================================================================================================================================================

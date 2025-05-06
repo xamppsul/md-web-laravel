@@ -5,6 +5,7 @@ namespace App\Modules\Authentication\usecase;
 use Illuminate\Http\RedirectResponse;
 use App\Modules\Authentication\services\Services;
 use App\Modules\Authentication\interfaces\Usecase_intefaces;
+use Illuminate\Support\Facades\DB;
 
 class Usecase extends Services implements Usecase_intefaces
 {
@@ -12,6 +13,10 @@ class Usecase extends Services implements Usecase_intefaces
      * ================================================================================================================================================================
      * feature: auth user
      * ================================================================================================================================================================
+     */
+    /**
+     * @method userLoginCase
+     * @return RedirectResponse
      */
     public function userLoginCase(
         //authentication request(login)
@@ -44,6 +49,10 @@ class Usecase extends Services implements Usecase_intefaces
         }
     }
 
+    /**
+     * @method userForgotPasswordCase
+     * @return RedirectResponse
+     */
     public function userForgotPasswordCase(
         //authentication forgot password
         $authRequestForgotPassword,
@@ -58,6 +67,29 @@ class Usecase extends Services implements Usecase_intefaces
             return $this->userForgotPasswordService();
         } catch (\Exception $e) {
             return redirect()->route('user.view.login')->with('error', $e->getMessage());
+        }
+    }
+
+    public function logoutCase(
+        //log insert
+        string    $route,
+        string    $path,
+        //do logout
+        string    $logoutMessageSuccess,
+        //domain
+        $authDomain,
+        //user session
+        $userSession,
+    ): RedirectResponse {
+        DB::beginTransaction();
+        try {
+            $authDomain->DomainLogInsert($logoutMessageSuccess . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
+            DB::commit();
+            return $this->LogoutService($logoutMessageSuccess);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
+            return redirect()->route('user.view.dashboard')->with('error', $e->getMessage());
         }
     }
     /**

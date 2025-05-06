@@ -41,6 +41,16 @@ class Services extends Repository implements Services_interfaces
     }
 
     /**
+     * @method LogoutService
+     * @return RedirectResponse
+     */
+    public function LogoutService(string $messageSuccessLogout): RedirectResponse
+    {
+        $this->UserLoggoutSessionRepository();
+        return $this->RedirectLogoutSuccessRepository($messageSuccessLogout);
+    }
+
+    /**
      * ================================================================================================================================================================
      * feature: auth admin
      * ================================================================================================================================================================

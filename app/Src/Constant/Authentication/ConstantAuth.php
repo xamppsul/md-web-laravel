@@ -2,6 +2,8 @@
 
 namespace App\Src\Constant\Authentication;
 
+use Illuminate\Support\Facades\Auth;
+
 class ConstantAuth
 {
 
@@ -92,4 +94,19 @@ class ConstantAuth
      */
 
     public string $MESSAGE_ERROR_LOGIN_USERNAME_OR_EMAIL_AND_PASSWORD = 'Gagal login, email atau username dan password salah';
+
+    /**
+     * @var string $MESSAGE_LOGOUT_SUCCESS
+     * @return string
+     */
+    public string $MESSAGE_LOGOUT_SUCCESS = 'Berhasil Logout, silahkan login kembali jika ingin masuk';
+
+
+    /**
+     * @method AuthUsersBySessions
+     */
+    public function AuthUsersBySessions()
+    {
+        return Auth::guard('user')->user();
+    }
 }

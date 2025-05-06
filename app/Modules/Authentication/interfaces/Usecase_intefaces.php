@@ -11,16 +11,16 @@ interface Usecase_intefaces
         $authRequestLogin,
         //validate request
         $request,
-        array $rulesLogin,
-        array $rulesLoginMessage,
+        array   $rulesLogin,
+        array   $rulesLoginMessage,
         //domain
         $authDomain,
         //log insert
-        string $route,
-        string $path,
+        string  $route,
+        string  $path,
         //validate login attempt
-        string $messageErrorLoginUsernameOrEmail,
-        string $successLoginMessage,
+        string  $messageErrorLoginUsernameOrEmail,
+        string  $successLoginMessage,
 
     ): RedirectResponse;
 
@@ -29,8 +29,8 @@ interface Usecase_intefaces
         $authRequestForgotPassword,
         //validate request
         $request,
-        array $rulesForgotPassword,
-        array $rulesForgotPasswordMessage,
+        array    $rulesForgotPassword,
+        array    $rulesForgotPasswordMessage,
     ): RedirectResponse;
 
     public function adminLoginCase(
@@ -38,7 +38,19 @@ interface Usecase_intefaces
         $authRequestLogin,
         //validate request
         $request,
-        array $rulesLogin,
-        array $rulesLoginMessage,
+        array    $rulesLogin,
+        array    $rulesLoginMessage,
+    ): RedirectResponse;
+
+    public function logoutCase(
+        //log insert
+        string    $route,
+        string    $path,
+        //do logout
+        string    $logoutMessageSuccess,
+        //domain
+        $authDomain,
+        //user session
+        $userSession,
     ): RedirectResponse;
 }

@@ -72,6 +72,21 @@ class Handler extends Usecase implements Handler_intefaces
             $this->constant->rulesForgotPasswordMessage(),
         );
     }
+
+    /**
+     * @method userLogout
+     */
+    public function userLogout()
+    {
+        return $this->logoutCase(
+            //log insert
+            $this->constant->NamingRoute($this->request),
+            $this->constant->CurrentPath($this->request),
+            $this->constant->MESSAGE_LOGOUT_SUCCESS,
+            $this->authDomain,
+            $this->constant->AuthUsersBySessions(),
+        );
+    }
     /**
      * ================================================================================================================================================================
      * feature: auth admin

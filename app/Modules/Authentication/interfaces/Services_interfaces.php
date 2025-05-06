@@ -14,4 +14,5 @@ interface Services_interfaces
     ): RedirectResponse;
     public function userForgotPasswordService(): RedirectResponse;
     public function adminloginService(): RedirectResponse;
+    public function LogoutService(string $messageSuccessLogout): RedirectResponse;
 }

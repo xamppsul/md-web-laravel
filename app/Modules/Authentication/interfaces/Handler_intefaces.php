@@ -9,6 +9,7 @@ interface Handler_intefaces
 {
     public function viewUserLogin(): View|RedirectResponse;
     public function userLogin();
+    public function userLogout();
     public function userForgotPassword();
     public function viewAdminLogin(): View;
     public function adminLogin();

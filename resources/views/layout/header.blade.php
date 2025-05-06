@@ -900,10 +900,17 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="mb-0 btn btn-light-danger btn-sm justify-content-center "
-                                            href="{{ __('sign_in') }}" role="button">
-                                            <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i> Log Out
-                                        </a>
+                                        <form action="{{ route('user.do.logout') }}" method="POST"
+                                            id="user.do.logout">
+                                            @csrf
+                                            <a class="mb-0 btn btn-light-danger btn-sm justify-content-center "
+                                                href="{{ route('user.do.logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('user.do.logout').submit();"
+                                                role="button">
+                                                <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i>
+                                                {{ __('logout') }}
+                                            </a>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>
