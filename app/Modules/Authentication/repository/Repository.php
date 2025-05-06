@@ -20,7 +20,7 @@ class Repository implements Repository_interfaces
      */
     public function ValidateLoginByExistingEmailOrUsernameRepository($credentials): bool
     {
-        return Auth::attempt($credentials) ? true : false;
+        return Auth::guard('user')->attempt($credentials) ? true : false;
     }
 
     /**
