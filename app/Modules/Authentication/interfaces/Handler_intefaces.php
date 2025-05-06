@@ -11,4 +11,5 @@ interface Handler_intefaces
     public function userForgotPassword();
     public function viewAdminLogin(): View;
     public function adminLogin();
+    public function viewUserDashboard(): View;
 }

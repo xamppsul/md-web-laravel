@@ -89,4 +89,12 @@ class Handler extends Usecase implements Handler_intefaces
             $this->constant->rulesLoginMessage(),
         );
     }
+    /**
+     * @method viewUserDashboard
+     * @return View
+     */
+    public function viewUserDashboard(): View
+    {
+        return view('Modules.dashboard');
+    }
 }
