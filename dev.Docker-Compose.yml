@@ -11,6 +11,9 @@ services:
     container_name: mdfebumkdevelopment-app
     restart: unless-stopped
     working_dir: /var/www/
+    tty: true
+    expose:
+      - "9000"
     volumes:
       - ./:/var/www
     depends_on:
