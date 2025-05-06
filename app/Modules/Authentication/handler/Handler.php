@@ -32,7 +32,7 @@ class Handler extends Usecase implements Handler_intefaces
      */
     public function viewUserLogin(): View|RedirectResponse
     {
-        return !Auth::guard('user')->check() ? view('Modules.Users.Auth.login') : redirect()->route('user.view.dashboard')->with('success', 'login success');
+        return !Auth::guard('user')->check() ? view('Modules.Users.Auth.login') : redirect()->route('user.view.dashboard')->with('error', 'Anda sudah login, silahkan logout terlebih dahulu!');
     }
 
     /**
