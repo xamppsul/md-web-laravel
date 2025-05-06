@@ -2,8 +2,9 @@
 
 namespace App\Modules\Authentication\usecase;
 
-use App\Modules\Authentication\interfaces\Usecase_intefaces;
+use Illuminate\Http\RedirectResponse;
 use App\Modules\Authentication\services\Services;
+use App\Modules\Authentication\interfaces\Usecase_intefaces;
 
 class Usecase extends Services implements Usecase_intefaces
 {
@@ -19,7 +20,7 @@ class Usecase extends Services implements Usecase_intefaces
         $request,
         array $rulesLogin,
         array $rulesLoginMessage,
-    ): string {
+    ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
         try {
             return $this->userLoginService();
@@ -35,7 +36,7 @@ class Usecase extends Services implements Usecase_intefaces
         $request,
         array $rulesForgotPassword,
         array $rulesForgotPasswordMessage
-    ): string {
+    ): RedirectResponse {
         $authRequestForgotPassword->forgotPasswordRequest($request, $rulesForgotPassword, $rulesForgotPasswordMessage);
         try {
             return $this->userForgotPasswordService();
@@ -56,7 +57,7 @@ class Usecase extends Services implements Usecase_intefaces
         $request,
         array $rulesLogin,
         array $rulesLoginMessage
-    ): string {
+    ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
         try {
             return $this->adminloginService();

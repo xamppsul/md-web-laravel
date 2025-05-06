@@ -2,11 +2,12 @@
 
 namespace App\Modules\Authentication\interfaces;
 
+use Illuminate\Http\RedirectResponse;
 
 interface Services_interfaces
 {
 
-    public function userLoginService(): string;
-    public function userForgotPasswordService(): string;
-    public function adminloginService(): string;
+    public function userLoginService(): RedirectResponse;
+    public function userForgotPasswordService(): RedirectResponse;
+    public function adminloginService(): RedirectResponse;
 }

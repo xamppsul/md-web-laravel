@@ -4,21 +4,45 @@ namespace App\Modules\Authentication\services;
 
 use App\Modules\Authentication\interfaces\Services_interfaces;
 use App\Modules\Authentication\repository\Repository;
+use Illuminate\Http\RedirectResponse;
 
 class Services extends Repository implements Services_interfaces
 {
-    public function userLoginService(): string
+    /**
+     * ================================================================================================================================================================
+     * feature: auth user
+     * ================================================================================================================================================================
+     */
+
+    /**
+     * @method userLoginService
+     * @return RedirectResponse
+     */
+    public function userLoginService(): RedirectResponse
     {
-        return 'halo login user';
+        return redirect()->route('user.view.login')->with('success', 'login success');
+    }
+    /**
+     * @method userForgotPasswordService
+     * @return RedirectResponse
+     */
+
+    public function userForgotPasswordService(): RedirectResponse
+    {
+        return redirect()->route('user.view.login')->with('success', 'forgot password success');
     }
 
-    public function userForgotPasswordService(): string
+    /**
+     * ================================================================================================================================================================
+     * feature: auth admin
+     * ================================================================================================================================================================
+     */
+    /**
+     * @method adminLoginService
+     * @return RedirectResponse
+     */
+    public function adminloginService(): RedirectResponse
     {
-        return 'halo forgot password';
-    }
-
-    public function adminloginService(): string
-    {
-        return 'halo login admin';
+        return redirect()->route('admin.view.login')->with('success', 'login success');
     }
 }

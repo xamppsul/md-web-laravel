@@ -13,7 +13,7 @@ interface Usecase_intefaces
         $request,
         array $rulesLogin,
         array $rulesLoginMessage,
-    ): string;
+    ): RedirectResponse;
 
     public function userForgotPasswordCase(
         //authentication request(forgot password)
@@ -22,7 +22,7 @@ interface Usecase_intefaces
         $request,
         array $rulesForgotPassword,
         array $rulesForgotPasswordMessage,
-    ): string;
+    ): RedirectResponse;
 
     public function adminLoginCase(
         //authentication request(admin login)
@@ -31,5 +31,5 @@ interface Usecase_intefaces
         $request,
         array $rulesLogin,
         array $rulesLoginMessage,
-    ): string;
+    ): RedirectResponse;
 }
