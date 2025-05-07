@@ -41,8 +41,15 @@ class Services extends Repository implements Services_interfaces
      * @return RedirectResponse
      */
 
-    public function userForgotPasswordService(): RedirectResponse
-    {
+    public function userForgotPasswordService(
+        string  $email,
+        string  $tokenResetPassword,
+        //auth domain
+        $authDomain,
+    ): RedirectResponse {
+        $url = $this->UrlTokenResetPasswordRepository($tokenResetPassword);
+        $this->InsertForgotPasswordRepository($email, $url, $tokenResetPassword, $authDomain);
+        $this->SendEmailForgotPasswordRepository($email, $url);
         return redirect()->route('user.view.login')->with('success', 'forgot password success');
     }
 

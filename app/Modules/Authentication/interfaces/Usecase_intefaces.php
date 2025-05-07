@@ -33,6 +33,10 @@ interface Usecase_intefaces
         $request,
         array    $rulesForgotPassword,
         array    $rulesForgotPasswordMessage,
+        //token reset password
+        string   $tokenResetPassword,
+        //auth domain
+        $authDomain,
     ): RedirectResponse;
 
     public function adminLoginCase(

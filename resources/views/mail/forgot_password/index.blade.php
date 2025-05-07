@@ -264,7 +264,7 @@
                                                             <!--[if mso]><table role="presentation" width="100%"><tr><td><![endif]-->
                                                             <h1
                                                                 style="margin: 0px; color: #336107; line-height: 140%; text-align: center; word-wrap: break-word; font-family: 'Open Sans',sans-serif; font-size: 27px; font-weight: 400;">
-                                                                <span>Forgot your password ?</span>
+                                                                <span>Hello {{ $email }} ?</span>
                                                             </h1>
                                                             <!--[if mso]></td></tr></table><![endif]-->
 
@@ -285,10 +285,9 @@
                                                                 <p
                                                                     style="font-size: 14px; line-height: 140%; margin: 0px;">
                                                                     <span
-                                                                        style="font-family: Cabin, sans-serif; font-size: 14px; line-height: 19.6px;">Not
-                                                                        to
-                                                                        worry, we got you! Let&rsquo;s get you a new
-                                                                        password.</span>
+                                                                        style="font-family: Cabin, sans-serif; font-size: 14px; line-height: 19.6px;">Your
+                                                                        Password Is Forget? Not to
+                                                                        worry,Let&rsquo;s get you a new password.</span>
                                                                 </p>
                                                             </div>
 
@@ -307,7 +306,8 @@
                                                             <!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
                                                             <div align="center">
                                                                 <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:38px; v-text-anchor:middle; width:189px;" arcsize="10.5%"  stroke="f" fillcolor="#3cff34"><w:anchorlock/><center style="color:#FFFFFF;"><![endif]-->
-                                                                <a href="" target="_blank" class="v-button"
+                                                                <a href="{{ $url }}" target="_blank"
+                                                                    class="v-button"
                                                                     style="box-sizing: border-box; display: inline-block; text-decoration: none; text-size-adjust: none; text-align: center; color: rgb(255, 255, 255); background: rgb(60, 255, 52); border-radius: 4px; width: auto; max-width: 100%; word-break: break-word; overflow-wrap: break-word; font-size: 14px; line-height: inherit;"><span
                                                                         style="display:block;padding:10px 35px;line-height:120%;"><strong><span
                                                                                 style="font-size: 14px; line-height: 16.8px; font-family: Cabin, sans-serif;">RESET

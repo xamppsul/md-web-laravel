@@ -9,15 +9,20 @@ interface Services_interfaces
 
     public function userLoginService(
         $request,
-        string $messageErrorLoginUsernameOrEmail,
-        string $successLoginMessage,
+        string  $messageErrorLoginUsernameOrEmail,
+        string  $successLoginMessage,
         //auth domain
         $authDomain,
         //log insert
-        string $route,
-        string $path,
+        string  $route,
+        string  $path,
     ): RedirectResponse;
-    public function userForgotPasswordService(): RedirectResponse;
+    public function userForgotPasswordService(
+        string  $email,
+        string  $tokenResetPassword,
+        //auth domain
+        $authDomain,
+    ): RedirectResponse;
     public function adminloginService(): RedirectResponse;
     public function LogoutService(string $messageSuccessLogout): RedirectResponse;
 }

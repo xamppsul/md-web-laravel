@@ -72,6 +72,10 @@ class Handler extends Usecase implements Handler_intefaces
             $this->request,
             $this->constant->rulesForgotPassword(),
             $this->constant->rulesForgotPasswordMessage(),
+            //token reset password
+            $this->constant->TokenResetPassword(),
+            //auth domain
+            $this->authDomain,
         );
     }
 

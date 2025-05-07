@@ -2,6 +2,7 @@
 
 namespace App\Src\Constant\Authentication;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class ConstantAuth
@@ -108,5 +109,15 @@ class ConstantAuth
     public function AuthUsersBySessions()
     {
         return Auth::guard('user')->user();
+    }
+
+    /**
+     * @method TokenResetPassword
+     * @return string
+     */
+
+    public function TokenResetPassword(): string
+    {
+        return Str::random(30);
     }
 }

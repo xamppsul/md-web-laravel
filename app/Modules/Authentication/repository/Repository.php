@@ -5,6 +5,8 @@ namespace App\Modules\Authentication\repository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Modules\Authentication\interfaces\Repository_interfaces;
+use App\Src\Mail\verify_account\MailForgot;
+use Illuminate\Support\Facades\Mail;
 
 class Repository implements Repository_interfaces
 {
@@ -69,6 +71,40 @@ class Repository implements Repository_interfaces
     public function RedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse
     {
         return redirect()->intended('/')->with('success', $messageSuccessLogout);
+    }
+
+    /**
+     * @method UrlTokenResetPasswordRepository
+     * @return string
+     */
+    public function UrlTokenResetPasswordRepository(string $tokenResetPassword): string
+    {
+        return config('app.url') . '/reset/' . $tokenResetPassword . '/password';
+    }
+
+    /**
+     * @method InsertForgotPasswordRepository
+     * @return void
+     */
+    public function InsertForgotPasswordRepository(
+        string $email,
+        string $url,
+        string $tokenResetPassword,
+        //domain
+        $authDomain,
+    ): void {
+        $authDomain->DomainInsertForgotPassword($email, $url, $tokenResetPassword);
+    }
+
+    /**
+     * @method SendEmailForgotPasswordRepository
+     * @return void
+     */
+    public function SendEmailForgotPasswordRepository(
+        string $email,
+        string $url
+    ): void {
+        Mail::to($email)->send(new MailForgot($email, $url));
     }
 
     /**
