@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('email')->unique()->primary();
             $table->string('token')->unique();
             $table->string('url')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
 
         Schema::create('sessions', function (Blueprint $table) {

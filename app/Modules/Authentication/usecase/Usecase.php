@@ -76,13 +76,13 @@ class Usecase extends Services implements Usecase_intefaces
         $authRequestForgotPassword->forgotPasswordRequest($request, $rulesForgotPassword, $rulesForgotPasswordMessage);
         DB::beginTransaction();
         try {
-            $authDomain->DomainLogInsert('Berhasil forgot password', $route, $path, 'success');
-            DB::commit();
             return $this->userForgotPasswordService(
                 $request->email,
                 $tokenResetPassword,
                 $authDomain,
             );
+            $authDomain->DomainLogInsert('Berhasil forgot password', $route, $path, 'success');
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
             $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
