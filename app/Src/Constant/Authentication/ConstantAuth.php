@@ -43,7 +43,7 @@ class ConstantAuth
     public function rulesForgotPassword(): array
     {
         return [
-            'email' => 'required|email|min:6',
+            'email' => 'required|email|min:6|exists:users,email',
         ];
     }
 
@@ -58,6 +58,7 @@ class ConstantAuth
             'email.required' => 'Email is required',
             'email.email' => 'Email is not valid',
             'email.min' => 'Email must be at least 6 characters',
+            'email.exists' => 'Email not registered',
         ];
     }
 
