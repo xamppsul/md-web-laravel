@@ -59,10 +59,10 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="mb-2 form-check">
-                                            {{-- <input type="checkbox" class="form-check-input" id="formCheck1">
+                                        {{-- <div class="mb-2 form-check"> --}}
+                                        {{-- <input type="checkbox" class="form-check-input" id="formCheck1">
                                             <label class="form-check-label" for="formCheck1">remember me</label> --}}
-                                        </div>
+                                        {{-- </div> --}}
                                         <div>
                                             <button class="btn btn-primary w-100">Login</button>
                                             {{-- <button class="btn btn-light-light btn-md" id="click_15" type="button">
