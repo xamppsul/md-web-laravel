@@ -22,7 +22,7 @@ interface Services_interfaces
         string  $tokenResetPassword,
         //auth domain
         $authDomain,
-    ): RedirectResponse;
+    ): void;
     public function adminloginService(): RedirectResponse;
     public function LogoutService(string $messageSuccessLogout): RedirectResponse;
 }
