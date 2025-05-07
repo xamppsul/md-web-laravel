@@ -37,6 +37,9 @@ interface Usecase_intefaces
         string   $tokenResetPassword,
         //auth domain
         $authDomain,
+        //log insert
+        string $route,
+        string $path,
     ): RedirectResponse;
 
     public function adminLoginCase(

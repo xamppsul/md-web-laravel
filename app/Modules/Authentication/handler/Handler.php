@@ -76,6 +76,9 @@ class Handler extends Usecase implements Handler_intefaces
             $this->constant->TokenResetPassword(),
             //auth domain
             $this->authDomain,
+            //log insert
+            $this->constant->NamingRoute($this->request),
+            $this->constant->CurrentPath($this->request),
         );
     }
 
