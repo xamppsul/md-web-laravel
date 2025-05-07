@@ -35,6 +35,15 @@ class AccountSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'name' => 'samsul',
+                'username' => 'samsuldosen',
+                'email' => 'muhdevapp@gmail.com',
+                'password' => Hash::make('samsul123'),
+                'roles_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'Uppsfakultas',
                 'username' => 'uppsfakultas',
                 'email' => 'uppsfakultas@gmail.com',
