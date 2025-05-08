@@ -6,12 +6,21 @@ use Illuminate\Http\RedirectResponse;
 
 interface Repository_interfaces
 {
+    //user login repo
     public function UserValidateLoginByExistingEmailOrUsernameRepository($credentials): bool;
     public function UserSetRequestLoginByUsernameOrEmailAndPasswordRepository($request): array;
     public function UserGenerateSessionLoginRepository($credentials);
     public function UserRedirectLoginSuccessRepository(string $messageSuccessLogin): RedirectResponse;
     public function UserRedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse;
     public function UserLoggoutSessionRepository(): void;
+    //admin login repo
+    public function AdminValidateLoginByExistingEmailOrUsernameRepository($credentials): bool;
+    public function AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request): array;
+    public function AdminGenerateSessionLoginRepository($credentials);
+    public function AdminRedirectLoginSuccessRepository(string $messageSuccessLogin): RedirectResponse;
+    public function AdminRedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse;
+    public function AdminLoggoutSessionRepository(): void;
+    //reset password
     public function UrlTokenResetPasswordRepository(string $token): string;
     public function InsertForgotPasswordRepository(
         string $email,

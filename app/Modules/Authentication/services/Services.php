@@ -106,8 +106,22 @@ class Services extends Repository implements Services_interfaces
      * @method adminLoginService
      * @return RedirectResponse
      */
-    public function adminloginService(): RedirectResponse
-    {
-        return redirect()->route('admin.view.login')->with('success', 'login success');
+    public function adminloginService(
+        $request,
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
+        //auth domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
+    ): RedirectResponse {
+        if (!$this->AdminValidateLoginByExistingEmailOrUsernameRepository($this->AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request))) {
+            return redirect()->route('admin.view.login')->with('error', $messageErrorLoginUsernameOrEmail);
+        }
+
+        $userSession = $this->AdminGenerateSessionLoginRepository($this->AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
+        $authDomain->DomainLogInsert($successLoginMessage . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
+        return $this->AdminRedirectLoginSuccessRepository($successLoginMessage);
     }
 }

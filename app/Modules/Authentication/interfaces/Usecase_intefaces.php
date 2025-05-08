@@ -42,12 +42,20 @@ interface Usecase_intefaces
     ): RedirectResponse;
 
     public function adminLoginCase(
-        //authentication request(admin login)
+        //authentication request(login)
         $authRequestLogin,
-        //validate request
+        //validate request login
         $request,
-        array    $rulesLogin,
-        array    $rulesLoginMessage,
+        array $rulesLogin,
+        array $rulesLoginMessage,
+        //domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
+        //validate login attempt
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
     ): RedirectResponse;
 
     public function logoutCase(

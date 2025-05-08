@@ -181,18 +181,35 @@ class Usecase extends Services implements Usecase_intefaces
      */
 
     public function adminLoginCase(
-        //authentication request(admin login)
+        //authentication request(login)
         $authRequestLogin,
-        //validate request
+        //validate request login
         $request,
         array $rulesLogin,
-        array $rulesLoginMessage
+        array $rulesLoginMessage,
+        //domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
+        //validate login attempt
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
     ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
 
         try {
-            return $this->adminloginService();
+            return $this->adminloginService(
+                $request,
+                $messageErrorLoginUsernameOrEmail,
+                $successLoginMessage,
+                $authDomain,
+                $route,
+                $path,
+            );
         } catch (\Exception $e) {
+            //insert log error event error
+            $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
             return redirect()->route('admin.view.login')->with('error', $e->getMessage());
         }
     }

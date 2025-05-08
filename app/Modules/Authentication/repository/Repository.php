@@ -38,6 +38,7 @@ class Repository implements Repository_interfaces
 
     /**
      * @method UserGenerateSessionLoginRepository
+     * @return mixed
      */
     public function UserGenerateSessionLoginRepository($credentials)
     {
@@ -151,4 +152,62 @@ class Repository implements Repository_interfaces
      * feature: auth admin
      * ================================================================================================================================================================
      */
+
+    /**
+     * @method AdminValidateLoginByExistingEmailOrUsernameRepository
+     * @return bool
+     */
+    public function AdminValidateLoginByExistingEmailOrUsernameRepository($credentials): bool
+    {
+        return Auth::guard('admin')->attempt($credentials) ? true : false;
+    }
+
+    /**
+     * @method AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository
+     * @return array
+     */
+    public function AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request): array
+    {
+        return filter_var($request->umail, FILTER_VALIDATE_EMAIL) ?
+            ['email' => $request->umail, 'password' => $request->password] :
+            ['username' => $request->umail, 'password' => $request->password];
+    }
+
+    /**
+     * @method AdminGenerateSessionLoginRepository
+     * @return mixed
+     */
+    public function AdminGenerateSessionLoginRepository($credentials)
+    {
+        $login = Auth::getProvider()->retrieveByCredentials($credentials);
+        Auth::guard('admin')->login($login);
+        return Auth::guard('admin')->user();
+    }
+
+    /**
+     * @method AdminRedirectLoginSuccessRepository
+     * @return RedirectResponse
+     */
+    public function AdminRedirectLoginSuccessRepository(string $messageSuccessLogin): RedirectResponse
+    {
+        return redirect()->intended('/admin/dashboard')->with('success', $messageSuccessLogin);
+    }
+
+    /**
+     * @method AdminRedirectLogoutSuccessRepository
+     * @return RedirectResponse
+     */
+    public function AdminRedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse
+    {
+        return redirect()->intended('/md-admin')->with('success', $messageSuccessLogout);
+    }
+
+    /**
+     * @method AdminLoggoutSessionRepository
+     * @return void
+     */
+    public function AdminLoggoutSessionRepository(): void
+    {
+        Auth::guard('admin')->logout();
+    }
 }

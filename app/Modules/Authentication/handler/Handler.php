@@ -55,8 +55,6 @@ class Handler extends Usecase implements Handler_intefaces
             //validate login attempt
             $this->constant->MESSAGE_ERROR_LOGIN_USERNAME_OR_EMAIL_AND_PASSWORD,
             $this->constant->SUCCESS_LOGIN_MESSAGE,
-            //user session
-            $this->constant->AuthUsersBySessions(),
         );
     }
 
@@ -149,7 +147,7 @@ class Handler extends Usecase implements Handler_intefaces
      */
     public function viewAdminLogin(): View
     {
-        return view('Modules.Administrator.Auth.login');
+        return !Auth::guard('admin')->check() ? view('Modules.Administrator.Auth.login') : redirect()->route('admin.view.dashboard')->with('error', 'Anda sudah login, silahkan logout terlebih dahulu!');;
     }
 
     /**
@@ -158,12 +156,20 @@ class Handler extends Usecase implements Handler_intefaces
     public function adminLogin()
     {
         return $this->adminLoginCase(
-            //authentication request(admin login)
+            //authentication request(login)
             $this->authRequest,
-            //validate request
+            //validate request login
             $this->request,
             $this->constant->rulesLogin(),
             $this->constant->rulesLoginMessage(),
+            //domain auth
+            $this->authDomain,
+            //log insert
+            $this->constant->NamingRoute($this->request),
+            $this->constant->CurrentPath($this->request),
+            //validate login attempt
+            $this->constant->MESSAGE_ERROR_LOGIN_USERNAME_OR_EMAIL_AND_PASSWORD,
+            $this->constant->SUCCESS_LOGIN_MESSAGE,
         );
     }
     /**

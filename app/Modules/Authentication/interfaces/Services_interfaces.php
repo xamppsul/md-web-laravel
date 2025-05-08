@@ -24,7 +24,16 @@ interface Services_interfaces
         //auth domain
         $authDomain,
     ): void;
-    public function adminloginService(): RedirectResponse;
+    public function adminloginService(
+        $request,
+        string $messageErrorLoginUsernameOrEmail,
+        string $successLoginMessage,
+        //auth domain
+        $authDomain,
+        //log insert
+        string $route,
+        string $path,
+    ): RedirectResponse;
     public function LogoutService(string $messageSuccessLogout): RedirectResponse;
     public function viewUserResetPasswordService(
         string  $token,
