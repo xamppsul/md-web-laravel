@@ -24,4 +24,9 @@ interface Repository_interfaces
         string $email,
         string $url,
     ): void;
+    public function ValidateTokensResetPasswordRepository(
+        string $token,
+        //domain
+        $authDomain,
+    ): array;
 }

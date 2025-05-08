@@ -20,11 +20,24 @@ class AuthDomain
         DB::insert('insert into logs (message,route,path,type,created_at,updated_at) values (?, ?, ?, ?, ?, ?)', [$message, $route, $path, $type, now(), now()]);
     }
 
+    /**
+     * @method DomainInsertForgotPassword
+     * @return void
+     */
     public function DomainInsertForgotPassword(
         string $email,
         string $url,
         string $tokenResetPassword
     ): void {
         DB::insert('INSERT INTO password_reset_tokens (email,token,url,created_at,updated_at) values (?, ?, ?, ?, ?)', [$email, $tokenResetPassword, $url, now(), now()]);
+    }
+
+    /**
+     * @method DomainValidateTokenResetPassword
+     * @return array
+     */
+    public function DomainValidateTokenResetPassword(string $token): array
+    {
+        return DB::select("SELECT * FROM password_reset_tokens WHERE token = ?", [$token]);
     }
 }

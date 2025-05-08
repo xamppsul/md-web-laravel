@@ -6,6 +6,6 @@
 <meta name="keywords"
     content="admin template, Axelit admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="la-themes">
-<link rel="icon" href="{{ '../assets/images/logo/umk.png' }}" type="image/x-icon">
-<link rel="shortcut icon" href="{{ '../assets/images/logo/umk.png' }}" type="image/x-icon">
+<link rel="icon" href="{{ 'assets/images/logo/umk.png' }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ 'assets/images/logo/umk.png' }}" type="image/x-icon">
 <title>@yield('title') | MD Feb UMK</title>

@@ -83,6 +83,32 @@ class Handler extends Usecase implements Handler_intefaces
     }
 
     /**
+     * @method userResetPassword
+     * @return View|RedirectResponse
+     */
+    public function viewUserResetPassword(string $token): View|RedirectResponse
+    {
+        return $this->viewUserResetPasswordCase(
+            $token,
+            $this->constant->MESSAGE_RESET_PASSWORD_FAILED,
+            //domain
+            $this->authDomain,
+            //log insert
+            $this->constant->NamingRoute($this->request),
+            $this->constant->CurrentPath($this->request),
+        );
+    }
+
+    /**
+     * @method userResetPassword
+     * @return RedirectResponse
+     */
+    public function userResetPassword(): RedirectResponse
+    {
+        return redirect()->route('user.do.reset.password', '$dasd22xsdasd');
+    }
+
+    /**
      * @method userLogout
      */
     public function userLogout()

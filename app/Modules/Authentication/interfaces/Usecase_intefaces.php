@@ -2,6 +2,7 @@
 
 namespace App\Modules\Authentication\interfaces;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 interface Usecase_intefaces
@@ -38,8 +39,8 @@ interface Usecase_intefaces
         //auth domain
         $authDomain,
         //log insert
-        string $route,
-        string $path,
+        string   $route,
+        string   $path,
     ): RedirectResponse;
 
     public function adminLoginCase(
@@ -62,4 +63,14 @@ interface Usecase_intefaces
         //user session
         $userSession,
     ): RedirectResponse;
+
+    public function viewUserResetPasswordCase(
+        string    $token,
+        string    $errorMessageResetPassword,
+        //domain
+        $authDomain,
+        //log insert
+        string   $route,
+        string   $path,
+    ): View|RedirectResponse;
 }

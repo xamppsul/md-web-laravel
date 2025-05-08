@@ -5,6 +5,7 @@ namespace App\Modules\Authentication\usecase;
 use Illuminate\Http\RedirectResponse;
 use App\Modules\Authentication\services\Services;
 use App\Modules\Authentication\interfaces\Usecase_intefaces;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
 
 class Usecase extends Services implements Usecase_intefaces
@@ -87,6 +88,31 @@ class Usecase extends Services implements Usecase_intefaces
         } catch (\Exception $e) {
             DB::rollBack();
             $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
+            return redirect()->route('user.view.login')->with('error', 'Maaf ada kesalahan sistem, silahkan coba lagi!');
+        }
+    }
+
+    /**
+     * @method viewUserResetPasswordCase
+     * @return View|RedirectResponse
+     */
+    public function viewUserResetPasswordCase(
+        string $token,
+        string $errorMessageResetPassword,
+        //domain
+        $authDomain,
+        //log insert
+        string   $route,
+        string   $path,
+    ): View|RedirectResponse {
+        try {
+            return $this->viewUserResetPasswordService(
+                $token,
+                $errorMessageResetPassword,
+                $authDomain,
+            );
+        } catch (\Exception $error) {
+            $authDomain->DomainLogInsert($error->getMessage(), $route, $path, 'error');
             return redirect()->route('user.view.login')->with('error', 'Maaf ada kesalahan sistem, silahkan coba lagi!');
         }
     }

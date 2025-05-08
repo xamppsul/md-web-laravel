@@ -120,4 +120,12 @@ class ConstantAuth
     {
         return Str::random(30);
     }
+
+
+    /**
+     * @var string $MESSAGE_RESET_PASSWORD_FAILED
+     * @return string
+     */
+
+    public string $MESSAGE_RESET_PASSWORD_FAILED = 'Gagal Reset Password, token tidak valid atau sudah kadaluarsa';
 }

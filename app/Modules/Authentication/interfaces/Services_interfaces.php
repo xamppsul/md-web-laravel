@@ -2,6 +2,7 @@
 
 namespace App\Modules\Authentication\interfaces;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 interface Services_interfaces
@@ -25,4 +26,10 @@ interface Services_interfaces
     ): void;
     public function adminloginService(): RedirectResponse;
     public function LogoutService(string $messageSuccessLogout): RedirectResponse;
+    public function viewUserResetPasswordService(
+        string  $token,
+        string  $errorMessageResetPassword,
+        //domain
+        $authDomain,
+    ): View|RedirectResponse;
 }

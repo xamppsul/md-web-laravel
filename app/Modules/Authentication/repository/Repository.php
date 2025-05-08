@@ -108,6 +108,18 @@ class Repository implements Repository_interfaces
     }
 
     /**
+     * @method ValidateTokensResetPasswordRepository
+     * @return array
+     */
+    public function ValidateTokensResetPasswordRepository(
+        string $token,
+        //domain
+        $authDomain,
+    ): array {
+        return $authDomain->DomainValidateTokenResetPassword($token);
+    }
+
+    /**
      * ================================================================================================================================================================
      * feature: auth admin
      * ================================================================================================================================================================

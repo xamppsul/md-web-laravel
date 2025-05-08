@@ -16,7 +16,7 @@
                             <div class="login-form-container">
                                 <div class="mb-4">
                                     <a class="logo d-inline-block" href="{{ route('user.view.login') }}">
-                                        <img src="{{ asset('../assets/images/logo/umk.png') }}" width="100"
+                                        <img src="{{ asset('assets/images/logo/umk.png') }}" width="100"
                                             alt="#">
                                     </a>
                                 </div>
@@ -31,7 +31,7 @@
                                     <form class="app-form" action="{{ route('user.do.login') }}" method="POST">
                                         @csrf
                                         <div class="mb-3 text-center">
-                                            <h3>MD Febi UMK</h3>
+                                            <h3>Login MD Febi UMK</h3>
                                             <p class="f-s-12 text-secondary">Get started with our app, just login with
                                                 email and password.</p>
                                         </div>

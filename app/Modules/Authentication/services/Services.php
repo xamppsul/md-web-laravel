@@ -4,6 +4,7 @@ namespace App\Modules\Authentication\services;
 
 use App\Modules\Authentication\interfaces\Services_interfaces;
 use App\Modules\Authentication\repository\Repository;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class Services extends Repository implements Services_interfaces
@@ -50,6 +51,23 @@ class Services extends Repository implements Services_interfaces
         $url = $this->UrlTokenResetPasswordRepository($tokenResetPassword);
         $this->InsertForgotPasswordRepository($email, $url, $tokenResetPassword, $authDomain);
         $this->SendEmailForgotPasswordRepository($email, $url);
+    }
+
+    public function viewUserResetPasswordService(
+        string $token,
+        string $errorMessageResetPassword,
+        //domain
+        $authDomain,
+    ): View|RedirectResponse {
+        $token = $this->ValidateTokensResetPasswordRepository($token, $authDomain);
+        if (empty($token)) {
+            return redirect()->route('user.view.login')->with('error', $errorMessageResetPassword);
+        }
+
+        return view('Modules.Users.Auth.reset_password', [
+            'email' => $token[0]->email,
+            'token' => $token[0]->token,
+        ]);
     }
 
     /**
