@@ -111,18 +111,4 @@
 
 
 </body>
-@section('script')
-    <!-- Bootstrap js-->
-    <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <!-- Toatify js-->
-    <script src="{{ asset('assets/vendor/notifications/toastify-js.js') }}"></script>
-
-    <!-- sweetalert js-->
-    <script src="{{ asset('assets/vendor/sweetalert/sweetalert.js') }}"></script>
-
-    <!-- js -->
-    <script src="{{ asset('assets/js/sweet_alert.js') }}"></script>
-
-    <!-- conf sweetalert -->
-    <script src="{{ asset('assets/js/sweetalert.conf.js') }}"></script>
-@endsection
+@include('layout.script')

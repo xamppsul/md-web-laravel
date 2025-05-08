@@ -10,8 +10,11 @@
 <!-- phosphor js -->
 <script src="{{ asset('assets/vendor/phosphor/phosphor.js') }}"></script>
 
-<!-- Customizer js-->
-<script src="{{ asset('assets/js/customizer.js') }}"></script>
+@if (Route::is('/'))
+    <!-- kalo route nya user login maka jalankan customizer-->
+    <!-- Customizer js-->
+    <script src="{{ asset('assets/js/customizer.js') }}"></script>
+@endif
 
 <!-- prism js-->
 <script src="{{ asset('assets/vendor/prism/prism.min.js') }}"></script>
