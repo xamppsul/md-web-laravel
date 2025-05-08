@@ -91,7 +91,7 @@ class Services extends Repository implements Services_interfaces
      * @method LogoutService
      * @return RedirectResponse
      */
-    public function LogoutService(string $messageSuccessLogout): RedirectResponse
+    public function userLogoutService(string $messageSuccessLogout): RedirectResponse
     {
         $this->UserLoggoutSessionRepository();
         return $this->UserRedirectLogoutSuccessRepository($messageSuccessLogout);
@@ -123,5 +123,11 @@ class Services extends Repository implements Services_interfaces
         $userSession = $this->AdminGenerateSessionLoginRepository($this->AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
         $authDomain->DomainLogInsert($successLoginMessage . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
         return $this->AdminRedirectLoginSuccessRepository($successLoginMessage);
+    }
+
+    public function adminLogoutService(string $messageSuccessLogout): RedirectResponse
+    {
+        $this->AdminLoggoutSessionRepository();
+        return $this->AdminRedirectLogoutSuccessRepository($messageSuccessLogout);
     }
 }

@@ -10,6 +10,7 @@ interface Handler_intefaces
     public function viewUserLogin(): View|RedirectResponse;
     public function userLogin();
     public function userLogout();
+    public function adminLogout();
     public function userForgotPassword();
     public function viewUserResetPassword(string $token): View|RedirectResponse;
     public function userResetPassword(): RedirectResponse;

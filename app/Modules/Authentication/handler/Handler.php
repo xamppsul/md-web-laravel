@@ -126,7 +126,7 @@ class Handler extends Usecase implements Handler_intefaces
      */
     public function userLogout()
     {
-        return $this->logoutCase(
+        return $this->userLogoutCase(
             //log insert
             $this->constant->NamingRoute($this->request),
             $this->constant->CurrentPath($this->request),
@@ -134,6 +134,14 @@ class Handler extends Usecase implements Handler_intefaces
             $this->authDomain,
             $this->constant->AuthUsersBySessions(),
         );
+    }
+    /**
+     * @method viewUserDashboard
+     * @return View
+     */
+    public function viewUserDashboard(): View
+    {
+        return view('Modules.Users.dashboard');
     }
     /**
      * ================================================================================================================================================================
@@ -172,15 +180,26 @@ class Handler extends Usecase implements Handler_intefaces
             $this->constant->SUCCESS_LOGIN_MESSAGE,
         );
     }
+
     /**
-     * @method viewUserDashboard
-     * @return View
+     * @method adminLogout
      */
-    public function viewUserDashboard(): View
+    public function adminLogout()
     {
-        return view('Modules.Users.dashboard');
+        return $this->adminLogoutCase(
+            //log insert
+            $this->constant->NamingRoute($this->request),
+            $this->constant->CurrentPath($this->request),
+            $this->constant->MESSAGE_LOGOUT_SUCCESS,
+            $this->authDomain,
+            $this->constant->AuthAdminsBySessions(),
+        );
     }
 
+    /**
+     * @method viewAdminDashboard
+     * @return View
+     */
     public function viewAdminDashboard(): View
     {
         return view('Modules.Administrator.dashboard');

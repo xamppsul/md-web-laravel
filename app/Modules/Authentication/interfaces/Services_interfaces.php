@@ -34,7 +34,8 @@ interface Services_interfaces
         string $route,
         string $path,
     ): RedirectResponse;
-    public function LogoutService(string $messageSuccessLogout): RedirectResponse;
+    public function userLogoutService(string $messageSuccessLogout): RedirectResponse;
+    public function adminLogoutService(string $messageSuccessLogout): RedirectResponse;
     public function viewUserResetPasswordService(
         string  $token,
         string  $errorMessageResetPassword,

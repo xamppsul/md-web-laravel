@@ -58,7 +58,7 @@ interface Usecase_intefaces
         string $successLoginMessage,
     ): RedirectResponse;
 
-    public function logoutCase(
+    public function userLogoutCase(
         //log insert
         string    $route,
         string    $path,
@@ -68,6 +68,18 @@ interface Usecase_intefaces
         $authDomain,
         //user session
         $userSession,
+    ): RedirectResponse;
+
+    public function adminLogoutCase(
+        //log insert
+        string    $route,
+        string    $path,
+        //do logout
+        string    $logoutMessageSuccess,
+        //domain
+        $authDomain,
+        //user session
+        $adminSession,
     ): RedirectResponse;
 
     public function viewUserResetPasswordCase(

@@ -152,7 +152,7 @@ class Usecase extends Services implements Usecase_intefaces
      * @method logoutCase
      * @return RedirectResponse
      */
-    public function logoutCase(
+    public function userLogoutCase(
         //log insert
         string    $route,
         string    $path,
@@ -167,7 +167,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $authDomain->DomainLogInsert($logoutMessageSuccess . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
             DB::commit();
-            return $this->LogoutService($logoutMessageSuccess);
+            return $this->userLogoutService($logoutMessageSuccess);
         } catch (\Exception $e) {
             DB::rollBack();
             $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
@@ -211,6 +211,29 @@ class Usecase extends Services implements Usecase_intefaces
             //insert log error event error
             $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
             return redirect()->route('admin.view.login')->with('error', $e->getMessage());
+        }
+    }
+
+    public function adminLogoutCase(
+        //log insert
+        string    $route,
+        string    $path,
+        //do logout
+        string    $logoutMessageSuccess,
+        //domain
+        $authDomain,
+        //user session
+        $adminSession,
+    ): RedirectResponse {
+        DB::beginTransaction();
+        try {
+            $authDomain->DomainLogInsert($logoutMessageSuccess . " ID: {$adminSession->id}, Username {$adminSession->username}", $route, $path, 'success');
+            DB::commit();
+            return $this->adminLogoutService($logoutMessageSuccess);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $authDomain->DomainLogInsert($e->getMessage(), $route, $path, 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', $e->getMessage());
         }
     }
 }

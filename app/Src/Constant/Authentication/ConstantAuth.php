@@ -155,6 +155,14 @@ class ConstantAuth
     }
 
     /**
+     * @method AuthUsersBySessions
+     */
+    public function AuthAdminsBySessions()
+    {
+        return Auth::guard('admin')->user();
+    }
+
+    /**
      * @method TokenResetPassword
      * @return string
      */
