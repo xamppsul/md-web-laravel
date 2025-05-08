@@ -16,4 +16,5 @@ interface Handler_intefaces
     public function viewAdminLogin(): View;
     public function adminLogin();
     public function viewUserDashboard(): View;
+    public function viewAdminDashboard(): View;
 }

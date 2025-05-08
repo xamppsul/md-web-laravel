@@ -172,6 +172,11 @@ class Handler extends Usecase implements Handler_intefaces
      */
     public function viewUserDashboard(): View
     {
-        return view('Modules.dashboard');
+        return view('Modules.Users.dashboard');
+    }
+
+    public function viewAdminDashboard(): View
+    {
+        return view('Modules.Administrator.dashboard');
     }
 }

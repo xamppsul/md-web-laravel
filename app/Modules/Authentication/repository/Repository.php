@@ -51,7 +51,7 @@ class Repository implements Repository_interfaces
      */
     public function UserRedirectLoginSuccessRepository(string $messageSuccessLogin): RedirectResponse
     {
-        return redirect()->intended('/dashboard')->with('success', $messageSuccessLogin);
+        return redirect()->intended('/user/dashboard')->with('success', $messageSuccessLogin);
     }
 
     /**

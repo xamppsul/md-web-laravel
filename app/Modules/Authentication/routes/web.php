@@ -17,7 +17,8 @@ Route::middleware('throttle:30,1')->group(function () {
     });
 
     Route::middleware('auth')->group(function () {
-        Route::get('/dashboard', [Handler::class, 'viewUserDashboard'])->name('user.view.dashboard');
+        Route::get('/user/dashboard', [Handler::class, 'viewUserDashboard'])->name('user.view.dashboard');
+        Route::get('/admin/dashboard', [Handler::class, 'viewAdminDashboard'])->name('user.admin.dashboard');
         Route::post('/logout', [Handler::class, 'userLogout'])->name('user.do.logout');
     });
 });
