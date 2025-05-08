@@ -34,8 +34,6 @@ class Usecase extends Services implements Usecase_intefaces
         //validate login attempt
         string $messageErrorLoginUsernameOrEmail,
         string $successLoginMessage,
-        //user session
-        $userSession,
     ): RedirectResponse {
         $authRequestLogin->loginRequest($request, $rulesLogin, $rulesLoginMessage);
 

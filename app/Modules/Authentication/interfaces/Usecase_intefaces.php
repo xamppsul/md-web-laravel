@@ -22,8 +22,6 @@ interface Usecase_intefaces
         //validate login attempt
         string  $messageErrorLoginUsernameOrEmail,
         string  $successLoginMessage,
-        //user session
-        $userSession,
 
     ): RedirectResponse;
 

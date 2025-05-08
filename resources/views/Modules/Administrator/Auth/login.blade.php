@@ -19,14 +19,13 @@
                         <div class="form-container ">
                             <div class="signup-content mt-4">
                                 <span>
-                                    <img src="{{ asset('../assets/images/logo/umk.png') }}" alt=""
+                                    <img src="{{ asset('assets/images/logo/umk.png') }}" alt=""
                                         class="img-fluid">
                                 </span>
                             </div>
 
                             <div class="signup-bg-img">
-                                <img src="{{ asset('../assets/images/login/04.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{ asset('assets/images/login/04.png') }}" alt="" class="img-fluid">
                             </div>
                         </div>
 
