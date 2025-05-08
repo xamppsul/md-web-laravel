@@ -29,13 +29,13 @@ class Services extends Repository implements Services_interfaces
         string $route,
         string $path,
     ): RedirectResponse {
-        if (!$this->ValidateLoginByExistingEmailOrUsernameRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request))) {
+        if (!$this->UserValidateLoginByExistingEmailOrUsernameRepository($this->UserSetRequestLoginByUsernameOrEmailAndPasswordRepository($request))) {
             return redirect()->route('user.view.login')->with('error', $messageErrorLoginUsernameOrEmail);
         }
 
-        $userSession = $this->GenerateSessionLoginRepository($this->SetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
+        $userSession = $this->UserGenerateSessionLoginRepository($this->UserSetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
         $authDomain->DomainLogInsert($successLoginMessage . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
-        return $this->RedirectLoginSuccessRepository($successLoginMessage);
+        return $this->UserRedirectLoginSuccessRepository($successLoginMessage);
     }
     /**
      * @method userForgotPasswordService
@@ -94,7 +94,7 @@ class Services extends Repository implements Services_interfaces
     public function LogoutService(string $messageSuccessLogout): RedirectResponse
     {
         $this->UserLoggoutSessionRepository();
-        return $this->RedirectLogoutSuccessRepository($messageSuccessLogout);
+        return $this->UserRedirectLogoutSuccessRepository($messageSuccessLogout);
     }
 
     /**

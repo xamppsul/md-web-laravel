@@ -17,19 +17,19 @@ class Repository implements Repository_interfaces
      * ================================================================================================================================================================
      */
     /**
-     * @method ValidateLoginByExistingEmailOrUsernameRepository
+     * @method UserValidateLoginByExistingEmailOrUsernameRepository
      * @return bool
      */
-    public function ValidateLoginByExistingEmailOrUsernameRepository($credentials): bool
+    public function UserValidateLoginByExistingEmailOrUsernameRepository($credentials): bool
     {
         return Auth::guard('user')->attempt($credentials) ? true : false;
     }
 
     /**
-     * @method SetRequestLoginByUsernameOrEmailAndPasswordRepository
+     * @method UserSetRequestLoginByUsernameOrEmailAndPasswordRepository
      * @return array
      */
-    public function SetRequestLoginByUsernameOrEmailAndPasswordRepository($request): array
+    public function UserSetRequestLoginByUsernameOrEmailAndPasswordRepository($request): array
     {
         return filter_var($request->umail, FILTER_VALIDATE_EMAIL) ?
             ['email' => $request->umail, 'password' => $request->password] :
@@ -37,19 +37,19 @@ class Repository implements Repository_interfaces
     }
 
     /**
-     * @method GenerateSessionLoginRepository
+     * @method UserGenerateSessionLoginRepository
      */
-    public function GenerateSessionLoginRepository($credentials)
+    public function UserGenerateSessionLoginRepository($credentials)
     {
         $login = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::guard('user')->login($login);
         return Auth::guard('user')->user();
     }
     /**
-     * @method RedirectLoginSuccessRepository
+     * @method UserRedirectLoginSuccessRepository
      * @return RedirectResponse
      */
-    public function RedirectLoginSuccessRepository(string $messageSuccessLogin): RedirectResponse
+    public function UserRedirectLoginSuccessRepository(string $messageSuccessLogin): RedirectResponse
     {
         return redirect()->intended('/dashboard')->with('success', $messageSuccessLogin);
     }
@@ -64,11 +64,11 @@ class Repository implements Repository_interfaces
     }
 
     /**
-     * @method RedirectLogoutSuccessRepository
+     * @method UserRedirectLogoutSuccessRepository
      * @return RedirectResponse
      * //balik ke halaman login user after success logout
      */
-    public function RedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse
+    public function UserRedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse
     {
         return redirect()->intended('/')->with('success', $messageSuccessLogout);
     }
