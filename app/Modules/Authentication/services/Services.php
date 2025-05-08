@@ -53,6 +53,10 @@ class Services extends Repository implements Services_interfaces
         $this->SendEmailForgotPasswordRepository($email, $url);
     }
 
+    /**
+     * @method viewUserResetPasswordService
+     * @return View|RedirectResponse
+     */
     public function viewUserResetPasswordService(
         string $token,
         string $errorMessageResetPassword,
@@ -68,6 +72,19 @@ class Services extends Repository implements Services_interfaces
             'email' => $token[0]->email,
             'token' => $token[0]->token,
         ]);
+    }
+
+    /**
+     * @method userResetPasswordService
+     * @return void
+     */
+    public function userResetPasswordService(
+        $request,
+        //domain
+        $authDomain,
+    ): void {
+        $this->ChangePasswordRepository($request->email, $request->new_password, $authDomain);
+        $this->DeleteTokenResetPasswordRepository($request->token_reset_password, $authDomain);
     }
 
     /**

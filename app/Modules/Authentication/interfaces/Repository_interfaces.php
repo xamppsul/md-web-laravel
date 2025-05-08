@@ -29,4 +29,15 @@ interface Repository_interfaces
         //domain
         $authDomain,
     ): array;
+    public function ChangePasswordRepository(
+        string $email,
+        string $new_password,
+        //domain
+        $authDomain,
+    ): void;
+    public function DeleteTokenResetPasswordRepository(
+        string $token_reset_password,
+        //domain
+        $authDomain,
+    ): void;
 }

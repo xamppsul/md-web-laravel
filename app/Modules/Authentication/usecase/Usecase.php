@@ -117,6 +117,43 @@ class Usecase extends Services implements Usecase_intefaces
         }
     }
 
+    public function userResetPasswordCase(
+        //authentication request(user login)
+        $authRequestLogin,
+        //request
+        $request,
+        array $rulesResetPassword,
+        array $rulesResetPasswordMessage,
+        //log insert
+        string    $route,
+        string    $path,
+        //message reset password success
+        string    $successResetPasswordMessage,
+        //domain
+        $authDomain,
+    ): RedirectResponse {
+        $authRequestLogin->resetPasswordRequest($request, $rulesResetPassword, $rulesResetPasswordMessage);
+
+        DB::beginTransaction();
+        try {
+            $this->userResetPasswordService(
+                $request,
+                $authDomain,
+            );
+            $authDomain->DomainLogInsert("email: $request->email,$successResetPasswordMessage", $route, $path, 'success');
+            DB::commit();
+            return redirect()->route('user.view.login')->with('success', $successResetPasswordMessage);
+        } catch (\Exception $errors) {
+            DB::rollback();
+            $authDomain->DomainLogInsert($errors->getMessage(), $route, $path, 'error');
+            return redirect()->route('user.view.login')->with('error', 'Maaf ada kesalahan sistem, silahkan coba lagi!');
+        }
+    }
+
+    /**
+     * @method logoutCase
+     * @return RedirectResponse
+     */
     public function logoutCase(
         //log insert
         string    $route,

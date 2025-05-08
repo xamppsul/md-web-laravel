@@ -79,7 +79,7 @@ class Repository implements Repository_interfaces
      */
     public function UrlTokenResetPasswordRepository(string $tokenResetPassword): string
     {
-        return config('app.url') . '/reset/' . $tokenResetPassword . '/password';
+        return config('app.url') . '/reset/' . $tokenResetPassword;
     }
 
     /**
@@ -118,6 +118,33 @@ class Repository implements Repository_interfaces
     ): array {
         return $authDomain->DomainValidateTokenResetPassword($token);
     }
+
+    /**
+     * @method ChangePasswordRepository
+     * @return void
+     */
+    public function ChangePasswordRepository(
+        string $email,
+        string $new_password,
+        //domain
+        $authDomain
+    ): void {
+        $authDomain->DomainChangePassword($email, $new_password);
+    }
+
+    /**
+     * @method DeleteTokenResetPasswordRepository
+     * @return void
+     */
+    public function DeleteTokenResetPasswordRepository(
+        string $token_reset_password,
+        //domain
+        $authDomain
+    ): void {
+        $authDomain->DomainDeleteTokenResetPassword($token_reset_password);
+    }
+
+
 
     /**
      * ================================================================================================================================================================

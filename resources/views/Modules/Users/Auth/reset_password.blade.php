@@ -20,7 +20,9 @@
                                     </a>
                                 </div>
                                 <div class="form_container">
-                                    <form class="app-form">
+                                    <form class="app-form" action="{{ route('user.do.reset.password') }}"
+                                        method="POST">
+                                        @csrf
                                         <div class="mb-3 text-center">
                                             <h3>Reset Your Password</h3>
                                             <p class="f-s-12 text-secondary">Create a new password and sign in to user
@@ -29,7 +31,7 @@
                                         <div class="mb-3">
                                             <label class="form-label" hidden>Token</label>
                                             <input type="text" class="form-control" placeholder="Enter Your Email"
-                                                value="{{ $token }}" hidden>
+                                                value="{{ $token }}" name="token_reset_password" hidden>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Email</label>
@@ -59,8 +61,7 @@
                                             @enderror
                                         </div>
                                         <div>
-                                            <a href="{{ route('user.view.login') }}" role="button"
-                                                class="btn btn-primary w-100">Reset Password</a>
+                                            <button type="submit" class="btn btn-primary w-100">Reset Password</button>
                                         </div>
                                     </form>
                                 </div>

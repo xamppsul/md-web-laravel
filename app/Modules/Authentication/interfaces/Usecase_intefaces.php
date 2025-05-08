@@ -73,4 +73,20 @@ interface Usecase_intefaces
         string   $route,
         string   $path,
     ): View|RedirectResponse;
+
+    public function userResetPasswordCase(
+        //authentication request(user login)
+        $authRequestLogin,
+        //request
+        $request,
+        array $rulesResetPassword,
+        array $rulesResetPasswordMessage,
+        //log insert
+        string    $route,
+        string    $path,
+        //message reset password success
+        string    $successResetPasswordMessage,
+        //domain
+        $authDomain,
+    ): RedirectResponse;
 }

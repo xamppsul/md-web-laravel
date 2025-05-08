@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ConstantAuth
 {
+    /**
+     * ===================================================================== RULES:validation and message ==================================================================================================
+     */
 
     /**
      * @method rulesLogin
@@ -64,6 +67,39 @@ class ConstantAuth
     }
 
     /**
+     * @method rulesChangePassword
+     * @return array
+     */
+
+    public function rulesResetPassword(): array
+    {
+        return [
+            'new_password' => 'required|string|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            'retype_password' => 'required|string|min:6|same:new_password|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+        ];
+    }
+
+    /**
+     * @method rulesChangePasswordMessage
+     * @return array
+     */
+
+    public function rulesResetPasswordMessage(): array
+    {
+        return [
+            'new_password.required' => 'new password is required',
+            'regex' => ':attribute include Uppercase,lowercase,number and special character',
+            'retype_password.required' => 'retype password is required',
+            'new_password.string' => ':attribute should string',
+        ];
+    }
+
+
+    /**
+     * ===================================================================== Constanta  ==================================================================================================
+     */
+
+    /**
      * @method NamingRoute
      * @return string
      */
@@ -101,6 +137,13 @@ class ConstantAuth
      * @return string
      */
     public string $MESSAGE_LOGOUT_SUCCESS = 'Berhasil Logout, silahkan login kembali jika ingin masuk';
+
+
+    /**
+     * @var string $SUCCESS_RESET_PASSWORD_MESSAGE
+     * @return string
+     */
+    public string $SUCCESS_RESET_PASSWORD_MESSAGE = 'Berhasil Reset Password, silahkan untuk login kembali';
 
 
     /**

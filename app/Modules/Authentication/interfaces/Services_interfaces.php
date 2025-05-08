@@ -32,4 +32,9 @@ interface Services_interfaces
         //domain
         $authDomain,
     ): View|RedirectResponse;
+    public function userResetPasswordService(
+        $request,
+        //domain
+        $authDomain,
+    ): void;
 }

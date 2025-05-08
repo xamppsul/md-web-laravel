@@ -30,4 +30,17 @@ class AuthRequest
     ): array {
         return $request->validate($rulesForgotPassword, $rulesForgotPasswordMessage);
     }
+
+    /**
+     * @method resetPasswordRequest
+     * @return array
+     */
+
+    public function resetPasswordRequest(
+        Request $request,
+        array $rulesResetPassword,
+        array $rulesResetPasswordMessage,
+    ): array {
+        return $request->validate($rulesResetPassword, $rulesResetPasswordMessage);
+    }
 }
