@@ -26,7 +26,10 @@
 
     <!-- conf sweetalert -->
     <script src="{{ asset('assets/js/sweetalert.conf.js') }}"></script>
-    <!-- Customizer js-->
-    <script src="{{ asset('assets/js/customizer.js') }}"></script>
+
+    @if (!Route::is('admin.view.login'))
+        <!-- Customizer js-->
+        <script src="{{ asset('assets/js/customizer.js') }}"></script>
+    @endif
 
     @yield('script')
