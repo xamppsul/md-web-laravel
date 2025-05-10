@@ -14,6 +14,12 @@ class AdminDomain extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * guard admin
+     */
+
+    protected $guard = 'admin';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>

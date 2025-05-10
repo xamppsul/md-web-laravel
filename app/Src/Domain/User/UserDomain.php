@@ -14,6 +14,12 @@ class UserDomain extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * guard user
+     */
+
+    protected $guard = 'user';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
