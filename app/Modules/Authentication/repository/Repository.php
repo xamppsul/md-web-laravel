@@ -179,8 +179,6 @@ class Repository implements Repository_interfaces
      */
     public function AdminGenerateSessionLoginRepository($credentials)
     {
-        $login = Auth::getProvider()->retrieveByCredentials($credentials);
-        Auth::guard('admin')->login($login);
         return Auth::guard('admin')->user();
     }
 

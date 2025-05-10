@@ -828,6 +828,7 @@
                                                         src="../assets/images/profile-app/01.png"></h6>
                                                 <p class="f-s-12 mb-0 text-secondary">
                                                     {{ Auth::guard('admin')->user()->email }}</p>
+                                                <p class="f-s-12 mb-0 text-secondary">
                                             </div>
                                         @endif
                                     </li>

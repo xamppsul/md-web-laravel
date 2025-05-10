@@ -23,6 +23,6 @@ Route::middleware('throttle:30,1')->group(function () {
 
     Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
         Route::get('dashboard', [Handler::class, 'viewAdminDashboard'])->name('admin.view.dashboard');
-        Route::get('logout', [Handler::class, 'adminLogout'])->name('admin.do.logout');
+        Route::post('logout', [Handler::class, 'adminLogout'])->name('admin.do.logout');
     });
 });

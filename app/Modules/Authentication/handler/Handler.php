@@ -151,9 +151,9 @@ class Handler extends Usecase implements Handler_intefaces
 
     /**
      * @method viewAdminLogin
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function viewAdminLogin(): View
+    public function viewAdminLogin(): View|RedirectResponse
     {
         return !Auth::guard('admin')->check() ? view('Modules.Administrator.Auth.login') : redirect()->route('admin.view.dashboard')->with('error', 'Anda sudah login, silahkan logout terlebih dahulu!');
     }

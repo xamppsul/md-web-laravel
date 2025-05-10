@@ -14,7 +14,7 @@ interface Handler_intefaces
     public function userForgotPassword();
     public function viewUserResetPassword(string $token): View|RedirectResponse;
     public function userResetPassword(): RedirectResponse;
-    public function viewAdminLogin(): View;
+    public function viewAdminLogin(): View|RedirectResponse;
     public function adminLogin();
     public function viewUserDashboard(): View;
     public function viewAdminDashboard(): View;
