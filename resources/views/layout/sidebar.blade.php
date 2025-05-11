@@ -33,32 +33,41 @@
                     @endif
                 </ul>
             </li>
-            <li class="menu-title"><span>Master</span></li>
-            <li>
-                <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#ui-kits">
+            <!-- menus for admin session-->
 
-                    <i class="iconoir-hard-drive"></i>
-                    Master Data
-                </a>
-                <ul class="collapse" id="ui-kits">
-                    <li><a href="{{ __('cheatsheet') }}">Aset</a></li>
-                    <li><a href="{{ __('alert') }}">Mou/Moa</a></li>
-                    <li><a href="{{ __('badges') }}">Kegiatan</a></li>
-                </ul>
-            </li>
-            <li class="menu-title"><span>File Manager</span></li>
-            <li>
-                <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#file-manager">
+            @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->roles_id == 1)
+                <li class="menu-title"><span>Master</span></li>
+                <li>
+                    <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#ui-kits">
 
-                    <i class="iconoir-drawer"></i>
-                    El Finder
-                </a>
-                <ul class="collapse" id="file-manager">
-                    <li><a href="{{ __('cheatsheet') }}">User Directory</a></li>
-                </ul>
-            </li>
+                        <i class="iconoir-hard-drive"></i>
+                        Master Data
+                    </a>
+                    <ul class="collapse" id="ui-kits">
+                        <li><a href="{{ __('cheatsheet') }}">Aset</a></li>
+                        <li><a href="{{ __('alert') }}">Mou/Moa</a></li>
+                        <li><a href="{{ __('badges') }}">Kegiatan</a></li>
+                    </ul>
+                </li>
+                <li class="menu-title"><span>File Manager</span></li>
+                <li>
+                    <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#file-manager">
 
+                        <i class="iconoir-drawer"></i>
+                        El Finder
+                    </a>
+                    <ul class="collapse" id="file-manager">
+                        <li><a href="{{ __('cheatsheet') }}">User Directory</a></li>
+                    </ul>
+                </li>
+            @endif
 
+            <!-- menus for user session-->
+            @if (Auth::guard('user')->check())
+                @if (Auth::guard('user')->user()->roles_id != 2)
+                @else
+                @endif
+            @endif
         </ul>
     </div>
 
