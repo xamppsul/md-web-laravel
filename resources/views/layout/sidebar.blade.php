@@ -2,7 +2,7 @@
 <nav>
     <div class="app-logo">
         <a class="logo d-inline-block" href="{{ __('index') }}">
-            <img src="{{ asset('../assets/images/logo/1.png') }}" alt="#">
+            <img src="{{ asset('/assets/images/logo/umk.png') }}" alt="#">
         </a>
 
         <span class="bg-light-primary toggle-semi-nav">
@@ -44,7 +44,7 @@
                         Master Data
                     </a>
                     <ul class="collapse" id="ui-kits">
-                        <li><a href="{{ __('cheatsheet') }}">Aset</a></li>
+                        <li><a href="{{ route('admin.master.asset.index') }}">Aset</a></li>
                         <li><a href="{{ __('alert') }}">Mou/Moa</a></li>
                         <li><a href="{{ __('badges') }}">Kegiatan</a></li>
                     </ul>

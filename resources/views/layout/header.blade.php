@@ -487,7 +487,7 @@
                                 <div class="head-container">
                                     <div class="head-box">
                                         <img alt="cart" class="h-50 me-3 b-r-10"
-                                            src="../assets/images/ecommerce/19.jpg">
+                                            src="{{ asset('/assets/images/ecommerce/19.jpg') }}">
                                         <div class="flex-grow-1">
                                             <a class="text-primary-dark mb-0 f-w-600 f-s-16"
                                                 href="{{ __('product_details') }}" target="_blank">
@@ -509,7 +509,7 @@
                                     </div>
                                     <div class="head-box">
                                         <img alt="cart" class="h-50 object-fit-cover me-3 b-r-10"
-                                            src="../assets/images/ecommerce/13.jpg">
+                                            src="{{ asset('/assets/images/ecommerce/13.jpg') }}">
                                         <div class="flex-grow-1">
                                             <a class="text-info-dark mb-0 f-w-600 f-s-16"
                                                 href="{{ __('product_details') }}" target="_blank">
@@ -530,7 +530,7 @@
                                     </div>
                                     <div class="head-box">
                                         <img alt="cart" class="h-50 object-fit-cover me-3 b-r-10"
-                                            src="../assets/images/ecommerce/09.jpg">
+                                            src="{{ asset('/assets/images/ecommerce/09.jpg') }}">
                                         <div class="flex-grow-1">
                                             <a class="text-danger-dark mb-0 f-w-600 f-s-16"
                                                 href="{{ __('product_details') }}" target="_blank">Sandals<span
@@ -551,7 +551,7 @@
                                     </div>
                                     <div class="head-box ">
                                         <img alt="cart" class="h-50 object-fit-cover me-3 b-r-10"
-                                            src="../assets/images/ecommerce/23.jpg">
+                                            src="{{ asset('/assets/images/ecommerce/23.jpg') }}">
                                         <div class="flex-grow-1">
                                             <a class="text-success-dark mb-0 f-w-600 f-s-16"
                                                 href="{{ __('product_details') }}" target="_blank">
@@ -573,7 +573,7 @@
                                     </div>
                                     <div class="head-box ">
                                         <img alt="cart" class="h-50 object-fit-cover me-3 b-r-10"
-                                            src="../assets/images/ecommerce/11.jpg">
+                                            src="{{ asset('/assets/images/ecommerce/11.jpg') }}">
                                         <div class="flex-grow-1">
                                             <a class="text-dark-dark mb-0 f-w-600 f-s-16"
                                                 href="{{ __('product_details') }}" target="_blank">
@@ -594,7 +594,7 @@
                                     </div>
                                     <div class="hidden-massage py-4 px-3">
                                         <img alt="cart" class="img-fluid mb-3"
-                                            src="../assets/images/header/cart_empty.gif">
+                                            src="{{ asset('/assets/images/header/cart_empty.gif') }}">
                                         <div>
                                             <h6 class="mb-0">Your Cart is Empty</h6>
                                             <p class="text-secondary mb-0">Add some items :)</p>
@@ -657,7 +657,7 @@
                                             <span
                                                 class="bg-secondary h-35 w-35 d-flex-center b-r-10 position-relative">
                                                 <img alt="avtar" class="img-fluid b-r-10"
-                                                    src="../assets/images/ai_avtar/6.jpg">
+                                                    src="{{ asset('/assets/images/ai_avtar/6.jpg') }}">
                                                 <span
                                                     class="position-absolute bottom-30 end-0 p-1 bg-secondary border border-light rounded-circle notification-avtar"></span>
                                             </span>
@@ -706,7 +706,7 @@
                                             <span
                                                 class="bg-secondary h-35 w-35 d-flex-center b-r-10 position-relative">
                                                 <img alt="" class="img-fluid b-r-10"
-                                                    src="../assets/images/ai_avtar/2.jpg">
+                                                    src="{{ asset('/assets/images/ai_avtar/2.jpg') }}">
                                                 <span
                                                     class="position-absolute  end-0 p-1 bg-secondary border border-light rounded-circle notification-avtar"></span>
                                             </span>
@@ -729,7 +729,7 @@
                                             <span
                                                 class="bg-secondary h-35 w-35 d-flex-center b-r-10 position-relative">
                                                 <img alt="" class="img-fluid b-r-10"
-                                                    src="../assets/images/ai_avtar/5.jpg">
+                                                    src="{{ asset('/assets/images/ai_avtar/5.jpg') }}">
                                                 <span
                                                     class="position-absolute end-0 p-1 bg-secondary border border-light rounded-circle notification-avtar"></span>
                                             </span>
@@ -751,7 +751,7 @@
                                             <span
                                                 class="bg-secondary h-35 w-35 d-flex-center b-r-10 position-relative">
                                                 <img alt="" class="img-fluid b-r-10"
-                                                    src="../assets/images/ai_avtar/1.jpg">
+                                                    src="{{ asset('/assets/images/ai_avtar/1.jpg') }}">
                                                 <span
                                                     class="position-absolute  end-0 p-1 bg-secondary border border-light rounded-circle notification-avtar"></span>
                                             </span>
@@ -778,7 +778,7 @@
 
                                     <div class="hidden-massage py-4 px-3">
                                         <img alt="" class="w-50 h-50 mb-3 mt-2"
-                                            src="../assets/images/icons/bell.png">
+                                            src="{{ asset('/assets/images/icons/bell.png') }}">
                                         <div>
                                             <h6 class="mb-0">Notification Not Found</h6>
                                             <p class="text-secondary">When you have any notifications added
@@ -798,7 +798,7 @@
                             data-bs-target="#profilecanvasRight" data-bs-toggle="offcanvas" href="#"
                             role="button">
                             <img alt="avtar" class="b-r-50 h-35 w-35 bg-dark"
-                                src="../assets/images/avtar/woman.jpg">
+                                src="{{ asset('/assets/images/avtar/woman.jpg') }}">
                         </a>
 
                         <div aria-labelledby="profilecanvasRight"
@@ -810,14 +810,14 @@
                                         <div class="d-flex-center">
                                             <span class="h-45 w-45 d-flex-center b-r-10 position-relative">
                                                 <img alt="" class="img-fluid b-r-10"
-                                                    src="../assets/images/avtar/woman.jpg">
+                                                    src="{{ asset('/assets/images/avtar/woman.jpg') }}">
                                             </span>
                                         </div>
                                         @if (Auth::guard('user')->check())
                                             <div class="text-center mt-2">
                                                 <h6 class="mb-0"> {{ Auth::guard('user')->user()->name }} <img
                                                         alt="instagram-check-mark" class="w-20 h-20"
-                                                        src="../assets/images/profile-app/01.png"></h6>
+                                                        src="{{ asset('/assets/images/profile-app/01.png') }}"></h6>
                                                 <p class="f-s-12 mb-0 text-secondary">
                                                     {{ Auth::guard('user')->user()->email }}</p>
                                             </div>
@@ -825,7 +825,7 @@
                                             <div class="text-center mt-2">
                                                 <h6 class="mb-0"> {{ Auth::guard('admin')->user()->name }} <img
                                                         alt="instagram-check-mark" class="w-20 h-20"
-                                                        src="../assets/images/profile-app/01.png"></h6>
+                                                        src="{{ asset('/assets/images/profile-app/01.png') }}"></h6>
                                                 <p class="f-s-12 mb-0 text-secondary">
                                                     {{ Auth::guard('admin')->user()->email }}</p>
                                                 <p class="f-s-12 mb-0 text-secondary">
