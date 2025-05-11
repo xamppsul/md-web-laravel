@@ -18,11 +18,19 @@
                 <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#dashboard">
                     <i class="iconoir-home-alt"></i>
                     dashboard
-                    <span class="badge text-primary-dark bg-primary-300  badge-notification ms-2">4</span>
+                    {{-- <span class="badge text-primary-dark bg-primary-300  badge-notification ms-2">4</span> --}}
                 </a>
                 <ul class="collapse" id="dashboard">
-                    <li><a href="{{ __('index') }}">Project</a></li>
-                    <li><a href="{{ __('ecommerce_dashboard') }}">Ecommerce</a></li>
+                    @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->roles_id == 1)
+                        <li><a href="{{ route('admin.view.dashboard') }}">Administrator</a></li>
+                    @endif
+                    @if (Auth::guard('user')->check())
+                        @if (Auth::guard('user')->user()->roles_id != 2)
+                            <li><a href="{{ route('user.view.dashboard') }}">Uppsorfakultas</a></li>
+                        @else
+                            <li><a href="{{ route('user.view.dashboard') }}">Staffordosen</a></li>
+                        @endif
+                    @endif
                 </ul>
             </li>
             <li class="menu-title"><span>Master</span></li>
