@@ -702,7 +702,7 @@
 
     <!-- modal -->
 
-    <div class="modal" data-bs-backdrop="static" id="welcomeCard" tabindex="-1">
+    {{-- <div class="modal" data-bs-backdrop="static" id="welcomeCard" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content welcome-card">
 
@@ -731,7 +731,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- slick-file -->
     <script src="{{ asset('assets/vendor/slick/slick.min.js') }}"></script>
