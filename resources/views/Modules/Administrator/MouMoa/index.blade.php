@@ -12,17 +12,17 @@
         <!-- Breadcrumb start -->
         <div class="row m-1">
             <div class="col-12 ">
-                <h4 class="main-title">Master Asset</h4>
+                <h4 class="main-title">Master</h4>
                 <ul class="app-line-breadcrumbs mb-3">
                     <li class="">
                         <a href="#" class="f-s-14 f-w-500">
                             <span>
-                                <i class="ph-duotone  ph-table f-s-16"></i> Asset
+                                <i class="ph-duotone  ph-table f-s-16"></i> MouMoa
                             </span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{ route('admin.master.asset.index') }}" class="f-s-14 f-w-500">Data</a>
+                        <a href="{{ route('admin.master.MouMoa.index') }}" class="f-s-14 f-w-500">Data</a>
                     </li>
                 </ul>
             </div>

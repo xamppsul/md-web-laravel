@@ -5,7 +5,7 @@ namespace App\Modules\Administrator\interfaces;
 interface Repository_interfaces
 {
     /**
-     * master asset
+     * master data asset
      */
     public function indexAssetRepository();
     public function createAssetRepository();
@@ -13,4 +13,22 @@ interface Repository_interfaces
     public function editAssetRepository($id);
     public function updateAssetRepository($id);
     public function destroyAssetRepository($id);
+    /**
+     * master data mou moa
+     */
+    public function indexMouMoaRepository();
+    public function createMouMoaRepository();
+    public function storeMouMoaRepository($request);
+    public function editMouMoaRepository($id);
+    public function updateMouMoaRepository($id);
+    public function destroyMouMoaRepository($id);
+    /**
+     * master data kegiatan
+     */
+    public function indexKegiatanRepository();
+    public function createKegiatanRepository();
+    public function storeKegiatanRepository($request);
+    public function editKegiatanRepository($id);
+    public function updateKegiatanRepository($id);
+    public function destroyKegiatanRepository($id);
 }

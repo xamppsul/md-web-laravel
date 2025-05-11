@@ -44,9 +44,9 @@
                         Master Data
                     </a>
                     <ul class="collapse" id="ui-kits">
-                        <li><a href="{{ route('admin.master.asset.index') }}">Aset</a></li>
-                        <li><a href="{{ __('alert') }}">Mou/Moa</a></li>
-                        <li><a href="{{ __('badges') }}">Kegiatan</a></li>
+                        <li><a href="{{ route('admin.master.Asset.index') }}">Aset</a></li>
+                        <li><a href="{{ route('admin.master.MouMoa.index') }}">Mou/Moa</a></li>
+                        <li><a href="{{ route('admin.master.Kegiatan.index') }}">Kegiatan</a></li>
                     </ul>
                 </li>
                 <li class="menu-title"><span>File Manager</span></li>

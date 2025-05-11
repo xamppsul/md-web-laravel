@@ -16,4 +16,23 @@ interface Handler_interfaces
     public function editAsset($id);
     public function updateAsset($id);
     public function destroyAsset($id);
+    /**
+     * master mou_moa
+     */
+    public function indexMouMoa(): View;
+    public function createMouMoa(): View;
+    public function storeMouMoa(Request $request);
+    public function editMouMoa($id);
+    public function updateMouMoa($id);
+    public function destroyMouMoa($id);
+
+    /**
+     * master kegiatan
+     */
+    public function indexKegiatan(): View;
+    public function createKegiatan(): View;
+    public function storeKegiatan(Request $request);
+    public function editKegiatan($id);
+    public function updateKegiatan($id);
+    public function destroyKegiatan($id);
 }

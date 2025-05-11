@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 class Handler extends Usecase implements Handler_interfaces
 {
     /**
+     * ==============================================================================================================================
      * feature: master data asset
+     * ==============================================================================================================================
      */
 
     /**
@@ -64,5 +66,133 @@ class Handler extends Usecase implements Handler_interfaces
     public function destroyAsset($id)
     {
         return $this->destroyAssetCase($id);
+    }
+
+
+    /**
+     * ==============================================================================================================================
+     * feature: master data mou moa
+     * ==============================================================================================================================
+     */
+    /**
+     * @method indexMouMoa
+     * @return View
+     */
+    public function indexMouMoa(): View
+    {
+        return $this->indexMouMoaCase();
+    }
+
+    /**
+     * @method createMouMoa
+     * @return View
+     */
+    public function createMouMoa(): View
+    {
+        return $this->createMouMoaCase();
+    }
+
+    /**
+     * @method storeMouMoa
+     * @return mixed
+     */
+    public function storeMouMoa(Request $request)
+    {
+        return $this->storeMouMoaCase($request);
+    }
+
+    /**
+     * @method editMouMoa
+     * @return mixed
+     * @param $id
+
+     */
+    public function editMouMoa($id)
+    {
+        return $this->editMouMoaCase($id);
+    }
+
+    /**
+     * @method updateMouMoa
+     * @return mixed
+     * @param $id
+     */
+    public function updateMouMoa($id)
+    {
+        return $this->updateMouMoaCase($id);
+    }
+
+    /**
+     * @method destroyMouMoa
+     * @return mixed
+     * @param $id
+     */
+    public function destroyMouMoa($id)
+    {
+        return $this->destroyMouMoaCase($id);
+    }
+
+
+    /**
+     * ==============================================================================================================================
+     * feature: master data kegiatan
+     * ==============================================================================================================================
+     */
+    /**
+     * @method indexKegiatan
+     * @return View
+     */
+    public function indexKegiatan(): View
+    {
+        return $this->indexKegiatanCase();
+    }
+
+    /**
+     * @method createKegiatan
+     * @return View
+     */
+    public function createKegiatan(): View
+    {
+        return $this->createKegiatanCase();
+    }
+
+    /**
+     * @method storeKegiatan
+     * @return mixed
+     */
+    public function storeKegiatan(Request $request)
+    {
+        return $this->storeKegiatanCase($request);
+    }
+
+    /**
+     * @method editKegiatan
+     * @return mixed
+     * @param $id
+
+     */
+    public function editKegiatan($id)
+    {
+        return $this->editKegiatanCase($id);
+    }
+
+    /**
+     * @method updateKegiatan
+     * @return mixed
+     * @param $id
+     */
+    public function updateKegiatan($id)
+    {
+        return $this->updateKegiatanCase($id);
+    }
+
+    /**
+     * @method destroyKegiatan
+     * @return mixed
+     * @param $id
+     */
+    public function destroyKegiatan($id)
+    {
+        return $this->destroyKegiatanCase($id);
     }
 }

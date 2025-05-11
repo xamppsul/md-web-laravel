@@ -16,4 +16,22 @@ interface Usecase_intefaces
     public function editAssetCase($id);
     public function updateAssetCase($id);
     public function destroyAssetCase($id);
+    /**
+     * master mou moa
+     */
+    public function indexMouMoaCase(): RedirectResponse|View;
+    public function createMouMoaCase(): View;
+    public function storeMouMoaCase($request);
+    public function editMouMoaCase($id);
+    public function updateMouMoaCase($id);
+    public function destroyMouMoaCase($id);
+    /**
+     * master kegiatan
+     */
+    public function indexKegiatanCase(): RedirectResponse|View;
+    public function createKegiatanCase(): View;
+    public function storeKegiatanCase($request);
+    public function editKegiatanCase($id);
+    public function updateKegiatanCase($id);
+    public function destroyKegiatanCase($id);
 }
