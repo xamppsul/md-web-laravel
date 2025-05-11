@@ -468,7 +468,8 @@
                         </div>
                     </li>
 
-                    <li class="header-cart">
+                    <!-- cart disable -->
+                    {{-- <li class="header-cart">
                         <a aria-controls="cartcanvasRight" class="d-block head-icon position-relative"
                             data-bs-target="#cartcanvasRight" data-bs-toggle="offcanvas" href="#"
                             role="button">
@@ -622,7 +623,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
 
                     <li class="header-dark">
                         <div class="sun-logo head-icon">
