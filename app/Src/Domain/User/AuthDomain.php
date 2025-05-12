@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthDomain
 {
     /**
-     * @method DomainLogErrorInsert
+     * @method DomainLogInsert
      *  transaction data with log error to table log_errors
      */
 

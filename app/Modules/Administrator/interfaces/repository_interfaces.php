@@ -9,7 +9,7 @@ interface Repository_interfaces
      */
     public function indexAssetRepository();
     public function createAssetRepository();
-    public function storeAssetRepository($request);
+    public function storeAssetRepository($request, $asetDomain);
     public function editAssetRepository($id);
     public function updateAssetRepository($id);
     public function destroyAssetRepository($id);

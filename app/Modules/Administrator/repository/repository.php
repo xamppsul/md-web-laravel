@@ -10,6 +10,9 @@ class Repository implements Repository_interfaces
      * feture: master data asset
     /**======================================================================================================================================
      */
+    /**
+     * index
+     */
     public function indexAssetRepository()
     {
         return 'index asset repository';
@@ -18,9 +21,16 @@ class Repository implements Repository_interfaces
     {
         return 'create asset repository';
     }
-    public function storeAssetRepository($request)
+    /**
+     * store
+     */
+    /**
+     * @method storeAssetRepository
+     * @return void
+     */
+    public function storeAssetRepository($request, $asetDomain): void
     {
-        dd($request->all());
+        $asetDomain->postDataAsetDomain($request);
     }
     public function editAssetRepository($id)
     {

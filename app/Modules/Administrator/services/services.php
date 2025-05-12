@@ -34,11 +34,11 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method storeAssetService
      * @param $request
-     * @return mixed
+     * @return void
      */
-    public function storeAssetService($request)
+    public function storeAssetService($request, $asetDomain): void
     {
-        return $this->storeAssetRepository($request);
+        $this->storeAssetRepository($request, $asetDomain);
     }
 
     /**

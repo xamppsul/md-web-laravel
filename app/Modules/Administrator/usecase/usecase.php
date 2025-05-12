@@ -6,6 +6,7 @@ use App\Modules\Administrator\interfaces\Usecase_intefaces;
 use App\Modules\Administrator\services\Services;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 class Usecase extends Services implements Usecase_intefaces
 {
@@ -41,9 +42,9 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeAssetCase
      * @param $request
-     * @return mixed
+     * @return RedirectResponse
      */
-    public function storeAssetCase($request)
+    public function storeAssetCase($request, $asetDomain): RedirectResponse
     {
         $request->validate([
             'kode_aset' => 'required',
@@ -62,9 +63,15 @@ class Usecase extends Services implements Usecase_intefaces
             'kondisi_aset.integer' => 'pilih kondisi aset',
             'kategori_aset.integer' => 'pilih kategori aset',
         ]);
+        DB::beginTransaction();
         try {
-            return $this->storeAssetService($request);
+            $this->storeAssetService($request, $asetDomain);
+            DB::commit();
+            return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil tambah aset');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Asset.index')->with('error', $error->getMessage());
         }
     }
 

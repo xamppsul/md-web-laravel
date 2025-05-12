@@ -4,11 +4,19 @@ namespace App\Modules\Administrator\handler;
 
 use App\Modules\Administrator\interfaces\Handler_interfaces;
 use App\Modules\Administrator\usecase\Usecase;
+use App\Src\Domain\Admin\AsetDomain;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class Handler extends Usecase implements Handler_interfaces
 {
+    /**
+     * construct injection
+     */
+
+    public function __construct(
+        private AsetDomain $asetDomain,
+    ) {}
     /**
      * ==============================================================================================================================
      * feature: master data asset
@@ -38,7 +46,7 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function storeAsset(Request $request)
     {
-        return $this->storeAssetCase($request);
+        return $this->storeAssetCase($request, $this->asetDomain);
     }
 
     /**

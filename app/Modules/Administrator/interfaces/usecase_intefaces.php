@@ -12,7 +12,7 @@ interface Usecase_intefaces
      */
     public function indexAssetCase(): RedirectResponse|View;
     public function createAssetCase(): View;
-    public function storeAssetCase($request);
+    public function storeAssetCase($request, $asetDomain): RedirectResponse;
     public function editAssetCase($id);
     public function updateAssetCase($id);
     public function destroyAssetCase($id);
