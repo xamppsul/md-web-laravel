@@ -415,8 +415,11 @@
                                                     class="badge text-light-primary">{{ $asetData->kategori_aset }}</span>
                                             </td>
                                             <td>{{ $asetData->merek_model }}</td>
-                                            <td>{{ $asetData->kondisi_aset }}</td>
-                                            <td>{{ $asetData->status_aset }}</td>
+                                            <td><span
+                                                    class="badge text-light-success">{{ $asetData->kondisi_aset }}</span>
+                                            </td>
+                                            <td><span class="badge text-light-info">{{ $asetData->status_aset }}</span>
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-light-info icon-btn b-r-4">
                                                     <i class="ti ti-info-circle text-success"></i>

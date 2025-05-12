@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('kode_aset')->unique();
             $table->string('nama_aset');
-            $table->string('kategori_aset');
+            $table->foreignId('kategori_aset')->references('id')->on('kategori_aset');
             $table->string('merek_model');
             $table->date('tanggal_perolehan');
             $table->string('lokasi_aset');
-            $table->enum('kondisi_aset', ['Baik', 'Rusak', 'Perlu Perbaikan']);
-            $table->enum('status_aset', ['Aktif', 'Tidak Aktif', 'Dihapus']);
+            $table->foreignId('kondisi_aset')->references('id')->on('kondisi_aset');
+            $table->foreignId('status_aset')->references('id')->on('status_aset');
             $table->integer('harga_perolehan');
             $table->string('sumber_dana');
             $table->text('keterangan');
