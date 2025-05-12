@@ -19,7 +19,7 @@ class Repository implements Repository_interfaces
             'kategori' => $asetDomain->getKategoriAsetDomain(),
             'status' => $asetDomain->getStatusAsetDomain(),
             'kondisi' => $asetDomain->getKondisiAsetDomain(),
-            'aset' => $asetDomain->getAsetDomain(),
+            'aset' => $asetDomain->getAllAsetDomain(),
         );
     }
     public function createAssetRepository()

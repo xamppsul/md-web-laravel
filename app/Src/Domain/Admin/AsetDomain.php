@@ -25,10 +25,10 @@ class AsetDomain
     /**=========================================================================================================
      */
     /**
-     * @method getAsetDomain
+     * @method getAllAsetDomain
      * @return array
      */
-    public function getAsetDomain(): array
+    public function getAllAsetDomain(): array
     {
         return DB::select('
             SELECT aset.*, 
