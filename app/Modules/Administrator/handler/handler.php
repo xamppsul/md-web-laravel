@@ -4,6 +4,7 @@ namespace App\Modules\Administrator\handler;
 
 use App\Modules\Administrator\interfaces\Handler_interfaces;
 use App\Modules\Administrator\usecase\Usecase;
+use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\AsetDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
 use Illuminate\Contracts\View\View;
@@ -19,6 +20,7 @@ class Handler extends Usecase implements Handler_interfaces
     public function __construct(
         private AsetDomain $asetDomain,
         private AsetRequest $asetRequest,
+        private ConstantAdmin $constantAdmin,
     ) {}
     /**
      * ==============================================================================================================================
@@ -34,7 +36,8 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->indexAssetCase(
             $this->asetDomain,
-            $request
+            $request,
+            $this->constantAdmin,
         );
     }
 

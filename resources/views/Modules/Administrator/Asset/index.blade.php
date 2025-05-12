@@ -433,7 +433,9 @@
                                                     class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-light-info icon-btn b-r-4">
+                                                <button type="button" data-item="{{ $asetData->id }}"
+                                                    data-bs-target="#detailAset--{{ $asetData->id }}"
+                                                    data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
                                                     <i class="ti ti-info-circle text-success"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-light-success icon-btn b-r-4">
@@ -455,6 +457,63 @@
             <!-- Default Datatable end -->
         </div>
         <!-- Data Table end -->
+        @foreach ($data['aset'] as $asetData)
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="detailAset--{{ $asetData->id }}"
+                tabindex="-1">
+                <div class="modal-dialog app_modal_sm">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary-800">
+                            <h1 class="modal-title fs-5 text-white" id="detailAset2">Detail Aset</h1>
+                        </div>
+                        <div class="modal-body">
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kode Aset:
+                                {{ $asetData->kode_aset }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Aset:
+                                {{ $asetData->nama_aset }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kategori Aset:
+                                <td><span class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
+                                </td>
+                            </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Merek/Model:
+                                {{ $asetData->merek_model }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Perolehan:
+                                {{ $asetData->tanggal_perolehan }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Lokasi Aset:
+                                {{ $asetData->lokasi_aset }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kondisi Aset:
+                                @if ($asetData->kondisi_aset_name == 'Baik')
+                                    <td><span class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
+                                    </td>
+                                @elseif($asetData->kondisi_aset_name == 'Perlu Perbaikan')
+                                    <td><span class="badge text-light-warning">{{ $asetData->kondisi_aset_name }}</span>
+                                    </td>
+                                @else
+                                    <td><span class="badge text-light-danger">{{ $asetData->kondisi_aset_name }}</span>
+                                    </td>
+                                @endif
+                            </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status Aset:
+                                <td><span class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
+                                </td>
+                            </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Harga Perolehan:
+                                {{ $constantAdmin->formatRupiah($asetData->harga_perolehan) }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Sumber Dana:
+                                {{ $asetData->sumber_dana }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Keterangan:
+                                {{ $asetData->keterangan }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Created At:
+                                {{ $asetData->created_at }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Updated At:
+                                {{ $asetData->updated_at }} </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 @endsection
 
@@ -488,12 +547,12 @@
 
     <!-- input mask currency -->
     {{-- <script src="{{ asset('assets/js/input_masks.js') }}"></script> --}}
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             new Cleave('.price-input', {
                 numeral: true,
                 numeralThousandsGroupStyle: 'thousand'
             });
         });
-    </script>
+    </script> --}}
 @endsection

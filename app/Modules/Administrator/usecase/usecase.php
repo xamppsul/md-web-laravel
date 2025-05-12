@@ -22,11 +22,12 @@ class Usecase extends Services implements Usecase_intefaces
      */
     public function indexAssetCase(
         $asetDomain,
-        $request
+        $request,
+        $constantAdmin,
     ): RedirectResponse|View {
         try {
             $data = $this->indexAssetService($asetDomain);
-            return view('Modules.Administrator.Asset.index', compact('data'));
+            return view('Modules.Administrator.Asset.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');

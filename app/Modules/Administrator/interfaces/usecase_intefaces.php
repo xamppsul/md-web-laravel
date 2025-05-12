@@ -12,7 +12,8 @@ interface Usecase_intefaces
      */
     public function indexAssetCase(
         $asetDomain,
-        $request
+        $request,
+        $constantAdmin,
     ): RedirectResponse|View;
     public function createAssetCase(): View;
     public function storeAssetCase(
