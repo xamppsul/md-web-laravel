@@ -62,9 +62,9 @@ class Repository implements Repository_interfaces
             'aset' => $asetDomain->getDetailAsetDomain($id)[0],
         );
     }
-    public function updateAssetRepository($id)
+    public function updateAssetRepository($id, $asetDomain, $request): void
     {
-        return 'update asset repository';
+        $asetDomain->updateDataAsetDomain($id, $request);
     }
     public function destroyAssetRepository($id)
     {

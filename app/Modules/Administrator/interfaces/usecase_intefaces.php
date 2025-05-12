@@ -27,7 +27,12 @@ interface Usecase_intefaces
         $request,
         $constantAdmin,
     ): RedirectResponse|View;
-    public function updateAssetCase($id);
+    public function updateAssetCase(
+        $id,
+        $request,
+        $asetDomain,
+        $asetRequest,
+    ): RedirectResponse;
     public function destroyAssetCase($id);
     /**
      * master mou moa

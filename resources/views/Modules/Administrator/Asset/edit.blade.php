@@ -34,8 +34,8 @@
                     <div class="card-header d-flex flex-column gap-2">
                     </div>
                     <div class="card-body">
-                        <form class="row g-3 app-form rounded-control" action="{{ route('admin.master.Asset.update') }}"
-                            method="POST">
+                        <form class="row g-3 app-form rounded-control"
+                            action="{{ route('admin.master.Asset.update', $data['aset']->id) }}" method="POST">
                             @method('put')
                             @csrf
                             <div class="col-md-6">

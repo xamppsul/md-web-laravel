@@ -18,6 +18,9 @@ class Usecase extends Services implements Usecase_intefaces
 
     /**
      * @method indexAssetCase
+     * @param $asetDomain
+     * @param $request
+     * @param $constantAdmin
      * @return RedirectResponse|View
      */
     public function indexAssetCase(
@@ -46,8 +49,8 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeAssetCase
      * @param $request
-     * @param $asetDomain,
-     * @param $asetRequest,
+     * @param $asetDomain
+     * @param $asetRequest
      * @return RedirectResponse
      */
     public function storeAssetCase(
@@ -72,6 +75,9 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method editAssetCase
      * @param $id
+     * @param $asetDomain
+     * @param $request
+     * @param $constantDomain
      * @return RedirectResponse|View
      */
     public function editAssetCase(
@@ -92,13 +98,28 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method updateAssetCase
      * @param $id
-     * @return RedirectResponse|View
+     * @param $request
+     * @param $asetDomain
+     * @param $asetRequest
+     * @return RedirectResponse
      */
-    public function updateAssetCase($id)
-    {
+    public function updateAssetCase(
+        $id,
+        $request,
+        $asetDomain,
+        $asetRequest,
+    ): RedirectResponse {
+        $asetRequest->updateRequestData($request);
+
+        DB::beginTransaction();
         try {
-            return $this->updateAssetService($id);
+            DB::commit();
+            $this->updateAssetService($id, $asetDomain, $request);
+            return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil update aset');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 

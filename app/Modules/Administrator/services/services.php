@@ -57,11 +57,11 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method updateAssetService
      * @param $id
-     * @return mixed
+     * @return void
      */
-    public function updateAssetService($id)
+    public function updateAssetService($id, $asetDomain, $request): void
     {
-        return $this->updateAssetRepository($id);
+        $this->updateAssetRepository($id, $asetDomain, $request);
     }
 
     /**

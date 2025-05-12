@@ -14,8 +14,8 @@ interface Handler_interfaces
     public function indexAsset(Request $request): View|RedirectResponse;
     public function createAsset(): View;
     public function storeAsset(Request $request);
-    public function editAsset($id, Request $request);
-    public function updateAsset($id);
+    public function editAsset($id, Request $request): RedirectResponse|view;
+    public function updateAsset($id, Request $request): RedirectResponse;
     public function destroyAsset($id);
     /**
      * master mou_moa
