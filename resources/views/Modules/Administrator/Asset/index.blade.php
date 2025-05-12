@@ -44,15 +44,18 @@
 
                     <div class="card-body">
                         <p>
-                            <button aria-controls="collapseWidthExample" aria-expanded="false"
-                                class="btn btn-light-primary b-r-22" data-bs-target="#collapseWidthExample"
+                            <button aria-controls="collapseFilter" aria-expanded="false"
+                                class="btn btn-light-primary b-r-22" data-bs-target="#collapseFilter"
                                 data-bs-toggle="collapse" type="button"> <i class="ti ti-filter"></i>
                                 Filter</button>
-                            <button type="button" class="btn btn-primary b-r-22"> <i class="ti ti-text-plus"></i>
+                            <button type="button" class="btn btn-primary b-r-22" aria-controls="collapseTambahAset"
+                                aria-expanded="false" data-bs-target="#collapseTambahAset" data-bs-toggle="collapse"
+                                type="button"> <i class="ti ti-text-plus"></i>
                                 Tambah Aset</button>
                         </p>
                         <div>
-                            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                            <!-- collapse filter -->
+                            <div class="collapse collapse-horizontal" id="collapseFilter">
                                 <div class="card card-body dashed-1-secondary w-900">
                                     <!-- Tooltips start -->
                                     <div class="col-12">
@@ -61,29 +64,33 @@
                                                 <form class="row g-3 app-form rounded-control">
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kondisi Aset</label>
-                                                        <select class="form-select" aria-label="Select kondisi aset">
-                                                            <option selected="">Pilih kondisi aset</option>
-                                                            <option value="1">Declined Payment</option>
-                                                            <option value="2">Delivery Error</option>
-                                                            <option value="3">Wrong Amount</option>
+                                                        <select class="form-select" aria-label="Select kondisi aset"
+                                                            name="kondisi_aset">
+                                                            <option selected="">Pilih Kondisi Aset</option>
+                                                            <option value="1">Baik</option>
+                                                            <option value="2">Rusak</option>
+                                                            <option value="3">Perlu Perbaikan</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Status Aset</label>
-                                                        <select class="form-select" aria-label="Select status aset">
-                                                            <option selected="">Pilih status aset</option>
-                                                            <option value="1">Declined Payment</option>
-                                                            <option value="2">Delivery Error</option>
-                                                            <option value="3">Wrong Amount</option>
+                                                        <select class="form-select" aria-label="Select status aset"
+                                                            name="status_aset">
+                                                            <option selected="">Pilih Status Aset</option>
+                                                            <option value="1">Aktif</option>
+                                                            <option value="2">Tidak Aktif</option>
+                                                            <option value="3">Dihapus</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kategori aset</label>
-                                                        <select class="form-select" aria-label="Select kategori aset">
-                                                            <option selected="">Pilih kategori aset</option>
-                                                            <option value="1">Declined Payment</option>
-                                                            <option value="2">Delivery Error</option>
-                                                            <option value="3">Wrong Amount</option>
+                                                        <select class="form-select" aria-label="Select kategori aset"
+                                                            name="kategori_aset">
+                                                            <option selected="">Pilih Kategori Aset</option>
+                                                            <option value="1">Elektronik</option>
+                                                            <option value="2">Kendaraan</option>
+                                                            <option value="3">Furniture</option>
+                                                            <option value="4">lainnya</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -102,6 +109,128 @@
                                                         <label class="form-label" for="userName">Kode Aset</label>
                                                         <input class="form-control" id="kode_aset"
                                                             placeholder="masukan kode aset" type="text">
+                                                    </div>
+                                                    {{-- <div class="col-md-5">
+                                                        <label class="form-label" for="address2">Address 2</label>
+                                                        <input class="form-control" id="address2" placeholder="Address"
+                                                            type="text">
+                                                        <div class="mt-1">
+                                                            <span class="text-danger" id="addressError2"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label class="form-label" for="city">City</label>
+                                                        <input class="form-control" id="city" type="text">
+                                                        <div class="mt-1">
+                                                            <span class="text-danger" id="cityError"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label class="form-label" for="zipCode">Zip</label>
+                                                        <input class="form-control" id="zipCode" type="text">
+                                                        <div class="mt-1">
+                                                            <span class="text-danger" id="zipCodeError"></span>
+                                                        </div>
+                                                    </div> --}}
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary b-r-22" type="submit"
+                                                            value="Submit">Submit
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- collapse tambah aset -->
+                            <div class="collapse collapse-horizontal" id="collapseTambahAset">
+                                <div class="card card-body dashed-1-secondary w-900">
+                                    <!-- Tooltips start -->
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form class="row g-3 app-form rounded-control">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="kode_aset">Kode Aset</label>
+                                                        <input class="form-control" id="kode_aset" name="kode_aset"
+                                                            placeholder="Masukan Kode Aset" type="text">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="nama_aset">Nama Aset</label>
+                                                        <input class="form-control" id="nama_aset"
+                                                            placeholder="Masukan Nama Aset" type="text">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="kategori_aset">Kategori
+                                                            Aset</label>
+                                                        <select class="form-select" aria-label="Select kategori aset"
+                                                            name="kategori_aset">
+                                                            <option selected="">Pilih Kategori Aset</option>
+                                                            <option value="1">Elektronik</option>
+                                                            <option value="2">Kendaraan</option>
+                                                            <option value="3">Furniture</option>
+                                                            <option value="4">lainnya</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="model_merk_aset">Model/Merk</label>
+                                                        <input class="form-control" id="kode_aset" name="model_merk_aset"
+                                                            placeholder="Masukan Model/Merk Aset" type="text">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="tanggal_perolehan_aset">Tanggal
+                                                            Perolehan(Aset
+                                                            diterima/dibeli)</label>
+                                                        <input class="form-control basic-date" type="text"
+                                                            name="tanggal_perolehan_aset" placeholder="YYYY-MM-DD"
+                                                            name="">
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="lokasi_aset">Lokasi Aset</label>
+                                                        <input class="form-control" id="kode_aset" name="lokasi_aset"
+                                                            placeholder="Masukan Lokasi Aset" type="text">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
+                                                        <select class="form-select" aria-label="Select kondisi aset"
+                                                            name="kondisi_aset">
+                                                            <option selected="">Pilih Kondisi Aset</option>
+                                                            <option value="1">Baik</option>
+                                                            <option value="2">Rusak</option>
+                                                            <option value="3">Perlu Perbaikan</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="status_aset">Status Aset</label>
+                                                        <select class="form-select" aria-label="Select status aset"
+                                                            name="status_aset">
+                                                            <option selected="">Pilih Status Aset</option>
+                                                            <option value="1">Aktif</option>
+                                                            <option value="2">Tidak Aktif</option>
+                                                            <option value="3">Dihapus</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="harga_perolehan_aset">Harga
+                                                            Perolehan</label>
+                                                        {{-- <input class="form-control" id="kode_aset"
+                                                            placeholder="Masukan Harga Perolehan" type="number"> --}}
+                                                        <input type="text" class="form-control price-input"
+                                                            name="harga_perolehan_aset">
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="sumber_dana_aset">Sumber
+                                                            Dana</label>
+                                                        <input class="form-control" id="kode_aset"
+                                                            name="sumber_dana_aset" placeholder="Masukan Sumber Dana"
+                                                            type="text">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="keterangan_aset">Keterangan</label>
+                                                        <textarea class="form-control" id="" cols="30" rows="10" name="keterangan_aset"></textarea>
                                                     </div>
                                                     {{-- <div class="col-md-5">
                                                         <label class="form-label" for="address2">Address 2</label>
@@ -210,4 +339,19 @@
 
     <!--js-->
     <script src="{{ asset('assets/js/date_picker.js') }}"></script>
+
+    <!--cleave js  -->
+    <script src="{{ asset('assets/vendor/cleavejs/cleave.min.js') }}"></script>
+
+    <!-- input mask currency -->
+    {{-- <script src="{{ asset('assets/js/input_masks.js') }}"></script> --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Cleave('.price-input', {
+                numeral: true,
+                prefix: 'Rp',
+                signBeforePrefix: true
+            });
+        });
+    </script>
 @endsection
