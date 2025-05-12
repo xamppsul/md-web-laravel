@@ -3,9 +3,12 @@
 @section('css')
     <!--font-awesome-css-->
     <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome/css/all.css') }}">
-
+    <!-- Select2 css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/select/select2.min.css') }}">
     <!-- Data Table css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datatable/jquery.dataTables.min.css') }}">
+    <!-- flatpickr css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datepikar/flatpickr.min.css') }}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -34,7 +37,107 @@
         <div class="row">
             <!-- Default Datatable start -->
             <div class="col-12">
-                <div class="card ">
+                <div class="card">
+                    <div class="d-flex justify-content-between code-header card-header">
+                        {{-- <h5>Horizontal </h5> --}}
+                    </div>
+
+                    <div class="card-body">
+                        <p>
+                            <button aria-controls="collapseWidthExample" aria-expanded="false"
+                                class="btn btn-light-primary b-r-22" data-bs-target="#collapseWidthExample"
+                                data-bs-toggle="collapse" type="button"> <i class="ti ti-filter"></i>
+                                Filter</button>
+                            <button type="button" class="btn btn-primary b-r-22"> <i class="ti ti-text-plus"></i>
+                                Tambah Aset</button>
+                        </p>
+                        <div>
+                            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                                <div class="card card-body dashed-1-secondary w-900">
+                                    <!-- Tooltips start -->
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form class="row g-3 app-form rounded-control">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="userName">Kondisi Aset</label>
+                                                        <select class="form-select" aria-label="Select kondisi aset">
+                                                            <option selected="">Pilih kondisi aset</option>
+                                                            <option value="1">Declined Payment</option>
+                                                            <option value="2">Delivery Error</option>
+                                                            <option value="3">Wrong Amount</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="userName">Status Aset</label>
+                                                        <select class="form-select" aria-label="Select status aset">
+                                                            <option selected="">Pilih status aset</option>
+                                                            <option value="1">Declined Payment</option>
+                                                            <option value="2">Delivery Error</option>
+                                                            <option value="3">Wrong Amount</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="userName">Kategori aset</label>
+                                                        <select class="form-select" aria-label="Select kategori aset">
+                                                            <option selected="">Pilih kategori aset</option>
+                                                            <option value="1">Declined Payment</option>
+                                                            <option value="2">Delivery Error</option>
+                                                            <option value="3">Wrong Amount</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="userName">Tanggal perolehan(aset
+                                                            diterima/dibeli)</label>
+                                                        <input class="form-control basic-date" type="text"
+                                                            placeholder="YYYY-MM-DD" name="">
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="userName">Nama aset</label>
+                                                        <input class="form-control" id="nama_aset"
+                                                            placeholder="masukan nama aset" type="text">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="userName">Kode Aset</label>
+                                                        <input class="form-control" id="kode_aset"
+                                                            placeholder="masukan kode aset" type="text">
+                                                    </div>
+                                                    {{-- <div class="col-md-5">
+                                                        <label class="form-label" for="address2">Address 2</label>
+                                                        <input class="form-control" id="address2" placeholder="Address"
+                                                            type="text">
+                                                        <div class="mt-1">
+                                                            <span class="text-danger" id="addressError2"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label class="form-label" for="city">City</label>
+                                                        <input class="form-control" id="city" type="text">
+                                                        <div class="mt-1">
+                                                            <span class="text-danger" id="cityError"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label class="form-label" for="zipCode">Zip</label>
+                                                        <input class="form-control" id="zipCode" type="text">
+                                                        <div class="mt-1">
+                                                            <span class="text-danger" id="zipCodeError"></span>
+                                                        </div>
+                                                    </div> --}}
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary b-r-22" type="submit"
+                                                            value="Submit">Submit
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-header">
                     </div>
                     <div class="card-body p-0">
@@ -68,440 +171,6 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td><span class="badge text-light-success">Accountant</span></td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011-07-25</td>
-                                        <td>$170,750</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td><span class="badge text-light-secondary">Junior Technical Author</span></td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009-01-12</td>
-                                        <td>$86,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td><span class="badge text-light-info">Senior Javascript Developer</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012-03-29</td>
-                                        <td>$433,060</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td><span class="badge text-light-success">Accountant</span></td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008-11-28</td>
-                                        <td>$162,700</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brielle Williamson</td>
-                                        <td><span class="badge text-light-danger"> Integration Specialist</span></td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012-12-02</td>
-                                        <td>$372,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Herrod Chandler</td>
-                                        <td><span class="badge text-light-dark">Sales Assistant</span></td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td>2012-08-06</td>
-                                        <td>$137,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td><span class="badge text-light-light">Integration Specialist</span></td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td>2010-10-14</td>
-                                        <td>$327,900</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colleen Hurst</td>
-                                        <td><span class="badge text-light-primary">Javascript Developer</span></td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td>2009-09-15</td>
-                                        <td>$205,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sonya Frost</td>
-                                        <td><span class="badge text-light-info">Software Engineer</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>23</td>
-                                        <td>2008-12-13</td>
-                                        <td>$103,600</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jena Gaines</td>
-                                        <td><span class="badge text-light-danger">Office Manager</span></td>
-                                        <td>London</td>
-                                        <td>30</td>
-                                        <td>2008-12-19</td>
-                                        <td>$90,560</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quinn Flynn</td>
-                                        <td><span class="badge text-light-secondary">Support Lead</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2013-03-03</td>
-                                        <td>$342,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Charde Marshall</td>
-                                        <td><span class="badge text-light-info">Regional Director</span></td>
-                                        <td>San Francisco</td>
-                                        <td>36</td>
-                                        <td>2008-10-16</td>
-                                        <td>$470,600</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Haley Kennedy</td>
-                                        <td><span class="badge text-light-primary">Senior Marketing Designer</span></td>
-                                        <td>London</td>
-                                        <td>43</td>
-                                        <td>2012-12-18</td>
-                                        <td>$313,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tatyana Fitzpatrick</td>
-                                        <td><span class="badge text-light-info">Regional Director</span></td>
-                                        <td>London</td>
-                                        <td>19</td>
-                                        <td>2010-03-17</td>
-                                        <td>$385,750</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Silva</td>
-                                        <td><span class="badge text-light-warning">Marketing Designer</span></td>
-                                        <td>London</td>
-                                        <td>66</td>
-                                        <td>2012-11-27</td>
-                                        <td>$198,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Paul Byrd</td>
-                                        <td><span class="badge text-light-secondary">Chief Financial Officer (CFO)</span>
-                                        </td>
-                                        <td>New York</td>
-                                        <td>64</td>
-                                        <td>2010-06-09</td>
-                                        <td>$725,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gloria Little</td>
-                                        <td><span class="badge text-light-success">Systems Administrator</span></td>
-                                        <td>New York</td>
-                                        <td>59</td>
-                                        <td>2009-04-10</td>
-                                        <td>$237,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td><span class="badge text-light-info">Software Engineer</span></td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012-10-13</td>
-                                        <td>$132,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dai Rios</td>
-                                        <td><span class="badge text-light-danger">Personnel Lead</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>35</td>
-                                        <td>2012-09-26</td>
-                                        <td>$217,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jenette Caldwell</td>
-                                        <td><span class="badge text-light-dark">Personnel Lead</span></td>
-                                        <td>New York</td>
-                                        <td>30</td>
-                                        <td>2011-09-03</td>
-                                        <td>$345,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yuri Berry</td>
-                                        <td><span class="badge text-light-info">Development Lead</span></td>
-                                        <td>New York</td>
-                                        <td>40</td>
-                                        <td>2009-06-25</td>
-                                        <td>$675,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td><span class="badge text-light-warning">Pre-Sales Support</span></td>
-                                        <td>New York</td>
-                                        <td>21</td>
-                                        <td>2011-12-12</td>
-                                        <td>$106,450</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Doris Wilder</td>
-                                        <td><span class="badge text-light-dark">Sales Assistant</span></td>
-                                        <td>Sydney</td>
-                                        <td>23</td>
-                                        <td>2010-09-20</td>
-                                        <td>$85,600</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica Ramos</td>
-                                        <td><span class="badge text-light-secondary">Chief Executive Officer (CEO)</span>
-                                        </td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009-10-09</td>
-                                        <td>$1,200,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Joyce</td>
-                                        <td><span class="badge text-light-light">Developer</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>42</td>
-                                        <td>2010-12-22</td>
-                                        <td>$92,575</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Chang</td>
-                                        <td><span class="badge text-light-info">Regional Director</span></td>
-                                        <td>Singapore</td>
-                                        <td>28</td>
-                                        <td>2010-11-14</td>
-                                        <td>$357,650</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td><span class="badge text-light-info">Software Engineer</span></td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011-06-07</td>
-                                        <td>$206,850</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -523,4 +192,19 @@
 
     <!-- js-->
     <script src="{{ asset('assets/js/data_table.js') }}"></script>
+
+    <!--form validation-->
+    <script src="{{ asset('assets/js/formvalidation.js') }}"></script>
+
+    <!-- select2 -->
+    <script src="{{ asset('assets/vendor/select/select2.min.js') }}"></script>
+
+    <!--js-->
+    <script src="{{ asset('assets/js/select.js') }}"></script>
+
+    <!-- flatpickr js-->
+    <script src="{{ asset('assets/vendor/datepikar/flatpickr.js') }}"></script>
+
+    <!--js-->
+    <script src="{{ asset('assets/js/date_picker.js') }}"></script>
 @endsection
