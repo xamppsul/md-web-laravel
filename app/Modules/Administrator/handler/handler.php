@@ -7,6 +7,7 @@ use App\Modules\Administrator\usecase\Usecase;
 use App\Src\Domain\Admin\AsetDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class Handler extends Usecase implements Handler_interfaces
@@ -27,11 +28,14 @@ class Handler extends Usecase implements Handler_interfaces
 
     /**
      * @method indexAsset
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function indexAsset(): View
+    public function indexAsset(Request $request): View|RedirectResponse
     {
-        return $this->indexAssetCase($this->asetDomain);
+        return $this->indexAssetCase(
+            $this->asetDomain,
+            $request
+        );
     }
 
     /**

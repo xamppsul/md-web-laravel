@@ -412,13 +412,14 @@
                                             <td>{{ $asetData->kode_aset }}</td>
                                             <td>{{ $asetData->nama_aset }}</td>
                                             <td><span
-                                                    class="badge text-light-primary">{{ $asetData->kategori_aset }}</span>
+                                                    class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
                                             </td>
                                             <td>{{ $asetData->merek_model }}</td>
                                             <td><span
-                                                    class="badge text-light-success">{{ $asetData->kondisi_aset }}</span>
+                                                    class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
                                             </td>
-                                            <td><span class="badge text-light-info">{{ $asetData->status_aset }}</span>
+                                            <td><span
+                                                    class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-light-info icon-btn b-r-4">
