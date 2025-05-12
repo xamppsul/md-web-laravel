@@ -25,6 +25,15 @@ class AsetDomain
     /**=========================================================================================================
      */
     /**
+     * @method getAsetDomain
+     * @return array
+     */
+    public function getAsetDomain(): array
+    {
+        return DB::select('SELECT * FROM aset');
+    }
+
+    /**
      * @method getKategoriAsetDomain
      * @return array
      */

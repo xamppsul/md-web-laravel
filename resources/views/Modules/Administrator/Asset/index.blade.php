@@ -401,25 +401,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td><span class="badge text-light-primary">System Architect</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>$3674.55</td>
-                                        <td>$320,800</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-info icon-btn b-r-4">
-                                                <i class="ti ti-info-circle text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($data['aset'] as $asetData)
+                                        <tr>
+                                            <td>{{ $asetData->kode_aset }}</td>
+                                            <td>{{ $asetData->nama_aset }}</td>
+                                            <td><span
+                                                    class="badge text-light-primary">{{ $asetData->kategori_aset }}</span>
+                                            </td>
+                                            <td>{{ $asetData->merek_model }}</td>
+                                            <td>{{ $asetData->kondisi_aset }}</td>
+                                            <td>{{ $asetData->status_aset }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-light-info icon-btn b-r-4">
+                                                    <i class="ti ti-info-circle text-success"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-light-success icon-btn b-r-4">
+                                                    <i class="ti ti-edit text-success"></i>
+                                                </button>
+                                                <button type="button"
+                                                    class="btn btn-light-danger icon-btn b-r-4 delete-btn">
+                                                    <i class="ti ti-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
