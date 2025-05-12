@@ -34,6 +34,7 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method storeAssetService
      * @param $request
+     * @param $asetDomain
      * @return void
      */
     public function storeAssetService($request, $asetDomain): void

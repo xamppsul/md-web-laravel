@@ -42,6 +42,8 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeAssetCase
      * @param $request
+     * @param $asetDomain,
+     * @param $asetRequest,
      * @return RedirectResponse
      */
     public function storeAssetCase(

@@ -26,6 +26,8 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method storeAssetRepository
+     * @param $request,
+     * @param $asetDomain,
      * @return void
      */
     public function storeAssetRepository($request, $asetDomain): void
