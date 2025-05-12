@@ -20,7 +20,7 @@ class Repository implements Repository_interfaces
     }
     public function storeAssetRepository($request)
     {
-        return 'store asset repository';
+        dd($request->all());
     }
     public function editAssetRepository($id)
     {

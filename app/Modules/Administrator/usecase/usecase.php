@@ -47,7 +47,7 @@ class Usecase extends Services implements Usecase_intefaces
     {
         $request->validate([
             'kode_aset' => 'required',
-            'nama_aset' => 'required',
+            'nama_aset' => 'required|string',
             'kategori_aset' => 'required|integer',
             'model_merk_aset' => 'required',
             'tanggal_perolehan_aset' => 'required',

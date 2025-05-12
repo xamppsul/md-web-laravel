@@ -174,7 +174,7 @@
                                                             is-invalid
                                                         @enderror"
                                                             id="nama_aset" placeholder="Masukan Nama Aset" type="text"
-                                                            value="{{ old('nama_aset') }}">
+                                                            value="{{ old('nama_aset') }}" name="nama_aset">
                                                         <div class="mt-1">
                                                             @error('nama_aset')
                                                                 <span class="text-danger"
