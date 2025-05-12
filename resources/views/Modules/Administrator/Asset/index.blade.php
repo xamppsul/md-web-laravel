@@ -150,87 +150,201 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form class="row g-3 app-form rounded-control">
+                                                <form class="row g-3 app-form rounded-control"
+                                                    action="{{ route('admin.master.Asset.store') }}" method="POST">
+                                                    @csrf
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="kode_aset">Kode Aset</label>
-                                                        <input class="form-control" id="kode_aset" name="kode_aset"
-                                                            placeholder="Masukan Kode Aset" type="text">
+                                                        <input
+                                                            class="form-control @error('kode_aset') is-invalid @enderror"
+                                                            id="kode_aset" name="kode_aset"
+                                                            placeholder="Masukan Kode Aset" type="text"
+                                                            value="{{ old('kode_aset') }}">
+                                                        <div class="mt-1">
+                                                            @error('kode_aset')
+                                                                <span class="text-danger"
+                                                                    id="kode_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="nama_aset">Nama Aset</label>
-                                                        <input class="form-control" id="nama_aset"
-                                                            placeholder="Masukan Nama Aset" type="text">
+                                                        <input
+                                                            class="form-control @error('nama_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="nama_aset" placeholder="Masukan Nama Aset" type="text"
+                                                            value="{{ old('nama_aset') }}">
+                                                        <div class="mt-1">
+                                                            @error('nama_aset')
+                                                                <span class="text-danger"
+                                                                    id="nama_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="kategori_aset">Kategori
                                                             Aset</label>
-                                                        <select class="form-select" aria-label="Select kategori aset"
-                                                            name="kategori_aset">
+                                                        <select
+                                                            class="form-select @error('kategori_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            aria-label="Select kategori aset" name="kategori_aset">
                                                             <option selected="">Pilih Kategori Aset</option>
                                                             <option value="1">Elektronik</option>
                                                             <option value="2">Kendaraan</option>
                                                             <option value="3">Furniture</option>
                                                             <option value="4">lainnya</option>
                                                         </select>
+                                                        <div class="mt-1">
+                                                            @error('kategori_aset')
+                                                                <span class="text-danger"
+                                                                    id="kategori_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="model_merk_aset">Model/Merk</label>
-                                                        <input class="form-control" id="kode_aset" name="model_merk_aset"
-                                                            placeholder="Masukan Model/Merk Aset" type="text">
+                                                        <input
+                                                            class="form-control @error('model_merk_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="kode_aset" name="model_merk_aset"
+                                                            placeholder="Masukan Model/Merk Aset" type="text"
+                                                            value="{{ old('model_merk_aset') }}">
+                                                        <div class="mt-1">
+                                                            @error('model_merk_aset')
+                                                                <span class="text-danger"
+                                                                    id="model_merk_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="tanggal_perolehan_aset">Tanggal
                                                             Perolehan(Aset
                                                             diterima/dibeli)</label>
-                                                        <input class="form-control basic-date" type="text"
-                                                            name="tanggal_perolehan_aset" placeholder="YYYY-MM-DD"
-                                                            name="">
-
+                                                        <input
+                                                            class="form-control @error('tanggal_perolehan_aset')
+                                                            is-invalid
+                                                        @enderror basic-date"
+                                                            type="text" name="tanggal_perolehan_aset"
+                                                            placeholder="YYYY-MM-DD"
+                                                            value="{{ old('tanggal_perolehan_aset') }}">
+                                                        <div class="mt-1">
+                                                            @error('tanggal_perolehan_aset')
+                                                                <span class="text-danger"
+                                                                    id="tanggal_perolehan_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="lokasi_aset">Lokasi Aset</label>
-                                                        <input class="form-control" id="kode_aset" name="lokasi_aset"
-                                                            placeholder="Masukan Lokasi Aset" type="text">
+                                                        <input
+                                                            class="form-control @error('lokasi_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="kode_aset" name="lokasi_aset"
+                                                            placeholder="Masukan Lokasi Aset" type="text"
+                                                            value="{{ old('lokasi_aset') }}">
+                                                        <div class="mt-1">
+                                                            @error('lokasi_aset')
+                                                                <span class="text-danger"
+                                                                    id="tanggal_perolehan_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
-                                                        <select class="form-select" aria-label="Select kondisi aset"
-                                                            name="kondisi_aset">
+                                                        <select
+                                                            class="form-select @error('kondisi_aset') is-invalid @enderror"
+                                                            aria-label="Select kondisi aset" name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
                                                             <option value="1">Baik</option>
                                                             <option value="2">Rusak</option>
                                                             <option value="3">Perlu Perbaikan</option>
                                                         </select>
+                                                        <div class="mt-1">
+                                                            @error('kondisi_aset')
+                                                                <span class="text-danger"
+                                                                    id="kondisi_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="status_aset">Status Aset</label>
-                                                        <select class="form-select" aria-label="Select status aset"
-                                                            name="status_aset">
+                                                        <select
+                                                            class="form-select @error('status_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            aria-label="Select status aset" name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
                                                             <option value="1">Aktif</option>
                                                             <option value="2">Tidak Aktif</option>
                                                             <option value="3">Dihapus</option>
                                                         </select>
+                                                        <div class="mt-1">
+                                                            @error('status_aset')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="harga_perolehan_aset">Harga
                                                             Perolehan</label>
                                                         {{-- <input class="form-control" id="kode_aset"
                                                             placeholder="Masukan Harga Perolehan" type="number"> --}}
-                                                        <input type="text" class="form-control price-input"
-                                                            name="harga_perolehan_aset">
-
+                                                        {{-- <input type="text"
+                                                            class="form-control @error('harga_perolehan_aset')
+                                                            is-invalid
+                                                        @enderror price-input"
+                                                            name="harga_perolehan_aset"> --}}
+                                                        <div class="input-group">
+                                                            <span class="input-group-text bg-secondary-200 b-r-left"
+                                                                id="basic-addon1">Rp</span>
+                                                            <input type="number" name="harga_perolehan_aset"
+                                                                class="form-control @error('harga_perolehan_aset')
+                                                                is-invalid
+                                                            @enderror"
+                                                                placeholder="Masukan Harga Perolehan"
+                                                                value="{{ old('harga_perolehan_aset') }}">
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            @error('harga_perolehan_aset')
+                                                                <span class="text-danger"
+                                                                    id="tanggal_perolehan_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="sumber_dana_aset">Sumber
                                                             Dana</label>
-                                                        <input class="form-control" id="kode_aset"
-                                                            name="sumber_dana_aset" placeholder="Masukan Sumber Dana"
-                                                            type="text">
+                                                        <input
+                                                            class="form-control @error('sumber_dana_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="kode_aset" name="sumber_dana_aset"
+                                                            placeholder="Masukan Sumber Dana" type="text"
+                                                            value="{{ old('sumber_dana_aset') }}">
+                                                        <div class="mt-1">
+                                                            @error('sumber_dana_aset')
+                                                                <span class="text-danger"
+                                                                    id="tanggal_perolehan_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="keterangan_aset">Keterangan</label>
-                                                        <textarea class="form-control" id="" cols="30" rows="10" name="keterangan_aset"></textarea>
+                                                        <textarea
+                                                            class="form-control @error('keterangan_aset')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="" cols="30" rows="10" name="keterangan_aset">{{ old('keterangan_aset') }}</textarea>
+                                                        <div class="mt-1">
+                                                            @error('keterangan_aset')
+                                                                <span class="text-danger"
+                                                                    id="tanggal_perolehan_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     {{-- <div class="col-md-5">
                                                         <label class="form-label" for="address2">Address 2</label>
@@ -349,8 +463,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             new Cleave('.price-input', {
                 numeral: true,
-                prefix: 'Rp',
-                signBeforePrefix: true
+                numeralThousandsGroupStyle: 'thousand'
             });
         });
     </script>
