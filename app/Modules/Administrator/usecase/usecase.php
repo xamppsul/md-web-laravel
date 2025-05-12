@@ -61,7 +61,7 @@ class Usecase extends Services implements Usecase_intefaces
         } catch (\Exception $error) {
             DB::rollBack();
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Asset.index')->with('error', $error->getMessage());
+            return redirect()->route('admin.master.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 

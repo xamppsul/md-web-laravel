@@ -8,7 +8,7 @@ class AsetRequest
     public static function postRequestData($request): array
     {
         return $request->validate([
-            'kode_aset' => 'required',
+            'kode_aset' => 'required|unique:aset,kode_aset',
             'nama_aset' => 'required|string',
             'kategori_aset' => 'required|integer',
             'model_merk_aset' => 'required',
@@ -20,6 +20,7 @@ class AsetRequest
             'sumber_dana_aset' => 'required',
             'keterangan_aset' => 'required',
         ], [
+            'unique' => ':attribute sudah tersedia harap gunakan yang lain',
             'required' => ':attribute wajib di isi',
             'status_aset.integer' => 'pilih status aset',
             'kondisi_aset.integer' => 'pilih kondisi aset',

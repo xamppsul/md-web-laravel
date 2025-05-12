@@ -33,6 +33,12 @@
 
         <!-- Breadcrumb end -->
 
+        @session('success')
+            <div class="flash-data-success" data-flashdata-success="{{ $value }}"></div>
+        @endsession
+        @session('error')
+            <div class="flash-data-error" data-flashdata-error="{{ $value }}"></div>
+        @endsession
         <!-- Data Table start -->
         <div class="row">
             <!-- Default Datatable start -->
