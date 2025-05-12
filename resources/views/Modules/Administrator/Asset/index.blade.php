@@ -145,12 +145,12 @@
                             <table id="example" class="display app-data-table default-data-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Kode Aset</th>
+                                        <th>Nama Aset</th>
+                                        <th>Kategori Aset</th>
+                                        <th>Merk</th>
+                                        <th>Kondisi Aset</th>
+                                        <th>Status Aset</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -163,6 +163,9 @@
                                         <td>$3674.55</td>
                                         <td>$320,800</td>
                                         <td>
+                                            <button type="button" class="btn btn-light-info icon-btn b-r-4">
+                                                <i class="ti ti-info-circle text-success"></i>
+                                            </button>
                                             <button type="button" class="btn btn-light-success icon-btn b-r-4">
                                                 <i class="ti ti-edit text-success"></i>
                                             </button>
