@@ -20,6 +20,7 @@ class AsetRequest
             'sumber_dana_aset' => 'required',
             'keterangan_aset' => 'required',
         ], [
+            'required' => ':attribute wajib di isi',
             'status_aset.integer' => 'pilih status aset',
             'kondisi_aset.integer' => 'pilih kondisi aset',
             'kategori_aset.integer' => 'pilih kategori aset',
