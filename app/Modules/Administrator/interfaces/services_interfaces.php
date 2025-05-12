@@ -10,7 +10,7 @@ interface Services_interfaces
     public function indexAssetService($asetDomain);
     public function createAssetService();
     public function storeAssetService($request, $asetDomain): void;
-    public function editAssetService($id);
+    public function editAssetService($id, $asetDomain): array;
     public function updateAssetService($id);
     public function destroyAssetService($id);
     /**

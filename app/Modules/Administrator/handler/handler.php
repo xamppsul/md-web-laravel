@@ -66,9 +66,14 @@ class Handler extends Usecase implements Handler_interfaces
      * @method editAsset
      * @param $id
      */
-    public function editAsset($id)
+    public function editAsset($id, Request $request)
     {
-        return $this->editAssetCase($id);
+        return $this->editAssetCase(
+            $id,
+            $this->asetDomain,
+            $request,
+            $this->constantAdmin,
+        );
     }
 
     /**

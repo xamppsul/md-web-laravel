@@ -15,7 +15,8 @@ class Services extends Repository implements Services_interfaces
 
     /**
      * @method indexAssetService
-     * @return mixed
+     * @param $asetDomain
+     * @return array
      */
     public function indexAssetService($asetDomain): array
     {
@@ -45,11 +46,12 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method editAssetService
      * @param $id
-     * @return mixed
+     * @param $asetDomain
+     * @return array
      */
-    public function editAssetService($id)
+    public function editAssetService($id, $asetDomain): array
     {
-        return $this->editAssetRepository($id);
+        return $this->editAssetRepository($id, $asetDomain);
     }
 
     /**

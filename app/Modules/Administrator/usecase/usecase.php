@@ -72,20 +72,27 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method editAssetCase
      * @param $id
-     * @return mixed
+     * @return RedirectResponse|View
      */
-    public function editAssetCase($id)
-    {
+    public function editAssetCase(
+        $id,
+        $asetDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
         try {
-            return $this->editAssetService($id);
+            $data = $this->editAssetService($id, $asetDomain);
+            return view('Modules.Administrator.Asset.edit', compact('data'));
         } catch (\Exception $error) {
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
     /**
      * @method updateAssetCase
      * @param $id
-     * @return mixed
+     * @return RedirectResponse|View
      */
     public function updateAssetCase($id)
     {

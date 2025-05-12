@@ -21,7 +21,12 @@ interface Usecase_intefaces
         $asetDomain,
         $asetRequest
     ): RedirectResponse;
-    public function editAssetCase($id);
+    public function editAssetCase(
+        $id,
+        $asetDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View;
     public function updateAssetCase($id);
     public function destroyAssetCase($id);
     /**

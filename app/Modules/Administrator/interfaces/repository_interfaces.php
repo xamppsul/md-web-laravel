@@ -14,7 +14,7 @@ interface Repository_interfaces
     public function indexAssetRepository($asetDomain);
     public function createAssetRepository();
     public function storeAssetRepository($request, $asetDomain);
-    public function editAssetRepository($id);
+    public function editAssetRepository($id, $asetDomain): array;
     public function updateAssetRepository($id);
     public function destroyAssetRepository($id);
 

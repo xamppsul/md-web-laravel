@@ -438,9 +438,10 @@
                                                     data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
                                                     <i class="ti ti-info-circle text-success"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-light-success icon-btn b-r-4">
+                                                <a href="{{ route('admin.master.Asset.edit', $asetData->id) }}"
+                                                    class="btn btn-light-success icon-btn b-r-4">
                                                     <i class="ti ti-edit text-success"></i>
-                                                </button>
+                                                </a>
                                                 <button type="button"
                                                     class="btn btn-light-danger icon-btn b-r-4 delete-btn">
                                                     <i class="ti ti-trash"></i>

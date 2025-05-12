@@ -13,6 +13,11 @@ class Repository implements Repository_interfaces
     /**
      * index
      */
+    /**
+     * @method indexAssetRepository
+     * @param $asetDomain,
+     * @return array
+     */
     public function indexAssetRepository($asetDomain): array
     {
         return array(
@@ -39,9 +44,23 @@ class Repository implements Repository_interfaces
     {
         $asetDomain->postDataAsetDomain($request);
     }
-    public function editAssetRepository($id)
+    /**
+     * edit
+     */
+    /**
+     * @method editAssetRepository
+     * @param $id,
+     * @param $asetDomain,
+     * @return array
+     */
+    public function editAssetRepository($id, $asetDomain): array
     {
-        return 'edit asset repository';
+        return array(
+            'kategori' => $asetDomain->getKategoriAsetDomain(),
+            'status' => $asetDomain->getStatusAsetDomain(),
+            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset' => $asetDomain->getDetailAsetDomain($id)[0],
+        );
     }
     public function updateAssetRepository($id)
     {

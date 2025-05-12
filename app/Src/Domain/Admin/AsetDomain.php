@@ -43,6 +43,25 @@ class AsetDomain
     }
 
     /**
+     * @method getDetailAsetDomain
+     * @return array
+     */
+    public function getDetailAsetDomain($id): array
+    {
+        return DB::select('
+            SELECT aset.*, 
+            kategori_aset.name AS kategori_aset_name, 
+            kondisi_aset.name AS kondisi_aset_name,
+            status_aset.name AS status_aset_name
+            FROM aset
+            INNER JOIN kategori_aset ON aset.kategori_aset = kategori_aset.id
+            INNER JOIN kondisi_aset ON aset.kondisi_aset = kondisi_aset.id
+            INNER JOIN status_aset ON aset.status_aset = status_aset.id
+            WHERE aset.id = ?
+        ', [$id]);
+    }
+
+    /**
      * @method getKategoriAsetDomain
      * @return array
      */
