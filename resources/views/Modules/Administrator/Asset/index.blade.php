@@ -415,9 +415,20 @@
                                                     class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
                                             </td>
                                             <td>{{ $asetData->merek_model }}</td>
-                                            <td><span
-                                                    class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
-                                            </td>
+
+                                            @if ($asetData->kondisi_aset_name == 'Baik')
+                                                <td><span
+                                                        class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
+                                                </td>
+                                            @elseif($asetData->kondisi_aset_name == 'Perlu Perbaikan')
+                                                <td><span
+                                                        class="badge text-light-warning">{{ $asetData->kondisi_aset_name }}</span>
+                                                </td>
+                                            @else
+                                                <td><span
+                                                        class="badge text-light-danger">{{ $asetData->kondisi_aset_name }}</span>
+                                                </td>
+                                            @endif
                                             <td><span
                                                     class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
                                             </td>
