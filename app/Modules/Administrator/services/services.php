@@ -17,9 +17,9 @@ class Services extends Repository implements Services_interfaces
      * @method indexAssetService
      * @return mixed
      */
-    public function indexAssetService()
+    public function indexAssetService($asetDomain): array
     {
-        return $this->indexAssetRepository();
+        return $this->indexAssetRepository($asetDomain);
     }
 
     /**

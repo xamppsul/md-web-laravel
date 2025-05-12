@@ -31,7 +31,7 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function indexAsset(): View
     {
-        return $this->indexAssetCase();
+        return $this->indexAssetCase($this->asetDomain);
     }
 
     /**

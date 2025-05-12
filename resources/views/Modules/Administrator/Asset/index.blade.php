@@ -191,10 +191,11 @@
                                                         @enderror"
                                                             aria-label="Select kategori aset" name="kategori_aset">
                                                             <option selected="">Pilih Kategori Aset</option>
-                                                            <option value="1">Elektronik</option>
-                                                            <option value="2">Kendaraan</option>
-                                                            <option value="3">Furniture</option>
-                                                            <option value="4">lainnya</option>
+                                                            @foreach ($data['kategori'] as $kategoriAset)
+                                                                <option value="{{ $kategoriAset->id }}">
+                                                                    {{ $kategoriAset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                         <div class="mt-1">
                                                             @error('kategori_aset')
@@ -259,9 +260,10 @@
                                                             class="form-select @error('kondisi_aset') is-invalid @enderror"
                                                             aria-label="Select kondisi aset" name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
-                                                            <option value="1">Baik</option>
-                                                            <option value="2">Rusak</option>
-                                                            <option value="3">Perlu Perbaikan</option>
+                                                            @foreach ($data['kondisi'] as $kondisiAset)
+                                                                <option value="{{ $kondisiAset->id }}">
+                                                                    {{ $kondisiAset->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                         <div class="mt-1">
                                                             @error('kondisi_aset')
@@ -278,9 +280,10 @@
                                                         @enderror"
                                                             aria-label="Select status aset" name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
-                                                            <option value="1">Aktif</option>
-                                                            <option value="2">Tidak Aktif</option>
-                                                            <option value="3">Dihapus</option>
+                                                            @foreach ($data['status'] as $statusAset)
+                                                                <option value="{{ $statusAset->id }}">
+                                                                    {{ $statusAset->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                         <div class="mt-1">
                                                             @error('status_aset')

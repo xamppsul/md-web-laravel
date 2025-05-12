@@ -7,7 +7,7 @@ interface Services_interfaces
     /**
      * master asset
      */
-    public function indexAssetService();
+    public function indexAssetService($asetDomain);
     public function createAssetService();
     public function storeAssetService($request, $asetDomain): void;
     public function editAssetService($id);

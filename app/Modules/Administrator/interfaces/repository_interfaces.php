@@ -4,15 +4,24 @@ namespace App\Modules\Administrator\interfaces;
 
 interface Repository_interfaces
 {
+    /**===========================================================================
+     * feature: master data aset 
+    /**===========================================================================
+     */
     /**
      * master data asset
      */
-    public function indexAssetRepository();
+    public function indexAssetRepository($asetDomain);
     public function createAssetRepository();
     public function storeAssetRepository($request, $asetDomain);
     public function editAssetRepository($id);
     public function updateAssetRepository($id);
     public function destroyAssetRepository($id);
+
+    /**===========================================================================
+     * feature: master data mou moa 
+    /**===========================================================================
+     */
     /**
      * master data mou moa
      */
@@ -22,6 +31,11 @@ interface Repository_interfaces
     public function editMouMoaRepository($id);
     public function updateMouMoaRepository($id);
     public function destroyMouMoaRepository($id);
+
+    /**===========================================================================
+     * feature: master data kegiatan 
+    /**===========================================================================
+     */
     /**
      * master data kegiatan
      */

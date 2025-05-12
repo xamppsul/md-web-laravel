@@ -10,7 +10,7 @@ interface Usecase_intefaces
     /**
      * master asset
      */
-    public function indexAssetCase(): RedirectResponse|View;
+    public function indexAssetCase($asetDomain): RedirectResponse|View;
     public function createAssetCase(): View;
     public function storeAssetCase(
         $request,

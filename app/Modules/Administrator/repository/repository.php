@@ -13,9 +13,13 @@ class Repository implements Repository_interfaces
     /**
      * index
      */
-    public function indexAssetRepository()
+    public function indexAssetRepository($asetDomain): array
     {
-        return 'index asset repository';
+        return array(
+            'kategori' => $asetDomain->getKategoriAsetDomain(),
+            'status' => $asetDomain->getStatusAsetDomain(),
+            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+        );
     }
     public function createAssetRepository()
     {
