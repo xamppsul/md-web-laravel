@@ -67,9 +67,8 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="" class="row g-3 app-form rounded-control"
-                                                    method="GET">
-                                                    @csrf
+                                                <form action="{{ route('admin.master.Asset.index') }}" method="GET"
+                                                    class="row g-3 app-form rounded-control">
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kondisi Aset</label>
                                                         <select class="form-select" aria-label="Select kondisi aset"
@@ -117,7 +116,8 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kode Aset</label>
                                                         <input class="form-control" id="kode_aset"
-                                                            placeholder="masukan kode aset" type="text" name="kode_aset">
+                                                            placeholder="masukan kode aset" type="text"
+                                                            name="kode_aset">
                                                     </div>
                                                     {{-- <div class="col-md-5">
                                                         <label class="form-label" for="address2">Address 2</label>
