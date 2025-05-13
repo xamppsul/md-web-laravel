@@ -67,7 +67,8 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="" class="row g-3 app-form rounded-control" method="GET">
+                                                <form action="" class="row g-3 app-form rounded-control"
+                                                    method="GET">
                                                     @csrf
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kondisi Aset</label>
@@ -104,18 +105,19 @@
                                                         <label class="form-label" for="userName">Tanggal perolehan(aset
                                                             diterima/dibeli)</label>
                                                         <input class="form-control basic-date" type="text"
-                                                            placeholder="YYYY-MM-DD" name="">
+                                                            placeholder="YYYY-MM-DD" name="tanggal_perolehan">
 
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Nama aset</label>
                                                         <input class="form-control" id="nama_aset"
-                                                            placeholder="masukan nama aset" type="text">
+                                                            placeholder="masukan nama aset" type="text"
+                                                            name="nama_aset">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kode Aset</label>
                                                         <input class="form-control" id="kode_aset"
-                                                            placeholder="masukan kode aset" type="text">
+                                                            placeholder="masukan kode aset" type="text" name="kode_aset">
                                                     </div>
                                                     {{-- <div class="col-md-5">
                                                         <label class="form-label" for="address2">Address 2</label>
