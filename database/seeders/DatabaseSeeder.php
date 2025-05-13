@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             KategoriAssetSeeder::class,
             KondisiAsetSeeder::class,
             StatusAssetSeeder::class,
+            MouMoaKlasifikasiSeeder::class,
+            MouMoaBidangKerjaSamaSeeder::class,
+            MouMoaStatusSeeder::class,
         ]);
     }
 }
