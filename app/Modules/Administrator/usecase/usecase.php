@@ -30,7 +30,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexAssetService($asetDomain, $request);
-            return view('Modules.Administrator.Asset.index', compact('data', 'constantAdmin'));
+            return view('Modules.Administrator.Aset.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
@@ -88,7 +88,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->editAssetService($id, $asetDomain);
-            return view('Modules.Administrator.Asset.edit', compact('data'));
+            return view('Modules.Administrator.Aset.edit', compact('data'));
         } catch (\Exception $error) {
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
