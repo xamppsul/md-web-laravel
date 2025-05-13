@@ -74,9 +74,15 @@
                                                         <select class="form-select" aria-label="Select kondisi aset"
                                                             name="kondisi_aset">
                                                             <option selected="">Pilih Kondisi Aset</option>
-                                                            <option value="1">Baik</option>
-                                                            <option value="2">Rusak</option>
-                                                            <option value="3">Perlu Perbaikan</option>
+                                                            <option value="1"
+                                                                {{ request('kondisi_aset') == '1' ? 'selected' : '' }}>Baik
+                                                            </option>
+                                                            <option value="2"
+                                                                {{ request('kondisi_aset') == '2' ? 'selected' : '' }}>Rusak
+                                                            </option>
+                                                            <option value="3"
+                                                                {{ request('kondisi_aset') == '3' ? 'selected' : '' }}>
+                                                                Perlu Perbaikan</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -84,9 +90,15 @@
                                                         <select class="form-select" aria-label="Select status aset"
                                                             name="status_aset">
                                                             <option selected="">Pilih Status Aset</option>
-                                                            <option value="1">Aktif</option>
-                                                            <option value="2">Tidak Aktif</option>
-                                                            <option value="3">Dihapus</option>
+                                                            <option value="1"
+                                                                {{ request('status_aset') == '1' ? 'selected' : '' }}>Aktif
+                                                            </option>
+                                                            <option value="2"
+                                                                {{ request('status_aset') == '2' ? 'selected' : '' }}>Tidak
+                                                                Aktif</option>
+                                                            <option value="3"
+                                                                {{ request('status_aset') == '3' ? 'selected' : '' }}>
+                                                                Dihapus</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -94,10 +106,18 @@
                                                         <select class="form-select" aria-label="Select kategori aset"
                                                             name="kategori_aset">
                                                             <option selected="">Pilih Kategori Aset</option>
-                                                            <option value="1">Elektronik</option>
-                                                            <option value="2">Kendaraan</option>
-                                                            <option value="3">Furniture</option>
-                                                            <option value="4">lainnya</option>
+                                                            <option value="1"
+                                                                {{ request('kategori_aset') == '1' ? 'selected' : '' }}>
+                                                                Elektronik</option>
+                                                            <option value="2"
+                                                                {{ request('kategori_aset') == '2' ? 'selected' : '' }}>
+                                                                Kendaraan</option>
+                                                            <option value="3"
+                                                                {{ request('kategori_aset') == '3' ? 'selected' : '' }}>
+                                                                Furniture</option>
+                                                            <option value="4"
+                                                                {{ request('kategori_aset') == '4' ? 'selected' : '' }}>
+                                                                lainnya</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -105,20 +125,20 @@
                                                             diterima/dibeli)</label>
                                                         <input class="form-control basic-date" type="text"
                                                             placeholder="YYYY-MM-DD" name="tanggal_perolehan"
-                                                            value="{{ old('tanggal_perolehan') }}">
+                                                            value="{{ request('tanggal_perolehan') }}">
 
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Nama aset</label>
                                                         <input class="form-control" id="nama_aset"
                                                             placeholder="masukan nama aset" type="text"
-                                                            name="nama_aset" value="{{ old('nama_aset') }}">
+                                                            name="nama_aset" value="{{ request('nama_aset') }}">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kode Aset</label>
                                                         <input class="form-control" id="kode_aset"
                                                             placeholder="masukan kode aset" type="text"
-                                                            name="kode_aset" value="{{ old('kode_aset') }}">
+                                                            name="kode_aset" value="{{ request('kode_aset') }}">
                                                     </div>
                                                     {{-- <div class="col-md-5">
                                                         <label class="form-label" for="address2">Address 2</label>
