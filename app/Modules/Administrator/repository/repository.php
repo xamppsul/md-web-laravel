@@ -49,11 +49,11 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method editAssetRepository
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @return array
      */
-    public function editAssetRepository($id, $asetDomain): array
+    public function editAssetRepository(int $id, $asetDomain): array
     {
         return array(
             'kategori' => $asetDomain->getKategoriAsetDomain(),
@@ -67,12 +67,12 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method updateAssetRepository
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @param $request
      * @return array
      */
-    public function updateAssetRepository($id, $asetDomain, $request): void
+    public function updateAssetRepository(int $id, $asetDomain, $request): void
     {
         $asetDomain->updateDataAsetDomain($id, $request);
     }

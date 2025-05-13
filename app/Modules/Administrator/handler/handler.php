@@ -64,11 +64,11 @@ class Handler extends Usecase implements Handler_interfaces
 
     /**
      * @method editAsset
-     * @param $id
+     * @param int $id
      * @param $request
      * @return RedirectResponse|view
      */
-    public function editAsset($id, Request $request): RedirectResponse|view
+    public function editAsset(int $id, Request $request): RedirectResponse|view
     {
         return $this->editAssetCase(
             $id,
@@ -80,11 +80,11 @@ class Handler extends Usecase implements Handler_interfaces
 
     /**
      * @method updateAsset
-     * @param $id
+     * @param int $id
      * @param $request
      * @return RedirectResponse
      */
-    public function updateAsset($id, Request $request): RedirectResponse
+    public function updateAsset(int $id, Request $request): RedirectResponse
     {
         return $this->updateAssetCase(
             $id,

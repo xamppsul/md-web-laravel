@@ -74,14 +74,14 @@ class Usecase extends Services implements Usecase_intefaces
 
     /**
      * @method editAssetCase
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @param $request
      * @param $constantDomain
      * @return RedirectResponse|View
      */
     public function editAssetCase(
-        $id,
+        int $id,
         $asetDomain,
         $request,
         $constantAdmin,
@@ -97,14 +97,14 @@ class Usecase extends Services implements Usecase_intefaces
 
     /**
      * @method updateAssetCase
-     * @param $id
+     * @param int $id
      * @param $request
      * @param $asetDomain
      * @param $asetRequest
      * @return RedirectResponse
      */
     public function updateAssetCase(
-        $id,
+        int $id,
         $request,
         $asetDomain,
         $asetRequest,

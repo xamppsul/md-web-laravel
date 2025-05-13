@@ -22,13 +22,13 @@ interface Usecase_intefaces
         $asetRequest
     ): RedirectResponse;
     public function editAssetCase(
-        $id,
+        int $id,
         $asetDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View;
     public function updateAssetCase(
-        $id,
+        int $id,
         $request,
         $asetDomain,
         $asetRequest,

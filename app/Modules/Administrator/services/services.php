@@ -45,23 +45,23 @@ class Services extends Repository implements Services_interfaces
 
     /**
      * @method editAssetService
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @return array
      */
-    public function editAssetService($id, $asetDomain): array
+    public function editAssetService(int $id, $asetDomain): array
     {
         return $this->editAssetRepository($id, $asetDomain);
     }
 
     /**
      * @method updateAssetService
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @param $request
      * @return void
      */
-    public function updateAssetService($id, $asetDomain, $request): void
+    public function updateAssetService(int $id, $asetDomain, $request): void
     {
         $this->updateAssetRepository($id, $asetDomain, $request);
     }
