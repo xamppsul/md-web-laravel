@@ -96,11 +96,11 @@ class Handler extends Usecase implements Handler_interfaces
 
     /**
      * @method destroyAsset
-     * @param $id
+     * @param int $id
      * @param $request
      * @return RedirectResponse
      */
-    public function destroyAsset($id, Request $request): RedirectResponse
+    public function destroyAsset(int $id, Request $request): RedirectResponse
     {
         return $this->destroyAssetCase($id, $request, $this->asetDomain);
     }

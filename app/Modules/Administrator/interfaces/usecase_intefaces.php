@@ -34,7 +34,7 @@ interface Usecase_intefaces
         $asetRequest,
     ): RedirectResponse;
     public function destroyAssetCase(
-        $id,
+        int $id,
         $request,
         $asetDomain,
     ): RedirectResponse;

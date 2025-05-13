@@ -82,11 +82,11 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method destroyAssetRepository
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @return void
      */
-    public function destroyAssetRepository($id, $asetDomain): void
+    public function destroyAssetRepository(int $id, $asetDomain): void
     {
         $asetDomain->deleteDataAsetDomain($id);
     }

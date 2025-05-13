@@ -68,11 +68,11 @@ class Services extends Repository implements Services_interfaces
 
     /**
      * @method destroyAssetService
-     * @param $id
+     * @param int $id
      * @param $asetDomain
      * @return void
      */
-    public function destroyAssetService($id, $asetDomain): void
+    public function destroyAssetService(int $id, $asetDomain): void
     {
         $this->destroyAssetRepository($id, $asetDomain);
     }

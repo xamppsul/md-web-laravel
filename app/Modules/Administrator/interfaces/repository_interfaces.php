@@ -16,7 +16,7 @@ interface Repository_interfaces
     public function storeAssetRepository($request, $asetDomain): void;
     public function editAssetRepository(int $id, $asetDomain): array;
     public function updateAssetRepository(int $id, $asetDomain, $request): void;
-    public function destroyAssetRepository($id, $asetDomain): void;
+    public function destroyAssetRepository(int $id, $asetDomain): void;
 
     /**===========================================================================
      * feature: master data mou moa 

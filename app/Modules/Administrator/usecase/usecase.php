@@ -125,11 +125,11 @@ class Usecase extends Services implements Usecase_intefaces
 
     /**
      * @method destroyAssetCase
-     * @param $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroyAssetCase(
-        $id,
+        int $id,
         $request,
         $asetDomain,
     ): RedirectResponse {
