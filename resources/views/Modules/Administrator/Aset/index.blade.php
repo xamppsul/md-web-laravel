@@ -169,10 +169,6 @@
                                                         <button class="btn btn-warning b-r-22" type="reset"
                                                             value="Submit">Clear
                                                         </button>
-                                                        <a href="{{ route('admin.master.Asset.index') }}"
-                                                            class="btn btn-danger b-r-22" type="reset"
-                                                            value="Submit">Cancel
-                                                        </a>
                                                     </div>
                                                 </form>
                                             </div>
@@ -411,6 +407,9 @@
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
+                                                        </button>
+                                                        <button class="btn btn-warning b-r-22" type="reset"
+                                                            value="Submit">Clear
                                                         </button>
                                                     </div>
                                                 </form>
