@@ -68,7 +68,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <form action="{{ route('admin.master.Asset.index') }}" method="GET"
-                                                    class="row g-3 app-form rounded-control">
+                                                    class="row g-3 app-form rounded-control" id="filterFormAset">
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kondisi Aset</label>
                                                         <select class="form-select" aria-label="Select kondisi aset"
@@ -140,34 +140,12 @@
                                                             placeholder="Masukan Kode Aset" type="text"
                                                             name="kode_aset" value="{{ request('kode_aset') }}">
                                                     </div>
-                                                    {{-- <div class="col-md-5">
-                                                        <label class="form-label" for="address2">Address 2</label>
-                                                        <input class="form-control" id="address2" placeholder="Address"
-                                                            type="text">
-                                                        <div class="mt-1">
-                                                            <span class="text-danger" id="addressError2"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <label class="form-label" for="city">City</label>
-                                                        <input class="form-control" id="city" type="text">
-                                                        <div class="mt-1">
-                                                            <span class="text-danger" id="cityError"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label class="form-label" for="zipCode">Zip</label>
-                                                        <input class="form-control" id="zipCode" type="text">
-                                                        <div class="mt-1">
-                                                            <span class="text-danger" id="zipCodeError"></span>
-                                                        </div>
-                                                    </div> --}}
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
                                                         </button>
-                                                        <button class="btn btn-warning b-r-22" type="reset"
-                                                            value="Submit">Clear
+                                                        <button class="btn btn-warning b-r-22"
+                                                            onclick="clearFilterFormAset()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -563,4 +541,14 @@
             });
         });
     </script> --}}
+    <script type="text/javascript">
+        function clearFilterFormAset() {
+            const form = document.getElementById('filterFormAset');
+            Array.from(form.elements).forEach(element => {
+                if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
+                    element.value = '';
+                }
+            });
+        }
+    </script>
 @endsection
