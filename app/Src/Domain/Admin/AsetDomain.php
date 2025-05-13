@@ -9,6 +9,10 @@ class AsetDomain
     /**
      * @method DomainLogInsert
      *  transaction data with log error to table log_errors
+     * @param $message
+     * @param $route
+     * @param $path
+     * @param $type
      * @return void
      */
 
@@ -44,6 +48,7 @@ class AsetDomain
 
     /**
      * @method getDetailAsetDomain
+     * @param $id
      * @return array
      */
     public function getDetailAsetDomain($id): array
@@ -90,6 +95,7 @@ class AsetDomain
 
     /**
      * @method postDataAsetDomain
+     * @param $request
      * @return void
      */
     public function postDataAsetDomain($request): void
@@ -119,6 +125,45 @@ class AsetDomain
             $request->sumber_dana_aset,
             $request->keterangan_aset,
             now(),
+        ]);
+    }
+
+    /**
+     * @method updateDataAsetDomain
+     * @param $request
+     * @param $id
+     * @return void
+     */
+
+    public function updateDataAsetDomain($id, $request): void
+    {
+        DB::update('UPDATE aset SET 
+            kode_aset = ?, 
+            nama_aset = ?, 
+            kategori_aset = ?, 
+            merek_model = ?, 
+            tanggal_perolehan = ?, 
+            lokasi_aset = ?, 
+            kondisi_aset = ?, 
+            status_aset = ?, 
+            harga_perolehan = ?, 
+            sumber_dana = ?, 
+            keterangan = ?, 
+            updated_at = ?
+            WHERE id = ?', [
+            $request->kode_aset,
+            $request->nama_aset,
+            $request->kategori_aset,
+            $request->model_merk_aset,
+            $request->tanggal_perolehan_aset,
+            $request->lokasi_aset,
+            $request->kondisi_aset,
+            $request->status_aset,
+            $request->harga_perolehan_aset,
+            $request->sumber_dana_aset,
+            $request->keterangan_aset,
+            now(),
+            $id
         ]);
     }
 }

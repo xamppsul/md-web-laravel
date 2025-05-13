@@ -15,7 +15,7 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method indexAssetRepository
-     * @param $asetDomain,
+     * @param $asetDomain
      * @return array
      */
     public function indexAssetRepository($asetDomain): array
@@ -36,8 +36,8 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method storeAssetRepository
-     * @param $request,
-     * @param $asetDomain,
+     * @param $request
+     * @param $asetDomain
      * @return void
      */
     public function storeAssetRepository($request, $asetDomain): void
@@ -49,8 +49,8 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method editAssetRepository
-     * @param $id,
-     * @param $asetDomain,
+     * @param $id
+     * @param $asetDomain
      * @return array
      */
     public function editAssetRepository($id, $asetDomain): array
@@ -62,6 +62,16 @@ class Repository implements Repository_interfaces
             'aset' => $asetDomain->getDetailAsetDomain($id)[0],
         );
     }
+    /**
+     * update
+     */
+    /**
+     * @method updateAssetRepository
+     * @param $id
+     * @param $asetDomain
+     * @param $request
+     * @return array
+     */
     public function updateAssetRepository($id, $asetDomain, $request): void
     {
         $asetDomain->updateDataAsetDomain($id, $request);

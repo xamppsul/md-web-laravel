@@ -57,6 +57,8 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method updateAssetService
      * @param $id
+     * @param $asetDomain
+     * @param $request
      * @return void
      */
     public function updateAssetService($id, $asetDomain, $request): void

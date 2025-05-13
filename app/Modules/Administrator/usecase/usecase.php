@@ -113,8 +113,8 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            DB::commit();
             $this->updateAssetService($id, $asetDomain, $request);
+            DB::commit();
             return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil update aset');
         } catch (\Exception $error) {
             DB::rollBack();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('aset', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_aset')->unique();
+            $table->string('kode_aset');
             $table->string('nama_aset');
             $table->foreignId('kategori_aset')->references('id')->on('kategori_aset');
             $table->string('merek_model');
