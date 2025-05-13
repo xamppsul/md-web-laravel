@@ -166,4 +166,15 @@ class AsetDomain
             $id
         ]);
     }
+
+    /**
+     * @method deleteDataAsetDomain
+     * @param $id
+     * @return void
+     */
+
+    public function deleteDataAsetDomain($id): void
+    {
+        DB::delete('DELETE FROM aset WHERE id = ?', [$id]);
+    }
 }

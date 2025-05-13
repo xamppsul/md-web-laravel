@@ -442,10 +442,16 @@
                                                     class="btn btn-light-success icon-btn b-r-4">
                                                     <i class="ti ti-edit text-success"></i>
                                                 </a>
-                                                <button type="button"
-                                                    class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                    <i class="ti ti-trash"></i>
-                                                </button>
+                                                <form class="btn btn-light-danger icon-btn b-r-4"
+                                                    action="{{ route('admin.master.Asset.destroy', $asetData->id) }}"
+                                                    method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="button"
+                                                        class="btn btn-light-danger icon-btn b-r-4 btn-delete-aset">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

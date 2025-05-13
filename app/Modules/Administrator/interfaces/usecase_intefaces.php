@@ -33,7 +33,11 @@ interface Usecase_intefaces
         $asetDomain,
         $asetRequest,
     ): RedirectResponse;
-    public function destroyAssetCase($id);
+    public function destroyAssetCase(
+        $id,
+        $request,
+        $asetDomain,
+    ): RedirectResponse;
     /**
      * master mou moa
      */

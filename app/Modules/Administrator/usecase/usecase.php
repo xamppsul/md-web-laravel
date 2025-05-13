@@ -126,13 +126,23 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method destroyAssetCase
      * @param $id
-     * @return mixed
+     * @return RedirectResponse
      */
-    public function destroyAssetCase($id)
-    {
+    public function destroyAssetCase(
+        $id,
+        $request,
+        $asetDomain,
+    ): RedirectResponse {
+
+        DB::beginTransaction();
         try {
-            return $this->destroyAssetService($id);
+            $this->destroyAssetService($id, $asetDomain);
+            DB::commit();
+            return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil delete aset');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 

@@ -12,7 +12,7 @@ interface Services_interfaces
     public function storeAssetService($request, $asetDomain): void;
     public function editAssetService($id, $asetDomain): array;
     public function updateAssetService($id, $asetDomain, $request): void;
-    public function destroyAssetService($id);
+    public function destroyAssetService($id, $asetDomain): void;
     /**
      * master moumoa
      */

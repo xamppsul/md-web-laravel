@@ -76,9 +76,19 @@ class Repository implements Repository_interfaces
     {
         $asetDomain->updateDataAsetDomain($id, $request);
     }
-    public function destroyAssetRepository($id)
+
+    /**
+     * update
+     */
+    /**
+     * @method destroyAssetRepository
+     * @param $id
+     * @param $asetDomain
+     * @return void
+     */
+    public function destroyAssetRepository($id, $asetDomain): void
     {
-        return 'destroy asset repository';
+        $asetDomain->deleteDataAsetDomain($id);
     }
 
     /**======================================================================================================================================

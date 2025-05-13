@@ -222,6 +222,8 @@
                             <div class="col-12">
                                 <button class="btn btn-primary b-r-22" type="submit" value="Submit">Submit
                                 </button>
+                                <a class="btn btn-danger b-r-22" href="{{ route('admin.master.Asset.index') }}">Cancel
+                                </a>
                             </div>
                         </form>
                     </div>
