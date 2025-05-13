@@ -29,7 +29,7 @@ class Usecase extends Services implements Usecase_intefaces
         $constantAdmin,
     ): RedirectResponse|View {
         try {
-            $data = $this->indexAssetService($asetDomain);
+            $data = $this->indexAssetService($asetDomain, $request);
             return view('Modules.Administrator.Asset.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');

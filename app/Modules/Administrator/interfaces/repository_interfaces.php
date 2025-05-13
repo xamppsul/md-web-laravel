@@ -11,7 +11,7 @@ interface Repository_interfaces
     /**
      * master data asset
      */
-    public function indexAssetRepository($asetDomain);
+    public function indexAssetRepository($asetDomain, $request);
     public function createAssetRepository();
     public function storeAssetRepository($request, $asetDomain): void;
     public function editAssetRepository(int $id, $asetDomain): array;

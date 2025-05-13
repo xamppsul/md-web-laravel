@@ -67,7 +67,8 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form class="row g-3 app-form rounded-control">
+                                                <form action="" class="row g-3 app-form rounded-control" method="GET">
+                                                    @csrf
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kondisi Aset</label>
                                                         <select class="form-select" aria-label="Select kondisi aset"

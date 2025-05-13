@@ -18,9 +18,9 @@ class Services extends Repository implements Services_interfaces
      * @param $asetDomain
      * @return array
      */
-    public function indexAssetService($asetDomain): array
+    public function indexAssetService($asetDomain, $request): array
     {
-        return $this->indexAssetRepository($asetDomain);
+        return $this->indexAssetRepository($asetDomain, $request);
     }
 
     /**

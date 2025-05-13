@@ -30,20 +30,36 @@ class AsetDomain
      */
     /**
      * @method getAllAsetDomain
+     * @param $request
      * @return array
      */
-    public function getAllAsetDomain(): array
-    {
+    public function getAllAsetDomain(
+        $request
+    ): array {
         return DB::select('
             SELECT aset.*, 
-            kategori_aset.name AS kategori_aset_name, 
-            kondisi_aset.name AS kondisi_aset_name,
-            status_aset.name AS status_aset_name
+                kategori_aset.name AS kategori_aset_name, 
+                kondisi_aset.name AS kondisi_aset_name,
+                status_aset.name AS status_aset_name
             FROM aset
-            INNER JOIN kategori_aset ON aset.kategori_aset = kategori_aset.id
-            INNER JOIN kondisi_aset ON aset.kondisi_aset = kondisi_aset.id
-            INNER JOIN status_aset ON aset.status_aset = status_aset.id
-        ');
+                INNER JOIN kategori_aset ON aset.kategori_aset = kategori_aset.id
+                INNER JOIN kondisi_aset ON aset.kondisi_aset = kondisi_aset.id
+                INNER JOIN status_aset ON aset.status_aset = status_aset.id
+            WHERE aset.kondisi_aset LIKE ? 
+                AND aset.status_aset LIKE ? 
+                AND aset.kategori_aset LIKE ?
+                AND aset.tanggal_perolehan LIKE ? 
+                AND aset.nama_aset LIKE ? 
+                AND aset.kode_aset LIKE ?
+            ORDER BY aset.kode_aset DESC
+        ', [
+            "%$request->kondisi_aset%",
+            "%$request->status_aset%",
+            "%$request->kategori_aset%",
+            "%$request->tanggal_perolehan%",
+            "%$request->nama_aset%",
+            "%$request->kode_aset%"
+        ]);
     }
 
     /**
