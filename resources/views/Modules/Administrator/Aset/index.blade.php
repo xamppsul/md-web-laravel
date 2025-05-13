@@ -129,15 +129,15 @@
 
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Nama aset</label>
+                                                        <label class="form-label" for="userName">Nama Aset</label>
                                                         <input class="form-control" id="nama_aset"
-                                                            placeholder="masukan nama aset" type="text"
+                                                            placeholder="Masukan Nama Aset" type="text"
                                                             name="nama_aset" value="{{ request('nama_aset') }}">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kode Aset</label>
                                                         <input class="form-control" id="kode_aset"
-                                                            placeholder="masukan kode aset" type="text"
+                                                            placeholder="Masukan Kode Aset" type="text"
                                                             name="kode_aset" value="{{ request('kode_aset') }}">
                                                     </div>
                                                     {{-- <div class="col-md-5">
