@@ -34,7 +34,7 @@
                     <div class="card-header d-flex flex-column gap-2">
                     </div>
                     <div class="card-body">
-                        <form class="row g-3 app-form rounded-control"
+                        <form id="editFormAset" class="row g-3 app-form rounded-control"
                             action="{{ route('admin.master.Asset.update', $data['aset']->id) }}" method="POST">
                             @method('put')
                             @csrf
@@ -222,6 +222,8 @@
                             <div class="col-12">
                                 <button class="btn btn-primary b-r-22" type="submit" value="Submit">Submit
                                 </button>
+                                <button class="btn btn-warning b-r-22" onclick="clearEditFormAset()" value="Clear">Clear
+                                </button>
                                 <a class="btn btn-danger b-r-22" href="{{ route('admin.master.Asset.index') }}">Cancel
                                 </a>
                             </div>
@@ -241,4 +243,15 @@
 
     <!--js-->
     <script src="{{ asset('assets/js/formvalidation.js') }}"></script>
+
+    <script type="text/javascript">
+        function clearEditFormAset() {
+            const form = document.getElementById('editFormAset');
+            Array.from(form.elements).forEach(element => {
+                if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
+                    element.value = '';
+                }
+            });
+        }
+    </script>
 @endsection
