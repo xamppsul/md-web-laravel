@@ -327,13 +327,6 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="harga_perolehan_aset">Harga
                                                             Perolehan</label>
-                                                        {{-- <input class="form-control" id="kode_aset"
-                                                            placeholder="Masukan Harga Perolehan" type="number"> --}}
-                                                        {{-- <input type="text"
-                                                            class="form-control @error('harga_perolehan_aset')
-                                                            is-invalid
-                                                        @enderror price-input"
-                                                            name="harga_perolehan_aset"> --}}
                                                         <div class="input-group">
                                                             <span class="input-group-text bg-secondary-200 b-r-left"
                                                                 id="basic-addon1">Rp</span>
@@ -382,28 +375,6 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-md-5">
-                                                        <label class="form-label" for="address2">Address 2</label>
-                                                        <input class="form-control" id="address2" placeholder="Address"
-                                                            type="text">
-                                                        <div class="mt-1">
-                                                            <span class="text-danger" id="addressError2"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <label class="form-label" for="city">City</label>
-                                                        <input class="form-control" id="city" type="text">
-                                                        <div class="mt-1">
-                                                            <span class="text-danger" id="cityError"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label class="form-label" for="zipCode">Zip</label>
-                                                        <input class="form-control" id="zipCode" type="text">
-                                                        <div class="mt-1">
-                                                            <span class="text-danger" id="zipCodeError"></span>
-                                                        </div>
-                                                    </div> --}}
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
