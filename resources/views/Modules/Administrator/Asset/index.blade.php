@@ -104,20 +104,21 @@
                                                         <label class="form-label" for="userName">Tanggal perolehan(aset
                                                             diterima/dibeli)</label>
                                                         <input class="form-control basic-date" type="text"
-                                                            placeholder="YYYY-MM-DD" name="tanggal_perolehan">
+                                                            placeholder="YYYY-MM-DD" name="tanggal_perolehan"
+                                                            value="{{ old('tanggal_perolehan') }}">
 
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Nama aset</label>
                                                         <input class="form-control" id="nama_aset"
                                                             placeholder="masukan nama aset" type="text"
-                                                            name="nama_aset">
+                                                            name="nama_aset" value="{{ old('nama_aset') }}">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kode Aset</label>
                                                         <input class="form-control" id="kode_aset"
                                                             placeholder="masukan kode aset" type="text"
-                                                            name="kode_aset">
+                                                            name="kode_aset" value="{{ old('kode_aset') }}">
                                                     </div>
                                                     {{-- <div class="col-md-5">
                                                         <label class="form-label" for="address2">Address 2</label>
@@ -145,6 +146,13 @@
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
                                                         </button>
+                                                        <button class="btn btn-warning b-r-22" type="reset"
+                                                            value="Submit">Clear
+                                                        </button>
+                                                        <a href="{{ route('admin.master.Asset.index') }}"
+                                                            class="btn btn-danger b-r-22" type="reset"
+                                                            value="Submit">Cancel
+                                                        </a>
                                                     </div>
                                                 </form>
                                             </div>
