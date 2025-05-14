@@ -444,7 +444,7 @@ class Usecase extends Services implements Usecase_intefaces
         $constantAdmin,
     ): RedirectResponse|View {
         try {
-            $data = $this->indexKegiatanService($userMasterDomain, $request);
+            $data = $this->indexUserMasterService($userMasterDomain, $request);
             return view('Modules.Administrator.UserMaster.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
             $userMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');

@@ -30,6 +30,14 @@ Route::middleware(['throttle:30,1', 'auth:admin'])->group(function () {
                 Route::put('/update/{id}', [Handler::class, 'updateKegiatan'])->name('admin.master.Kegiatan.update');
                 Route::delete('/destroy/{id}', [Handler::class, 'destroyKegiatan'])->name('admin.master.Kegiatan.destroy');
             });
+            Route::prefix('usermaster')->group(function () {
+                Route::get('/', [Handler::class, 'indexUserMaster'])->name('admin.master.UserMaster.index');
+                Route::get('/create', [Handler::class, 'createUserMaster'])->name('admin.master.UserMaster.create');
+                Route::post('/store', [Handler::class, 'storeUserMaster'])->name('admin.master.UserMaster.store');
+                Route::get('/edit/{id}', [Handler::class, 'editUserMaster'])->name('admin.master.UserMaster.edit');
+                Route::put('/update/{id}', [Handler::class, 'updateUserMaster'])->name('admin.master.UserMaster.update');
+                Route::delete('/destroy/{id}', [Handler::class, 'destroyUserMaster'])->name('admin.master.UserMaster.destroy');
+            });
         });
         Route::prefix('elfinder')->group(function () {
             Route::get('/', [Handler::class, 'indexElFinder'])->name('admin.elfinder.index');

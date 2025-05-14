@@ -47,6 +47,7 @@
                         <li><a href="{{ route('admin.master.Asset.index') }}">Aset</a></li>
                         <li><a href="{{ route('admin.master.MouMoa.index') }}">Mou/Moa</a></li>
                         <li><a href="{{ route('admin.master.Kegiatan.index') }}">Kegiatan</a></li>
+                        <li><a href="{{ route('admin.master.UserMaster.index') }}">User</a></li>
                     </ul>
                 </li>
                 <li class="menu-title"><span>File Manager</span></li>
