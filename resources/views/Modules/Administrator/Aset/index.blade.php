@@ -427,7 +427,7 @@
                                                     @method('delete')
                                                     @csrf
                                                     <button type="button"
-                                                        class="btn btn-light-danger icon-btn b-r-4 btn-delete-aset">
+                                                        class="btn btn-light-danger icon-btn b-r-4 btn-delete">
                                                         <i class="ti ti-trash"></i>
                                                     </button>
                                                 </form>

@@ -20,7 +20,7 @@ if (FlashDataError) {
 
 //tombol hapus
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.btn-delete-aset').forEach(function (button) {
+    document.querySelectorAll('.btn-delete').forEach(function (button) {
         button.addEventListener('click', function (e) {
             e.preventDefault();
             let form = this.closest('form');
