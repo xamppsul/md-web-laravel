@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Form Validation')
+@section('title', 'Mou/Moa Edit')
 @section('css')
     <!-- flatpickr css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datepikar/flatpickr.min.css') }}">

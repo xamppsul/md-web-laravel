@@ -257,9 +257,9 @@ class Repository implements Repository_interfaces
      * @param $request
      * @return array
      */
-    public function updateKegiatanRepository(int $id, $kegiatanDomain, $request): void
+    public function updateKegiatanRepository(int $id, $kegiatanDomain, $request, string $fileDaftarHadir, string $fileKegiatan): void
     {
-        $kegiatanDomain->updateDataKegiatanDomain($id, $request);
+        $kegiatanDomain->updateDataKegiatanDomain($id, $request, $fileDaftarHadir, $fileKegiatan);
     }
 
     /**

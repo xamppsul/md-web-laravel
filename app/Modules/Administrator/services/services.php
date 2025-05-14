@@ -207,7 +207,7 @@ class Services extends Repository implements Services_interfaces
      */
     public function updateKegiatanService(int $id, $kegiatanDomain, $request): void
     {
-        $this->updateKegiatanRepository($id, $kegiatanDomain, $request);
+        $this->updateKegiatanRepository($id, $kegiatanDomain, $request, $this->doUploadFileDaftarHadirKegiatan($request), $this->doUploadFileDokumentasiKegiatan($request));
     }
 
     /**

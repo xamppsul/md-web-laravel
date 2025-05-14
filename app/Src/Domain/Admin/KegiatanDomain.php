@@ -70,7 +70,7 @@ class KegiatanDomain
             FROM kegiatan
                 INNER JOIN kegiatan_jenis ON kegiatan.kegiatan_jenis = kegiatan_jenis.id
                 INNER JOIN kegiatan_status ON kegiatan.kegiatan_status = kegiatan_status.id
-            WHERE mou_moa.id = ?
+            WHERE kegiatan.id = ?
         ', [$id]);
     }
     /**
@@ -148,7 +148,7 @@ class KegiatanDomain
 
     public function updateDataKegiatanDomain($id, $request, $fileDaftarHadir, $fileKegiatan): void
     {
-        DB::update('UPDATE mou_moa SET 
+        DB::update('UPDATE kegiatan SET 
             nama_kegiatan = ?,
             kegiatan_jenis = ?,
             tanggal_kegiatan = ?,
@@ -159,7 +159,7 @@ class KegiatanDomain
             file_kegiatan = ?,
             kegiatan_status = ?,
             keterangan = ?,
-            created_at = ?
+            updated_at = ?
             WHERE id = ?', [
             $request->nama_kegiatan,
             $request->kegiatan_jenis,

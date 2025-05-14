@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Form Validation')
+@section('title', 'Aset Edit')
 @section('css')
 
 @endsection
