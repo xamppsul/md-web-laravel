@@ -111,7 +111,7 @@ class Services extends Repository implements Services_interfaces
      */
     public function storeMouMoaService($request, $mouMoaDomain): void
     {
-        $this->storeMouMoaRepository($request, $mouMoaDomain);
+        $this->storeMouMoaRepository($request, $mouMoaDomain, $this->doUploadFilePendukung($request));
     }
 
     /**

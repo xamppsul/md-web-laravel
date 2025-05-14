@@ -21,10 +21,13 @@ interface Repository_interfaces
      */
     public function indexMouMoaRepository($mouMoaDomain, $request);
     public function createMouMoaRepository();
-    public function storeMouMoaRepository($request, $mouMoaDomain): void;
+    public function storeMouMoaRepository($request, $mouMoaDomain, string $filePendukung): void;
     public function editMouMoaRepository(int $id, $mouMoaDomain): array;
     public function updateMouMoaRepository(int $id, $mouMoaDomain, $request): void;
     public function destroyMouMoaRepository(int $id, $mouMoaDomain): void;
+
+    //file upload
+    public function doUploadFilePendukung($request): string;
 
     /**===========================================================================
      * feature: master data kegiatan 

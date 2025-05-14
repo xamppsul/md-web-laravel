@@ -78,7 +78,7 @@ class Repository implements Repository_interfaces
     }
 
     /**
-     * update
+     * destroy
      */
     /**
      * @method destroyAssetRepository
@@ -125,9 +125,9 @@ class Repository implements Repository_interfaces
      * @param $mouMoaDomain
      * @return void
      */
-    public function storeMouMoaRepository($request, $mouMoaDomain): void
+    public function storeMouMoaRepository($request, $mouMoaDomain, string $filePendukung): void
     {
-        $mouMoaDomain->postDataMouMoaDomain($request);
+        $mouMoaDomain->postDataMouMoaDomain($request, $filePendukung);
     }
     /**
      * edit
@@ -163,7 +163,7 @@ class Repository implements Repository_interfaces
     }
 
     /**
-     * update
+     * destroy
      */
     /**
      * @method destroyMouMoaRepository
@@ -174,6 +174,18 @@ class Repository implements Repository_interfaces
     public function destroyMouMoaRepository(int $id, $mouMoaDomain): void
     {
         $mouMoaDomain->deleteDataMouMoaDomain($id);
+    }
+
+    //============================= file upload ==============================
+
+    public function doUploadFilePendukung($request): string
+    {
+        $file = $request->file('dokumen_pendukung');
+        $namaFile = time() . "_" . $file->getClientOriginalName();
+        //move upload file
+        $dirUploadFile = 'docsMouMoa';
+        $file->move($dirUploadFile, $namaFile);
+        return $namaFile;
     }
 
     /**======================================================================================================================================
@@ -248,7 +260,7 @@ class Repository implements Repository_interfaces
     }
 
     /**
-     * update
+     * destroy
      */
     /**
      * @method destroyKegiatanRepository

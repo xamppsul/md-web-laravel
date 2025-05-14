@@ -122,9 +122,10 @@ class MouMoaDomain
     /**
      * @method postDataMouMoaDomain
      * @param $request
+     * @param $filePendukung
      * @return void
      */
-    public function postDataMouMoaDomain($request): void
+    public function postDataMouMoaDomain($request, $filePendukung): void
     {
         DB::insert('insert into mou_moa 
             (nomor_dokumen,
@@ -139,7 +140,7 @@ class MouMoaDomain
             users_id,
             dokumen_pendukung,
             keterangan_tambahan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->nomor_dokumen,
             $request->jenis_dokumen,
             $request->nama_mitra,
@@ -150,7 +151,7 @@ class MouMoaDomain
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
             $request->users_id,
-            $request->dokumen_pendukung,
+            $filePendukung,
             $request->keterangan_tambahan,
             now(),
         ]);
