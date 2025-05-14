@@ -38,7 +38,7 @@ return array(
 
     'route' => [
         'prefix' => 'elfinder',
-        'middleware' => array('auth:admin', 'auth:user'), //Set to null to disable middleware filter
+        // 'middleware' => array('auth:admin', 'auth:user'), //Set to null to disable middleware filter
     ],
 
     /*
