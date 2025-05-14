@@ -130,10 +130,17 @@
                                                             name="nama_mitra" value="{{ request('nama_mitra') }}">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="jenis_dokumen">Jenis Dokumen</label>
-                                                        <input class="form-control" id="jenis_dokumen"
-                                                            placeholder="Masukan Jenis Dokumen" type="text"
-                                                            name="jenis_dokumen" value="{{ request('jenis_dokumen') }}">
+                                                        <label class="form-label" for="jenisDokumen">Jenis Dokumen</label>
+                                                        <select class="form-select" aria-label="Select Kerjasama"
+                                                            name="jenis_dokumen">
+                                                            <option selected="">Pilih Penanggung Jawab</option>
+                                                            @foreach ($data['jenis_dokumen'] as $jenisDokumen)
+                                                                <option value="{{ $jenisDokumen->id }}"
+                                                                    {{ request('jenis_dokumen') == $jenisDokumen->id ? 'selected' : '' }}>
+                                                                    {{ $jenisDokumen->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
@@ -178,13 +185,19 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="jenis_dokumen">Jenis
                                                             Dokumen</label>
-                                                        <input
-                                                            class="form-control @error('jenis_dokumen')
+                                                        <select
+                                                            class="form-select @error('jenis_dokumen')
                                                             is-invalid
                                                         @enderror"
-                                                            id="jenis_dokumen" placeholder="Masukan Jenis Dokumen"
-                                                            type="text" value="{{ old('jenis_dokumen') }}"
-                                                            name="jenis_dokumen">
+                                                            aria-label="Select jenis dokumen" name="jenis_dokumen">
+                                                            <option selected="">Pilih Jenis Dokumen</option>
+                                                            @foreach ($data['jenis_dokumen'] as $jenisDokumen)
+                                                                <option value="{{ $jenisDokumen->id }}"
+                                                                    {{ old('jenis_dokumen') == $jenisDokumen->id ? 'selected' : '' }}>
+                                                                    {{ $jenisDokumen->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                         <div class="mt-1">
                                                             @error('jenis_dokumen')
                                                                 <span class="text-danger"
@@ -395,6 +408,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nomor Dokumen</th>
+                                        <th>Jenis Dokumen</th>
                                         <th>Penanggung Jawab</th>
                                         <th>Nama Mitra</th>
                                         <th>Tanggal Mulai</th>
@@ -407,6 +421,7 @@
                                     @foreach ($data['moumoa'] as $mouMoa)
                                         <tr>
                                             <td>{{ $mouMoa->nomor_dokumen }}</td>
+                                            <td>{{ $mouMoa->mou_moa_jenis_dokumen_name }}</td>
                                             <td>{{ $mouMoa->penanggung_jawab_name }}</td>
                                             <td><span class="badge text-light-primary">{{ $mouMoa->nama_mitra }}</span>
                                             </td>
@@ -470,7 +485,7 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nomor Dokumen:
                                 {{ $mouMoaData->nomor_dokumen }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Dokumen:
-                                {{ $mouMoaData->jenis_dokumen }} </p>
+                                {{ $mouMoaData->mou_moa_jenis_dokumen_name }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Mitra:
                                 {{ $mouMoaData->nama_mitra }}
                             </p>

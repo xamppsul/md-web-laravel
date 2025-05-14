@@ -110,6 +110,7 @@ class Repository implements Repository_interfaces
             'status' => $mouMoaDomain->getStatusMouMoaDomain(),
             'moumoa' => $mouMoaDomain->getAllMouMoaDomain($request),
             'user' => $mouMoaDomain->getUserByRoleFaculty(),
+            'jenis_dokumen' => $mouMoaDomain->getJenisDokumenMouMoaDomain(),
         );
     }
     public function createMouMoaRepository()
@@ -146,6 +147,7 @@ class Repository implements Repository_interfaces
             'status' => $mouMoaDomain->getStatusMouMoaDomain(),
             'moumoa' => $mouMoaDomain->getDetailMouMoaDomain($id)[0],
             'user' => $mouMoaDomain->getUserByRoleFaculty(),
+            'jenis_dokumen' => $mouMoaDomain->getJenisDokumenMouMoaDomain(),
         );
     }
     /**

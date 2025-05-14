@@ -9,7 +9,7 @@ class MouMoaRequest
     {
         return $request->validate([
             'nomor_dokumen' => 'required',
-            'jenis_dokumen' => 'required|string',
+            'jenis_dokumen' => 'required|exists:mou_moa_jenis_dokumen,id',
             'nama_mitra' => 'required|string',
             'judul_kerjasama' => 'required',
             'mou_moa_klasifikasi' => 'required|exists:mou_moa_klasifikasi,id',
@@ -35,7 +35,7 @@ class MouMoaRequest
     {
         return $request->validate([
             'nomor_dokumen' => 'required',
-            'jenis_dokumen' => 'required|string',
+            'jenis_dokumen' => 'required|exists:mou_moa_jenis_dokumen,id',
             'nama_mitra' => 'required|string',
             'judul_kerjasama' => 'required',
             'mou_moa_klasifikasi' => 'required|exists:mou_moa_klasifikasi,id',

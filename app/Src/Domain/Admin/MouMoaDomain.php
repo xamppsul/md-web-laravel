@@ -41,12 +41,14 @@ class MouMoaDomain
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
-                users.name AS penanggung_jawab_name
+                users.name AS penanggung_jawab_name,
+                mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
                 INNER JOIN mou_moa_bidang_kerjasama ON mou_moa.mou_moa_bidang_kerjasama = mou_moa_bidang_kerjasama.id
                 INNER JOIN mou_moa_klasifikasi ON mou_moa.mou_moa_klasifikasi = mou_moa_klasifikasi.id
                 INNER JOIN mou_moa_status ON mou_moa.mou_moa_status = mou_moa_status.id
                 INNER JOIN users ON mou_moa.users_id = users.id
+                INNER JOIN mou_moa_jenis_dokumen ON mou_moa.mou_moa_jenis_dokumen = mou_moa_jenis_dokumen.id
             WHERE mou_moa.mou_moa_jenis_dokumen LIKE ?
                 AND mou_moa.nama_mitra LIKE ?
                 AND mou_moa.mou_moa_klasifikasi LIKE ?
@@ -76,14 +78,25 @@ class MouMoaDomain
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
-                users.name AS penanggung_jawab_name
+                users.name AS penanggung_jawab_name,
+                mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
                 INNER JOIN mou_moa_bidang_kerjasama ON mou_moa.mou_moa_bidang_kerjasama = mou_moa_bidang_kerjasama.id
                 INNER JOIN mou_moa_klasifikasi ON mou_moa.mou_moa_klasifikasi = mou_moa_klasifikasi.id
                 INNER JOIN mou_moa_status ON mou_moa.mou_moa_status = mou_moa_status.id
                 INNER JOIN users ON mou_moa.users_id = users.id
+                INNER JOIN mou_moa_jenis_dokumen ON mou_moa.mou_moa_jenis_dokumen = mou_moa_jenis_dokumen.id
             WHERE mou_moa.id = ?
         ', [$id]);
+    }
+    /**
+     * @method getJenisDokumenMouMoaDomain
+     * @return array
+     */
+
+    public function getJenisDokumenMouMoaDomain(): array
+    {
+        return DB::select('SELECT * FROM mou_moa_jenis_dokumen');
     }
 
     /**
@@ -133,7 +146,7 @@ class MouMoaDomain
     {
         DB::insert('insert into mou_moa 
             (nomor_dokumen,
-            jenis_dokumen,
+            mou_moa_jenis_dokumen,
             nama_mitra,
             judul_kerjasama,
             mou_moa_klasifikasi,
