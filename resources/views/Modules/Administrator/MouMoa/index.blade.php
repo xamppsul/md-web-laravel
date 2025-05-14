@@ -68,84 +68,79 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <form action="{{ route('admin.master.MouMoa.index') }}" method="GET"
-                                                    class="row g-3 app-form rounded-control" id="filterFormAset">
+                                                    class="row g-3 app-form rounded-control" id="filterFormMouMoa">
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kondisi Aset</label>
-                                                        <select class="form-select" aria-label="Select kondisi aset"
-                                                            name="kondisi_aset">
-                                                            <option selected="">Pilih Kondisi Aset</option>
-                                                            <option value="1"
-                                                                {{ request('kondisi_aset') == '1' ? 'selected' : '' }}>Baik
-                                                            </option>
-                                                            <option value="2"
-                                                                {{ request('kondisi_aset') == '2' ? 'selected' : '' }}>Rusak
-                                                            </option>
-                                                            <option value="3"
-                                                                {{ request('kondisi_aset') == '3' ? 'selected' : '' }}>
-                                                                Perlu Perbaikan</option>
+                                                        <label class="form-label"
+                                                            for="mou_moa_klasifikasi">Klasifikasi</label>
+                                                        <select class="form-select" aria-label="Select Klasifikasi"
+                                                            name="mou_moa_klasifikasi">
+                                                            <option selected="">Pilih Klasifikasi</option>
+                                                            @foreach ($data['klasifikasi'] as $mou_moa_klasifikasi)
+                                                                <option value="{{ $mou_moa_klasifikasi->id }}"
+                                                                    {{ request('kondisi_aset') == $mou_moa_klasifikasi->id ? 'selected' : '' }}>
+                                                                    {{ $mou_moa_klasifikasi->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Status Aset</label>
-                                                        <select class="form-select" aria-label="Select status aset"
-                                                            name="status_aset">
-                                                            <option selected="">Pilih Status Aset</option>
-                                                            <option value="1"
-                                                                {{ request('status_aset') == '1' ? 'selected' : '' }}>Aktif
-                                                            </option>
-                                                            <option value="2"
-                                                                {{ request('status_aset') == '2' ? 'selected' : '' }}>Tidak
-                                                                Aktif</option>
-                                                            <option value="3"
-                                                                {{ request('status_aset') == '3' ? 'selected' : '' }}>
-                                                                Dihapus</option>
+                                                        <label class="form-label"
+                                                            for="mou_moa_bidang_kerjasama">Kerjasama</label>
+                                                        <select class="form-select" aria-label="Select Kerjasama"
+                                                            name="mou_moa_bidang_kerjasama">
+                                                            <option selected="">Pilih Kerjasama</option>
+                                                            @foreach ($data['kerjasama'] as $mou_moa_bidang_kerjasama)
+                                                                <option value="{{ $mou_moa_bidang_kerjasama->id }}"
+                                                                    {{ request('mou_moa_bidang_kerjasama') == $mou_moa_bidang_kerjasama->id ? 'selected' : '' }}>
+                                                                    {{ $mou_moa_bidang_kerjasama->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kategori aset</label>
-                                                        <select class="form-select" aria-label="Select kategori aset"
-                                                            name="kategori_aset">
-                                                            <option selected="">Pilih Kategori Aset</option>
-                                                            <option value="1"
-                                                                {{ request('kategori_aset') == '1' ? 'selected' : '' }}>
-                                                                Elektronik</option>
-                                                            <option value="2"
-                                                                {{ request('kategori_aset') == '2' ? 'selected' : '' }}>
-                                                                Kendaraan</option>
-                                                            <option value="3"
-                                                                {{ request('kategori_aset') == '3' ? 'selected' : '' }}>
-                                                                Furniture</option>
-                                                            <option value="4"
-                                                                {{ request('kategori_aset') == '4' ? 'selected' : '' }}>
-                                                                lainnya</option>
+                                                        <label class="form-label" for="mou_moa_status">Status</label>
+                                                        <select class="form-select" aria-label="Select Status"
+                                                            name="mou_moa_status">
+                                                            <option selected="">Pilih Status</option>
+                                                            @foreach ($data['status'] as $mou_moa_status)
+                                                                <option value="{{ $mou_moa_status->id }}"
+                                                                    {{ request('mou_moa_status') == $mou_moa_status->id ? 'selected' : '' }}>
+                                                                    {{ $mou_moa_status->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Tanggal perolehan(aset
-                                                            diterima/dibeli)</label>
-                                                        <input class="form-control basic-date" type="text"
-                                                            placeholder="YYYY-MM-DD" name="tanggal_perolehan"
-                                                            value="{{ request('tanggal_perolehan') }}">
-
+                                                        <label class="form-label" for="penanggungJawab">Penanggung
+                                                            Jawab</label>
+                                                        <select class="form-select" aria-label="Select Kerjasama"
+                                                            name="users_id">
+                                                            <option selected="">Pilih Penanggung Jawab</option>
+                                                            @foreach ($data['user'] as $penanggungJawab)
+                                                                <option value="{{ $penanggungJawab->id }}"
+                                                                    {{ request('users_id') == $penanggungJawab->id ? 'selected' : '' }}>
+                                                                    {{ $penanggungJawab->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Nama Aset</label>
-                                                        <input class="form-control" id="nama_aset"
-                                                            placeholder="Masukan Nama Aset" type="text"
-                                                            name="nama_aset" value="{{ request('nama_aset') }}">
+                                                        <label class="form-label" for="nama_mitra">Mitra</label>
+                                                        <input class="form-control" id="nama_mitra"
+                                                            placeholder="Masukan Nama Mitra" type="text"
+                                                            name="nama_mitra" value="{{ request('nama_mitra') }}">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kode Aset</label>
-                                                        <input class="form-control" id="kode_aset"
-                                                            placeholder="Masukan Kode Aset" type="text"
-                                                            name="kode_aset" value="{{ request('kode_aset') }}">
+                                                        <label class="form-label" for="jenis_dokumen">Jenis Dokumen</label>
+                                                        <input class="form-control" id="jenis_dokumen"
+                                                            placeholder="Masukan Jenis Dokumen" type="text"
+                                                            name="jenis_dokumen" value="{{ request('jenis_dokumen') }}">
                                                     </div>
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
                                                         </button>
                                                         <button class="btn btn-warning b-r-22"
-                                                            onclick="clearFilterFormAset()" value="Clear">Clear
+                                                            onclick="clearfilterFormMouMoa()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -194,24 +189,24 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kategori_aset">Kategori
+                                                        <label class="form-label" for="mou_moa_bidang_kerjasama">Kategori
                                                             Aset</label>
                                                         <select
-                                                            class="form-select @error('kategori_aset')
+                                                            class="form-select @error('mou_moa_bidang_kerjasama')
                                                             is-invalid
                                                         @enderror"
-                                                            aria-label="Select kategori aset" name="kategori_aset">
-                                                            <option selected="">Pilih Kategori Aset</option>
-                                                            @foreach ($data['kategori'] as $kategoriAset)
-                                                                <option value="{{ $kategoriAset->id }}">
-                                                                    {{ $kategoriAset->name }}
+                                                            aria-label="Select kerjasama" name="mou_moa_bidang_kerjasama">
+                                                            <option selected="">Pilih kerjasama</option>
+                                                            @foreach ($data['kerjasama'] as $kerjasama)
+                                                                <option value="{{ $kerjasama->id }}">
+                                                                    {{ $kerjasama->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                         <div class="mt-1">
-                                                            @error('kategori_aset')
+                                                            @error('mou_moa_bidang_kerjasama')
                                                                 <span class="text-danger"
-                                                                    id="kategori_aset">{{ $message }}</span>
+                                                                    id="mou_moa_bidang_kerjasama">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -266,20 +261,22 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
+                                                        <label class="form-label"
+                                                            for="mou_moa_klasifikasi">Klasifikasi</label>
                                                         <select
-                                                            class="form-select @error('kondisi_aset') is-invalid @enderror"
-                                                            aria-label="Select kondisi aset" name="kondisi_aset" required>
-                                                            <option selected="">Pilih Kondisi Aset</option>
-                                                            @foreach ($data['kondisi'] as $kondisiAset)
-                                                                <option value="{{ $kondisiAset->id }}">
-                                                                    {{ $kondisiAset->name }}</option>
+                                                            class="form-select @error('mou_moa_klasifikasi') is-invalid @enderror"
+                                                            aria-label="Select klasifikasi" name="mou_moa_klasifikasi"
+                                                            required>
+                                                            <option selected="">Pilih klasifikasi</option>
+                                                            @foreach ($data['klasifikasi'] as $klasifikasi)
+                                                                <option value="{{ $klasifikasi->id }}">
+                                                                    {{ $klasifikasi->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         <div class="mt-1">
-                                                            @error('kondisi_aset')
+                                                            @error('mou_moa_klasifikasi')
                                                                 <span class="text-danger"
-                                                                    id="kondisi_aset">{{ $message }}</span>
+                                                                    id="mou_moa_klasifikasi">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -386,7 +383,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data['aset'] as $asetData)
+                                    @foreach ($data['moumoa'] as $mouMoa)
                                         <tr>
                                             <td>{{ $asetData->kode_aset }}</td>
                                             <td>{{ $asetData->nama_aset }}</td>
@@ -443,7 +440,7 @@
             <!-- Default Datatable end -->
         </div>
         <!-- Data Table end -->
-        @foreach ($data['aset'] as $asetData)
+        @foreach ($data['moumoa'] as $mouMoaData)
             <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="detailAset--{{ $asetData->id }}"
                 tabindex="-1">
                 <div class="modal-dialog app_modal_sm">
@@ -542,8 +539,8 @@
         });
     </script> --}}
     <script type="text/javascript">
-        function clearFilterFormAset() {
-            const form = document.getElementById('filterFormAset');
+        function clearfilterFormMouMoa() {
+            const form = document.getElementById('filterFormMouMoa');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';

@@ -109,6 +109,7 @@ class Repository implements Repository_interfaces
             'klasifikasi' => $mouMoaDomain->getKlasifikasiMouMoaDomain(),
             'status' => $mouMoaDomain->getStatusMouMoaDomain(),
             'moumoa' => $mouMoaDomain->getAllMouMoaDomain($request),
+            'user' => $mouMoaDomain->getUserByRoleFaculty(),
         );
     }
     public function createMouMoaRepository()

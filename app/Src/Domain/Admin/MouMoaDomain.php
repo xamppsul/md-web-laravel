@@ -110,6 +110,16 @@ class MouMoaDomain
     }
 
     /**
+     * @method getUserByRoleFaculty
+     * @return array
+     */
+
+    public function getUserByRoleFaculty(): array
+    {
+        return DB::select('SELECT * FROM users WHERE roles_id = 3'); //query user with role faculty
+    }
+
+    /**
      * @method postDataMouMoaDomain
      * @param $request
      * @return void
