@@ -200,16 +200,15 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method indexKegiatanRepository
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return array
      */
-    public function indexKegiatanRepository($asetDomain, $request): array
+    public function indexKegiatanRepository($kegiatanDomain, $request): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
-            'aset' => $asetDomain->getAllAsetDomain($request),
+            'status' => $kegiatanDomain->getStatusKegiatan(),
+            'jenis' => $kegiatanDomain->getJenisKegiatan(),
+            'kegiatan' => $kegiatanDomain->getAllKegiatanDomain($request),
         );
     }
     public function createKegiatanRepository()
@@ -222,12 +221,12 @@ class Repository implements Repository_interfaces
     /**
      * @method storeKegiatanRepository
      * @param $request
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return void
      */
-    public function storeKegiatanRepository($request, $asetDomain): void
+    public function storeKegiatanRepository($request, $kegiatanDomain): void
     {
-        $asetDomain->postDataAsetDomain($request);
+        $kegiatanDomain->postDataKegiatanDomain($request);
     }
     /**
      * edit
@@ -235,16 +234,15 @@ class Repository implements Repository_interfaces
     /**
      * @method editKegiatanRepository
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return array
      */
-    public function editKegiatanRepository(int $id, $asetDomain): array
+    public function editKegiatanRepository(int $id, $kegiatanDomain): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
-            'aset' => $asetDomain->getDetailAsetDomain($id)[0],
+            'status' => $kegiatanDomain->getStatusKegiatan(),
+            'jenis' => $kegiatanDomain->getJenisKegiatan(),
+            'kegiatan' => $kegiatanDomain->getDetailKegiatanDomain($id)[0],
         );
     }
     /**
@@ -253,13 +251,13 @@ class Repository implements Repository_interfaces
     /**
      * @method updateKegiatanRepository
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @param $request
      * @return array
      */
-    public function updateKegiatanRepository(int $id, $asetDomain, $request): void
+    public function updateKegiatanRepository(int $id, $kegiatanDomain, $request): void
     {
-        $asetDomain->updateDataAsetDomain($id, $request);
+        $kegiatanDomain->updateDataKegiatanDomain($id, $request);
     }
 
     /**
@@ -268,11 +266,11 @@ class Repository implements Repository_interfaces
     /**
      * @method destroyKegiatanRepository
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return void
      */
-    public function destroyKegiatanRepository(int $id, $asetDomain): void
+    public function destroyKegiatanRepository(int $id, $kegiatanDomain): void
     {
-        $asetDomain->deleteDataAsetDomain($id);
+        $kegiatanDomain->deleteDataKegiatanDomain($id);
     }
 }

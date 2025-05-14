@@ -6,8 +6,10 @@ use App\Modules\Administrator\interfaces\Handler_interfaces;
 use App\Modules\Administrator\usecase\Usecase;
 use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\AsetDomain;
+use App\Src\Domain\Admin\KegiatanDomain;
 use App\Src\Domain\Admin\MouMoaDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
+use App\Src\Request\Admin\Master\KegiatanRequest;
 use App\Src\Request\Admin\Master\MouMoaRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -28,6 +30,8 @@ class Handler extends Usecase implements Handler_interfaces
         private MouMoaDomain $mouMoaDomain,
         private MouMoaRequest $mouMoaRequest,
         //kegiatan
+        private KegiatanDomain $kegiatanDomain,
+        private KegiatanRequest $kegiatanRequest,
     ) {}
     /**
      * ==============================================================================================================================

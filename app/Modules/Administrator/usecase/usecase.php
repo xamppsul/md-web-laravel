@@ -295,21 +295,21 @@ class Usecase extends Services implements Usecase_intefaces
 
     /**
      * @method indexKegiatanCase
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @param $request
      * @param $constantAdmin
      * @return RedirectResponse|View
      */
     public function indexKegiatanCase(
-        $asetDomain,
+        $kegiatanDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View {
         try {
-            $data = $this->indexKegiatanService($asetDomain, $request);
+            $data = $this->indexKegiatanService($kegiatanDomain, $request);
             return view('Modules.Administrator.Kegiatan.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
@@ -326,25 +326,25 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeKegiatanCase
      * @param $request
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @param $asetRequest
      * @return RedirectResponse
      */
     public function storeKegiatanCase(
         $request,
-        $asetDomain,
+        $kegiatanDomain,
         $asetRequest
     ): RedirectResponse {
         $asetRequest->postRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->storeKegiatanService($request, $asetDomain);
+            $this->storeKegiatanService($request, $kegiatanDomain);
             DB::commit();
             return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil tambah kegiatan');
         } catch (\Exception $error) {
             DB::rollBack();
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
@@ -352,22 +352,22 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method editKegiatanCase
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @param $request
      * @param $constantDomain
      * @return RedirectResponse|View
      */
     public function editKegiatanCase(
         int $id,
-        $asetDomain,
+        $kegiatanDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View {
         try {
-            $data = $this->editKegiatanService($id, $asetDomain);
+            $data = $this->editKegiatanService($id, $kegiatanDomain);
             return view('Modules.Administrator.Kegiatan.edit', compact('data'));
         } catch (\Exception $error) {
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
@@ -376,26 +376,26 @@ class Usecase extends Services implements Usecase_intefaces
      * @method updateKegiatanCase
      * @param int $id
      * @param $request
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @param $asetRequest
      * @return RedirectResponse
      */
     public function updateKegiatanCase(
         int $id,
         $request,
-        $asetDomain,
+        $kegiatanDomain,
         $asetRequest,
     ): RedirectResponse {
         $asetRequest->updateRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->updateKegiatanService($id, $asetDomain, $request);
+            $this->updateKegiatanService($id, $kegiatanDomain, $request);
             DB::commit();
             return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil update kegiatan');
         } catch (\Exception $error) {
             DB::rollBack();
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
@@ -408,17 +408,17 @@ class Usecase extends Services implements Usecase_intefaces
     public function destroyKegiatanCase(
         int $id,
         $request,
-        $asetDomain,
+        $kegiatanDomain,
     ): RedirectResponse {
 
         DB::beginTransaction();
         try {
-            $this->destroyKegiatanService($id, $asetDomain);
+            $this->destroyKegiatanService($id, $kegiatanDomain);
             DB::commit();
             return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil delete kegiatan');
         } catch (\Exception $error) {
             DB::rollBack();
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
