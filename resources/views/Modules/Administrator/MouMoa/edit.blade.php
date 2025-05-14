@@ -254,7 +254,8 @@
                             <div class="col-12">
                                 <button class="btn btn-primary b-r-22" type="submit" value="Submit">Submit
                                 </button>
-                                <button class="btn btn-warning b-r-22" type="reset" value="Submit">Clear
+                                <button class="btn btn-warning b-r-22" value="clear"
+                                    onclick="cleareditFormMouMoa()">Clear
                                 </button>
                                 <a class="btn btn-danger b-r-22" href="{{ route('admin.master.MouMoa.index') }}">Cancel
                                 </a>
