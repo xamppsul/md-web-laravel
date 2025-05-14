@@ -20,20 +20,20 @@ interface Handler_interfaces
     /**
      * master mou_moa
      */
-    public function indexMouMoa(): View;
+    public function indexMouMoa(Request $request): View|RedirectResponse;
     public function createMouMoa(): View;
     public function storeMouMoa(Request $request);
-    public function editMouMoa($id);
-    public function updateMouMoa($id);
-    public function destroyMouMoa($id);
+    public function editMouMoa(int $id, Request $request): RedirectResponse|view;
+    public function updateMouMoa(int $id, Request $request): RedirectResponse;
+    public function destroyMouMoa(int $id, Request $request): RedirectResponse;
 
     /**
      * master kegiatan
      */
-    public function indexKegiatan(): View;
+    public function indexKegiatan(Request $request): View|RedirectResponse;
     public function createKegiatan(): View;
     public function storeKegiatan(Request $request);
-    public function editKegiatan($id);
-    public function updateKegiatan($id);
-    public function destroyKegiatan($id);
+    public function editKegiatan(int $id, Request $request): RedirectResponse|view;
+    public function updateKegiatan(int $id, Request $request): RedirectResponse;
+    public function destroyKegiatan(int $id, Request $request): RedirectResponse;
 }

@@ -152,18 +152,24 @@ class Usecase extends Services implements Usecase_intefaces
      * feature: master data mou moa
      * =============================================================================================================================================================
      */
-
     /**
      * @method indexMouMoaCase
+     * @param $asetDomain
+     * @param $request
+     * @param $constantAdmin
      * @return RedirectResponse|View
      */
-    public function indexMouMoaCase(): RedirectResponse|View
-    {
+    public function indexMouMoaCase(
+        $asetDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
         try {
-            $data = $this->indexMouMoaService();
-            return view('Modules.Administrator.MouMoa.index', compact('data'));
+            $data = $this->indexMouMoaService($asetDomain, $request);
+            return view('Modules.Administrator.MouMoa.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
-            return redirect()->back()->with('error', $error->getMessage());
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -179,54 +185,103 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeMouMoaCase
      * @param $request
-     * @return mixed
+     * @param $asetDomain
+     * @param $asetRequest
+     * @return RedirectResponse
      */
-    public function storeMouMoaCase($request)
-    {
+    public function storeMouMoaCase(
+        $request,
+        $asetDomain,
+        $asetRequest
+    ): RedirectResponse {
+        $asetRequest->postRequestData($request);
+
+        DB::beginTransaction();
         try {
-            return $this->storeMouMoaService($request);
+            $this->storeMouMoaService($request, $asetDomain);
+            DB::commit();
+            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil tambah aset');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
     /**
      * @method editMouMoaCase
-     * @param $id
-     * @return mixed
+     * @param int $id
+     * @param $asetDomain
+     * @param $request
+     * @param $constantDomain
+     * @return RedirectResponse|View
      */
-    public function editMouMoaCase($id)
-    {
+    public function editMouMoaCase(
+        int $id,
+        $asetDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
         try {
-            return $this->editMouMoaService($id);
+            $data = $this->editMouMoaService($id, $asetDomain);
+            return view('Modules.Administrator.MouMoa.edit', compact('data'));
         } catch (\Exception $error) {
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
     /**
      * @method updateMouMoaCase
-     * @param $id
-     * @return mixed
+     * @param int $id
+     * @param $request
+     * @param $asetDomain
+     * @param $asetRequest
+     * @return RedirectResponse
      */
-    public function updateMouMoaCase($id)
-    {
+    public function updateMouMoaCase(
+        int $id,
+        $request,
+        $asetDomain,
+        $asetRequest,
+    ): RedirectResponse {
+        $asetRequest->updateRequestData($request);
+
+        DB::beginTransaction();
         try {
-            return $this->updateMouMoaService($id);
+            $this->updateMouMoaService($id, $asetDomain, $request);
+            DB::commit();
+            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil update aset');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
     /**
      * @method destroyMouMoaCase
-     * @param $id
-     * @return mixed
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function destroyMouMoaCase($id)
-    {
+    public function destroyMouMoaCase(
+        int $id,
+        $request,
+        $asetDomain,
+    ): RedirectResponse {
+
+        DB::beginTransaction();
         try {
-            return $this->destroyMouMoaService($id);
+            $this->destroyMouMoaService($id, $asetDomain);
+            DB::commit();
+            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil delete aset');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
+
 
     /**
      * =============================================================================================================================================================
@@ -236,15 +291,22 @@ class Usecase extends Services implements Usecase_intefaces
 
     /**
      * @method indexKegiatanCase
+     * @param $asetDomain
+     * @param $request
+     * @param $constantAdmin
      * @return RedirectResponse|View
      */
-    public function indexKegiatanCase(): RedirectResponse|View
-    {
+    public function indexKegiatanCase(
+        $asetDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
         try {
-            $data = $this->indexKegiatanService();
-            return view('Modules.Administrator.Kegiatan.index', compact('data'));
+            $data = $this->indexKegiatanService($asetDomain, $request);
+            return view('Modules.Administrator.Kegiatan.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
-            return redirect()->back()->with('error', $error->getMessage());
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -260,52 +322,100 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeKegiatanCase
      * @param $request
-     * @return mixed
+     * @param $asetDomain
+     * @param $asetRequest
+     * @return RedirectResponse
      */
-    public function storeKegiatanCase($request)
-    {
+    public function storeKegiatanCase(
+        $request,
+        $asetDomain,
+        $asetRequest
+    ): RedirectResponse {
+        $asetRequest->postRequestData($request);
+
+        DB::beginTransaction();
         try {
-            return $this->storeKegiatanService($request);
+            $this->storeKegiatanService($request, $asetDomain);
+            DB::commit();
+            return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil tambah kegiatan');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
     /**
      * @method editKegiatanCase
-     * @param $id
-     * @return mixed
+     * @param int $id
+     * @param $asetDomain
+     * @param $request
+     * @param $constantDomain
+     * @return RedirectResponse|View
      */
-    public function editKegiatanCase($id)
-    {
+    public function editKegiatanCase(
+        int $id,
+        $asetDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
         try {
-            return $this->editKegiatanService($id);
+            $data = $this->editKegiatanService($id, $asetDomain);
+            return view('Modules.Administrator.Kegiatan.edit', compact('data'));
         } catch (\Exception $error) {
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
     /**
      * @method updateKegiatanCase
-     * @param $id
-     * @return mixed
+     * @param int $id
+     * @param $request
+     * @param $asetDomain
+     * @param $asetRequest
+     * @return RedirectResponse
      */
-    public function updateKegiatanCase($id)
-    {
+    public function updateKegiatanCase(
+        int $id,
+        $request,
+        $asetDomain,
+        $asetRequest,
+    ): RedirectResponse {
+        $asetRequest->updateRequestData($request);
+
+        DB::beginTransaction();
         try {
-            return $this->updateKegiatanService($id);
+            $this->updateKegiatanService($id, $asetDomain, $request);
+            DB::commit();
+            return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil update kegiatan');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
     /**
      * @method destroyKegiatanCase
-     * @param $id
-     * @return mixed
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function destroyKegiatanCase($id)
-    {
+    public function destroyKegiatanCase(
+        int $id,
+        $request,
+        $asetDomain,
+    ): RedirectResponse {
+
+        DB::beginTransaction();
         try {
-            return $this->destroyKegiatanService($id);
+            $this->destroyKegiatanService($id, $asetDomain);
+            DB::commit();
+            return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil delete kegiatan');
         } catch (\Exception $error) {
+            DB::rollBack();
+            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 }

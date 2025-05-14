@@ -6,6 +6,7 @@ use App\Modules\Administrator\interfaces\Handler_interfaces;
 use App\Modules\Administrator\usecase\Usecase;
 use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\AsetDomain;
+use App\Src\Domain\Admin\MouMoaDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -23,6 +24,7 @@ class Handler extends Usecase implements Handler_interfaces
         private AsetRequest $asetRequest,
         private ConstantAdmin $constantAdmin,
         //mou moa
+        private MouMoaDomain $mouMoaDomain,
         //kegiatan
     ) {}
     /**
@@ -116,11 +118,15 @@ class Handler extends Usecase implements Handler_interfaces
      */
     /**
      * @method indexMouMoa
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function indexMouMoa(): View
+    public function indexMouMoa(Request $request): View|RedirectResponse
     {
-        return $this->indexMouMoaCase();
+        return $this->indexMouMoaCase(
+            $this->asetDomain,
+            $request,
+            $this->constantAdmin,
+        );
     }
 
     /**
@@ -134,42 +140,57 @@ class Handler extends Usecase implements Handler_interfaces
 
     /**
      * @method storeMouMoa
-     * @return mixed
      */
     public function storeMouMoa(Request $request)
     {
-        return $this->storeMouMoaCase($request);
+        return $this->storeMouMoaCase(
+            $request,
+            $this->asetDomain,
+            $this->asetRequest,
+        );
     }
 
     /**
      * @method editMouMoa
-     * @return mixed
-     * @param $id
-
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse|view
      */
-    public function editMouMoa($id)
+    public function editMouMoa(int $id, Request $request): RedirectResponse|view
     {
-        return $this->editMouMoaCase($id);
+        return $this->editMouMoaCase(
+            $id,
+            $this->asetDomain,
+            $request,
+            $this->constantAdmin,
+        );
     }
 
     /**
      * @method updateMouMoa
-     * @return mixed
-     * @param $id
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
      */
-    public function updateMouMoa($id)
+    public function updateMouMoa(int $id, Request $request): RedirectResponse
     {
-        return $this->updateMouMoaCase($id);
+        return $this->updateMouMoaCase(
+            $id,
+            $request,
+            $this->asetDomain,
+            $this->asetRequest,
+        );
     }
 
     /**
      * @method destroyMouMoa
-     * @return mixed
-     * @param $id
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
      */
-    public function destroyMouMoa($id)
+    public function destroyMouMoa(int $id, Request $request): RedirectResponse
     {
-        return $this->destroyMouMoaCase($id);
+        return $this->destroyMouMoaCase($id, $request, $this->asetDomain);
     }
 
 
@@ -180,11 +201,15 @@ class Handler extends Usecase implements Handler_interfaces
      */
     /**
      * @method indexKegiatan
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function indexKegiatan(): View
+    public function indexKegiatan(Request $request): View|RedirectResponse
     {
-        return $this->indexKegiatanCase();
+        return $this->indexKegiatanCase(
+            $this->asetDomain,
+            $request,
+            $this->constantAdmin,
+        );
     }
 
     /**
@@ -198,41 +223,56 @@ class Handler extends Usecase implements Handler_interfaces
 
     /**
      * @method storeKegiatan
-     * @return mixed
      */
     public function storeKegiatan(Request $request)
     {
-        return $this->storeKegiatanCase($request);
+        return $this->storeKegiatanCase(
+            $request,
+            $this->asetDomain,
+            $this->asetRequest,
+        );
     }
 
     /**
      * @method editKegiatan
-     * @return mixed
-     * @param $id
-
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse|view
      */
-    public function editKegiatan($id)
+    public function editKegiatan(int $id, Request $request): RedirectResponse|view
     {
-        return $this->editKegiatanCase($id);
+        return $this->editKegiatanCase(
+            $id,
+            $this->asetDomain,
+            $request,
+            $this->constantAdmin,
+        );
     }
 
     /**
      * @method updateKegiatan
-     * @return mixed
-     * @param $id
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
      */
-    public function updateKegiatan($id)
+    public function updateKegiatan(int $id, Request $request): RedirectResponse
     {
-        return $this->updateKegiatanCase($id);
+        return $this->updateKegiatanCase(
+            $id,
+            $request,
+            $this->asetDomain,
+            $this->asetRequest,
+        );
     }
 
     /**
      * @method destroyKegiatan
-     * @return mixed
-     * @param $id
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
      */
-    public function destroyKegiatan($id)
+    public function destroyKegiatan(int $id, Request $request): RedirectResponse
     {
-        return $this->destroyKegiatanCase($id);
+        return $this->destroyKegiatanCase($id, $request, $this->asetDomain);
     }
 }
