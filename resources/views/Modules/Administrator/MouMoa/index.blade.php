@@ -73,7 +73,7 @@
                                                         <label class="form-label"
                                                             for="mou_moa_klasifikasi">Klasifikasi</label>
                                                         <select class="form-select" aria-label="Select Klasifikasi"
-                                                            name="mou_moa_klasifikasi">
+                                                            name="mou_moa_klasifikasi" required>
                                                             <option selected="">Pilih Klasifikasi</option>
                                                             @foreach ($data['klasifikasi'] as $mou_moa_klasifikasi)
                                                                 <option value="{{ $mou_moa_klasifikasi->id }}"
@@ -87,7 +87,7 @@
                                                         <label class="form-label"
                                                             for="mou_moa_bidang_kerjasama">Kerjasama</label>
                                                         <select class="form-select" aria-label="Select Kerjasama"
-                                                            name="mou_moa_bidang_kerjasama">
+                                                            name="mou_moa_bidang_kerjasama" required>
                                                             <option selected="">Pilih Kerjasama</option>
                                                             @foreach ($data['kerjasama'] as $mou_moa_bidang_kerjasama)
                                                                 <option value="{{ $mou_moa_bidang_kerjasama->id }}"
@@ -100,7 +100,7 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="mou_moa_status">Status</label>
                                                         <select class="form-select" aria-label="Select Status"
-                                                            name="mou_moa_status">
+                                                            name="mou_moa_status" required>
                                                             <option selected="">Pilih Status</option>
                                                             @foreach ($data['status'] as $mou_moa_status)
                                                                 <option value="{{ $mou_moa_status->id }}"
@@ -113,7 +113,7 @@
                                                         <label class="form-label" for="penanggungJawab">Penanggung
                                                             Jawab</label>
                                                         <select class="form-select" aria-label="Select Kerjasama"
-                                                            name="users_id">
+                                                            name="users_id" required>
                                                             <option selected="">Pilih Penanggung Jawab</option>
                                                             @foreach ($data['user'] as $penanggungJawab)
                                                                 <option value="{{ $penanggungJawab->id }}"
