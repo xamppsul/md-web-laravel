@@ -327,15 +327,15 @@ class Usecase extends Services implements Usecase_intefaces
      * @method storeKegiatanCase
      * @param $request
      * @param $kegiatanDomain
-     * @param $asetRequest
+     * @param $kegiatanRequest
      * @return RedirectResponse
      */
     public function storeKegiatanCase(
         $request,
         $kegiatanDomain,
-        $asetRequest
+        $kegiatanRequest
     ): RedirectResponse {
-        $asetRequest->postRequestData($request);
+        $kegiatanRequest->postRequestData($request);
 
         DB::beginTransaction();
         try {
@@ -377,16 +377,16 @@ class Usecase extends Services implements Usecase_intefaces
      * @param int $id
      * @param $request
      * @param $kegiatanDomain
-     * @param $asetRequest
+     * @param $kegiatanRequest
      * @return RedirectResponse
      */
     public function updateKegiatanCase(
         int $id,
         $request,
         $kegiatanDomain,
-        $asetRequest,
+        $kegiatanRequest,
     ): RedirectResponse {
-        $asetRequest->updateRequestData($request);
+        $kegiatanRequest->updateRequestData($request);
 
         DB::beginTransaction();
         try {

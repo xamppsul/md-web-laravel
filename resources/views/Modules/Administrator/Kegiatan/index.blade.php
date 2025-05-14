@@ -221,7 +221,7 @@
                                                         <input
                                                             class="form-control @error('jumlah_peserta') is-invalid @enderror"
                                                             id="jumlah_peserta" name="jumlah_peserta"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Nomor Dokumen" type="number"
                                                             value="{{ old('jumlah_peserta') }}">
                                                         <div class="mt-1">
                                                             @error('jumlah_peserta')

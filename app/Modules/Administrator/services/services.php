@@ -178,11 +178,13 @@ class Services extends Repository implements Services_interfaces
      * @method storeKegiatanService
      * @param $request
      * @param $kegiatanDomain
+     * @param $fileDaftarHadir
+     * @param $fileKegiatan
      * @return void
      */
     public function storeKegiatanService($request, $kegiatanDomain): void
     {
-        $this->storeKegiatanRepository($request, $kegiatanDomain);
+        $this->storeKegiatanRepository($request, $kegiatanDomain, $this->doUploadFileDaftarHadirKegiatan($request), $this->doUploadFileDokumentasiKegiatan($request));
     }
 
     /**

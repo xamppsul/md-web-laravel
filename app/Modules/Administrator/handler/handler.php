@@ -235,7 +235,7 @@ class Handler extends Usecase implements Handler_interfaces
         return $this->storeKegiatanCase(
             $request,
             $this->kegiatanDomain,
-            $this->asetRequest,
+            $this->kegiatanRequest,
         );
     }
 
@@ -267,7 +267,7 @@ class Handler extends Usecase implements Handler_interfaces
             $id,
             $request,
             $this->kegiatanDomain,
-            $this->asetRequest,
+            $this->kegiatanRequest,
         );
     }
 

@@ -3,6 +3,8 @@
 /public/hot
 /public/storage
 /public/docsMouMoa
+/public/docsFileKegiatan
+/public/docsKegiatanDaftarHadir
 /storage/*.key
 /storage/pail
 /mdfebumk-compose

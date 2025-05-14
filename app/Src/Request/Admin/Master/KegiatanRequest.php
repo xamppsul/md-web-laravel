@@ -21,9 +21,9 @@ class KegiatanRequest
         ], [
             'required' => ':attribute wajib di isi',
             'exists' => ':attribute tidak ditemukan di database',
-            'required' => ':attribute file wajib diisi',
             'file' => ':attribute File dokumen tidak valid',
-            'mimes' => ':attribute Tipe file harus pdf, doc, docx',
+            'file_kegiatan.mimes' => ' Tipe file harus jpg,png,jpeg',
+            'file_daftar_hadir.mimes' => ' Tipe file harus pdf,doc,docx,xls',
             'max' => ':attribute Ukuran file maksimal 2MB',
         ]);
     }
@@ -44,9 +44,9 @@ class KegiatanRequest
         ], [
             'required' => ':attribute wajib di isi',
             'exists' => ':attribute tidak ditemukan di database',
-            'required' => ':attribute file wajib diisi',
             'file' => ':attribute File dokumen tidak valid',
-            'mimes' => ':attribute Tipe file harus pdf, doc, docx',
+            'file_kegiatan.mimes' => ' Tipe file harus jpg,png,jpeg',
+            'file_daftar_hadir.mimes' => ' Tipe file harus pdf,doc,docx,xls',
             'max' => ':attribute Ukuran file maksimal 2MB',
         ]);
     }

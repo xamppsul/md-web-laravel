@@ -222,11 +222,13 @@ class Repository implements Repository_interfaces
      * @method storeKegiatanRepository
      * @param $request
      * @param $kegiatanDomain
+     * @param $fileDaftarHadir
+     * @param $fileKegiatan
      * @return void
      */
-    public function storeKegiatanRepository($request, $kegiatanDomain): void
+    public function storeKegiatanRepository($request, $kegiatanDomain, string $fileDaftarHadir, string $fileKegiatan): void
     {
-        $kegiatanDomain->postDataKegiatanDomain($request);
+        $kegiatanDomain->postDataKegiatanDomain($request, $fileDaftarHadir, $fileKegiatan);
     }
     /**
      * edit
@@ -272,5 +274,25 @@ class Repository implements Repository_interfaces
     public function destroyKegiatanRepository(int $id, $kegiatanDomain): void
     {
         $kegiatanDomain->deleteDataKegiatanDomain($id);
+    }
+
+    public function doUploadFileDaftarHadirKegiatan($request): string
+    {
+        $file = $request->file('file_daftar_hadir');
+        $namaFile = time() . "_" . $file->getClientOriginalName();
+        //move upload file
+        $dirUploadFile = 'docsKegiatanDaftarHadir';
+        $file->move($dirUploadFile, $namaFile);
+        return $namaFile;
+    }
+
+    public function doUploadFileDokumentasiKegiatan($request): string
+    {
+        $file = $request->file('file_kegiatan');
+        $namaFile = time() . "_" . $file->getClientOriginalName();
+        //move upload file
+        $dirUploadFile = 'docsFileKegiatan';
+        $file->move($dirUploadFile, $namaFile);
+        return $namaFile;
     }
 }
