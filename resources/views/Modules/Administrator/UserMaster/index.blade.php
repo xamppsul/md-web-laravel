@@ -237,12 +237,12 @@
                                                     data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
                                                     <i class="ti ti-info-circle text-success"></i>
                                                 </button>
-                                                <a href="{{ route('admin.master.Asset.edit', $userMaster->id) }}"
+                                                <a href="{{ route('admin.master.UserMaster.edit', $userMaster->id) }}"
                                                     class="btn btn-light-success icon-btn b-r-4">
                                                     <i class="ti ti-edit text-success"></i>
                                                 </a>
                                                 <form class="btn btn-light-danger icon-btn b-r-4"
-                                                    action="{{ route('admin.master.Asset.destroy', $userMaster->id) }}"
+                                                    action="{{ route('admin.master.UserMaster.destroy', $userMaster->id) }}"
                                                     method="POST">
                                                     @method('delete')
                                                     @csrf
