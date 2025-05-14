@@ -25,12 +25,11 @@ class UserMasterRequest
     {
         return $request->validate([
             'name' => 'required|string',
-            'username' => 'required|unique:users,username',
-            'email' => 'required|email|unique:users,email',
+            'username' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
             'roles_id' => 'required|exists:roles,id',
         ], [
-            'unique' => ':attribute sudah tersedia harap gunakan yang lain',
             'required' => ':attribute wajib di isi',
             'exists' => ':attribute tidak ditemukan di database',
             'email' => ':attribute format salah'

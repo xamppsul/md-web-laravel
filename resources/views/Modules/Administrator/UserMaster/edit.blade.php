@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Aset Edit')
+@section('title', 'User Edit')
 @section('css')
 
 @endsection
@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a class="f-s-14 f-w-500" href="{{ route('admin.master.Asset.index') }}">Aset</a>
+                        <a class="f-s-14 f-w-500" href="{{ route('admin.master.UserMaster.index') }}">User</a>
                     </li>
                 </ul>
             </div>
@@ -34,197 +34,81 @@
                     <div class="card-header d-flex flex-column gap-2">
                     </div>
                     <div class="card-body">
-                        <form id="editFormAset" class="row g-3 app-form rounded-control"
-                            action="{{ route('admin.master.Asset.update', $data['aset']->id) }}" method="POST">
+                        <form id="editFormUser" class="row g-3 app-form rounded-control"
+                            action="{{ route('admin.master.UserMaster.update', $data['usermaster']->id) }}" method="POST">
                             @method('put')
                             @csrf
                             <div class="col-md-6">
-                                <label class="form-label" for="kode_aset">Kode Aset</label>
-                                <input class="form-control @error('kode_aset') is-invalid @enderror" id="kode_aset"
-                                    name="kode_aset" placeholder="Masukan Kode Aset" type="text"
-                                    value="{{ $data['aset']->kode_aset }}">
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-control @error('name') is-invalid @enderror" id="name"
+                                    name="name" placeholder="Masukan Name" type="text"
+                                    value="{{ $data['usermaster']->name }}">
                                 <div class="mt-1">
-                                    @error('kode_aset')
-                                        <span class="text-danger" id="kode_aset">{{ $message }}</span>
+                                    @error('name')
+                                        <span class="text-danger" id="name">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="nama_aset">Nama Aset</label>
-                                <input
-                                    class="form-control @error('nama_aset')
-                                                            is-invalid
-                                                        @enderror"
-                                    id="nama_aset" placeholder="Masukan Nama Aset" type="text"
-                                    value="{{ $data['aset']->nama_aset }}" name="nama_aset">
+                                <label class="form-label" for="username">username</label>
+                                <input class="form-control @error('username') is-invalid @enderror" id="username"
+                                    name="username" placeholder="Masukan username" type="text"
+                                    value="{{ $data['usermaster']->username }}">
                                 <div class="mt-1">
-                                    @error('nama_aset')
-                                        <span class="text-danger" id="nama_aset">{{ $message }}</span>
+                                    @error('username')
+                                        <span class="text-danger" id="username">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="kategori_aset">Kategori
-                                    Aset</label>
+                                <label class="form-label" for="email">email</label>
+                                <input class="form-control @error('email') is-invalid @enderror" id="email"
+                                    name="email" placeholder="Masukan email" type="text"
+                                    value="{{ $data['usermaster']->email }}">
+                                <div class="mt-1">
+                                    @error('email')
+                                        <span class="text-danger" id="email">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="password">password</label>
+                                <input class="form-control @error('password') is-invalid @enderror" id="password"
+                                    name="password" placeholder="Masukan password" type="text"
+                                    value="{{ old('password') }}">
+                                <div class="mt-1">
+                                    @error('password')
+                                        <span class="text-danger" id="password">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="roles_id">Pilih Role</label>
                                 <select
-                                    class="form-select @error('kategori_aset')
+                                    class="form-select @error('roles_id')
                                                             is-invalid
                                                         @enderror"
-                                    aria-label="Select kategori aset" name="kategori_aset">
-                                    <option selected="">Pilih Kategori Aset</option>
-                                    @foreach ($data['kategori'] as $kategoriAset)
-                                        <option value="{{ $kategoriAset->id }}"
-                                            {{ $data['aset']->kategori_aset == $kategoriAset->id ? 'selected' : '' }}>
-                                            {{ $kategoriAset->name }}
+                                    aria-label="Select role" name="roles_id">
+                                    <option selected="">Pilih Role</option>
+                                    @foreach ($data['role'] as $roles)
+                                        <option value="{{ $roles->id }}"
+                                            {{ $data['usermaster']->roles_id == $roles->id ? 'selected' : '' }}>
+                                            {{ $roles->name }}
                                         </option>
                                     @endforeach
                                 </select>
                                 <div class="mt-1">
-                                    @error('kategori_aset')
-                                        <span class="text-danger" id="kategori_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="model_merk_aset">Model/Merk</label>
-                                <input
-                                    class="form-control @error('model_merk_aset')
-                                                            is-invalid
-                                                        @enderror"
-                                    id="kode_aset" name="model_merk_aset" placeholder="Masukan Model/Merk Aset"
-                                    type="text" value="{{ $data['aset']->merek_model }}">
-                                <div class="mt-1">
-                                    @error('model_merk_aset')
-                                        <span class="text-danger" id="model_merk_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="tanggal_perolehan_aset">Tanggal
-                                    Perolehan(Aset
-                                    diterima/dibeli)</label>
-                                <input
-                                    class="form-control @error('tanggal_perolehan_aset')
-                                                            is-invalid
-                                                        @enderror basic-date"
-                                    type="text" name="tanggal_perolehan_aset" placeholder="YYYY-MM-DD"
-                                    value="{{ $data['aset']->tanggal_perolehan }}">
-                                <div class="mt-1">
-                                    @error('tanggal_perolehan_aset')
-                                        <span class="text-danger" id="tanggal_perolehan_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="lokasi_aset">Lokasi Aset</label>
-                                <input
-                                    class="form-control @error('lokasi_aset')
-                                                            is-invalid
-                                                        @enderror"
-                                    id="kode_aset" name="lokasi_aset" placeholder="Masukan Lokasi Aset" type="text"
-                                    value="{{ $data['aset']->lokasi_aset }}">
-                                <div class="mt-1">
-                                    @error('lokasi_aset')
-                                        <span class="text-danger" id="tanggal_perolehan_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
-                                <select class="form-select @error('kondisi_aset') is-invalid @enderror"
-                                    aria-label="Select kondisi aset" name="kondisi_aset" required>
-                                    <option selected="">Pilih Kondisi Aset</option>
-                                    @foreach ($data['kondisi'] as $kondisiAset)
-                                        <option value="{{ $kondisiAset->id }}"
-                                            {{ $data['aset']->kondisi_aset == $kondisiAset->id ? 'selected' : '' }}>
-                                            {{ $kondisiAset->name }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="mt-1">
-                                    @error('kondisi_aset')
-                                        <span class="text-danger" id="kondisi_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="status_aset">Status Aset</label>
-                                <select
-                                    class="form-select @error('status_aset')
-                                                            is-invalid
-                                                        @enderror"
-                                    aria-label="Select status aset" name="status_aset" required>
-                                    <option selected="">Pilih Status Aset</option>
-                                    @foreach ($data['status'] as $statusAset)
-                                        <option value="{{ $statusAset->id }}"
-                                            {{ $data['aset']->status_aset == $statusAset->id ? 'selected' : '' }}>
-                                            {{ $statusAset->name }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="mt-1">
-                                    @error('status_aset')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="harga_perolehan_aset">Harga
-                                    Perolehan</label>
-                                {{-- <input class="form-control" id="kode_aset"
-                                                            placeholder="Masukan Harga Perolehan" type="number"> --}}
-                                {{-- <input type="text"
-                                                            class="form-control @error('harga_perolehan_aset')
-                                                            is-invalid
-                                                        @enderror price-input"
-                                                            name="harga_perolehan_aset"> --}}
-                                <div class="input-group">
-                                    <span class="input-group-text bg-secondary-200 b-r-left" id="basic-addon1">Rp</span>
-                                    <input type="number" name="harga_perolehan_aset"
-                                        class="form-control @error('harga_perolehan_aset')
-                                                                is-invalid
-                                                            @enderror"
-                                        placeholder="Masukan Harga Perolehan"
-                                        value="{{ $data['aset']->harga_perolehan }}">
-                                </div>
-                                <div class="mt-1">
-                                    @error('harga_perolehan_aset')
-                                        <span class="text-danger" id="tanggal_perolehan_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="sumber_dana_aset">Sumber
-                                    Dana</label>
-                                <input
-                                    class="form-control @error('sumber_dana_aset')
-                                                            is-invalid
-                                                        @enderror"
-                                    id="kode_aset" name="sumber_dana_aset" placeholder="Masukan Sumber Dana"
-                                    type="text" value="{{ $data['aset']->sumber_dana }}">
-                                <div class="mt-1">
-                                    @error('sumber_dana_aset')
-                                        <span class="text-danger" id="tanggal_perolehan_aset">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="keterangan_aset">Keterangan</label>
-                                <textarea
-                                    class="form-control @error('keterangan_aset')
-                                                            is-invalid
-                                                        @enderror"
-                                    id="" cols="30" rows="10" name="keterangan_aset">{{ $data['aset']->keterangan }}</textarea>
-                                <div class="mt-1">
-                                    @error('keterangan_aset')
-                                        <span class="text-danger" id="tanggal_perolehan_aset">{{ $message }}</span>
+                                    @error('roles_id')
+                                        <span class="text-danger" id="roles_id">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary b-r-22" type="submit" value="Submit">Submit
                                 </button>
-                                <button class="btn btn-warning b-r-22" onclick="clearEditFormAset()" value="Clear">Clear
+                                <button class="btn btn-warning b-r-22" onclick="cleareditFormUser()" value="Clear">Clear
                                 </button>
-                                <a class="btn btn-danger b-r-22" href="{{ route('admin.master.Asset.index') }}">Cancel
+                                <a class="btn btn-danger b-r-22" href="{{ route('admin.master.UserMaster.index') }}">Cancel
                                 </a>
                             </div>
                         </form>
@@ -245,8 +129,8 @@
     <script src="{{ asset('assets/js/formvalidation.js') }}"></script>
 
     <script type="text/javascript">
-        function clearEditFormAset() {
-            const form = document.getElementById('editFormAset');
+        function cleareditFormUser() {
+            const form = document.getElementById('editFormUser');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';

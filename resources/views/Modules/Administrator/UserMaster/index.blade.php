@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Master Asset')
+@section('title', 'Master User')
 @section('css')
     <!--font-awesome-css-->
     <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome/css/all.css') }}">

@@ -347,7 +347,7 @@ class Repository implements Repository_interfaces
     {
         return array(
             'role' => $userMasterDomain->getRolesUserMasterDomain(),
-            'kegiatan' => $userMasterDomain->getDetailUserMasterDomain($id)[0],
+            'usermaster' => $userMasterDomain->getDetailUserMasterDomain($id)[0],
         );
     }
     /**
