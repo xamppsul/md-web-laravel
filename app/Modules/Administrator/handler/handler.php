@@ -212,7 +212,7 @@ class Handler extends Usecase implements Handler_interfaces
     public function indexKegiatan(Request $request): View|RedirectResponse
     {
         return $this->indexKegiatanCase(
-            $this->asetDomain,
+            $this->kegiatanDomain,
             $request,
             $this->constantAdmin,
         );
@@ -234,7 +234,7 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->storeKegiatanCase(
             $request,
-            $this->asetDomain,
+            $this->kegiatanDomain,
             $this->asetRequest,
         );
     }
@@ -249,7 +249,7 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->editKegiatanCase(
             $id,
-            $this->asetDomain,
+            $this->kegiatanDomain,
             $request,
             $this->constantAdmin,
         );
@@ -266,7 +266,7 @@ class Handler extends Usecase implements Handler_interfaces
         return $this->updateKegiatanCase(
             $id,
             $request,
-            $this->asetDomain,
+            $this->kegiatanDomain,
             $this->asetRequest,
         );
     }
@@ -279,6 +279,6 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function destroyKegiatan(int $id, Request $request): RedirectResponse
     {
-        return $this->destroyKegiatanCase($id, $request, $this->asetDomain);
+        return $this->destroyKegiatanCase($id, $request, $this->kegiatanDomain);
     }
 }
