@@ -404,7 +404,7 @@
                                 @foreach ($data['moumoa'] as $mouMoa)
                                     <tr>
                                         <td>{{ $mouMoa->nomor_dokumen }}</td>
-                                        <td>{{ $mouMoa->users_id }}</td>
+                                        <td>{{ $mouMoa->penanggung_jawab_name }}</td>
                                         <td><span class="badge text-light-primary">{{ $mouMoa->nama_mitra }}</span>
                                         </td>
                                         <td>{{ $mouMoa->tanggal_mulai }}</td>
