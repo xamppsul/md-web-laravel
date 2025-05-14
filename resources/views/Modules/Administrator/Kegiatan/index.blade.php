@@ -371,7 +371,7 @@
                 <div class="modal-dialog app_modal_sm">
                     <div class="modal-content">
                         <div class="modal-header bg-primary-800">
-                            <h1 class="modal-title fs-5 text-white" id="detailKegiatan2">Detail Mou Moa</h1>
+                            <h1 class="modal-title fs-5 text-white" id="detailKegiatan2">Detail Kegiatan</h1>
                         </div>
                         <div class="modal-body">
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Kegiatan:
