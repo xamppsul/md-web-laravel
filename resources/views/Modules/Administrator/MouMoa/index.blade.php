@@ -235,7 +235,8 @@
                                                             aria-label="Select kerjasama" name="mou_moa_bidang_kerjasama">
                                                             <option selected="">Pilih kerjasama</option>
                                                             @foreach ($data['kerjasama'] as $kerjasama)
-                                                                <option value="{{ $kerjasama->id }}">
+                                                                <option value="{{ $kerjasama->id }}"
+                                                                    {{ old('mou_moa_bidang_kerjasama') == $kerjasama->id ? 'selected' : '' }}>
                                                                     {{ $kerjasama->name }}
                                                                 </option>
                                                             @endforeach
@@ -256,7 +257,8 @@
                                                             aria-label="Select Penanggung Jawab" name="users_id">
                                                             <option selected="">Pilih Penanggung Jawab</option>
                                                             @foreach ($data['user'] as $penanggungJawab)
-                                                                <option value="{{ $penanggungJawab->id }}">
+                                                                <option value="{{ $penanggungJawab->id }}"
+                                                                    {{ old('users_id') == $penanggungJawab->id ? 'selected' : '' }}>
                                                                     {{ $penanggungJawab->name }}
                                                                 </option>
                                                             @endforeach
@@ -309,7 +311,8 @@
                                                             required>
                                                             <option selected="">Pilih klasifikasi</option>
                                                             @foreach ($data['klasifikasi'] as $klasifikasi)
-                                                                <option value="{{ $klasifikasi->id }}">
+                                                                <option value="{{ $klasifikasi->id }}"
+                                                                    {{ old('mou_moa_klasifikasi') == $klasifikasi->id ? 'selected' : '' }}>
                                                                     {{ $klasifikasi->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -329,7 +332,8 @@
                                                             aria-label="Select Status" name="mou_moa_status" required>
                                                             <option selected="">Pilih Status</option>
                                                             @foreach ($data['status'] as $status)
-                                                                <option value="{{ $status->id }}">
+                                                                <option value="{{ $status->id }}"
+                                                                    {{ old('mou_moa_status') == $status->id ? 'selected' : '' }}>
                                                                     {{ $status->name }}</option>
                                                             @endforeach
                                                         </select>
