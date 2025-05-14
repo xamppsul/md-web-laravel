@@ -1,7 +1,8 @@
 @extends('layout.master')
 @section('title', 'Form Validation')
 @section('css')
-
+    <!-- flatpickr css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datepikar/flatpickr.min.css') }}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -35,7 +36,9 @@
                     </div>
                     <div class="card-body">
                         <form id="editFormMouMoa" class="row g-3 app-form rounded-control"
-                            action="{{ route('admin.master.MouMoa.store') }}" method="POST" enctype="multipart/form-data">
+                            action="{{ route('admin.master.MouMoa.update', $data['moumoa']->id) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @method('put')
                             @csrf
                             <div class="col-md-6">
                                 <label class="form-label" for="nomor_dokumen">Nomor
@@ -50,17 +53,24 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="jenis_dokumen">Jenis
+                                <label class="form-label" for="mou_moa_jenis_dokumen">Jenis
                                     Dokumen</label>
-                                <input
-                                    class="form-control @error('jenis_dokumen')
+                                <select
+                                    class="form-select @error('mou_moa_jenis_dokumen')
                                                             is-invalid
                                                         @enderror"
-                                    id="jenis_dokumen" placeholder="Masukan Jenis Dokumen" type="text"
-                                    value="{{ $data['moumoa']->jenis_dokumen }}" name="jenis_dokumen">
+                                    aria-label="Select kerjasama" name="mou_moa_jenis_dokumen">
+                                    <option selected="">Pilih kerjasama</option>
+                                    @foreach ($data['jenis_dokumen'] as $jenisDokumen)
+                                        <option value="{{ $jenisDokumen->id }}"
+                                            {{ $data['moumoa']->mou_moa_jenis_dokumen == $jenisDokumen->id ? 'selected' : '' }}>
+                                            {{ $jenisDokumen->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                 <div class="mt-1">
-                                    @error('jenis_dokumen')
-                                        <span class="text-danger" id="jenis_dokumen">{{ $message }}</span>
+                                    @error('mou_moa_jenis_dokumen')
+                                        <span class="text-danger" id="mou_moa_jenis_dokumen">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -265,6 +275,12 @@
 
     <!--js-->
     <script src="{{ asset('assets/js/formvalidation.js') }}"></script>
+
+    <!-- flatpickr js-->
+    <script src="{{ asset('assets/vendor/datepikar/flatpickr.js') }}"></script>
+
+    <!--datepicker-->
+    <script src="{{ asset('assets/js/date_picker.js') }}"></script>
 
     <script type="text/javascript">
         function cleareditFormMouMoa() {

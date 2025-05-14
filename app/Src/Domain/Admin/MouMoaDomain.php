@@ -159,7 +159,7 @@ class MouMoaDomain
             keterangan_tambahan,
             created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->nomor_dokumen,
-            $request->jenis_dokumen,
+            $request->mou_moa_jenis_dokumen,
             $request->nama_mitra,
             $request->judul_kerjasama,
             $request->mou_moa_klasifikasi,
@@ -185,7 +185,7 @@ class MouMoaDomain
     {
         DB::update('UPDATE mou_moa SET 
             nomor_dokumen = ?,
-            jenis_dokumen = ?,
+            mou_moa_jenis_dokumen = ?,
             nama_mitra = ?,
             judul_kerjasama = ?,
             mou_moa_klasifikasi = ?,
@@ -199,7 +199,7 @@ class MouMoaDomain
             updated_at = ?
             WHERE id = ?', [
             $request->nomor_dokumen,
-            $request->jenis_dokumen,
+            $request->mou_moa_jenis_dokumen,
             $request->nama_mitra,
             $request->judul_kerjasama,
             $request->mou_moa_klasifikasi,

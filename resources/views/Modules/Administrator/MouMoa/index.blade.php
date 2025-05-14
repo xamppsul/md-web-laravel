@@ -131,12 +131,12 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="jenisDokumen">Jenis Dokumen</label>
-                                                        <select class="form-select" aria-label="Select Kerjasama"
-                                                            name="jenis_dokumen">
-                                                            <option selected="">Pilih Penanggung Jawab</option>
+                                                        <select class="form-select" aria-label="Select Jenis Dokumen"
+                                                            name="mou_moa_jenis_dokumen">
+                                                            <option selected="">Pilih Jenis Dokumen</option>
                                                             @foreach ($data['jenis_dokumen'] as $jenisDokumen)
                                                                 <option value="{{ $jenisDokumen->id }}"
-                                                                    {{ request('jenis_dokumen') == $jenisDokumen->id ? 'selected' : '' }}>
+                                                                    {{ request('mou_moa_jenis_dokumen') == $jenisDokumen->id ? 'selected' : '' }}>
                                                                     {{ $jenisDokumen->name }}
                                                                 </option>
                                                             @endforeach
@@ -183,25 +183,26 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="jenis_dokumen">Jenis
+                                                        <label class="form-label" for="mou_moa_jenis_dokumen">Jenis
                                                             Dokumen</label>
                                                         <select
-                                                            class="form-select @error('jenis_dokumen')
+                                                            class="form-select @error('mou_moa_jenis_dokumen')
                                                             is-invalid
                                                         @enderror"
-                                                            aria-label="Select jenis dokumen" name="jenis_dokumen">
+                                                            aria-label="Select jenis dokumen"
+                                                            name="mou_moa_jenis_dokumen">
                                                             <option selected="">Pilih Jenis Dokumen</option>
                                                             @foreach ($data['jenis_dokumen'] as $jenisDokumen)
                                                                 <option value="{{ $jenisDokumen->id }}"
-                                                                    {{ old('jenis_dokumen') == $jenisDokumen->id ? 'selected' : '' }}>
+                                                                    {{ old('mou_moa_jenis_dokumen') == $jenisDokumen->id ? 'selected' : '' }}>
                                                                     {{ $jenisDokumen->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                         <div class="mt-1">
-                                                            @error('jenis_dokumen')
+                                                            @error('mou_moa_jenis_dokumen')
                                                                 <span class="text-danger"
-                                                                    id="jenis_dokumen">{{ $message }}</span>
+                                                                    id="mou_moa_jenis_dokumen">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
