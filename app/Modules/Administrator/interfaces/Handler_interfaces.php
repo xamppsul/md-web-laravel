@@ -38,6 +38,15 @@ interface Handler_interfaces
     public function destroyKegiatan(int $id, Request $request): RedirectResponse;
 
     /**
+     * master data user
+     */
+    public function indexUsers(Request $request): View|RedirectResponse;
+    public function createUsers(): View;
+    public function storeUsers(Request $request);
+    public function editUsers(int $id, Request $request): RedirectResponse|view;
+    public function updateUsers(int $id, Request $request): RedirectResponse;
+    public function destroyUsers(int $id, Request $request): RedirectResponse;
+    /**
      * elfinder
      */
 

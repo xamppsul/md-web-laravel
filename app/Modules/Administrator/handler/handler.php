@@ -33,6 +33,8 @@ class Handler extends Usecase implements Handler_interfaces
         //kegiatan
         private KegiatanDomain $kegiatanDomain,
         private KegiatanRequest $kegiatanRequest,
+        //user
+
         //elfinder
         private ElfinderDomain $elfinderDomain,
     ) {}
@@ -284,6 +286,14 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->destroyKegiatanCase($id, $request, $this->kegiatanDomain);
     }
+
+    /**
+     * =======================================================================
+     * feature: master data user
+     * =======================================================================
+     */
+
+
 
     /**
      * =================================================================
