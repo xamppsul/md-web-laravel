@@ -20,12 +20,12 @@
                     <li class="">
                         <a href="#" class="f-s-14 f-w-500">
                             <span>
-                                <i class="ph-duotone  ph-table f-s-16"></i> Asset
+                                <i class="ph-duotone  ph-table f-s-16"></i> User
                             </span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{ route('admin.master.Asset.index') }}" class="f-s-14 f-w-500">Data</a>
+                        <a href="{{ route('admin.master.UserMaster.index') }}" class="f-s-14 f-w-500">Data</a>
                     </li>
                 </ul>
             </div>
@@ -54,10 +54,10 @@
                                 class="btn btn-light-primary b-r-22" data-bs-target="#collapseFilter"
                                 data-bs-toggle="collapse" type="button"> <i class="ti ti-filter"></i>
                                 Filter</button>
-                            <button type="button" class="btn btn-primary b-r-22" aria-controls="collapseTambahAset"
-                                aria-expanded="false" data-bs-target="#collapseTambahAset" data-bs-toggle="collapse"
+                            <button type="button" class="btn btn-primary b-r-22" aria-controls="collapseTambahUser"
+                                aria-expanded="false" data-bs-target="#collapseTambahUser" data-bs-toggle="collapse"
                                 type="button"> <i class="ti ti-text-plus"></i>
-                                Tambah Aset</button>
+                                Tambah User</button>
                         </p>
                         <div>
                             <!-- collapse filter -->
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <!-- collapse tambah aset -->
-                            <div class="collapse collapse-horizontal" id="collapseTambahAset">
+                            <div class="collapse collapse-horizontal" id="collapseTambahUser">
                                 <div class="card card-body dashed-1-secondary w-900">
                                     <!-- Tooltips start -->
                                     <div class="col-12">
