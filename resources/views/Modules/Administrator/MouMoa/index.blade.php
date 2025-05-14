@@ -500,7 +500,14 @@
                         <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Penanggung Jawab:
                             {{ $mouMoaData->users_id }} </p>
                         <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen Pendukung:
-                            {{ $mouMoaData->dokumen_pendukung }} </p>
+                            @empty($mouMoaData->dokumen_pendukung)
+                                {{ __('Tidak ada dokumen') }}
+                            @else
+                                <a href="{{ asset('docsMouMoa/' . $mouMoaData->dokumen_pendukung) }}" target="_blank">
+                                    Preview / Download
+                                </a>
+                            @endempty
+                        </p>
                         <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Keterangan Tambahan:
                             {{ $mouMoaData->keterangan_tambahan }} </p>
                         <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Created At:
