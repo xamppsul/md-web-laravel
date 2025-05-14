@@ -8,6 +8,7 @@ use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\AsetDomain;
 use App\Src\Domain\Admin\MouMoaDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
+use App\Src\Request\Admin\Master\MouMoaRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class Handler extends Usecase implements Handler_interfaces
         private ConstantAdmin $constantAdmin,
         //mou moa
         private MouMoaDomain $mouMoaDomain,
+        private MouMoaRequest $mouMoaRequest,
         //kegiatan
     ) {}
     /**
@@ -123,7 +125,7 @@ class Handler extends Usecase implements Handler_interfaces
     public function indexMouMoa(Request $request): View|RedirectResponse
     {
         return $this->indexMouMoaCase(
-            $this->asetDomain,
+            $this->mouMoaDomain,
             $request,
             $this->constantAdmin,
         );
@@ -145,8 +147,8 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->storeMouMoaCase(
             $request,
-            $this->asetDomain,
-            $this->asetRequest,
+            $this->mouMoaDomain,
+            $this->mouMoaRequest,
         );
     }
 
@@ -160,7 +162,7 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->editMouMoaCase(
             $id,
-            $this->asetDomain,
+            $this->mouMoaDomain,
             $request,
             $this->constantAdmin,
         );
@@ -177,8 +179,8 @@ class Handler extends Usecase implements Handler_interfaces
         return $this->updateMouMoaCase(
             $id,
             $request,
-            $this->asetDomain,
-            $this->asetRequest,
+            $this->mouMoaDomain,
+            $this->mouMoaRequest,
         );
     }
 
@@ -190,7 +192,7 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function destroyMouMoa(int $id, Request $request): RedirectResponse
     {
-        return $this->destroyMouMoaCase($id, $request, $this->asetDomain);
+        return $this->destroyMouMoaCase($id, $request, $this->mouMoaDomain);
     }
 
 
