@@ -19,21 +19,21 @@ interface Repository_interfaces
      * feature: master data mou moa 
     /**===========================================================================
      */
-    public function indexMouMoaRepository($asetDomain, $request);
+    public function indexMouMoaRepository($mouMoaDomain, $request);
     public function createMouMoaRepository();
-    public function storeMouMoaRepository($request, $asetDomain): void;
-    public function editMouMoaRepository(int $id, $asetDomain): array;
-    public function updateMouMoaRepository(int $id, $asetDomain, $request): void;
-    public function destroyMouMoaRepository(int $id, $asetDomain): void;
+    public function storeMouMoaRepository($request, $mouMoaDomain): void;
+    public function editMouMoaRepository(int $id, $mouMoaDomain): array;
+    public function updateMouMoaRepository(int $id, $mouMoaDomain, $request): void;
+    public function destroyMouMoaRepository(int $id, $mouMoaDomain): void;
 
     /**===========================================================================
      * feature: master data kegiatan 
     /**===========================================================================
      */
-    public function indexKegiatanRepository($asetDomain, $request);
+    public function indexKegiatanRepository($kegiatanDomain, $request);
     public function createKegiatanRepository();
-    public function storeKegiatanRepository($request, $asetDomain): void;
-    public function editKegiatanRepository(int $id, $asetDomain): array;
-    public function updateKegiatanRepository(int $id, $asetDomain, $request): void;
-    public function destroyKegiatanRepository(int $id, $asetDomain): void;
+    public function storeKegiatanRepository($request, $kegiatanDomain): void;
+    public function editKegiatanRepository(int $id, $kegiatanDomain): array;
+    public function updateKegiatanRepository(int $id, $kegiatanDomain, $request): void;
+    public function destroyKegiatanRepository(int $id, $kegiatanDomain): void;
 }

@@ -99,16 +99,16 @@ class Repository implements Repository_interfaces
      */
     /**
      * @method indexMouMoaRepository
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return array
      */
-    public function indexMouMoaRepository($asetDomain, $request): array
+    public function indexMouMoaRepository($mouMoaDomain, $request): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
-            'aset' => $asetDomain->getAllAsetDomain($request),
+            'kerjasama' => $mouMoaDomain->getBidangKerjaSamaMouMoaDomain(),
+            'klasifikasi' => $mouMoaDomain->getKlasifikasiMouMoaDomain(),
+            'status' => $mouMoaDomain->getStatusMouMoaDomain(),
+            'moumoa' => $mouMoaDomain->getAllMouMoaDomain($request),
         );
     }
     public function createMouMoaRepository()
@@ -121,12 +121,12 @@ class Repository implements Repository_interfaces
     /**
      * @method storeMouMoaRepository
      * @param $request
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return void
      */
-    public function storeMouMoaRepository($request, $asetDomain): void
+    public function storeMouMoaRepository($request, $mouMoaDomain): void
     {
-        $asetDomain->postDataAsetDomain($request);
+        $mouMoaDomain->postDataMouMoaDomain($request);
     }
     /**
      * edit
@@ -134,16 +134,16 @@ class Repository implements Repository_interfaces
     /**
      * @method editMouMoaRepository
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return array
      */
-    public function editMouMoaRepository(int $id, $asetDomain): array
+    public function editMouMoaRepository(int $id, $mouMoaDomain): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
-            'aset' => $asetDomain->getDetailAsetDomain($id)[0],
+            'kerjasama' => $mouMoaDomain->getBidangKerjaSamaMouMoaDomain(),
+            'klasifikasi' => $mouMoaDomain->getKlasifikasiMouMoaDomain(),
+            'status' => $mouMoaDomain->getStatusMouMoaDomain(),
+            'aset' => $mouMoaDomain->getDetailMouMoaDomain($id)[0],
         );
     }
     /**
@@ -152,13 +152,13 @@ class Repository implements Repository_interfaces
     /**
      * @method updateMouMoaRepository
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @param $request
      * @return array
      */
-    public function updateMouMoaRepository(int $id, $asetDomain, $request): void
+    public function updateMouMoaRepository(int $id, $mouMoaDomain, $request): void
     {
-        $asetDomain->updateDataAsetDomain($id, $request);
+        $mouMoaDomain->updateDataMouMoaDomain($id, $request);
     }
 
     /**
@@ -167,12 +167,12 @@ class Repository implements Repository_interfaces
     /**
      * @method destroyMouMoaRepository
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return void
      */
-    public function destroyMouMoaRepository(int $id, $asetDomain): void
+    public function destroyMouMoaRepository(int $id, $mouMoaDomain): void
     {
-        $asetDomain->deleteDataAsetDomain($id);
+        $mouMoaDomain->deleteDataMouMoaDomain($id);
     }
 
     /**======================================================================================================================================
