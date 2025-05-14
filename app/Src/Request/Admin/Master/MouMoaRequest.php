@@ -8,7 +8,7 @@ class MouMoaRequest
     public static function postRequestData($request): array
     {
         return $request->validate([
-            'nomor_dokumen' => 'required',
+            'nomor_dokumen' => 'required|unique:mou_moa,nomor_dokumen',
             'mou_moa_jenis_dokumen' => 'required|exists:mou_moa_jenis_dokumen,id',
             'nama_mitra' => 'required|string',
             'judul_kerjasama' => 'required',
