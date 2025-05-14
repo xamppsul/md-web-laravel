@@ -31,4 +31,14 @@ interface Services_interfaces
     public function editKegiatanService(int $id, $kegiatanDomain): array;
     public function updateKegiatanService(int $id, $kegiatanDomain, $request): void;
     public function destroyKegiatanService(int $id, $kegiatanDomain): void;
+
+    /**
+     * master user
+     */
+    public function indexUserMasterService($userMasterDomain, $request);
+    public function createUserMasterService();
+    public function storeUserMasterService($request, $userMasterDomain): void;
+    public function editUserMasterService(int $id, $userMasterDomain): array;
+    public function updateUserMasterService(int $id, $userMasterDomain, $request): void;
+    public function destroyUserMasterService(int $id, $userMasterDomain): void;
 }

@@ -295,4 +295,87 @@ class Repository implements Repository_interfaces
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
+
+
+    /**======================================================================================================================================
+     * feture: master data user
+    /**======================================================================================================================================
+     */
+    /**
+     * index
+     */
+    /**
+     * @method indexUserMasterRepository
+     * @param $userMasterDomain
+     * @return array
+     */
+    public function indexUserMasterRepository($userMasterDomain, $request): array
+    {
+        return array(
+            'role' => $userMasterDomain->getRolesUserMasterDomain(),
+            'usermaster' => $userMasterDomain->getAllUserMasterDomain($request),
+        );
+    }
+
+    public function createUserMasterRepository()
+    {
+        return 'create user master';
+    }
+    /**
+     * store
+     */
+    /**
+     * @method storeUserMasterRepository
+     * @param $request
+     * @param $userMasterDomain
+     * @return void
+     */
+    public function storeUserMasterRepository($request, $userMasterDomain): void
+    {
+        $userMasterDomain->postDataUserMasterDomain($request);
+    }
+    /**
+     * edit
+     */
+    /**
+     * @method editUserMasterRepository
+     * @param int $id
+     * @param $userMasterDomain
+     * @return array
+     */
+    public function editUserMasterRepository(int $id, $userMasterDomain): array
+    {
+        return array(
+            'role' => $userMasterDomain->getRolesUserMasterDomain(),
+            'kegiatan' => $userMasterDomain->getDetailUserMasterDomain($id)[0],
+        );
+    }
+    /**
+     * update
+     */
+    /**
+     * @method updateUserMasterRepository
+     * @param int $id
+     * @param $userMasterDomain
+     * @param $request
+     * @return array
+     */
+    public function updateUserMasterRepository(int $id, $userMasterDomain, $request): void
+    {
+        $userMasterDomain->updateDataUserMasterDomain($id, $request);
+    }
+
+    /**
+     * destroy
+     */
+    /**
+     * @method destroyUserMasterRepository
+     * @param int $id
+     * @param $userMasterDomain
+     * @return void
+     */
+    public function destroyUserMasterRepository(int $id, $userMasterDomain): void
+    {
+        $userMasterDomain->deleteDataUserMasterDomain($id);
+    }
 }

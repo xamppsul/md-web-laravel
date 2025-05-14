@@ -56,6 +56,17 @@ class UserMasterDomain
     }
 
     /**
+     * @method getRolesUserMasterDomain
+     * @return array
+     */
+    public function getRolesUserMasterDomain(): array
+    {
+        return DB::select('SELECT * FROM roles');
+    }
+
+
+
+    /**
      * @method getDetailUserMasterDomain
      * @param $id
      * @return array

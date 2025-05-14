@@ -39,4 +39,17 @@ interface Repository_interfaces
     public function editKegiatanRepository(int $id, $kegiatanDomain): array;
     public function updateKegiatanRepository(int $id, $kegiatanDomain, $request, string $fileDaftarHadir, string $fileKegiatan): void;
     public function destroyKegiatanRepository(int $id, $kegiatanDomain): void;
+
+    /**
+     * ============================================================================
+     * feature: master data user
+     * ============================================================================
+     */
+
+    public function indexUserMasterRepository($userMasterDomain, $request);
+    public function createUserMasterRepository();
+    public function storeUserMasterRepository($request, $userMasterDomain): void;
+    public function editUserMasterRepository(int $id, $userMasterDomain): array;
+    public function updateUserMasterRepository(int $id, $userMasterDomain, $request): void;
+    public function destroyUserMasterRepository(int $id, $userMasterDomain): void;
 }

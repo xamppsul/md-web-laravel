@@ -102,6 +102,37 @@ interface Usecase_intefaces
     ): RedirectResponse;
 
     /**
+     * master user
+     */
+    public function indexUserMasterCase(
+        $userMasterDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View;
+    public function createUserMasterCase(): View;
+    public function storeUserMasterCase(
+        $request,
+        $userMasterDomain,
+        $userMasterRequest
+    ): RedirectResponse;
+    public function editUserMasterCase(
+        int $id,
+        $userMasterDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View;
+    public function updateUserMasterCase(
+        int $id,
+        $request,
+        $userMasterDomain,
+        $userMasterRequest,
+    ): RedirectResponse;
+    public function destroyUserMasterCase(
+        int $id,
+        $request,
+        $userMasterDomain,
+    ): RedirectResponse;
+    /**
      * elfinder
      */
 

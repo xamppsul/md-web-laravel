@@ -9,9 +9,11 @@ use App\Src\Domain\Admin\AsetDomain;
 use App\Src\Domain\Admin\ElfinderDomain;
 use App\Src\Domain\Admin\KegiatanDomain;
 use App\Src\Domain\Admin\MouMoaDomain;
+use App\Src\Domain\Admin\UserMasterDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
 use App\Src\Request\Admin\Master\KegiatanRequest;
 use App\Src\Request\Admin\Master\MouMoaRequest;
+use App\Src\Request\Admin\Master\UserMasterRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,7 +36,8 @@ class Handler extends Usecase implements Handler_interfaces
         private KegiatanDomain $kegiatanDomain,
         private KegiatanRequest $kegiatanRequest,
         //user
-
+        private UserMasterDomain $userMasterDomain,
+        private UserMasterRequest $userMasterRequest,
         //elfinder
         private ElfinderDomain $elfinderDomain,
     ) {}
@@ -292,7 +295,82 @@ class Handler extends Usecase implements Handler_interfaces
      * feature: master data user
      * =======================================================================
      */
+    /**
+     * @method indexUserMaster
+     * @return View|RedirectResponse
+     */
+    public function indexUserMaster(Request $request): View|RedirectResponse
+    {
+        return $this->indexUserMasterCase(
+            $this->userMasterDomain,
+            $request,
+            $this->constantAdmin,
+        );
+    }
 
+    /**
+     * @method createUserMaster
+     * @return View
+     */
+    public function createUserMaster(): View
+    {
+        return $this->createUserMasterCase();
+    }
+
+    /**
+     * @method storeUserMaster
+     */
+    public function storeUserMaster(Request $request)
+    {
+        return $this->storeUserMasterCase(
+            $request,
+            $this->userMasterDomain,
+            $this->userMasterRequest,
+        );
+    }
+
+    /**
+     * @method editUserMaster
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse|view
+     */
+    public function editUserMaster(int $id, Request $request): RedirectResponse|view
+    {
+        return $this->editUserMasterCase(
+            $id,
+            $this->userMasterDomain,
+            $request,
+            $this->constantAdmin,
+        );
+    }
+
+    /**
+     * @method updateUserMaster
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
+     */
+    public function updateUserMaster(int $id, Request $request): RedirectResponse
+    {
+        return $this->updateUserMasterCase(
+            $id,
+            $request,
+            $this->userMasterDomain,
+            $this->userMasterRequest,
+        );
+    }
+
+    /**
+     * @method destroyUserMaster
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
+     */
+    public function destroyUserMaster(int $id, Request $request): RedirectResponse
+    {
+        return $this->destroyUserMasterCase($id, $request, $this->userMasterDomain);
+    }
 
 
     /**

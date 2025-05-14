@@ -265,7 +265,7 @@ class Usecase extends Services implements Usecase_intefaces
      * @method destroyMouMoaCase
      * @param int $id
      * @param $request
-     * @param $MouMoaDomain
+     * @param $mouMoaDomain
      * @return RedirectResponse
      */
     public function destroyMouMoaCase(
@@ -403,6 +403,8 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method destroyKegiatanCase
      * @param int $id
+     * @param $request
+     * @param $kegiatanDomain
      * @return RedirectResponse
      */
     public function destroyKegiatanCase(
@@ -423,6 +425,143 @@ class Usecase extends Services implements Usecase_intefaces
         }
     }
 
+    /**
+     * ===========================================================================================
+     * feature: master data user
+     * ===========================================================================================
+     */
+
+    /**
+     * @method indexUserMasterCase
+     * @param $userMasterDomain
+     * @param $request
+     * @param $constantAdmin
+     * @return RedirectResponse|View
+     */
+    public function indexUserMasterCase(
+        $userMasterDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
+        try {
+            $data = $this->indexKegiatanService($userMasterDomain, $request);
+            return view('Modules.Administrator.UserMaster.index', compact('data', 'constantAdmin'));
+        } catch (\Exception $error) {
+            $userMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+        }
+    }
+
+    /**
+     * @method createUserMasterCase
+     * @return View
+     */
+    public function createUserMasterCase(): View
+    {
+        return view('');
+    }
+
+    /**
+     * @method storeUserMasterCase
+     * @param $request
+     * @param $userMasterDomain
+     * @param $userMasterRequest
+     * @return RedirectResponse
+     */
+    public function storeUserMasterCase(
+        $request,
+        $userMasterDomain,
+        $userMasterRequest
+    ): RedirectResponse {
+        $userMasterRequest->postRequestData($request);
+
+        DB::beginTransaction();
+        try {
+            $this->storeUserMasterService($request, $userMasterDomain);
+            DB::commit();
+            return redirect()->route('admin.master.UserMaster.index')->with('success', 'Berhasil tambah user');
+        } catch (\Exception $error) {
+            DB::rollBack();
+            $userMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.UserMaster.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+        }
+    }
+
+    /**
+     * @method editUserMasterCase
+     * @param int $id
+     * @param $userMasterDomain
+     * @param $request
+     * @param $constantDomain
+     * @return RedirectResponse|View
+     */
+    public function editUserMasterCase(
+        int $id,
+        $userMasterDomain,
+        $request,
+        $constantAdmin,
+    ): RedirectResponse|View {
+        try {
+            $data = $this->editUserMasterService($id, $userMasterDomain);
+            return view('Modules.Administrator.UserMaster.edit', compact('data'));
+        } catch (\Exception $error) {
+            $userMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+        }
+    }
+
+    /**
+     * @method updateUserMasterCase
+     * @param int $id
+     * @param $request
+     * @param $userMasterDomain
+     * @param $userMasterRequest
+     * @return RedirectResponse
+     */
+    public function updateUserMasterCase(
+        int $id,
+        $request,
+        $userMasterDomain,
+        $userMasterRequest,
+    ): RedirectResponse {
+        $userMasterRequest->updateRequestData($request);
+
+        DB::beginTransaction();
+        try {
+            $this->updateUserMasterService($id, $userMasterDomain, $request);
+            DB::commit();
+            return redirect()->route('admin.master.UserMaster.index')->with('success', 'Berhasil update user');
+        } catch (\Exception $error) {
+            DB::rollBack();
+            $userMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+        }
+    }
+
+    /**
+     * @method destroyUserMasterCase
+     * @param int $id
+     * @param $request
+     * @param $userMasterDomain
+     * @return RedirectResponse
+     */
+    public function destroyUserMasterCase(
+        int $id,
+        $request,
+        $userMasterDomain,
+    ): RedirectResponse {
+
+        DB::beginTransaction();
+        try {
+            $this->destroyUserMasterService($id, $userMasterDomain);
+            DB::commit();
+            return redirect()->route('admin.master.UserMaster.index')->with('success', 'Berhasil delete user');
+        } catch (\Exception $error) {
+            DB::rollBack();
+            $userMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.master.UserMaster.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+        }
+    }
 
 
     /**

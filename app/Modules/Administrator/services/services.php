@@ -220,4 +220,75 @@ class Services extends Repository implements Services_interfaces
     {
         $this->destroyKegiatanRepository($id, $kegiatanDomain);
     }
+
+
+    /**======================================================================================================================================================================
+     * feature: master data user
+    /**======================================================================================================================================================================
+     */
+
+    /**
+     * @method indexUserMasterService
+     * @param $userMasterDomain
+     * @param $request
+     * @return array
+     */
+    public function indexUserMasterService($userMasterDomain, $request): array
+    {
+        return $this->indexUserMasterRepository($userMasterDomain, $request);
+    }
+
+    /**
+     * @method createUserMasterService
+     * @return mixed
+     */
+    public function createUserMasterService()
+    {
+        return $this->createUserMasterRepository();
+    }
+
+    /**
+     * @method storeUserMasterService
+     * @param $request
+     * @param $userMasterDomain
+     * @return void
+     */
+    public function storeUserMasterService($request, $userMasterDomain): void
+    {
+        $this->storeUserMasterRepository($userMasterDomain, $request);
+    }
+
+    /**
+     * @method editUserMasterService
+     * @param int $id
+     * @param $userMasterDomain
+     * @return array
+     */
+    public function editUserMasterService(int $id, $userMasterDomain): array
+    {
+        return $this->editUserMasterRepository($id, $userMasterDomain);
+    }
+
+    /**
+     * @method updateUserMasterService
+     * @param int $id
+     * @param $userMasterDomain
+     * @param $request
+     * @return void
+     */
+    public function updateUserMasterService(int $id, $userMasterDomain, $request): void
+    {
+        $this->updateUserMasterRepository($id, $userMasterDomain, $request);
+    }
+
+    /**
+     * @method destroyUserMasterService
+     * @param int $id
+     * @param $userMasterDomain
+     * @return void
+     */
+    public function destroyUserMasterService(int $id, $userMasterDomain): void
+    {
+        $this->destroyUserMasterRepository($id, $userMasterDomain);
+    }
 }

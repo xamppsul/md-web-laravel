@@ -40,12 +40,12 @@ interface Handler_interfaces
     /**
      * master data user
      */
-    public function indexUsers(Request $request): View|RedirectResponse;
-    public function createUsers(): View;
-    public function storeUsers(Request $request);
-    public function editUsers(int $id, Request $request): RedirectResponse|view;
-    public function updateUsers(int $id, Request $request): RedirectResponse;
-    public function destroyUsers(int $id, Request $request): RedirectResponse;
+    public function indexUserMaster(Request $request): View|RedirectResponse;
+    public function createUserMaster(): View;
+    public function storeUserMaster(Request $request);
+    public function editUserMaster(int $id, Request $request): RedirectResponse|view;
+    public function updateUserMaster(int $id, Request $request): RedirectResponse;
+    public function destroyUserMaster(int $id, Request $request): RedirectResponse;
     /**
      * elfinder
      */
