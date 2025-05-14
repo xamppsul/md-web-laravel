@@ -144,7 +144,8 @@ class Repository implements Repository_interfaces
             'kerjasama' => $mouMoaDomain->getBidangKerjaSamaMouMoaDomain(),
             'klasifikasi' => $mouMoaDomain->getKlasifikasiMouMoaDomain(),
             'status' => $mouMoaDomain->getStatusMouMoaDomain(),
-            'aset' => $mouMoaDomain->getDetailMouMoaDomain($id)[0],
+            'moumoa' => $mouMoaDomain->getDetailMouMoaDomain($id)[0],
+            'user' => $mouMoaDomain->getUserByRoleFaculty(),
         );
     }
     /**

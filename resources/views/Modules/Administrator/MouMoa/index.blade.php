@@ -371,157 +371,154 @@
                                                                 id="dokumen_pendukung">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary b-r-22" type="submit"
+                                                            value="Submit">Submit
+                                                        </button>
+                                                        <button class="btn btn-warning b-r-22" type="reset"
+                                                            value="Submit">Clear
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="col-12">
-                                                <button class="btn btn-primary b-r-22" type="submit"
-                                                    value="Submit">Submit
-                                                </button>
-                                                <button class="btn btn-warning b-r-22" type="reset"
-                                                    value="Submit">Clear
-                                                </button>
-                                            </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-header">
-                </div>
-                <div class="card-body p-0">
-                    <div class="app-datatable-default overflow-auto">
-                        <table id="example" class="display app-data-table default-data-table">
-                            <thead>
-                                <tr>
-                                    <th>Nomor Dokumen</th>
-                                    <th>Penanggung Jawab</th>
-                                    <th>Nama Mitra</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Akhir</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data['moumoa'] as $mouMoa)
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="app-datatable-default overflow-auto">
+                            <table id="example" class="display app-data-table default-data-table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $mouMoa->nomor_dokumen }}</td>
-                                        <td>{{ $mouMoa->penanggung_jawab_name }}</td>
-                                        <td><span class="badge text-light-primary">{{ $mouMoa->nama_mitra }}</span>
-                                        </td>
-                                        <td>{{ $mouMoa->tanggal_mulai }}</td>
-                                        <td>{{ $mouMoa->tanggal_akhir }}</td>
-
-                                        @if ($mouMoa->mou_moa_status_name == 'Aktif')
-                                            <td><span
-                                                    class="badge text-light-success">{{ $mouMoa->mou_moa_status_name }}</span>
-                                            </td>
-                                        @elseif($mouMoa->mou_moa_status_name == 'Selesai')
-                                            <td><span
-                                                    class="badge text-light-warning">{{ $mouMoa->mou_moa_status_name }}</span>
-                                            </td>
-                                        @else
-                                            <td><span
-                                                    class="badge text-light-danger">{{ $mouMoa->mou_moa_status_name }}</span>
-                                            </td>
-                                        @endif
-                                        <td>
-                                            <button type="button" data-item="{{ $mouMoa->id }}"
-                                                data-bs-target="#detailMouMoa--{{ $mouMoa->id }}"
-                                                data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
-                                                <i class="ti ti-info-circle text-success"></i>
-                                            </button>
-                                            <a href="{{ route('admin.master.MouMoa.edit', $mouMoa->id) }}"
-                                                class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </a>
-                                            <form class="btn btn-light-danger icon-btn b-r-4"
-                                                action="{{ route('admin.master.MouMoa.destroy', $mouMoa->id) }}"
-                                                method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="button"
-                                                    class="btn btn-light-danger icon-btn b-r-4 btn-delete">
-                                                    <i class="ti ti-trash"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        <th>Nomor Dokumen</th>
+                                        <th>Penanggung Jawab</th>
+                                        <th>Nama Mitra</th>
+                                        <th>Tanggal Mulai</th>
+                                        <th>Tanggal Akhir</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data['moumoa'] as $mouMoa)
+                                        <tr>
+                                            <td>{{ $mouMoa->nomor_dokumen }}</td>
+                                            <td>{{ $mouMoa->penanggung_jawab_name }}</td>
+                                            <td><span class="badge text-light-primary">{{ $mouMoa->nama_mitra }}</span>
+                                            </td>
+                                            <td>{{ $mouMoa->tanggal_mulai }}</td>
+                                            <td>{{ $mouMoa->tanggal_akhir }}</td>
+
+                                            @if ($mouMoa->mou_moa_status_name == 'Aktif')
+                                                <td><span
+                                                        class="badge text-light-success">{{ $mouMoa->mou_moa_status_name }}</span>
+                                                </td>
+                                            @elseif($mouMoa->mou_moa_status_name == 'Selesai')
+                                                <td><span
+                                                        class="badge text-light-warning">{{ $mouMoa->mou_moa_status_name }}</span>
+                                                </td>
+                                            @else
+                                                <td><span
+                                                        class="badge text-light-danger">{{ $mouMoa->mou_moa_status_name }}</span>
+                                                </td>
+                                            @endif
+                                            <td>
+                                                <button type="button" data-item="{{ $mouMoa->id }}"
+                                                    data-bs-target="#detailMouMoa--{{ $mouMoa->id }}"
+                                                    data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
+                                                    <i class="ti ti-info-circle text-success"></i>
+                                                </button>
+                                                <a href="{{ route('admin.master.MouMoa.edit', $mouMoa->id) }}"
+                                                    class="btn btn-light-success icon-btn b-r-4">
+                                                    <i class="ti ti-edit text-success"></i>
+                                                </a>
+                                                <form class="btn btn-light-danger icon-btn b-r-4"
+                                                    action="{{ route('admin.master.MouMoa.destroy', $mouMoa->id) }}"
+                                                    method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="button"
+                                                        class="btn btn-light-danger icon-btn b-r-4 btn-delete">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Default Datatable end -->
         </div>
-        <!-- Default Datatable end -->
-    </div>
-    <!-- Data Table end -->
-    @foreach ($data['moumoa'] as $mouMoaData)
-        <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="detailMouMoa--{{ $mouMoaData->id }}"
-            tabindex="-1">
-            <div class="modal-dialog app_modal_sm">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary-800">
-                        <h1 class="modal-title fs-5 text-white" id="detailMouMoa2">Detail Mou Moa</h1>
-                    </div>
-                    <div class="modal-body">
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nomor Dokumen:
-                            {{ $mouMoaData->nomor_dokumen }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Dokumen:
-                            {{ $mouMoaData->jenis_dokumen }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Mitra:
-                            {{ $mouMoaData->nama_mitra }}
-                        </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Judul Kerjasama:
-                            {{ $mouMoaData->judul_kerjasama }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Klasifikasi:
-                            {{ $mouMoaData->mou_moa_klasifikasi_name }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Mulai:
-                            {{ $mouMoaData->tanggal_mulai }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Akhir:
-                            {{ $mouMoaData->tanggal_akhir }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status:
-                            @if ($mouMoaData->mou_moa_status_name == 'Aktif')
-                                <td><span class="badge text-light-success">{{ $mouMoaData->mou_moa_status_name }}</span>
-                                </td>
-                            @elseif($mouMoaData->mou_moa_status_name == 'Selesai')
-                                <td><span class="badge text-light-warning">{{ $mouMoaData->mou_moa_status_name }}</span>
-                                </td>
-                            @else
-                                <td><span class="badge text-light-danger">{{ $mouMoaData->mou_moa_status_name }}</span>
-                                </td>
-                            @endif
-                        </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kerjasama:
-                            {{ $mouMoaData->mou_moa_bidang_kerjasama_name }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Penanggung Jawab:
-                            {{ $mouMoaData->users_id }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen Pendukung:
-                            @empty($mouMoaData->dokumen_pendukung)
-                                {{ __('Tidak ada dokumen') }}
-                            @else
-                                <a href="{{ asset('docsMouMoa/' . $mouMoaData->dokumen_pendukung) }}" target="_blank">
-                                    Preview / Download
-                                </a>
-                            @endempty
-                        </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Keterangan Tambahan:
-                            {{ $mouMoaData->keterangan_tambahan }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Created At:
-                            {{ $mouMoaData->created_at }} </p>
-                        <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Updated At:
-                            {{ $mouMoaData->updated_at }} </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+        <!-- Data Table end -->
+        @foreach ($data['moumoa'] as $mouMoaData)
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
+                id="detailMouMoa--{{ $mouMoaData->id }}" tabindex="-1">
+                <div class="modal-dialog app_modal_sm">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary-800">
+                            <h1 class="modal-title fs-5 text-white" id="detailMouMoa2">Detail Mou Moa</h1>
+                        </div>
+                        <div class="modal-body">
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nomor Dokumen:
+                                {{ $mouMoaData->nomor_dokumen }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Dokumen:
+                                {{ $mouMoaData->jenis_dokumen }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Mitra:
+                                {{ $mouMoaData->nama_mitra }}
+                            </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Judul Kerjasama:
+                                {{ $mouMoaData->judul_kerjasama }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Klasifikasi:
+                                {{ $mouMoaData->mou_moa_klasifikasi_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Mulai:
+                                {{ $mouMoaData->tanggal_mulai }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Akhir:
+                                {{ $mouMoaData->tanggal_akhir }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status:
+                                @if ($mouMoaData->mou_moa_status_name == 'Aktif')
+                                    <td><span
+                                            class="badge text-light-success">{{ $mouMoaData->mou_moa_status_name }}</span>
+                                    </td>
+                                @elseif($mouMoaData->mou_moa_status_name == 'Selesai')
+                                    <td><span
+                                            class="badge text-light-warning">{{ $mouMoaData->mou_moa_status_name }}</span>
+                                    </td>
+                                @else
+                                    <td><span
+                                            class="badge text-light-danger">{{ $mouMoaData->mou_moa_status_name }}</span>
+                                    </td>
+                                @endif
+                            </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kerjasama:
+                                {{ $mouMoaData->mou_moa_bidang_kerjasama_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Penanggung Jawab:
+                                {{ $mouMoaData->users_id }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Keterangan Tambahan:
+                                {{ $mouMoaData->keterangan_tambahan }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Created At:
+                                {{ $mouMoaData->created_at }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Updated At:
+                                {{ $mouMoaData->updated_at }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen Pendukung:
+                            </p>
+                            <iframe src="{{ asset("/laraview/#../docsMouMoa/{$mouMoaData->dokumen_pendukung}") }}"
+                                width="450px" height="300px"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
     </div>
 @endsection
 

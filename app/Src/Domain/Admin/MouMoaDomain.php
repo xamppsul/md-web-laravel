@@ -75,11 +75,13 @@ class MouMoaDomain
             SELECT mou_moa.*, 
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
-                mou_moa_status.name AS mou_moa_status_name
+                mou_moa_status.name AS mou_moa_status_name,
+                users.name AS penanggung_jawab_name
             FROM mou_moa
                 INNER JOIN mou_moa_bidang_kerjasama ON mou_moa.mou_moa_bidang_kerjasama = mou_moa_bidang_kerjasama.id
                 INNER JOIN mou_moa_klasifikasi ON mou_moa.mou_moa_klasifikasi = mou_moa_klasifikasi.id
                 INNER JOIN mou_moa_status ON mou_moa.mou_moa_status = mou_moa_status.id
+                INNER JOIN users ON mou_moa.users_id = users.id
             WHERE mou_moa.id = ?
         ', [$id]);
     }
