@@ -61,7 +61,7 @@ class UserMasterDomain
      */
     public function getRolesUserMasterDomain(): array
     {
-        return DB::select('SELECT * FROM roles');
+        return DB::select('SELECT * FROM roles WHERE id != 1');
     }
 
 
