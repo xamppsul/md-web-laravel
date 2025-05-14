@@ -422,4 +422,29 @@ class Usecase extends Services implements Usecase_intefaces
             return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
+
+
+
+    /**
+     * =================================================================
+     * feature: elfinder
+     * =================================================================
+     */
+
+    /**
+     * @method indexElfinderCase
+     * @return RedirectResponse|View
+     */
+
+    public function indexElfinderCase(
+        $elfinderDomain,
+        $request,
+    ): RedirectResponse|View {
+        try {
+            return view('Modules.Administrator.Elfinder.index');
+        } catch (\Exception $e) {
+            $elfinderDomain->DomainLogInsert($e->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+        }
+    }
 }

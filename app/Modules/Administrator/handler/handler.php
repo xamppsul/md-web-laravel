@@ -6,6 +6,7 @@ use App\Modules\Administrator\interfaces\Handler_interfaces;
 use App\Modules\Administrator\usecase\Usecase;
 use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\AsetDomain;
+use App\Src\Domain\Admin\ElfinderDomain;
 use App\Src\Domain\Admin\KegiatanDomain;
 use App\Src\Domain\Admin\MouMoaDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
@@ -32,6 +33,8 @@ class Handler extends Usecase implements Handler_interfaces
         //kegiatan
         private KegiatanDomain $kegiatanDomain,
         private KegiatanRequest $kegiatanRequest,
+        //elfinder
+        private ElfinderDomain $elfinderDomain,
     ) {}
     /**
      * ==============================================================================================================================
@@ -280,5 +283,24 @@ class Handler extends Usecase implements Handler_interfaces
     public function destroyKegiatan(int $id, Request $request): RedirectResponse
     {
         return $this->destroyKegiatanCase($id, $request, $this->kegiatanDomain);
+    }
+
+    /**
+     * =================================================================
+     * feature: elfinder
+     * =================================================================
+     */
+
+    /**
+     * @method indexElfinder
+     * @param $request
+     * @return RedirectResponse|View
+     */
+    public function indexElfinder(Request $request): RedirectResponse|View
+    {
+        return $this->indexElfinderCase(
+            $this->elfinderDomain,
+            $request,
+        );
     }
 }

@@ -57,7 +57,7 @@
                         El Finder
                     </a>
                     <ul class="collapse" id="file-manager">
-                        <li><a href="{{ __('cheatsheet') }}">User Directory</a></li>
+                        <li><a href="{{ route('admin.elfinder.index') }}">User Directory</a></li>
                     </ul>
                 </li>
             @endif

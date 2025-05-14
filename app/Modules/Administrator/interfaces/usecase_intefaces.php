@@ -100,4 +100,13 @@ interface Usecase_intefaces
         $request,
         $kegiatanDomain,
     ): RedirectResponse;
+
+    /**
+     * elfinder
+     */
+
+    public function indexElfinderCase(
+        $elfinderDomain,
+        $request,
+    ): RedirectResponse|View;
 }

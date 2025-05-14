@@ -31,5 +31,8 @@ Route::middleware(['throttle:30,1', 'auth:admin'])->group(function () {
                 Route::delete('/destroy/{id}', [Handler::class, 'destroyKegiatan'])->name('admin.master.Kegiatan.destroy');
             });
         });
+        Route::prefix('elfinder')->group(function () {
+            Route::get('/', [Handler::class, 'indexElFinder'])->name('admin.elfinder.index');
+        });
     });
 });
