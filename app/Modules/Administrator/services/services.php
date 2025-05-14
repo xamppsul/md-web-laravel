@@ -255,7 +255,7 @@ class Services extends Repository implements Services_interfaces
      */
     public function storeUserMasterService($request, $userMasterDomain): void
     {
-        $this->storeUserMasterRepository($userMasterDomain, $request);
+        $this->storeUserMasterRepository($request, $userMasterDomain);
     }
 
     /**
