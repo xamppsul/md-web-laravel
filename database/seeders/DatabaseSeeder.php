@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             MouMoaKlasifikasiSeeder::class,
             MouMoaBidangKerjaSamaSeeder::class,
             MouMoaStatusSeeder::class,
+            MouMoaJenisDokumenSeeder::class,
         ]);
     }
 }

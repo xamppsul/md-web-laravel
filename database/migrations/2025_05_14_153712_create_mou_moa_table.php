@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('mou_moa', function (Blueprint $table) {
             $table->id();
             $table->string('nomor_dokumen');
-            $table->string('jenis_dokumen');
+            $table->foreignId('mou_moa_jenis_dokumen')->references('id')->on('mou_moa_jenis_dokumen');
             $table->string('nama_mitra');
             $table->string('judul_kerjasama');
             $table->foreignId('mou_moa_klasifikasi')->references('id')->on('mou_moa_klasifikasi');

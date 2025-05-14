@@ -47,7 +47,7 @@ class MouMoaDomain
                 INNER JOIN mou_moa_klasifikasi ON mou_moa.mou_moa_klasifikasi = mou_moa_klasifikasi.id
                 INNER JOIN mou_moa_status ON mou_moa.mou_moa_status = mou_moa_status.id
                 INNER JOIN users ON mou_moa.users_id = users.id
-            WHERE mou_moa.jenis_dokumen LIKE ?
+            WHERE mou_moa.mou_moa_jenis_dokumen LIKE ?
                 AND mou_moa.nama_mitra LIKE ?
                 AND mou_moa.mou_moa_klasifikasi LIKE ?
                 AND mou_moa.mou_moa_status LIKE ?
