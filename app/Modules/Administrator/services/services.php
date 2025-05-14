@@ -216,6 +216,6 @@ class Services extends Repository implements Services_interfaces
      */
     public function destroyKegiatanService(int $id, $kegiatanDomain): void
     {
-        $this->destroyMouMoaRepository($id, $kegiatanDomain);
+        $this->destroyKegiatanRepository($id, $kegiatanDomain);
     }
 }
