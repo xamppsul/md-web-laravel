@@ -8,9 +8,6 @@ interface Repository_interfaces
      * feature: master data aset 
     /**===========================================================================
      */
-    /**
-     * master data asset
-     */
     public function indexAssetRepository($asetDomain, $request);
     public function createAssetRepository();
     public function storeAssetRepository($request, $asetDomain): void;
@@ -22,27 +19,21 @@ interface Repository_interfaces
      * feature: master data mou moa 
     /**===========================================================================
      */
-    /**
-     * master data mou moa
-     */
-    public function indexMouMoaRepository();
+    public function indexMouMoaRepository($asetDomain, $request);
     public function createMouMoaRepository();
-    public function storeMouMoaRepository($request);
-    public function editMouMoaRepository($id);
-    public function updateMouMoaRepository($id);
-    public function destroyMouMoaRepository($id);
+    public function storeMouMoaRepository($request, $asetDomain): void;
+    public function editMouMoaRepository(int $id, $asetDomain): array;
+    public function updateMouMoaRepository(int $id, $asetDomain, $request): void;
+    public function destroyMouMoaRepository(int $id, $asetDomain): void;
 
     /**===========================================================================
      * feature: master data kegiatan 
     /**===========================================================================
      */
-    /**
-     * master data kegiatan
-     */
-    public function indexKegiatanRepository();
+    public function indexKegiatanRepository($asetDomain, $request);
     public function createKegiatanRepository();
-    public function storeKegiatanRepository($request);
-    public function editKegiatanRepository($id);
-    public function updateKegiatanRepository($id);
-    public function destroyKegiatanRepository($id);
+    public function storeKegiatanRepository($request, $asetDomain): void;
+    public function editKegiatanRepository(int $id, $asetDomain): array;
+    public function updateKegiatanRepository(int $id, $asetDomain, $request): void;
+    public function destroyKegiatanRepository(int $id, $asetDomain): void;
 }

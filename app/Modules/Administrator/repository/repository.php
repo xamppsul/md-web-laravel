@@ -94,58 +94,169 @@ class Repository implements Repository_interfaces
     /**======================================================================================================================================
      * feture: master data mou moa
     /**======================================================================================================================================
+    /**
+     * index
      */
-    public function indexMouMoaRepository()
+    /**
+     * @method indexMouMoaRepository
+     * @param $asetDomain
+     * @return array
+     */
+    public function indexMouMoaRepository($asetDomain, $request): array
     {
-        return 'index MouMoa repository';
+        return array(
+            'kategori' => $asetDomain->getKategoriAsetDomain(),
+            'status' => $asetDomain->getStatusAsetDomain(),
+            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset' => $asetDomain->getAllAsetDomain($request),
+        );
     }
     public function createMouMoaRepository()
     {
         return 'create MouMoa repository';
     }
-    public function storeMouMoaRepository($request)
+    /**
+     * store
+     */
+    /**
+     * @method storeMouMoaRepository
+     * @param $request
+     * @param $asetDomain
+     * @return void
+     */
+    public function storeMouMoaRepository($request, $asetDomain): void
     {
-        return 'store MouMoa repository';
+        $asetDomain->postDataAsetDomain($request);
     }
-    public function editMouMoaRepository($id)
+    /**
+     * edit
+     */
+    /**
+     * @method editMouMoaRepository
+     * @param int $id
+     * @param $asetDomain
+     * @return array
+     */
+    public function editMouMoaRepository(int $id, $asetDomain): array
     {
-        return 'edit MouMoa repository';
+        return array(
+            'kategori' => $asetDomain->getKategoriAsetDomain(),
+            'status' => $asetDomain->getStatusAsetDomain(),
+            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset' => $asetDomain->getDetailAsetDomain($id)[0],
+        );
     }
-    public function updateMouMoaRepository($id)
+    /**
+     * update
+     */
+    /**
+     * @method updateMouMoaRepository
+     * @param int $id
+     * @param $asetDomain
+     * @param $request
+     * @return array
+     */
+    public function updateMouMoaRepository(int $id, $asetDomain, $request): void
     {
-        return 'update MouMoa repository';
+        $asetDomain->updateDataAsetDomain($id, $request);
     }
-    public function destroyMouMoaRepository($id)
+
+    /**
+     * update
+     */
+    /**
+     * @method destroyMouMoaRepository
+     * @param int $id
+     * @param $asetDomain
+     * @return void
+     */
+    public function destroyMouMoaRepository(int $id, $asetDomain): void
     {
-        return 'destroy MouMoa repository';
+        $asetDomain->deleteDataAsetDomain($id);
     }
 
     /**======================================================================================================================================
      * feture: master data kegiatan
     /**======================================================================================================================================
      */
-    public function indexKegiatanRepository()
+    /**
+     * index
+     */
+    /**
+     * @method indexKegiatanRepository
+     * @param $asetDomain
+     * @return array
+     */
+    public function indexKegiatanRepository($asetDomain, $request): array
     {
-        return 'index Kegiatan repository';
+        return array(
+            'kategori' => $asetDomain->getKategoriAsetDomain(),
+            'status' => $asetDomain->getStatusAsetDomain(),
+            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset' => $asetDomain->getAllAsetDomain($request),
+        );
     }
     public function createKegiatanRepository()
     {
         return 'create Kegiatan repository';
     }
-    public function storeKegiatanRepository($request)
+    /**
+     * store
+     */
+    /**
+     * @method storeKegiatanRepository
+     * @param $request
+     * @param $asetDomain
+     * @return void
+     */
+    public function storeKegiatanRepository($request, $asetDomain): void
     {
-        return 'store Kegiatan repository';
+        $asetDomain->postDataAsetDomain($request);
     }
-    public function editKegiatanRepository($id)
+    /**
+     * edit
+     */
+    /**
+     * @method editKegiatanRepository
+     * @param int $id
+     * @param $asetDomain
+     * @return array
+     */
+    public function editKegiatanRepository(int $id, $asetDomain): array
     {
-        return 'edit Kegiatan repository';
+        return array(
+            'kategori' => $asetDomain->getKategoriAsetDomain(),
+            'status' => $asetDomain->getStatusAsetDomain(),
+            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset' => $asetDomain->getDetailAsetDomain($id)[0],
+        );
     }
-    public function updateKegiatanRepository($id)
+    /**
+     * update
+     */
+    /**
+     * @method updateKegiatanRepository
+     * @param int $id
+     * @param $asetDomain
+     * @param $request
+     * @return array
+     */
+    public function updateKegiatanRepository(int $id, $asetDomain, $request): void
     {
-        return 'update Kegiatan repository';
+        $asetDomain->updateDataAsetDomain($id, $request);
     }
-    public function destroyKegiatanRepository($id)
+
+    /**
+     * update
+     */
+    /**
+     * @method destroyKegiatanRepository
+     * @param int $id
+     * @param $asetDomain
+     * @return void
+     */
+    public function destroyKegiatanRepository(int $id, $asetDomain): void
     {
-        return 'destroy Kegiatan repository';
+        $asetDomain->deleteDataAsetDomain($id);
     }
 }

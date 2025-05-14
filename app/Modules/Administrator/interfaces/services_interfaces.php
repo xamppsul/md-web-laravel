@@ -16,19 +16,19 @@ interface Services_interfaces
     /**
      * master moumoa
      */
-    public function indexMouMoaService();
+    public function indexMouMoaService($asetDomain, $request);
     public function createMouMoaService();
-    public function storeMouMoaService($request);
-    public function editMouMoaService($id);
-    public function updateMouMoaService($id);
-    public function destroyMouMoaService($id);
+    public function storeMouMoaService($request, $asetDomain): void;
+    public function editMouMoaService(int $id, $asetDomain): array;
+    public function updateMouMoaService(int $id, $asetDomain, $request): void;
+    public function destroyMouMoaService(int $id, $asetDomain): void;
     /**
      * master kegiatan
      */
-    public function indexKegiatanService();
+    public function indexKegiatanService($asetDomain, $request);
     public function createKegiatanService();
-    public function storeKegiatanService($request);
-    public function editKegiatanService($id);
-    public function updateKegiatanService($id);
-    public function destroyKegiatanService($id);
+    public function storeKegiatanService($request, $asetDomain): void;
+    public function editKegiatanService(int $id, $asetDomain): array;
+    public function updateKegiatanService(int $id, $asetDomain, $request): void;
+    public function destroyKegiatanService(int $id, $asetDomain): void;
 }
