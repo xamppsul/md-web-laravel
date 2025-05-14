@@ -85,12 +85,13 @@ class Services extends Repository implements Services_interfaces
 
     /**
      * @method indexMouMoaService
-     * @param $asetDomain
+     * @param $mouMoaDomain
+     * @param $request
      * @return array
      */
-    public function indexMouMoaService($asetDomain, $request): array
+    public function indexMouMoaService($mouMoaDomain, $request): array
     {
-        return $this->indexMouMoaRepository($asetDomain, $request);
+        return $this->indexMouMoaRepository($mouMoaDomain, $request);
     }
 
     /**
@@ -105,46 +106,46 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method storeMouMoaService
      * @param $request
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return void
      */
-    public function storeMouMoaService($request, $asetDomain): void
+    public function storeMouMoaService($request, $mouMoaDomain): void
     {
-        $this->storeMouMoaRepository($request, $asetDomain);
+        $this->storeMouMoaRepository($request, $mouMoaDomain);
     }
 
     /**
      * @method editMouMoaService
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return array
      */
-    public function editMouMoaService(int $id, $asetDomain): array
+    public function editMouMoaService(int $id, $mouMoaDomain): array
     {
-        return $this->editMouMoaRepository($id, $asetDomain);
+        return $this->editMouMoaRepository($id, $mouMoaDomain);
     }
 
     /**
      * @method updateMouMoaService
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @param $request
      * @return void
      */
-    public function updateMouMoaService(int $id, $asetDomain, $request): void
+    public function updateMouMoaService(int $id, $mouMoaDomain, $request): void
     {
-        $this->updateMouMoaRepository($id, $asetDomain, $request);
+        $this->updateMouMoaRepository($id, $mouMoaDomain, $request);
     }
 
     /**
      * @method destroyMouMoaService
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @return void
      */
-    public function destroyMouMoaService(int $id, $asetDomain): void
+    public function destroyMouMoaService(int $id, $mouMoaDomain): void
     {
-        $this->destroyMouMoaRepository($id, $asetDomain);
+        $this->destroyMouMoaRepository($id, $mouMoaDomain);
     }
 
 
@@ -155,12 +156,13 @@ class Services extends Repository implements Services_interfaces
 
     /**
      * @method indexKegiatanService
-     * @param $asetDomain
+     * @param $kegiatanDomain
+     * @param $request
      * @return array
      */
-    public function indexKegiatanService($asetDomain, $request): array
+    public function indexKegiatanService($kegiatanDomain, $request): array
     {
-        return $this->indexKegiatanRepository($asetDomain, $request);
+        return $this->indexKegiatanRepository($kegiatanDomain, $request);
     }
 
     /**
@@ -175,45 +177,45 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method storeKegiatanService
      * @param $request
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return void
      */
-    public function storeKegiatanService($request, $asetDomain): void
+    public function storeKegiatanService($request, $kegiatanDomain): void
     {
-        $this->storeKegiatanRepository($request, $asetDomain);
+        $this->storeKegiatanRepository($request, $kegiatanDomain);
     }
 
     /**
      * @method editKegiatanService
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return array
      */
-    public function editKegiatanService(int $id, $asetDomain): array
+    public function editKegiatanService(int $id, $kegiatanDomain): array
     {
-        return $this->editKegiatanRepository($id, $asetDomain);
+        return $this->editKegiatanRepository($id, $kegiatanDomain);
     }
 
     /**
      * @method updateKegiatanService
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @param $request
      * @return void
      */
-    public function updateKegiatanService(int $id, $asetDomain, $request): void
+    public function updateKegiatanService(int $id, $kegiatanDomain, $request): void
     {
-        $this->updateKegiatanRepository($id, $asetDomain, $request);
+        $this->updateKegiatanRepository($id, $kegiatanDomain, $request);
     }
 
     /**
      * @method destroyKegiatanService
      * @param int $id
-     * @param $asetDomain
+     * @param $kegiatanDomain
      * @return void
      */
-    public function destroyKegiatanService(int $id, $asetDomain): void
+    public function destroyKegiatanService(int $id, $kegiatanDomain): void
     {
-        $this->destroyMouMoaRepository($id, $asetDomain);
+        $this->destroyMouMoaRepository($id, $kegiatanDomain);
     }
 }
