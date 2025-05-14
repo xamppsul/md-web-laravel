@@ -39,7 +39,7 @@ class KegiatanDomain
         return DB::select('
             SELECT kegiatan.*, 
                 kegiatan_jenis.name AS kegiatan_jenis_name, 
-                kegiatan_status.name AS kegiatan_status_name,
+                kegiatan_status.name AS kegiatan_status_name
             FROM kegiatan
                 INNER JOIN kegiatan_jenis ON kegiatan.kegiatan_jenis = kegiatan_jenis.id
                 INNER JOIN kegiatan_status ON kegiatan.kegiatan_status = kegiatan_status.id
@@ -66,7 +66,7 @@ class KegiatanDomain
         return DB::select('
             SELECT kegiatan.*, 
                 kegiatan_jenis.name AS kegiatan_jenis_name, 
-                kegiatan_status.name AS kegiatan_status_name,
+                kegiatan_status.name AS kegiatan_status_name
             FROM kegiatan
                 INNER JOIN kegiatan_jenis ON kegiatan.kegiatan_jenis = kegiatan_jenis.id
                 INNER JOIN kegiatan_status ON kegiatan.kegiatan_status = kegiatan_status.id
