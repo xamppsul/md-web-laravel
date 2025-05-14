@@ -57,7 +57,7 @@ class MouMoaDomain
                 AND mou_moa.users_id LIKE ?
             ORDER BY mou_moa.nomor_dokumen DESC
         ', [
-            "%$request->jenis_dokumen%",
+            "%$request->mou_moa_jenis_dokumen%",
             "%$request->nama_mitra%",
             "%$request->mou_moa_klasifikasi%",
             "%$request->mou_moa_status%",
