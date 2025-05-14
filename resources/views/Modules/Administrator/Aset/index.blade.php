@@ -72,7 +72,7 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kondisi Aset</label>
                                                         <select class="form-select" aria-label="Select kondisi aset"
-                                                            name="kondisi_aset">
+                                                            name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
                                                             <option value="1"
                                                                 {{ request('kondisi_aset') == '1' ? 'selected' : '' }}>Baik
@@ -88,7 +88,7 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Status Aset</label>
                                                         <select class="form-select" aria-label="Select status aset"
-                                                            name="status_aset">
+                                                            name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
                                                             <option value="1"
                                                                 {{ request('status_aset') == '1' ? 'selected' : '' }}>Aktif
@@ -104,7 +104,7 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="userName">Kategori aset</label>
                                                         <select class="form-select" aria-label="Select kategori aset"
-                                                            name="kategori_aset">
+                                                            name="kategori_aset" required>
                                                             <option selected="">Pilih Kategori Aset</option>
                                                             <option value="1"
                                                                 {{ request('kategori_aset') == '1' ? 'selected' : '' }}>
