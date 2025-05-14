@@ -203,7 +203,8 @@
                                                             aria-label="Select kategori aset" name="kategori_aset">
                                                             <option selected="">Pilih Kategori Aset</option>
                                                             @foreach ($data['kategori'] as $kategoriAset)
-                                                                <option value="{{ $kategoriAset->id }}">
+                                                                <option value="{{ $kategoriAset->id }}"
+                                                                    {{ old('kategori_aset') == $kategoriAset->id ? 'selected' : '' }}>
                                                                     {{ $kategoriAset->name }}
                                                                 </option>
                                                             @endforeach
@@ -272,7 +273,8 @@
                                                             aria-label="Select kondisi aset" name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
                                                             @foreach ($data['kondisi'] as $kondisiAset)
-                                                                <option value="{{ $kondisiAset->id }}">
+                                                                <option value="{{ $kondisiAset->id }}"
+                                                                    {{ old('kondisi_aset') == $kondisiAset->id ? 'selected' : '' }}>
                                                                     {{ $kondisiAset->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -292,7 +294,8 @@
                                                             aria-label="Select status aset" name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
                                                             @foreach ($data['status'] as $statusAset)
-                                                                <option value="{{ $statusAset->id }}">
+                                                                <option value="{{ $statusAset->id }}"
+                                                                    {{ old('status_aset') == $statusAset->id ? 'selected' : '' }}>
                                                                     {{ $statusAset->name }}</option>
                                                             @endforeach
                                                         </select>
