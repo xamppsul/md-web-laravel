@@ -42,62 +42,62 @@ interface Usecase_intefaces
      * master mou moa
      */
     public function indexMouMoaCase(
-        $asetDomain,
+        $mouMoaDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View;
     public function createMouMoaCase(): View;
     public function storeMouMoaCase(
         $request,
-        $asetDomain,
-        $asetRequest
+        $mouMoaDomain,
+        $mouMoaRequest
     ): RedirectResponse;
     public function editMouMoaCase(
         int $id,
-        $asetDomain,
+        $mouMoaDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View;
     public function updateMouMoaCase(
         int $id,
         $request,
-        $asetDomain,
-        $asetRequest,
+        $mouMoaDomain,
+        $mouMoaRequest,
     ): RedirectResponse;
     public function destroyMouMoaCase(
         int $id,
         $request,
-        $asetDomain,
+        $mouMoaDomain,
     ): RedirectResponse;
     /**
      * master kegiatan
      */
     public function indexKegiatanCase(
-        $asetDomain,
+        $kegiatanDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View;
     public function createKegiatanCase(): View;
     public function storeKegiatanCase(
         $request,
-        $asetDomain,
-        $asetRequest
+        $kegiatanDomain,
+        $kegiatanRequest
     ): RedirectResponse;
     public function editKegiatanCase(
         int $id,
-        $asetDomain,
+        $kegiatanDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View;
     public function updateKegiatanCase(
         int $id,
         $request,
-        $asetDomain,
-        $asetRequest,
+        $kegiatanDomain,
+        $kegiatanRequest,
     ): RedirectResponse;
     public function destroyKegiatanCase(
         int $id,
         $request,
-        $asetDomain,
+        $kegiatanDomain,
     ): RedirectResponse;
 }

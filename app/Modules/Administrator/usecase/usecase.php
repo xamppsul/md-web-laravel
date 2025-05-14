@@ -126,6 +126,8 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method destroyAssetCase
      * @param int $id
+     * @param $request
+     * @param $asetDomain
      * @return RedirectResponse
      */
     public function destroyAssetCase(
@@ -154,21 +156,21 @@ class Usecase extends Services implements Usecase_intefaces
      */
     /**
      * @method indexMouMoaCase
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @param $request
      * @param $constantAdmin
      * @return RedirectResponse|View
      */
     public function indexMouMoaCase(
-        $asetDomain,
+        $mouMoaDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View {
         try {
-            $data = $this->indexMouMoaService($asetDomain, $request);
+            $data = $this->indexMouMoaService($mouMoaDomain, $request);
             return view('Modules.Administrator.MouMoa.index', compact('data', 'constantAdmin'));
         } catch (\Exception $error) {
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
@@ -185,25 +187,25 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method storeMouMoaCase
      * @param $request
-     * @param $asetDomain
-     * @param $asetRequest
+     * @param $mouMoaDomain
+     * @param $mouMoaRequest
      * @return RedirectResponse
      */
     public function storeMouMoaCase(
         $request,
-        $asetDomain,
-        $asetRequest
+        $mouMoaDomain,
+        $mouMoaRequest
     ): RedirectResponse {
-        $asetRequest->postRequestData($request);
+        $mouMoaRequest->postRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->storeMouMoaService($request, $asetDomain);
+            $this->storeMouMoaService($request, $mouMoaDomain);
             DB::commit();
-            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil tambah aset');
+            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil tambah mou/moa');
         } catch (\Exception $error) {
             DB::rollBack();
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
@@ -211,22 +213,22 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method editMouMoaCase
      * @param int $id
-     * @param $asetDomain
+     * @param $mouMoaDomain
      * @param $request
      * @param $constantDomain
      * @return RedirectResponse|View
      */
     public function editMouMoaCase(
         int $id,
-        $asetDomain,
+        $mouMoaDomain,
         $request,
         $constantAdmin,
     ): RedirectResponse|View {
         try {
-            $data = $this->editMouMoaService($id, $asetDomain);
+            $data = $this->editMouMoaService($id, $mouMoaDomain);
             return view('Modules.Administrator.MouMoa.edit', compact('data'));
         } catch (\Exception $error) {
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
@@ -235,26 +237,26 @@ class Usecase extends Services implements Usecase_intefaces
      * @method updateMouMoaCase
      * @param int $id
      * @param $request
-     * @param $asetDomain
-     * @param $asetRequest
+     * @param $mouMoaDomain
+     * @param $mouMoaRequest
      * @return RedirectResponse
      */
     public function updateMouMoaCase(
         int $id,
         $request,
-        $asetDomain,
-        $asetRequest,
+        $mouMoaDomain,
+        $mouMoaRequest,
     ): RedirectResponse {
-        $asetRequest->updateRequestData($request);
+        $mouMoaRequest->updateRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->updateMouMoaService($id, $asetDomain, $request);
+            $this->updateMouMoaService($id, $mouMoaDomain, $request);
             DB::commit();
-            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil update aset');
+            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil update mou/moa');
         } catch (\Exception $error) {
             DB::rollBack();
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
@@ -262,22 +264,24 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method destroyMouMoaCase
      * @param int $id
+     * @param $request
+     * @param $MouMoaDomain
      * @return RedirectResponse
      */
     public function destroyMouMoaCase(
         int $id,
         $request,
-        $asetDomain,
+        $mouMoaDomain,
     ): RedirectResponse {
 
         DB::beginTransaction();
         try {
-            $this->destroyMouMoaService($id, $asetDomain);
+            $this->destroyMouMoaService($id, $mouMoaDomain);
             DB::commit();
-            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil delete aset');
+            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil delete mou/moa');
         } catch (\Exception $error) {
             DB::rollBack();
-            $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
