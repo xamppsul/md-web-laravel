@@ -369,7 +369,11 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function destroyUserMaster(int $id, Request $request): RedirectResponse
     {
-        return $this->destroyUserMasterCase($id, $request, $this->userMasterDomain);
+        return $this->destroyUserMasterCase(
+            $id,
+            $request,
+            $this->userMasterDomain
+        );
     }
 
 
