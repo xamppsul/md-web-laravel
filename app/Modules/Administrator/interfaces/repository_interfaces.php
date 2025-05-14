@@ -23,7 +23,7 @@ interface Repository_interfaces
     public function createMouMoaRepository();
     public function storeMouMoaRepository($request, $mouMoaDomain, string $filePendukung): void;
     public function editMouMoaRepository(int $id, $mouMoaDomain): array;
-    public function updateMouMoaRepository(int $id, $mouMoaDomain, $request): void;
+    public function updateMouMoaRepository(int $id, $mouMoaDomain, $request, string $filePendukung): void;
     public function destroyMouMoaRepository(int $id, $mouMoaDomain): void;
 
     //file upload

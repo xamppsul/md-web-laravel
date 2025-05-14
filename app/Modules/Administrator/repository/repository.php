@@ -160,9 +160,9 @@ class Repository implements Repository_interfaces
      * @param $request
      * @return array
      */
-    public function updateMouMoaRepository(int $id, $mouMoaDomain, $request): void
+    public function updateMouMoaRepository(int $id, $mouMoaDomain, $request, string $filePendukung): void
     {
-        $mouMoaDomain->updateDataMouMoaDomain($id, $request);
+        $mouMoaDomain->updateDataMouMoaDomain($id, $request, $filePendukung);
     }
 
     /**

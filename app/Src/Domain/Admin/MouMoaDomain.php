@@ -178,10 +178,11 @@ class MouMoaDomain
      * @method updateDataMouMoaDomain
      * @param $request
      * @param $id
+     * @param $filePendukung
      * @return void
      */
 
-    public function updateDataMouMoaDomain($id, $request): void
+    public function updateDataMouMoaDomain($id, $request, $filePendukung): void
     {
         DB::update('UPDATE mou_moa SET 
             nomor_dokumen = ?,
@@ -208,7 +209,7 @@ class MouMoaDomain
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
             $request->users_id,
-            $request->dokumen_pendukung,
+            $filePendukung,
             $request->keterangan_tambahan,
             now(),
             $id

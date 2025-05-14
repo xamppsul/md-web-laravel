@@ -134,7 +134,7 @@ class Services extends Repository implements Services_interfaces
      */
     public function updateMouMoaService(int $id, $mouMoaDomain, $request): void
     {
-        $this->updateMouMoaRepository($id, $mouMoaDomain, $request);
+        $this->updateMouMoaRepository($id, $mouMoaDomain, $request, $this->doUploadFilePendukung($request));
     }
 
     /**
