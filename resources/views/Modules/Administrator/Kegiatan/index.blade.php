@@ -1,11 +1,14 @@
 @extends('layout.master')
-@section('title', 'Master Asset')
+@section('title', 'Master Kegiatan')
 @section('css')
     <!--font-awesome-css-->
     <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome/css/all.css') }}">
-
+    <!-- Select2 css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/select/select2.min.css') }}">
     <!-- Data Table css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datatable/jquery.dataTables.min.css') }}">
+    <!-- flatpickr css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datepikar/flatpickr.min.css') }}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -22,7 +25,7 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{ route('admin.master.Kegiatan.index') }}" class="f-s-14 f-w-500">Data</a>
+                        <a href="{{ route('admin.master.MouMoa.index') }}" class="f-s-14 f-w-500">Data</a>
                     </li>
                 </ul>
             </div>
@@ -30,11 +33,282 @@
 
         <!-- Breadcrumb end -->
 
+        @session('success')
+            <div class="flash-data-success" data-flashdata-success="{{ $value }}"></div>
+        @endsession
+        @session('error')
+            <div class="flash-data-error" data-flashdata-error="{{ $value }}"></div>
+        @endsession
         <!-- Data Table start -->
         <div class="row">
             <!-- Default Datatable start -->
             <div class="col-12">
-                <div class="card ">
+                <div class="card">
+                    <div class="d-flex justify-content-between code-header card-header">
+                        {{-- <h5>Horizontal </h5> --}}
+                    </div>
+
+                    <div class="card-body">
+                        <p>
+                            <button aria-controls="collapseFilter" aria-expanded="false"
+                                class="btn btn-light-primary b-r-22" data-bs-target="#collapseFilter"
+                                data-bs-toggle="collapse" type="button"> <i class="ti ti-filter"></i>
+                                Filter</button>
+                            <button type="button" class="btn btn-primary b-r-22" aria-controls="collapseTambahKegiatan"
+                                aria-expanded="false" data-bs-target="#collapseTambahKegiatan" data-bs-toggle="collapse"
+                                type="button"> <i class="ti ti-text-plus"></i>
+                                Tambah Kegiatan</button>
+                        </p>
+                        <div>
+                            <!-- collapse filter -->
+                            <div class="collapse collapse-horizontal" id="collapseFilter">
+                                <div class="card card-body dashed-1-secondary w-900">
+                                    <!-- Tooltips start -->
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form action="{{ route('admin.master.Kegiatan.index') }}" method="GET"
+                                                    class="row g-3 app-form rounded-control" id="filterFormkegiatan">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="kegiatan_jenis">Jenis
+                                                            Kegiatan</label>
+                                                        <select class="form-select" aria-label="Select Jenis Kegiatan"
+                                                            name="kegiatan_jenis" required>
+                                                            <option selected="">Pilih Jenis Kegiatan</option>
+                                                            @foreach ($data['jenis'] as $kegiatan_jenis)
+                                                                <option value="{{ $kegiatan_jenis->id }}"
+                                                                    {{ request('kegiatan_jenis') == $kegiatan_jenis->id ? 'selected' : '' }}>
+                                                                    {{ $kegiatan_jenis->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="tanggal_kegiatan">Tanggal
+                                                            Kegiatan</label>
+                                                        <input class="form-control basic-date" type="text"
+                                                            name="tanggal_kegiatan" placeholder="YYYY-MM-DD"
+                                                            value="{{ request('tanggal_kegiatan') }}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="nama_kegiatan">Nama Kegiatan</label>
+                                                        <input class="form-control" id="nama_kegiatan"
+                                                            placeholder="Masukan Nama Kegiatan" type="text"
+                                                            name="nama_kegiatan" value="{{ request('nama_kegiatan') }}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="tempat_lokasi">Tempat
+                                                            Kegiatan</label>
+                                                        <input class="form-control" id="tempat_lokasi"
+                                                            placeholder="Masukan Tempat Kegiatan" type="text"
+                                                            name="tempat_lokasi" value="{{ request('tempat_lokasi') }}">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary b-r-22" type="submit"
+                                                            value="Submit">Submit
+                                                        </button>
+                                                        <button class="btn btn-warning b-r-22"
+                                                            onclick="clearfilterFormkegiatan()" value="Clear">Clear
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- collapse tambah mou moa -->
+                            <div class="collapse collapse-horizontal" id="collapseTambahKegiatan">
+                                <div class="card card-body dashed-1-secondary w-900">
+                                    <!-- Tooltips start -->
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form class="row g-3 app-form rounded-control"
+                                                    action="{{ route('admin.master.Kegiatan.store') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="nama_kegiatan">Nama
+                                                            Kegiatan</label>
+                                                        <input
+                                                            class="form-control @error('nama_kegiatan')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="nama_kegiatan" placeholder="Masukan Nama Kegiatan"
+                                                            type="text" value="{{ old('nama_kegiatan') }}"
+                                                            name="nama_kegiatan">
+                                                        <div class="mt-1">
+                                                            @error('nama_kegiatan')
+                                                                <span class="text-danger"
+                                                                    id="nama_kegiatan">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="kegiatan_jenis">Jenis
+                                                            Kegiatan</label>
+                                                        <select
+                                                            class="form-select @error('kegiatan_jenis')
+                                                            is-invalid
+                                                        @enderror"
+                                                            aria-label="Select jenis kegiatan" name="kegiatan_jenis">
+                                                            <option selected="">Pilih Jenis Kegiatan</option>
+                                                            @foreach ($data['jenis'] as $jenisKegiatan)
+                                                                <option value="{{ $jenisKegiatan->id }}"
+                                                                    {{ old('kegiatan_jenis') == $jenisKegiatan->id ? 'selected' : '' }}>
+                                                                    {{ $jenisKegiatan->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('kegiatan_jenis')
+                                                                <span class="text-danger"
+                                                                    id="kegiatan_jenis">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="tanggal_kegiatan">Tanggal
+                                                            Kegiatan</label>
+                                                        <input
+                                                            class="form-control @error('tanggal_kegiatan')
+                                                            is-invalid
+                                                        @enderror basic-date"
+                                                            type="text" name="tanggal_kegiatan"
+                                                            placeholder="YYYY-MM-DD"
+                                                            value="{{ old('tanggal_kegiatan') }}">
+                                                        <div class="mt-1">
+                                                            @error('tanggal_kegiatan')
+                                                                <span class="text-danger"
+                                                                    id="tanggal_kegiatan">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="tempat_lokasi">Tempat
+                                                            kegiatan</label>
+                                                        <input
+                                                            class="form-control @error('tempat_lokasi') is-invalid @enderror"
+                                                            id="tempat_lokasi" name="tempat_lokasi"
+                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            value="{{ old('tempat_lokasi') }}">
+                                                        <div class="mt-1">
+                                                            @error('tempat_lokasi')
+                                                                <span class="text-danger"
+                                                                    id="tempat_lokasi">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label"
+                                                            for="penyelenggara">Penyelenggara</label>
+                                                        <input
+                                                            class="form-control @error('penyelenggara') is-invalid @enderror"
+                                                            id="penyelenggara" name="penyelenggara"
+                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            value="{{ old('penyelenggara') }}">
+                                                        <div class="mt-1">
+                                                            @error('penyelenggara')
+                                                                <span class="text-danger"
+                                                                    id="penyelenggara">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="jumlah_peserta">Jumlah
+                                                            Peserta</label>
+                                                        <input
+                                                            class="form-control @error('jumlah_peserta') is-invalid @enderror"
+                                                            id="jumlah_peserta" name="jumlah_peserta"
+                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            value="{{ old('jumlah_peserta') }}">
+                                                        <div class="mt-1">
+                                                            @error('jumlah_peserta')
+                                                                <span class="text-danger"
+                                                                    id="jumlah_peserta">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="file_daftar_hadir">Daftar
+                                                            Hadir</label>
+                                                        <input type="file"
+                                                            class="form-control @error('file_daftar_hadir')
+                                                            is-invalid
+                                                        @enderror"
+                                                            name="file_daftar_hadir">
+                                                        @error('file_daftar_hadir')
+                                                            <span class="text-danger"
+                                                                id="file_daftar_hadir">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="file_kegiatan">Dokumentasi
+                                                            kegiatan</label>
+                                                        <input type="file"
+                                                            class="form-control @error('file_kegiatan')
+                                                            is-invalid
+                                                        @enderror"
+                                                            name="file_kegiatan">
+                                                        @error('file_kegiatan')
+                                                            <span class="text-danger"
+                                                                id="file_kegiatan">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="kegiatan_status">Jenis
+                                                            Kegiatan</label>
+                                                        <select
+                                                            class="form-select @error('kegiatan_status')
+                                                            is-invalid
+                                                        @enderror"
+                                                            aria-label="Select status kegiatan" name="kegiatan_status">
+                                                            <option selected="">Pilih Status Kegiatan</option>
+                                                            @foreach ($data['status'] as $statusKegiatan)
+                                                                <option value="{{ $statusKegiatan->id }}"
+                                                                    {{ old('kegiatan_status') == $statusKegiatan->id ? 'selected' : '' }}>
+                                                                    {{ $statusKegiatan->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('kegiatan_status')
+                                                                <span class="text-danger"
+                                                                    id="kegiatan_status">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="keterangan">Keterangan</label>
+                                                        <textarea
+                                                            class="form-control @error('keterangan')
+                                                            is-invalid
+                                                        @enderror"
+                                                            id="" cols="30" rows="10" name="keterangan">{{ old('keterangan') }}</textarea>
+                                                        <div class="mt-1">
+                                                            @error('keterangan')
+                                                                <span class="text-danger"
+                                                                    id="keterangan">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary b-r-22" type="submit"
+                                                            value="Submit">Submit
+                                                        </button>
+                                                        <button class="btn btn-warning b-r-22" type="reset"
+                                                            value="Submit">Clear
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-header">
                     </div>
                     <div class="card-body p-0">
@@ -42,466 +316,46 @@
                             <table id="example" class="display app-data-table default-data-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Nama Kegiatan</th>
+                                        <th>Jenis Kegiatan</th>
+                                        <th>Tempat/Lokasi Kegiatan</th>
+                                        <th>Jumlah Peserta</th>
+                                        <th>Penyelenggara</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td><span class="badge text-light-primary">System Architect</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>$3674.55</td>
-                                        <td>$320,800</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td><span class="badge text-light-success">Accountant</span></td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011-07-25</td>
-                                        <td>$170,750</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td><span class="badge text-light-secondary">Junior Technical Author</span></td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009-01-12</td>
-                                        <td>$86,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td><span class="badge text-light-info">Senior Javascript Developer</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012-03-29</td>
-                                        <td>$433,060</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td><span class="badge text-light-success">Accountant</span></td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008-11-28</td>
-                                        <td>$162,700</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brielle Williamson</td>
-                                        <td><span class="badge text-light-danger"> Integration Specialist</span></td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012-12-02</td>
-                                        <td>$372,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Herrod Chandler</td>
-                                        <td><span class="badge text-light-dark">Sales Assistant</span></td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td>2012-08-06</td>
-                                        <td>$137,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td><span class="badge text-light-light">Integration Specialist</span></td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td>2010-10-14</td>
-                                        <td>$327,900</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colleen Hurst</td>
-                                        <td><span class="badge text-light-primary">Javascript Developer</span></td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td>2009-09-15</td>
-                                        <td>$205,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sonya Frost</td>
-                                        <td><span class="badge text-light-info">Software Engineer</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>23</td>
-                                        <td>2008-12-13</td>
-                                        <td>$103,600</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jena Gaines</td>
-                                        <td><span class="badge text-light-danger">Office Manager</span></td>
-                                        <td>London</td>
-                                        <td>30</td>
-                                        <td>2008-12-19</td>
-                                        <td>$90,560</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quinn Flynn</td>
-                                        <td><span class="badge text-light-secondary">Support Lead</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2013-03-03</td>
-                                        <td>$342,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Charde Marshall</td>
-                                        <td><span class="badge text-light-info">Regional Director</span></td>
-                                        <td>San Francisco</td>
-                                        <td>36</td>
-                                        <td>2008-10-16</td>
-                                        <td>$470,600</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Haley Kennedy</td>
-                                        <td><span class="badge text-light-primary">Senior Marketing Designer</span></td>
-                                        <td>London</td>
-                                        <td>43</td>
-                                        <td>2012-12-18</td>
-                                        <td>$313,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tatyana Fitzpatrick</td>
-                                        <td><span class="badge text-light-info">Regional Director</span></td>
-                                        <td>London</td>
-                                        <td>19</td>
-                                        <td>2010-03-17</td>
-                                        <td>$385,750</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Silva</td>
-                                        <td><span class="badge text-light-warning">Marketing Designer</span></td>
-                                        <td>London</td>
-                                        <td>66</td>
-                                        <td>2012-11-27</td>
-                                        <td>$198,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Paul Byrd</td>
-                                        <td><span class="badge text-light-secondary">Chief Financial Officer (CFO)</span>
-                                        </td>
-                                        <td>New York</td>
-                                        <td>64</td>
-                                        <td>2010-06-09</td>
-                                        <td>$725,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gloria Little</td>
-                                        <td><span class="badge text-light-success">Systems Administrator</span></td>
-                                        <td>New York</td>
-                                        <td>59</td>
-                                        <td>2009-04-10</td>
-                                        <td>$237,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td><span class="badge text-light-info">Software Engineer</span></td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012-10-13</td>
-                                        <td>$132,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dai Rios</td>
-                                        <td><span class="badge text-light-danger">Personnel Lead</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>35</td>
-                                        <td>2012-09-26</td>
-                                        <td>$217,500</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jenette Caldwell</td>
-                                        <td><span class="badge text-light-dark">Personnel Lead</span></td>
-                                        <td>New York</td>
-                                        <td>30</td>
-                                        <td>2011-09-03</td>
-                                        <td>$345,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yuri Berry</td>
-                                        <td><span class="badge text-light-info">Development Lead</span></td>
-                                        <td>New York</td>
-                                        <td>40</td>
-                                        <td>2009-06-25</td>
-                                        <td>$675,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td><span class="badge text-light-warning">Pre-Sales Support</span></td>
-                                        <td>New York</td>
-                                        <td>21</td>
-                                        <td>2011-12-12</td>
-                                        <td>$106,450</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Doris Wilder</td>
-                                        <td><span class="badge text-light-dark">Sales Assistant</span></td>
-                                        <td>Sydney</td>
-                                        <td>23</td>
-                                        <td>2010-09-20</td>
-                                        <td>$85,600</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica Ramos</td>
-                                        <td><span class="badge text-light-secondary">Chief Executive Officer (CEO)</span>
-                                        </td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009-10-09</td>
-                                        <td>$1,200,000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Joyce</td>
-                                        <td><span class="badge text-light-light">Developer</span></td>
-                                        <td>Edinburgh</td>
-                                        <td>42</td>
-                                        <td>2010-12-22</td>
-                                        <td>$92,575</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Chang</td>
-                                        <td><span class="badge text-light-info">Regional Director</span></td>
-                                        <td>Singapore</td>
-                                        <td>28</td>
-                                        <td>2010-11-14</td>
-                                        <td>$357,650</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td><span class="badge text-light-info">Software Engineer</span></td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011-06-07</td>
-                                        <td>$206,850</td>
-                                        <td>
-                                            <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                <i class="ti ti-edit text-success"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                <i class="ti ti-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($data['kegiatan'] as $kegiatan)
+                                        <tr>
+                                            <td>{{ $kegiatan->nama_kegiatan }}</td>
+                                            <td>{{ $kegiatan->kegiatan_jenis_name }}</td>
+                                            <td>{{ $kegiatan->tempat_lokasi }}</td>
+                                            </td>
+                                            <td>{{ $kegiatan->jumlah_peserta }}</td>
+                                            <td>{{ $kegiatan->penyelenggara }}</td>
+                                            <td>
+                                                <button type="button" data-item="{{ $kegiatan->id }}"
+                                                    data-bs-target="#detailKegiatan--{{ $kegiatan->id }}"
+                                                    data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
+                                                    <i class="ti ti-info-circle text-success"></i>
+                                                </button>
+                                                <a href="{{ route('admin.master.Kegiatan.edit', $kegiatan->id) }}"
+                                                    class="btn btn-light-success icon-btn b-r-4">
+                                                    <i class="ti ti-edit text-success"></i>
+                                                </a>
+                                                <form class="btn btn-light-danger icon-btn b-r-4"
+                                                    action="{{ route('admin.master.Kegiatan.destroy', $kegiatan->id) }}"
+                                                    method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="button"
+                                                        class="btn btn-light-danger icon-btn b-r-4 btn-delete">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -511,6 +365,53 @@
             <!-- Default Datatable end -->
         </div>
         <!-- Data Table end -->
+        @foreach ($data['kegiatan'] as $kegiatan)
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
+                id="detailKegiatan--{{ $kegiatan->id }}" tabindex="-1">
+                <div class="modal-dialog app_modal_sm">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary-800">
+                            <h1 class="modal-title fs-5 text-white" id="detailKegiatan2">Detail Mou Moa</h1>
+                        </div>
+                        <div class="modal-body">
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Kegiatan:
+                                {{ $kegiatan->nama_kegiatan }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Kegiatan:
+                                {{ $kegiatan->kegiatan_jenis_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Kegiatan:
+                                {{ $kegiatan->tanggal_kegiatan }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tempat/Lokasi Kegiatan:
+                                {{ $kegiatan->tempat_lokasi }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Penyelenggara Kegiatan:
+                                {{ $kegiatan->penyelenggara }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jumlah Peserta:
+                                {{ $kegiatan->jumlah_peserta }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status Kegiatan:
+                                {{ $kegiatan->kegiatan_status_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Keterangan:
+                                {{ $kegiatan->keterangan }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Daftar Hadir:
+                            </p>
+                            <iframe
+                                src="{{ asset("/laraview/#../docsKegiatanDaftarHadir/{$kegiatan->file_daftar_hadir}") }}"
+                                width="450px" height="300px"></iframe>
+
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Kegiatan:
+                                @empty($kegiatan->file_kegiatan)
+                                    {{ __('Tidak ada file kegiatan') }}
+                                @else
+                                    <a href="{{ asset("/docsFileKegiatan/{$kegiatan->file_kegiatan}") }}"
+                                        target="_blank">Buka file kegiatan</a>
+                                @endempty
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 @endsection
 
@@ -523,4 +424,43 @@
 
     <!-- js-->
     <script src="{{ asset('assets/js/data_table.js') }}"></script>
+
+    <!--form validation-->
+    <script src="{{ asset('assets/js/formvalidation.js') }}"></script>
+
+    <!-- select2 -->
+    <script src="{{ asset('assets/vendor/select/select2.min.js') }}"></script>
+
+    <!--js-->
+    <script src="{{ asset('assets/js/select.js') }}"></script>
+
+    <!-- flatpickr js-->
+    <script src="{{ asset('assets/vendor/datepikar/flatpickr.js') }}"></script>
+
+    <!--js-->
+    <script src="{{ asset('assets/js/date_picker.js') }}"></script>
+
+    <!--cleave js  -->
+    <script src="{{ asset('assets/vendor/cleavejs/cleave.min.js') }}"></script>
+
+    <!-- input mask currency -->
+    {{-- <script src="{{ asset('assets/js/input_masks.js') }}"></script> --}}
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Cleave('.price-input', {
+                numeral: true,
+                numeralThousandsGroupStyle: 'thousand'
+            });
+        });
+    </script> --}}
+    <script type="text/javascript">
+        function clearfilterFormkegiatan() {
+            const form = document.getElementById('filterFormkegiatan');
+            Array.from(form.elements).forEach(element => {
+                if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
+                    element.value = '';
+                }
+            });
+        }
+    </script>
 @endsection
