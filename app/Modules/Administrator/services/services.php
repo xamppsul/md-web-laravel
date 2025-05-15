@@ -291,4 +291,21 @@ class Services extends Repository implements Services_interfaces
     {
         $this->destroyUserMasterRepository($id, $userMasterDomain);
     }
+
+
+    /**======================================================================================================================================================================
+     * feature: master data log
+    /**======================================================================================================================================================================
+     */
+
+    /**
+     * @method indexLogUserService
+     * @param $logUserDomain
+     * @param $request
+     * @return array
+     */
+    public function indexLogUserService($logUserDomain, $request): array
+    {
+        return $this->indexLogUserRepository($logUserDomain, $request);
+    }
 }

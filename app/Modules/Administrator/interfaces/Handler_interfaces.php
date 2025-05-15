@@ -51,4 +51,9 @@ interface Handler_interfaces
      */
 
     public function indexElfinder(Request $request): RedirectResponse|View;
+
+    /**
+     * master log
+     */
+    public function indexLogUser(Request $request): View|RedirectResponse;
 }

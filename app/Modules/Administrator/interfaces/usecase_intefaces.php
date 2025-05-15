@@ -140,4 +140,12 @@ interface Usecase_intefaces
         $elfinderDomain,
         $request,
     ): RedirectResponse|View;
+
+    /**
+     * log master
+     */
+    public function indexLogUserCase(
+        $logMasterDomain,
+        $request,
+    ): RedirectResponse|View;
 }
