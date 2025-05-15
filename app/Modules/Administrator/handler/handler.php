@@ -8,6 +8,7 @@ use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\AsetDomain;
 use App\Src\Domain\Admin\ElfinderDomain;
 use App\Src\Domain\Admin\KegiatanDomain;
+use App\Src\Domain\Admin\LogMasterDomain;
 use App\Src\Domain\Admin\MouMoaDomain;
 use App\Src\Domain\Admin\UserMasterDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
@@ -40,6 +41,8 @@ class Handler extends Usecase implements Handler_interfaces
         private UserMasterRequest $userMasterRequest,
         //elfinder
         private ElfinderDomain $elfinderDomain,
+        //log
+        private LogMasterDomain $logMasterDomain,
     ) {}
     /**
      * ==============================================================================================================================
@@ -373,6 +376,23 @@ class Handler extends Usecase implements Handler_interfaces
             $id,
             $request,
             $this->userMasterDomain
+        );
+    }
+
+    /**====================================================
+     * master log
+     * ====================================================
+     */
+    /**
+     * @method indexLogUser
+     * @param $request
+     * @return View|RedirectResponse
+     */
+    public function indexLogUser(Request $request): View|RedirectResponse
+    {
+        return $this->indexLogUserCase(
+            $this->logMasterDomain,
+            $request,
         );
     }
 

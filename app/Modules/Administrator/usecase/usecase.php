@@ -586,4 +586,28 @@ class Usecase extends Services implements Usecase_intefaces
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
+
+    /**
+     * ===============================================================
+     * feature: log master
+     * ===============================================================
+     */
+
+    /**
+     * @method indexLogUserCase
+     * @param $logMasterDomain
+     * @param $request
+     */
+    public function indexLogUserCase(
+        $logMasterDomain,
+        $request
+    ): RedirectResponse|View {
+        try {
+            $data = $this->indexLogUserService($logMasterDomain, $request);
+            return view('Modules.Administrator.LogMaster.index');
+        } catch (\Exception $error) {
+            $logMasterDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
+            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+        }
+    }
 }

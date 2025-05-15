@@ -7,7 +7,7 @@ interface Services_interfaces
     /**
      * master asset
      */
-    public function indexAssetService($asetDomain, $request);
+    public function indexAssetService($asetDomain, $request): array;
     public function createAssetService();
     public function storeAssetService($request, $asetDomain): void;
     public function editAssetService(int $id, $asetDomain): array;
@@ -16,7 +16,7 @@ interface Services_interfaces
     /**
      * master moumoa
      */
-    public function indexMouMoaService($mouMoaDomain, $request);
+    public function indexMouMoaService($mouMoaDomain, $request): array;
     public function createMouMoaService();
     public function storeMouMoaService($request, $mouMoaDomain): void;
     public function editMouMoaService(int $id, $mouMoaDomain): array;
@@ -25,7 +25,7 @@ interface Services_interfaces
     /**
      * master kegiatan
      */
-    public function indexKegiatanService($kegiatanDomain, $request);
+    public function indexKegiatanService($kegiatanDomain, $request): array;
     public function createKegiatanService();
     public function storeKegiatanService($request, $kegiatanDomain): void;
     public function editKegiatanService(int $id, $kegiatanDomain): array;
@@ -35,10 +35,15 @@ interface Services_interfaces
     /**
      * master user
      */
-    public function indexUserMasterService($userMasterDomain, $request);
+    public function indexUserMasterService($userMasterDomain, $request): array;
     public function createUserMasterService();
     public function storeUserMasterService($request, $userMasterDomain): void;
     public function editUserMasterService(int $id, $userMasterDomain): array;
     public function updateUserMasterService(int $id, $userMasterDomain, $request): void;
     public function destroyUserMasterService(int $id, $userMasterDomain): void;
+
+    /**
+     * master log
+     */
+    public function indexLogUserService($userMasterDomain, $request): array;
 }

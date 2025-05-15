@@ -64,7 +64,7 @@
                 <li class="menu-title"><span>Logs</span></li>
                 <li class="no-sub">
                     <a class="" href="{{ __('widget') }}">
-                        <i class="iconoir-view-grid"></i> Widgets
+                        <i class="iconoir-database-warning"></i> Log
                     </a>
                 </li>
             @endif

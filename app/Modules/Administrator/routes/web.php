@@ -42,5 +42,6 @@ Route::middleware(['throttle:30,1', 'auth:admin'])->group(function () {
         Route::prefix('elfinder')->group(function () {
             Route::get('/', [Handler::class, 'indexElFinder'])->name('admin.elfinder.index');
         });
+        Route::get('log', [Handler::class, 'indexLogUser'])->name('admin.log-user.index');
     });
 });

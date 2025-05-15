@@ -378,4 +378,24 @@ class Repository implements Repository_interfaces
     {
         $userMasterDomain->deleteDataUserMasterDomain($id);
     }
+
+    /**======================================================================================================================================
+     * feture: master data log
+    /**======================================================================================================================================
+     */
+    /**
+     * index
+     */
+
+    /**
+     * @method indexLogUserRepository
+     * @param $userLogDomain
+     * @param $request
+     */
+    public function indexLogUserRepository($userLogDomain, $request): array
+    {
+        return array(
+            'userlog' => $userLogDomain->getAllLogUserDomain($request),
+        );
+    }
 }
