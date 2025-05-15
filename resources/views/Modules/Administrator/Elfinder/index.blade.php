@@ -1,8 +1,11 @@
 @extends('layout.master')
 @section('title', 'Elfinder')
 @section('css')
-    <!-- flatpickr css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datepikar/flatpickr.min.css') }}">
+    <!-- elFinder CSS + JS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('packages/barryvdh/elfinder/css/elfinder.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('packages/barryvdh/elfinder/css/theme.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -35,6 +38,7 @@
                     <div class="card-header d-flex flex-column gap-2">
                     </div>
                     <div class="card-body">
+                        <div id="elfinder"></div>
                     </div>
                 </div>
             </div>
@@ -47,13 +51,19 @@
 @section('script')
     <!--customizer-->
     <div id="customizer"></div>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <!-- elfinder js -->
+    <script src="{{ asset('packages/barryvdh/elfinder/js/elfinder.min.js') }}"></script>
 
-    <!--js-->
-    <script src="{{ asset('assets/js/formvalidation.js') }}"></script>
-
-    <!-- flatpickr js-->
-    <script src="{{ asset('assets/vendor/datepikar/flatpickr.js') }}"></script>
-
-    <!--datepicker-->
-    <script src="{{ asset('assets/js/date_picker.js') }}"></script>
+    <!-- elfinder -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#elfinder').elfinder({
+                //call route elfinder
+                url: '{{ url('elfinder/connector') }}'
+            });
+        });
+    </script>
 @endsection
