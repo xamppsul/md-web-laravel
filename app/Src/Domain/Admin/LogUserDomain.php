@@ -41,10 +41,12 @@ class LogUserDomain
             SELECT * FROM logs
                 WHERE   logs.message LIKE ?
                 AND     logs.created_at LIKE ?
-            ORDER BY logs.id ASC
+                AND     logs.type LIKE ?
+            ORDER BY logs.id DESC
         ', [
             "%$request->message%",
             "%$request->created_at%",
+            "%$request->type%",
         ]);
     }
 

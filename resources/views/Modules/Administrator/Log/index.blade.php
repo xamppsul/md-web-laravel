@@ -82,6 +82,19 @@
                                                             value="{{ request('created_at') }}">
 
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="type">Tipe Log</label>
+                                                        <select class="form-select" aria-label="Select tipe log"
+                                                            name="type" required>
+                                                            <option selected="">Pilih Tipe Log</option>
+                                                            <option value="success"
+                                                                {{ request('type') == 'success' ? 'selected' : '' }}>
+                                                                Success</option>
+                                                            <option value="error"
+                                                                {{ request('type') == 'error' ? 'selected' : '' }}>
+                                                                Error</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
