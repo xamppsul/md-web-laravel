@@ -3,6 +3,8 @@ name: Deploy Web MD Febi UMK
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+      - 'public/**'
 jobs:
   build:
     runs-on: ubuntu-latest
