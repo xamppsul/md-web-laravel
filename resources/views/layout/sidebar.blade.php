@@ -63,7 +63,7 @@
                 </li>
                 <li class="menu-title"><span>Logs</span></li>
                 <li class="no-sub">
-                    <a class="" href="{{ __('widget') }}">
+                    <a class="" href="{{ route('admin.log-user.index') }}">
                         <i class="iconoir-database-warning"></i> Log
                     </a>
                 </li>

@@ -43,10 +43,8 @@ class LogUserDomain
                 AND     logs.created_at LIKE ?
             ORDER BY logs.id ASC
         ', [
-            "%$request->name%",
-            "%$request->username%",
-            "%$request->email%",
-            "%$request->roles_id%"
+            "%$request->message%",
+            "%$request->created_at%",
         ]);
     }
 

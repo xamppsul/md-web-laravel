@@ -604,7 +604,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexLogUserService($logUserDomain, $request);
-            return view('Modules.Administrator.LogMaster.index', compact('data'));
+            return view('Modules.Administrator.Log.index', compact('data'));
         } catch (\Exception $error) {
             $logUserDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');

@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{ route('admin.master.UserMaster.index') }}" class="f-s-14 f-w-500">Data</a>
+                        <a href="{{ route('admin.log-user.index') }}" class="f-s-14 f-w-500">Data</a>
                     </li>
                 </ul>
             </div>
@@ -67,45 +67,27 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('admin.master.UserMaster.index') }}" method="GET"
-                                                    class="row g-3 app-form rounded-control" id="filterFormUserMaster">
+                                                <form action="{{ route('admin.log-user.index') }}" method="GET"
+                                                    class="row g-3 app-form rounded-control" id="filterFormUserLog">
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="name">Name</label>
-                                                        <input class="form-control" id="name"
-                                                            placeholder="Masukan Nama" type="text" name="name"
-                                                            value="{{ request('name') }}">
+                                                        <label class="form-label" for="message">Message</label>
+                                                        <input class="form-control" id="message"
+                                                            placeholder="Masukan Nama" type="text" name="message"
+                                                            value="{{ request('message') }}">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="username">Username</label>
-                                                        <input class="form-control" id="username"
-                                                            placeholder="Masukan Username" type="text" name="username"
-                                                            value="{{ request('username') }}">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="form-label" for="username">Emal</label>
-                                                        <input class="form-control" id="email"
-                                                            placeholder="Masukan Email" type="text" name="email"
-                                                            value="{{ request('email') }}">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Role</label>
-                                                        <select class="form-select" aria-label="Select role" name="roles_id"
-                                                            required>
-                                                            <option selected="">Pilih Role</option>
-                                                            @foreach ($data['role'] as $roles)
-                                                                <option value="{{ $roles->id }}"
-                                                                    {{ request('roles_id') == $roles->id ? 'selected' : '' }}>
-                                                                    {{ $roles->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
+                                                        <label class="form-label" for="created_at">Tanggal</label>
+                                                        <input class="form-control basic-date" type="text"
+                                                            placeholder="YYYY-MM-DD" name="created_at"
+                                                            value="{{ request('created_at') }}">
+
                                                     </div>
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
                                                         </button>
                                                         <button class="btn btn-warning b-r-22"
-                                                            onclick="clearFilterFormUserMaster()" value="Clear">Clear
+                                                            onclick="clearFilterFormUserLog()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -217,27 +199,25 @@
                             <table id="example" class="display app-data-table default-data-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Message</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data['usermaster'] as $userMaster)
+                                    @foreach ($data['userlog'] as $userLog)
                                         <tr>
-                                            <td>{{ $userMaster->name }}</td>
-                                            <td>{{ $userMaster->username }}</td>
-                                            <td>{{ $userMaster->email }}</td>
-                                            <td>{{ $userMaster->roles_name }}</td>
+                                            <td>{{ $userLog->message }}</td>
+                                            <td>{{ $userLog->type }}</td>
+                                            <td>{{ $userLog->created_at }}</td>
                                             <td>
-                                                <button type="button" data-item="{{ $userMaster->id }}"
-                                                    data-bs-target="#detailUserMaster--{{ $userMaster->id }}"
+                                                <button type="button" data-item="{{ $userLog->id }}"
+                                                    data-bs-target="#detailUserLog--{{ $userLog->id }}"
                                                     data-bs-toggle="modal" class="btn btn-light-info icon-btn b-r-4">
                                                     <i class="ti ti-info-circle text-success"></i>
                                                 </button>
-                                                <a href="{{ route('admin.master.UserMaster.edit', $userMaster->id) }}"
+                                                {{-- <a href="{{ route('admin.master.UserMaster.edit', $userMaster->id) }}"
                                                     class="btn btn-light-success icon-btn b-r-4">
                                                     <i class="ti ti-edit text-success"></i>
                                                 </a>
@@ -250,7 +230,7 @@
                                                         class="btn btn-light-danger icon-btn b-r-4 btn-delete">
                                                         <i class="ti ti-trash"></i>
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -263,27 +243,27 @@
             <!-- Default Datatable end -->
         </div>
         <!-- Data Table end -->
-        @foreach ($data['usermaster'] as $userMaster)
-            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
-                id="detailUserMaster--{{ $userMaster->id }}" tabindex="-1">
+        @foreach ($data['userlog'] as $userLog)
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="detailUserLog--{{ $userLog->id }}"
+                tabindex="-1">
                 <div class="modal-dialog app_modal_sm">
                     <div class="modal-content">
                         <div class="modal-header bg-primary-800">
-                            <h1 class="modal-title fs-5 text-white" id="detailUserMaster2">Detail User</h1>
+                            <h1 class="modal-title fs-5 text-white" id="detailUserLog2">Detail Log</h1>
                         </div>
                         <div class="modal-body">
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Name:
-                                {{ $userMaster->name }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Username:
-                                {{ $userMaster->username }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Email:
-                                {{ $userMaster->email }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Role:
-                                {{ $userMaster->roles_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Message:
+                                {{ $userLog->message }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Route:
+                                {{ $userLog->route }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Path:
+                                {{ $userLog->path }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Type:
+                                {{ $userLog->type }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Created At:
-                                {{ $userMaster->created_at }} </p>
+                                {{ $userLog->created_at }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Updated At:
-                                {{ $userMaster->updated_at }} </p>
+                                {{ $userLog->updated_at }} </p>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
@@ -334,8 +314,8 @@
         });
     </script> --}}
     <script type="text/javascript">
-        function clearFilterFormUserMaster() {
-            const form = document.getElementById('filterFormUserMaster');
+        function clearFilterFormUserLog() {
+            const form = document.getElementById('filterFormUserLog');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';
