@@ -389,13 +389,13 @@ class Repository implements Repository_interfaces
 
     /**
      * @method indexLogUserRepository
-     * @param $userLogDomain
+     * @param $logUserDomain
      * @param $request
      */
-    public function indexLogUserRepository($userLogDomain, $request): array
+    public function indexLogUserRepository($logUserDomain, $request): array
     {
         return array(
-            'userlog' => $userLogDomain->getAllLogUserDomain($request),
+            'userlog' => $logUserDomain->getAllLogUserDomain($request),
         );
     }
 }

@@ -5,7 +5,7 @@ namespace App\Src\Domain\Admin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class LogMasterDomain
+class LogUserDomain
 {
     /**
      * @method DomainLogInsert

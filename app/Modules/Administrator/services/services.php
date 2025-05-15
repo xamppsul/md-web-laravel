@@ -300,12 +300,12 @@ class Services extends Repository implements Services_interfaces
 
     /**
      * @method indexLogUserService
-     * @param $userMasterDomain
+     * @param $logUserDomain
      * @param $request
      * @return array
      */
-    public function indexLogUserService($userMasterDomain, $request): array
+    public function indexLogUserService($logUserDomain, $request): array
     {
-        return $this->indexLogUserRepository($userMasterDomain, $request);
+        return $this->indexLogUserRepository($logUserDomain, $request);
     }
 }

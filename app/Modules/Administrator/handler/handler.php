@@ -2,22 +2,22 @@
 
 namespace App\Modules\Administrator\handler;
 
-use App\Modules\Administrator\interfaces\Handler_interfaces;
-use App\Modules\Administrator\usecase\Usecase;
-use App\Src\Constant\Admin\ConstantAdmin;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use App\Src\Domain\Admin\AsetDomain;
+use Illuminate\Http\RedirectResponse;
+use App\Src\Domain\Admin\MouMoaDomain;
+use App\Src\Domain\Admin\LogUserDomain;
 use App\Src\Domain\Admin\ElfinderDomain;
 use App\Src\Domain\Admin\KegiatanDomain;
-use App\Src\Domain\Admin\LogMasterDomain;
-use App\Src\Domain\Admin\MouMoaDomain;
+use App\Src\Constant\Admin\ConstantAdmin;
 use App\Src\Domain\Admin\UserMasterDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
-use App\Src\Request\Admin\Master\KegiatanRequest;
+use App\Modules\Administrator\usecase\Usecase;
 use App\Src\Request\Admin\Master\MouMoaRequest;
+use App\Src\Request\Admin\Master\KegiatanRequest;
 use App\Src\Request\Admin\Master\UserMasterRequest;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Modules\Administrator\interfaces\Handler_interfaces;
 
 class Handler extends Usecase implements Handler_interfaces
 {
@@ -42,7 +42,7 @@ class Handler extends Usecase implements Handler_interfaces
         //elfinder
         private ElfinderDomain $elfinderDomain,
         //log
-        private LogMasterDomain $logMasterDomain,
+        private LogUserDomain $logUserDomain,
     ) {}
     /**
      * ==============================================================================================================================
@@ -391,7 +391,7 @@ class Handler extends Usecase implements Handler_interfaces
     public function indexLogUser(Request $request): View|RedirectResponse
     {
         return $this->indexLogUserCase(
-            $this->logMasterDomain,
+            $this->logUserDomain,
             $request,
         );
     }
