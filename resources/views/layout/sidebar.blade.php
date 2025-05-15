@@ -61,6 +61,12 @@
                         <li><a href="{{ route('admin.elfinder.index') }}">User Directory</a></li>
                     </ul>
                 </li>
+                <li class="menu-title"><span>Logs</span></li>
+                <li class="no-sub">
+                    <a class="" href="{{ __('widget') }}">
+                        <i class="iconoir-view-grid"></i> Widgets
+                    </a>
+                </li>
             @endif
 
             <!-- menus for user session-->
