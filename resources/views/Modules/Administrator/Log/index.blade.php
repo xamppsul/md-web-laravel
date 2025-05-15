@@ -209,7 +209,11 @@
                                     @foreach ($data['userlog'] as $userLog)
                                         <tr>
                                             <td>{{ $userLog->message }}</td>
-                                            <td>{{ $userLog->type }}</td>
+                                            @if ($userLog->type == 'success')
+                                                <td><span class="badge text-light-success">{{ $userLog->type }}</span></td>
+                                            @else
+                                                <td><span class="badge text-light-danger">{{ $userLog->type }}</span></td>
+                                            @endif
                                             <td>{{ $userLog->created_at }}</td>
                                             <td>
                                                 <button type="button" data-item="{{ $userLog->id }}"
