@@ -30,10 +30,10 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexAssetService($asetDomain, $request);
-            return view('Modules.Administrator.Aset.index', compact('data', 'constantUser'));
+            return view('Modules.Users.Aset.index', compact('data', 'constantUser'));
         } catch (\Exception $error) {
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+            return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -64,11 +64,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->storeAssetService($request, $asetDomain);
             DB::commit();
-            return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil tambah aset');
+            return redirect()->route('uppsfaculty.Asset.index')->with('success', 'Berhasil tambah aset');
         } catch (\Exception $error) {
             DB::rollBack();
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -88,10 +88,10 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->editAssetService($id, $asetDomain);
-            return view('Modules.Administrator.Aset.edit', compact('data'));
+            return view('Modules.Users.Aset.edit', compact('data'));
         } catch (\Exception $error) {
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+            return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -115,11 +115,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->updateAssetService($id, $asetDomain, $request);
             DB::commit();
-            return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil update aset');
+            return redirect()->route('uppsfaculty.Asset.index')->with('success', 'Berhasil update aset');
         } catch (\Exception $error) {
             DB::rollBack();
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -140,11 +140,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->destroyAssetService($id, $asetDomain);
             DB::commit();
-            return redirect()->route('admin.master.Asset.index')->with('success', 'Berhasil delete aset');
+            return redirect()->route('uppsfaculty.Asset.index')->with('success', 'Berhasil delete aset');
         } catch (\Exception $error) {
             DB::rollBack();
             $asetDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.Asset.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -168,10 +168,10 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexMouMoaService($mouMoaDomain, $request);
-            return view('Modules.Administrator.MouMoa.index', compact('data', 'constantUser'));
+            return view('Modules.Users.MouMoa.index', compact('data', 'constantUser'));
         } catch (\Exception $error) {
             $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+            return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -202,11 +202,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->storeMouMoaService($request, $mouMoaDomain);
             DB::commit();
-            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil tambah mou/moa');
+            return redirect()->route('uppsfaculty.MouMoa.index')->with('success', 'Berhasil tambah mou/moa');
         } catch (\Exception $error) {
             DB::rollBack();
             $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -226,10 +226,10 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->editMouMoaService($id, $mouMoaDomain);
-            return view('Modules.Administrator.MouMoa.edit', compact('data'));
+            return view('Modules.Users.MouMoa.edit', compact('data'));
         } catch (\Exception $error) {
             $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+            return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -253,11 +253,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->updateMouMoaService($id, $mouMoaDomain, $request);
             DB::commit();
-            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil update mou/moa');
+            return redirect()->route('uppsfaculty.MouMoa.index')->with('success', 'Berhasil update mou/moa');
         } catch (\Exception $error) {
             DB::rollBack();
             $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -278,11 +278,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->destroyMouMoaService($id, $mouMoaDomain);
             DB::commit();
-            return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil delete mou/moa');
+            return redirect()->route('uppsfaculty.MouMoa.index')->with('success', 'Berhasil delete mou/moa');
         } catch (\Exception $error) {
             DB::rollBack();
             $mouMoaDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.MouMoa.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -307,10 +307,10 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexKegiatanService($kegiatanDomain, $request);
-            return view('Modules.Administrator.Kegiatan.index', compact('data', 'constantUser'));
+            return view('Modules.Users.Kegiatan.index', compact('data', 'constantUser'));
         } catch (\Exception $error) {
             $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+            return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -341,11 +341,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->storeKegiatanService($request, $kegiatanDomain);
             DB::commit();
-            return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil tambah kegiatan');
+            return redirect()->route('uppsfaculty.Kegiatan.index')->with('success', 'Berhasil tambah kegiatan');
         } catch (\Exception $error) {
             DB::rollBack();
             $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -365,10 +365,10 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->editKegiatanService($id, $kegiatanDomain);
-            return view('Modules.Administrator.Kegiatan.edit', compact('data'));
+            return view('Modules.Users.Kegiatan.edit', compact('data'));
         } catch (\Exception $error) {
             $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
+            return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
         }
     }
 
@@ -392,11 +392,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->updateKegiatanService($id, $kegiatanDomain, $request);
             DB::commit();
-            return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil update kegiatan');
+            return redirect()->route('uppsfaculty.Kegiatan.index')->with('success', 'Berhasil update kegiatan');
         } catch (\Exception $error) {
             DB::rollBack();
             $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 
@@ -417,11 +417,11 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->destroyKegiatanService($id, $kegiatanDomain);
             DB::commit();
-            return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil delete kegiatan');
+            return redirect()->route('uppsfaculty.Kegiatan.index')->with('success', 'Berhasil delete kegiatan');
         } catch (\Exception $error) {
             DB::rollBack();
             $kegiatanDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
-            return redirect()->route('admin.master.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
+            return redirect()->route('uppsfaculty.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
 }
