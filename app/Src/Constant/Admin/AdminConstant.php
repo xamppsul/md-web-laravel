@@ -2,7 +2,7 @@
 
 namespace App\Src\Constant\Admin;
 
-class ConstantAdmin
+class AdminConstant
 {
     public function formatRupiah(int $amount): string
     {
