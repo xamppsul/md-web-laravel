@@ -271,8 +271,12 @@
                                                             aria-label="Select Penanggung Jawab" name="users_id">
                                                             <option selected="">Pilih Penanggung Jawab</option>
                                                             @foreach ($data['user'] as $penanggungJawab)
-                                                                <option value="{{ $penanggungJawab->id }}"
+                                                                {{-- <option value="{{ $penanggungJawab->id }}"
                                                                     {{ old('users_id') == $penanggungJawab->id ? 'selected' : '' }}>
+                                                                    {{ $penanggungJawab->name }}
+                                                                </option> --}}
+                                                                <option value="{{ $penanggungJawab->id }}"
+                                                                    {{ Auth::guard('user')->user()->id == $penanggungJawab->id ? 'selected' : '' }}>
                                                                     {{ $penanggungJawab->name }}
                                                                 </option>
                                                             @endforeach
