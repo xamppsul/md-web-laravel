@@ -10,7 +10,7 @@ use App\Src\Domain\Admin\MouMoaDomain;
 use App\Src\Domain\Admin\LogUserDomain;
 use App\Src\Domain\Admin\ElfinderDomain;
 use App\Src\Domain\Admin\KegiatanDomain;
-use App\Src\Constant\Admin\ConstantAdmin;
+use App\Src\Constant\Admin\AdminConstant;
 use App\Src\Domain\Admin\UserMasterDomain;
 use App\Src\Request\Admin\Master\AsetRequest;
 use App\Modules\Administrator\usecase\Usecase;
@@ -29,7 +29,7 @@ class Handler extends Usecase implements Handler_interfaces
         //aset
         private AsetDomain $asetDomain,
         private AsetRequest $asetRequest,
-        private ConstantAdmin $constantAdmin,
+        private AdminConstant $constantAdmin,
         //mou moa
         private MouMoaDomain $mouMoaDomain,
         private MouMoaRequest $mouMoaRequest,

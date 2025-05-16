@@ -5,7 +5,7 @@ namespace App\Modules\Authentication\repository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Modules\Authentication\interfaces\Repository_interfaces;
-use App\Src\Mail\verify_account\MailForgot;
+use App\Src\Mail\forgot_password\MailForgot;
 use Illuminate\Support\Facades\Mail;
 
 class Repository implements Repository_interfaces

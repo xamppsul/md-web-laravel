@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->alias([
             'auth' => \App\Src\Middleware\Authenticated::class,
+            'user.staffdosen' => \App\Src\Middleware\User\UserStaffOrDosenMiddleware::class,
+            'user.uppsfaculty' => \App\Src\Middleware\User\UserUppsOrFakultasMiddleware::class,
+            'administrator' => \App\Src\Middleware\Admin\AdminMiddleware::class,
             'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
             'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
             'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -71,8 +71,26 @@
 
             <!-- menus for user session-->
             @if (Auth::guard('user')->check())
+                <!-- faculty role -->
                 @if (Auth::guard('user')->user()->roles_id != 2)
+                    <li class="menu-title"><span>Module</span></li>
+                    <li class="no-sub">
+                        <a class="" href="{{ route('uppsfaculty.Asset.index') }}">
+                            <i class="iconoir-database-monitor"></i> Aset
+                        </a>
+                    </li>
+                    <li class="no-sub">
+                        <a class="" href="{{ route('uppsfaculty.MouMoa.index') }}">
+                            <i class="iconoir-notes"></i>Kerjasama
+                        </a>
+                    </li>
+                    <li class="no-sub">
+                        <a class="" href="{{ route('uppsfaculty.Kegiatan.index') }}">
+                            <i class="iconoir-activity"></i>Kegiatan
+                        </a>
+                    </li>
                 @else
+                    <!-- dosen/staff -->
                 @endif
             @endif
         </ul>

@@ -5,7 +5,7 @@ namespace App\Src\Constant\Authentication;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
-class ConstantAuth
+class AuthConstant
 {
     /**
      * ===================================================================== RULES:validation and message ==================================================================================================

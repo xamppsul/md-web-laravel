@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Src\Mail\verify_account;
+namespace App\Src\Mail\forgot_password;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

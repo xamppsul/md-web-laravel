@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Src\Constant\Admin;
+namespace App\Src\Constant\User;
 
-class ConstantAdmin
+class UserConstant
 {
     public function formatRupiah(int $amount): string
     {
