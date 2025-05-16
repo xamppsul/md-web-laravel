@@ -22,117 +22,124 @@
         @session('error')
             <div class="flash-data-error" data-flashdata-error="{{ $value }}"></div>
         @endsession
-        <div class="row">
 
-            <div class="col-lg-6 col-xxl-4">
+        @if (Auth::guard('admin')->check())
+            @if (Auth::guard('admin')->user()->roles_id == 1)
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card product-store-card">
-                            <div class="card-body">
-                                <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                <div>
-                                    <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Aktivitas User</p>
-                                    <h2 class="text-success-dark mb-0">-6,876</h2>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card product-store-card">
-                            <div class="card-body">
-                                <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                <div>
-                                    <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Jumlah Dosen</p>
-                                    <h2 class="text-success-dark mb-0">-6,876</h2>
-                                </div>
+                    <div class="col-lg-6 col-xxl-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card product-store-card">
+                                    <div class="card-body">
+                                        <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                        <div>
+                                            <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Aktivitas User</p>
+                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                        </div>
 
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="col-12">
-                            <div class="card product-store-card">
-                                <div class="card-body">
-                                    <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                    <div>
-                                        <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Jumlah Staff</p>
-                                        <h2 class="text-success-dark mb-0">-6,876</h2>
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="col-12">
-                            <div class="card product-store-card">
-                                <div class="card-body">
-                                    <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                    <div>
-                                        <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Baik</p>
-                                        <h2 class="text-success-dark mb-0">-6,876</h2>
+                            <div class="col-12">
+                                <div class="card product-store-card">
+                                    <div class="card-body">
+                                        <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                        <div>
+                                            <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Jumlah Dosen</p>
+                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                        </div>
+
                                     </div>
+                                </div>
+                            </div>
 
+                            <div class="col-sm-6">
+                                <div class="col-12">
+                                    <div class="card product-store-card">
+                                        <div class="card-body">
+                                            <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                            <div>
+                                                <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Jumlah Staff</p>
+                                                <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="col-12">
+                                    <div class="card product-store-card">
+                                        <div class="card-body">
+                                            <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                            <div>
+                                                <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Baik</p>
+                                                <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-6 col-xxl-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card product-store-card">
+                                    <div class="card-body">
+                                        <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                        <div>
+                                            <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Rusak</p>
+                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card product-store-card">
+                                    <div class="card-body">
+                                        <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                        <div>
+                                            <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kerjasama</p>
+                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xxl-4 ">
+                        <div class="card project-connect-card">
+                            <div class="card-body pb-0">
+                                <div class="text-center">
+                                    <h5 class=" mb-2 f-s-24">Total <span class="text-primary f-w-700">Kegiatan Dalam
+                                            Tahun.</span>
+                                    </h5>
+                                    <p class="f-s-14 text-dark pb-0 txt-ellipsis-2">
+                                        grafik total kegiatan dalam tahun.
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="project-expense" id="projectExpense"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+            @endif
 
-            <div class="col-md-6 col-xxl-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card product-store-card">
-                            <div class="card-body">
-                                <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                <div>
-                                    <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Rusak</p>
-                                    <h2 class="text-success-dark mb-0">-6,876</h2>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card product-store-card">
-                            <div class="card-body">
-                                <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                <div>
-                                    <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kerjasama</p>
-                                    <h2 class="text-success-dark mb-0">-6,876</h2>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xxl-4 ">
-                <div class="card project-connect-card">
-                    <div class="card-body pb-0">
-                        <div class="text-center">
-                            <h5 class=" mb-2 f-s-24">Total <span class="text-primary f-w-700">Kegiatan Dalam Tahun.</span>
-                            </h5>
-                            <p class="f-s-14 text-dark pb-0 txt-ellipsis-2">
-                                grafik total kegiatan dalam tahun.
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <div class="card ">
-                                <div class="card-body">
-                                    <div class="project-expense" id="projectExpense"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        @endif
     </div>
 
 
