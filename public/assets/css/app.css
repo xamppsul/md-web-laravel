@@ -6,3 +6,22 @@
     border-radius: 18px;
     overflow: auto;
 }
+
+/* Sidebar active menu style */
+.sidebar-item .active,
+.no-sub .active {
+    color: #fff !important;
+    /* White text for active item */
+    background-color: #8C76F0 !important;
+    /* Blue background for active item */
+    border-radius: 6px;
+    /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(140, 118, 240, 1);
+    font-weight: bold;
+}
+
+.sidebar-item .active i,
+.no-sub .active i {
+    color: #fff !important;
+    /* Icon color for active item */
+}
