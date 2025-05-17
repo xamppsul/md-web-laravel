@@ -25,11 +25,12 @@
                         <li><a href="{{ route('admin.view.dashboard') }}">Administrator</a></li>
                     @endif
                     @if (Auth::guard('user')->check())
-                        @if (Auth::guard('user')->user()->roles_id != 2)
+                        {{-- @if (Auth::guard('user')->user()->roles_id != 2)
                             <li><a href="{{ route('user.view.dashboard') }}">Uppsorfakultas</a></li>
                         @else
                             <li><a href="{{ route('user.view.dashboard') }}">Staffordosen</a></li>
-                        @endif
+                        @endif --}}
+                        <li><a href="{{ route('user.view.dashboard') }}">Home</a></li>
                     @endif
                 </ul>
             </li>
@@ -94,6 +95,25 @@
                     </li>
                 @else
                     <!-- dosen/staff -->
+                    <li class="menu-title"><span>Module</span></li>
+                    <li>
+                        <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#ui-kits">
+
+                            <i class="iconoir-book"></i>
+                            Pendidikan
+                        </a>
+                        <ul class="collapse" id="ui-kits">
+                            <li><a href="{{ __('/') }}">Bahan Ajar</a></li>
+                            <li><a href="{{ __('/') }}">Penelitian</a></li>
+                            <li><a href="{{ __('/') }}">Pengabdian</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-title"><span>File Manager</span></li>
+                    <li class="no-sub">
+                        <a class="" href="{{ route('admin.log-user.index') }}">
+                            <i class="iconoir-drawer"></i> El Finder
+                        </a>
+                    </li>
                 @endif
             @endif
         </ul>
