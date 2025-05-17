@@ -70,17 +70,17 @@ var options = {
                 cssClass: 'marker-success',
             }
         },
-            {
-                x: 'Jun',
-                y: 10,
-                marker: {
-                    size: 5,
-                    colors: '#fff',
-                    strokeColor: 'rgba(var(--primary),1)',
-                    strokeWidth: 4,
-                    cssClass: 'marker-primary',
-                }
-            }],
+        {
+            x: 'Jun',
+            y: 10,
+            marker: {
+                size: 5,
+                colors: '#fff',
+                strokeColor: 'rgba(var(--primary),1)',
+                strokeWidth: 4,
+                cssClass: 'marker-primary',
+            }
+        }],
     },
     xaxis: {
         categories: [
@@ -159,13 +159,13 @@ var options = {
     },
     responsive: [
         {
-        breakpoint: 1399,
-        options: {
-            chart: {
-                height: 220
-            },
-        }
-    },
+            breakpoint: 1399,
+            options: {
+                chart: {
+                    height: 220
+                },
+            }
+        },
         {
             breakpoint: 567,
             options: {
@@ -177,8 +177,11 @@ var options = {
     ]
 };
 
-var chart = new ApexCharts(document.querySelector("#projectExpense"), options);
-chart.render();
+var projectExpenseEl = document.querySelector("#projectExpense");
+if (projectExpenseEl) {
+    var chart = new ApexCharts(projectExpenseEl, options);
+    chart.render();
+}
 
 const [timerDisplay, startBtn, stopBtn, resetBtn, historyList] = [
     document.querySelector('.timer-display'),
@@ -212,27 +215,33 @@ const addHistory = (time) => {
     historyList.appendChild(li);
 };
 
-startBtn.onclick = () => {
-    const startTime = Date.now() - elapsedTime;
-    timer = setInterval(() => {
-        elapsedTime = Date.now() - startTime;
+if (startBtn) {
+    startBtn.onclick = () => {
+        const startTime = Date.now() - elapsedTime;
+        timer = setInterval(() => {
+            elapsedTime = Date.now() - startTime;
+            timerDisplay.textContent = formatTime(elapsedTime);
+        }, 100);
+        toggleButtons(true, false);
+    };
+}
+
+if (stopBtn) {
+    stopBtn.onclick = () => {
+        clearInterval(timer);
+        addHistory(formatTime(elapsedTime));
+        toggleButtons(false, true);
+    };
+}
+
+if (resetBtn) {
+    resetBtn.onclick = () => {
+        clearInterval(timer);
+        elapsedTime = 0;
         timerDisplay.textContent = formatTime(elapsedTime);
-    }, 100);
-    toggleButtons(true, false);
-};
-
-stopBtn.onclick = () => {
-    clearInterval(timer);
-    addHistory(formatTime(elapsedTime));
-    toggleButtons(false, true);
-};
-
-resetBtn.onclick = () => {
-    clearInterval(timer);
-    elapsedTime = 0;
-    timerDisplay.textContent = formatTime(elapsedTime);
-    toggleButtons(false, true);
-};
+        toggleButtons(false, true);
+    };
+}
 
 // file uploader js
 
@@ -272,16 +281,26 @@ function updateClock() {
     const hourDisplay = document.querySelector(".hour-display");
     // const minDisplay = document.querySelector(".min-display");
 
-    hourDisplay.textContent = `${hour}H`;
+    if (hourDisplay) {
+        hourDisplay.textContent = `${hour}H`;
+    }
     // minDisplay.textContent = `${minutes}M`;
 
     const hourDeg = (hour % 12) * 30 + minutes * 0.5;
     const minuteDeg = minutes * 6;
     const secondDeg = seconds * 6;
 
-    hourHand.style.transform = `translate(-50%, -100%) rotate(${hourDeg}deg)`;
-    minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteDeg}deg)`;
-    secondHand.style.transform = `translate(-50%, -100%) rotate(${secondDeg}deg)`;
+    if (hourHand) {
+        hourHand.style.transform = `translate(-50%, -100%) rotate(${hourDeg}deg)`;
+    }
+
+    if (minuteHand) {
+        minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteDeg}deg)`;
+    }
+
+    if (secondHand) {
+        secondHand.style.transform = `translate(-50%, -100%) rotate(${secondDeg}deg)`;
+    }
 }
 
 // Update clock every second
