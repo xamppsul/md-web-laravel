@@ -63,7 +63,8 @@
                 </li>
                 <li class="menu-title"><span>Logs</span></li>
                 <li class="no-sub">
-                    <a class="" href="{{ route('admin.log-user.index') }}">
+                    <a class="{{ request()->routeis('admin.log-user.index') ? 'active' : '' }}"
+                        href="{{ route('admin.log-user.index') }}">
                         <i class="iconoir-database-warning"></i> Log
                     </a>
                 </li>
