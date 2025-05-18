@@ -120,8 +120,8 @@ class Services extends Repository implements Services_interfaces
             return redirect()->route('admin.view.login')->with('error', $messageErrorLoginUsernameOrEmail);
         }
 
-        $userSession = $this->AdminGenerateSessionLoginRepository($this->AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
-        $authDomain->DomainLogInsert($successLoginMessage . " ID: {$userSession->id}, Username {$userSession->username}", $route, $path, 'success');
+        $adminSession = $this->AdminGenerateSessionLoginRepository($this->AdminSetRequestLoginByUsernameOrEmailAndPasswordRepository($request));
+        $authDomain->DomainLogInsert($successLoginMessage . " ID: {$adminSession->id}, Username {$adminSession->username}", $route, $path, 'success');
         return $this->AdminRedirectLoginSuccessRepository($successLoginMessage);
     }
 
