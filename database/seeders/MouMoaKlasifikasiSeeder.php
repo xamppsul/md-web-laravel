@@ -18,12 +18,12 @@ class MouMoaKlasifikasiSeeder extends Seeder
             [
                 'name' => 'Dalam negeri',
                 'keterangan' => 'klasifikasi dalam negeri',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Luar negeri',
                 'keterangan' => 'klasifikasi luar negeri',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }

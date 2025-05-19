@@ -18,17 +18,17 @@ class SumberDanaPengabdianSeeder extends Seeder
             [
                 'name' => 'Apbn',
                 'description' => 'submber dana pengabdian dari Apbn',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Hibah',
                 'description' => 'submber dana pengabdian dari Hibah',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Sponsor',
                 'description' => 'submber dana pengabdian dari Sponsor',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ]
         ]);
     }

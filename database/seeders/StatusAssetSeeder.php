@@ -18,17 +18,17 @@ class StatusAssetSeeder extends Seeder
             [
                 'name' => 'Aktif',
                 'keterangan' => 'status aktif',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Tidak Aktif',
                 'keterangan' => 'status nonaktif',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Dihapus',
                 'keterangan' => 'status dihapus',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }

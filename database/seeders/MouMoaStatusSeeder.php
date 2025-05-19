@@ -18,17 +18,17 @@ class MouMoaStatusSeeder extends Seeder
             [
                 'name' => 'Aktif',
                 'keterangan' => 'status aktif',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Selesai',
                 'keterangan' => 'status Selesai',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Berakhir',
                 'keterangan' => 'status Berakhir',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }

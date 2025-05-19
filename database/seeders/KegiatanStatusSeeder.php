@@ -18,17 +18,17 @@ class KegiatanStatusSeeder extends Seeder
             [
                 'name' => 'Terjadwal',
                 'keterangan' => 'kegiatan terjadwal',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Selesai',
                 'keterangan' => 'kegiatan selesai',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Dibatalkan',
                 'keterangan' => 'kegiatan dibatalkan',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }

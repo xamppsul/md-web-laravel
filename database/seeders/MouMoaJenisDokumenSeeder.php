@@ -18,12 +18,12 @@ class MouMoaJenisDokumenSeeder extends Seeder
             [
                 'name' => 'Mou',
                 'keterangan' => 'Dokumen berbasis Mou',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Moa',
                 'keterangan' => 'Dokumen berbasis Moa',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }

@@ -18,17 +18,17 @@ class StatusPenggunaanBahanAjarSeeder extends Seeder
             [
                 'name' => 'Digunakan',
                 'description' => 'Digunakan bahan ajar',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Arsip',
                 'description' => 'Arsip bahan ajar',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Draft',
                 'description' => 'Draft bahan ajar',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ]
         ]);
     }

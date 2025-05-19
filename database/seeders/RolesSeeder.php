@@ -19,19 +19,19 @@ class RolesSeeder extends Seeder
                 'name' => 'Administrator',
                 'guard_name' => 'admin',
                 'description' => 'Administrator Role',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Staff',
                 'guard_name' => 'user',
                 'description' => 'Staff Role',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Uppsfakultas',
                 'guard_name' => 'user',
                 'description' => 'Uppsfakultas Role',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ]
         ]);
     }

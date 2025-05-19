@@ -18,17 +18,17 @@ class KondisiAsetSeeder extends Seeder
             [
                 'name' => 'Baik',
                 'keterangan' => 'kondisi baik',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Rusak',
                 'keterangan' => 'kondisi rusak',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Perlu Perbaikan',
                 'keterangan' => 'kondisi perlu perbaikan',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }

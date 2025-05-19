@@ -18,17 +18,17 @@ class StatusPengabdianSeeder extends Seeder
             [
                 'name' => 'Ongoing',
                 'description' => 'status pengabdian Ongoing',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Selesai',
                 'description' => 'status pengabdian Selesai',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Dibatalkan',
                 'description' => 'status pengabdian Dibatalkan',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ]
         ]);
     }

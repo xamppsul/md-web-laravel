@@ -18,17 +18,17 @@ class MouMoaBidangKerjaSamaSeeder extends Seeder
             [
                 'name' => 'Akademik',
                 'keterangan' => 'kerjasama Akademik',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Penelitian',
                 'keterangan' => 'kerjasama Penelitian',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
                 'name' => 'Pengabdian',
                 'keterangan' => 'kerjasama Pengabdian',
-                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
+                'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
         ]);
     }
