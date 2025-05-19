@@ -31,6 +31,12 @@ class DatabaseSeeder extends Seeder
             MouMoaJenisDokumenSeeder::class,
             KegiatanJenisSeeder::class,
             KegiatanStatusSeeder::class,
+            JenisBahanAjarSeeder::class,
+            StatusPenelitianSeeder::class,
+            StatusPengabdianSeeder::class,
+            StatusPenggunaanBahanAjarSeeder::class,
+            SumberDanaPenelitianSeeder::class,
+            SumberDanaPengabdianSeeder::class,
         ]);
     }
 }

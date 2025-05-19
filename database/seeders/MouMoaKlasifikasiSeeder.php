@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class MouMoaKlasifikasiSeeder extends Seeder
 {
@@ -17,12 +18,12 @@ class MouMoaKlasifikasiSeeder extends Seeder
             [
                 'name' => 'Dalam negeri',
                 'keterangan' => 'klasifikasi dalam negeri',
-                'created_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Luar negeri',
                 'keterangan' => 'klasifikasi luar negeri',
-                'created_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
         ]);
     }

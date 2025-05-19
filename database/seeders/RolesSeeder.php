@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RolesSeeder extends Seeder
 {
@@ -18,22 +19,19 @@ class RolesSeeder extends Seeder
                 'name' => 'Administrator',
                 'guard_name' => 'admin',
                 'description' => 'Administrator Role',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Staff',
                 'guard_name' => 'user',
                 'description' => 'Staff Role',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Uppsfakultas',
                 'guard_name' => 'user',
                 'description' => 'Uppsfakultas Role',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ]
         ]);
     }

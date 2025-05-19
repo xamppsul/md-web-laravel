@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,17 +18,17 @@ class MouMoaStatusSeeder extends Seeder
             [
                 'name' => 'Aktif',
                 'keterangan' => 'status aktif',
-                'created_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Selesai',
                 'keterangan' => 'status Selesai',
-                'created_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Berakhir',
                 'keterangan' => 'status Berakhir',
-                'created_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
         ]);
     }

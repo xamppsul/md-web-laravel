@@ -7,29 +7,29 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class MouMoaBidangKerjaSamaSeeder extends Seeder
+class SumberDanaPengabdianSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('mou_moa_bidang_kerjasama')->insert([
+        DB::table('pengabdian_sumber_dana')->insert([
             [
-                'name' => 'Akademik',
-                'keterangan' => 'kerjasama Akademik',
+                'name' => 'Apbn',
+                'description' => 'submber dana pengabdian dari Apbn',
                 'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
-                'name' => 'Penelitian',
-                'keterangan' => 'kerjasama Penelitian',
+                'name' => 'Hibah',
+                'description' => 'submber dana pengabdian dari Hibah',
                 'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
-                'name' => 'Pengabdian',
-                'keterangan' => 'kerjasama Pengabdian',
+                'name' => 'Sponsor',
+                'description' => 'submber dana pengabdian dari Sponsor',
                 'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
-            ],
+            ]
         ]);
     }
 }

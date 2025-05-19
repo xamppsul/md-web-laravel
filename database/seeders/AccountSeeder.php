@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AccountSeeder extends Seeder
 {
@@ -20,8 +21,7 @@ class AccountSeeder extends Seeder
             'email' => 'administrator@gmail.com',
             'password' => Hash::make('administrator'),
             'roles_id' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
         ]);
 
         DB::table('users')->insert([
@@ -31,8 +31,7 @@ class AccountSeeder extends Seeder
                 'email' => 'staffdosen@gmail.com',
                 'password' => Hash::make('staffdosen'),
                 'roles_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'samsul',
@@ -40,8 +39,7 @@ class AccountSeeder extends Seeder
                 'email' => 'muhdevapp@gmail.com',
                 'password' => Hash::make('samsul123'),
                 'roles_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Uppsfakultas',
@@ -49,8 +47,7 @@ class AccountSeeder extends Seeder
                 'email' => 'uppsfakultas@gmail.com',
                 'password' => Hash::make('uppsfakultas'),
                 'roles_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ]
         ]);
     }

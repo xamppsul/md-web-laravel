@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class KategoriAssetSeeder extends Seeder
 {
@@ -17,22 +18,22 @@ class KategoriAssetSeeder extends Seeder
             [
                 'name' => 'Elektronik',
                 'keterangan' => 'aset elektronik',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Kendaraan',
                 'keterangan' => 'aset kendaraan',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Furniture',
                 'keterangan' => 'aset furniture',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Lainnya',
                 'keterangan' => 'aset lainnya',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ]
         ]);
     }

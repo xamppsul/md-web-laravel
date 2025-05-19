@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,17 +18,17 @@ class StatusAssetSeeder extends Seeder
             [
                 'name' => 'Aktif',
                 'keterangan' => 'status aktif',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Tidak Aktif',
                 'keterangan' => 'status nonaktif',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
             [
                 'name' => 'Dihapus',
                 'keterangan' => 'status dihapus',
-                'created_at' => now()->timezone(env('APP_TIMEZONE')),
+                'created_at' => Carbon::now()->timezone(env('APP_TIMEZONE', 'Asia/Jakarta')),
             ],
         ]);
     }
