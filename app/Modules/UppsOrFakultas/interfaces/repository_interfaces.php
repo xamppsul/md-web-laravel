@@ -39,4 +39,7 @@ interface Repository_interfaces
     public function editKegiatanRepository(int $id, $kegiatanDomain): array;
     public function updateKegiatanRepository(int $id, $kegiatanDomain, $request, string $fileDaftarHadir, string $fileKegiatan): void;
     public function destroyKegiatanRepository(int $id, $kegiatanDomain): void;
+
+    public function doUploadFileDokumentasiKegiatan($request): string;
+    public function doUploadFileDaftarHadirKegiatan($request): string;
 }
