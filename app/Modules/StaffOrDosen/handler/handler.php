@@ -7,6 +7,9 @@ use App\Modules\StaffOrDosen\usecase\Usecase;
 use App\Src\Domain\User\BahanAjarDomain;
 use App\Src\Domain\User\PenelitianDomain;
 use App\Src\Domain\User\PengabdianDomain;
+use App\Src\Request\User\BahanAjarRequest;
+use App\Src\Request\User\PenelitianRequest;
+use App\Src\Request\User\PengabdianRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,10 +20,13 @@ class Handler extends Usecase implements Handler_interfaces
     public function __construct(
         //domain BahanAjar and request
         private BahanAjarDomain $bahanAjarDomain,
+        private BahanAjarRequest $bahanAjarRequest,
         //domain penelitian and request
         private PenelitianDomain $penelitianDomain,
+        private PenelitianRequest $penelitianRequest,
         //domain penelitian and request
-        private PengabdianDomain $pengabdianDomain
+        private PengabdianDomain $pengabdianDomain,
+        private PengabdianRequest $pengabdianRequest,
     ) {}
     /**============================================================================
      *  BahanAjar
@@ -42,7 +48,10 @@ class Handler extends Usecase implements Handler_interfaces
      * @method createBahanAjar
      * @return View
      */
-    public function createBahanAjar(): View {}
+    public function createBahanAjar(): View
+    {
+        return view('');
+    }
     /**
      * @method storeBahanAjar
      */
@@ -118,7 +127,10 @@ class Handler extends Usecase implements Handler_interfaces
      * @method createPenelitian
      * @return View
      */
-    public function createPenelitian(): View {}
+    public function createPenelitian(): View
+    {
+        return view('');
+    }
     /**
      * @method storePenelitian
      */
@@ -195,7 +207,10 @@ class Handler extends Usecase implements Handler_interfaces
      * @method createPengabdian
      * @return View
      */
-    public function createPengabdian(): View {}
+    public function createPengabdian(): View
+    {
+        return view('');
+    }
     /**
      * @method storePengabdian
      */
