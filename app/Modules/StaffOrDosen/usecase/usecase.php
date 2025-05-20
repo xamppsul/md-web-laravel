@@ -28,7 +28,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexBahanAjarService($bahanAjarDomain, $request);
-            return view('Modules.Users.BahanAjar.index', compact('data', 'constantUser'));
+            return view('Modules.Users.BahanAjar.index', compact('data'));
         } catch (\Exception $error) {
             $bahanAjarDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
@@ -162,7 +162,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexPenelitianService($penelitianDomain, $request);
-            return view('Modules.Users.Penelitian.index', compact('data', 'constantUser'));
+            return view('Modules.Users.Penelitian.index', compact('data'));
         } catch (\Exception $error) {
             $penelitianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
@@ -296,7 +296,7 @@ class Usecase extends Services implements Usecase_intefaces
     ): RedirectResponse|View {
         try {
             $data = $this->indexPengabdianService($pengabdianDomain, $request);
-            return view('Modules.Users.Pengabdian.index', compact('data', 'constantUser'));
+            return view('Modules.Users.Pengabdian.index', compact('data'));
         } catch (\Exception $error) {
             $pengabdianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
             return redirect()->route('user.view.dashboard')->with('error', 'Maaf ada kesalahan sistem,harap dicoba kembali');
