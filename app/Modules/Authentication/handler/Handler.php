@@ -5,14 +5,14 @@ namespace App\Modules\Authentication\handler;
 use Illuminate\Contracts\View\View;
 use App\Modules\Authentication\usecase\Usecase;
 use App\Src\Constant\Authentication\AuthConstant;
-use App\Modules\Authentication\interfaces\Handler_intefaces;
+use App\Modules\Authentication\interfaces\Handler_interfaces;
 use App\Src\Domain\User\AuthDomain;
 use App\Src\Request\User\Auth\AuthRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Handler extends Usecase implements Handler_intefaces
+class Handler extends Usecase implements Handler_interfaces
 {
     public function __construct(
         private AuthConstant $constant,

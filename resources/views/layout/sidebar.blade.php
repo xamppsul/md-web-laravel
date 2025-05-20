@@ -104,9 +104,9 @@
                             Pendidikan
                         </a>
                         <ul class="collapse" id="ui-kits">
-                            <li><a href="{{ __('/') }}">Bahan Ajar</a></li>
-                            <li><a href="{{ __('/') }}">Penelitian</a></li>
-                            <li><a href="{{ __('/') }}">Pengabdian</a></li>
+                            <li><a href="{{ route('staffdosen.BahanAjar.index') }}">Bahan Ajar</a></li>
+                            <li><a href="{{ route('staffdosen.Penelitian.index') }}">Penelitian</a></li>
+                            <li><a href="{{ route('staffdosen.Pengabdian.index') }}">Pengabdian</a></li>
                         </ul>
                     </li>
                     <li class="menu-title"><span>File Manager</span></li>

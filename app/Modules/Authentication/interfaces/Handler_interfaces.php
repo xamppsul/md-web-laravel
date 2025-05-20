@@ -5,7 +5,7 @@ namespace App\Modules\Authentication\interfaces;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-interface Handler_intefaces
+interface Handler_interfaces
 {
     public function viewUserLogin(): View|RedirectResponse;
     public function userLogin();
