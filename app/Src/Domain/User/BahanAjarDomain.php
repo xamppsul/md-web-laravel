@@ -44,13 +44,11 @@ class BahanAjarDomain
             FROM bahan_ajar
                 INNER JOIN bahan_ajar_jenis ON bahan_ajar.bahan_ajar_jenis = bahan_ajar_jenis.id
                 INNER JOIN bahan_ajar_status_penggunaan ON bahan_ajar.bahan_ajar_status_penggunaan = bahan_ajar_status_penggunaan.id
-            WHERE bahan_ajar.judul LIKE ?
-                AND bahan_ajar.bahan_ajar_jenis LIKE ?
+            WHERE bahan_ajar.bahan_ajar_jenis LIKE ?
                 AND bahan_ajar.bahan_ajar_status_penggunaan LIKE ?
                 AND bahan_ajar.users_id = ?
             ORDER BY bahan_ajar.id DESC
         ', [
-            "%$request->judul%",
             "%$request->bahan_ajar_jenis%",
             "%$request->bahan_ajar_status_penggunaan%",
             Auth::guard('user')->user()->id

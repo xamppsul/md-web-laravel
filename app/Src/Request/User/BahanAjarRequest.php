@@ -8,7 +8,6 @@ class BahanAjarRequest
     public static function postRequestData($request): array
     {
         return $request->validate([
-            'users_id' => 'required|exists:users,id',
             'judul' => 'required|string',
             'bahan_ajar_jenis' => 'required|exists:bahan_ajar_jenis,id',
             'mata_kuliah' => 'required|string',
@@ -30,7 +29,6 @@ class BahanAjarRequest
     public static function updateRequestData($request): array
     {
         return $request->validate([
-            'users_id' => 'required|exists:users,id',
             'judul' => 'required|string',
             'bahan_ajar_jenis' => 'required|exists:bahan_ajar_jenis,id',
             'mata_kuliah' => 'required|string',
