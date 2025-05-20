@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Bahan Ajar Edit')
+@section('title', 'Pengabdian Edit')
 @section('css')
     <!-- flatpickr css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/datepikar/flatpickr.min.css') }}">
@@ -21,7 +21,7 @@
                     </li>
                     <li class="active">
                         <a class="f-s-14 f-w-500"
-                            href="{{ route('staffdosen.BahanAjar.edit', $data['bahanAjar']->id) }}">Bahan Ajar</a>
+                            href="{{ route('staffdosen.Pengabdian.edit', $data['pengabdian']->id) }}">Pengabdian</a>
                     </li>
                 </ul>
             </div>
@@ -36,19 +36,19 @@
                     <div class="card-header d-flex flex-column gap-2">
                     </div>
                     <div class="card-body">
-                        <form id="bahanAjarForm" class="row g-3 app-form rounded-control"
-                            action="{{ route('staffdosen.BahanAjar.update', $data['bahanAjar']->id) }}" method="POST"
+                        <form id="editPengabdian" class="row g-3 app-form rounded-control"
+                            action="{{ route('staffdosen.Pengabdian.update', $data['pengabdian']->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="col-md-6">
-                                <label class="form-label" for="judul">Judul Bahan Ajar</label>
+                                <label class="form-label" for="judul">Judul Pengabdian</label>
                                 <input
                                     class="form-control @error('judul')
                                                             is-invalid
                                                         @enderror"
-                                    type="text" name="judul" placeholder="Masukan judul bahan ajar"
-                                    value="{{ $data['bahanAjar']->judul }}">
+                                    type="text" name="judul" placeholder="Masukan judul pengabdian"
+                                    value="{{ $data['pengabdian']->judul }}">
                                 <div class="mt-1">
                                     @error('judul')
                                         <span class="text-danger" id="judul">{{ $message }}</span>
@@ -56,137 +56,170 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="bahan_ajar_jenis">Jenis Bahan
-                                    Ajar</label>
-                                <select class="form-select @error('bahan_ajar_jenis') is-invalid @enderror"
-                                    aria-label="Select bahan_ajar_jenis" name="bahan_ajar_jenis" required>
-                                    <option selected="">Pilih Jenis Bahan Ajar</option>
-                                    @foreach ($data['jenis'] as $bahan_ajar_jenis)
-                                        <option value="{{ $bahan_ajar_jenis->id }}"
-                                            {{ $data['bahanAjar']->bahan_ajar_jenis == $bahan_ajar_jenis->id ? 'selected' : '' }}>
-                                            {{ $bahan_ajar_jenis->name }}</option>
+                                <label class="form-label" for="pengabdian_bidang">Bidang
+                                    Pengabdian</label>
+                                <select class="form-select @error('pengabdian_bidang') is-invalid @enderror"
+                                    aria-label="Select bidang pengabdian" name="pengabdian_bidang" required>
+                                    <option selected="">Pilih Bidang Pengabdian</option>
+                                    @foreach ($data['bidang_pengabdian'] as $pengabdian_bidang)
+                                        <option value="{{ $pengabdian_bidang->id }}"
+                                            {{ $data['pengabdian']->pengabdian_bidang == $pengabdian_bidang->id ? 'selected' : '' }}>
+                                            {{ $pengabdian_bidang->name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="mt-1">
-                                    @error('bahan_ajar_jenis')
-                                        <span class="text-danger" id="bahan_ajar_jenis">{{ $message }}</span>
+                                    @error('pengabdian_bidang')
+                                        <span class="text-danger" id="pengabdian_bidang">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="mata_kuliah">Matakuliah</label>
-                                <input
-                                    class="form-control @error('mata_kuliah')
-                                                            is-invalid
-                                                        @enderror"
-                                    type="text" name="mata_kuliah" placeholder="Masukan Matakuliah"
-                                    value="{{ $data['bahanAjar']->mata_kuliah }}">
+                                <label class="form-label" for="pengabdian_sumber_dana">Sumber Dana
+                                    Pengabdian</label>
+                                <select class="form-select @error('pengabdian_sumber_dana') is-invalid @enderror"
+                                    aria-label="Select sumber dana pengabdian" name="pengabdian_sumber_dana" required>
+                                    <option selected="">Pilih Sumber Dana Pengabdian</option>
+                                    @foreach ($data['sumber_dana_pengabdian'] as $pengabdian_sumber_dana)
+                                        <option value="{{ $pengabdian_sumber_dana->id }}"
+                                            {{ $data['pengabdian']->pengabdian_sumber_dana == $pengabdian_sumber_dana->id ? 'selected' : '' }}>
+                                            {{ $pengabdian_sumber_dana->name }}</option>
+                                    @endforeach
+                                </select>
                                 <div class="mt-1">
-                                    @error('mata_kuliah')
-                                        <span class="text-danger" id="mata_kuliah">{{ $message }}</span>
+                                    @error('pengabdian_sumber_dana')
+                                        <span class="text-danger" id="pengabdian_sumber_dana ">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="program_studi">Program
-                                    Studi</label>
-                                <input
-                                    class="form-control @error('program_studi')
-                                                            is-invalid
-                                                        @enderror"
-                                    type="text" name="program_studi" placeholder="Masukan Program Studi"
-                                    value="{{ $data['bahanAjar']->program_studi }}">
+                                <label class="form-label" for="tahun">Tahun
+                                    Pengabdian</label>
+                                <select class="form-select @error('tahun') is-invalid @enderror" aria-label="Select tahun"
+                                    name="tahun" required>
+                                    <option selected="">Pilih Tahun Pengabdian</option>
+                                    @for ($i = 1990; $i <= date('Y'); $i++)
+                                        <option value="{{ $i }}"
+                                            {{ $data['pengabdian']->tahun == $i ? 'selected' : '' }}>
+                                            {{ $i }}</option>
+                                    @endfor
+                                </select>
                                 <div class="mt-1">
-                                    @error('program_studi')
-                                        <span class="text-danger" id="program_studi">{{ $message }}</span>
+                                    @error('tahun')
+                                        <span class="text-danger" id="tahun">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="semester">Semester</label>
+                                <label class="form-label" for="tgl_mulai">Tanggal
+                                    Mulai</label>
                                 <input
-                                    class="form-control @error('semester')
-                                                            is-invalid
-                                                        @enderror"
-                                    type="number" name="semester" placeholder="Masukan Semester"
-                                    value="{{ $data['bahanAjar']->semester }}">
-                                <div class="mt-1">
-                                    @error('semester')
-                                        <span class="text-danger" id="semester">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label" for="tanggal_terbit">Tanggal
-                                    Terbit</label>
-                                <input
-                                    class="form-control @error('tanggal_terbit')
+                                    class="form-control @error('tgl_mulai')
                                                             is-invalid
                                                         @enderror basic-date"
-                                    type="text" name="tanggal_terbit" placeholder="YYYY-MM-DD"
-                                    value="{{ $data['bahanAjar']->tanggal_terbit }}">
+                                    type="text" name="tgl_mulai" placeholder="YYYY-MM-DD"
+                                    value="{{ $data['pengabdian']->tgl_mulai }}">
                                 <div class="mt-1">
-                                    @error('tanggal_terbit')
-                                        <span class="text-danger" id="tanggal_terbit">{{ $message }}</span>
+                                    @error('tgl_mulai')
+                                        <span class="text-danger" id="tgl_mulai">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="deskripsi">Deskripsi</label>
-                                <textarea
-                                    class="form-control @error('deskripsi')
+                                <label class="form-label" for="tgl_selesai">Tanggal
+                                    Selesai</label>
+                                <input
+                                    class="form-control @error('tgl_selesai')
+                                                            is-invalid
+                                                        @enderror basic-date"
+                                    type="text" name="tgl_selesai" placeholder="YYYY-MM-DD"
+                                    value="{{ $data['pengabdian']->tgl_selesai }}">
+                                <div class="mt-1">
+                                    @error('tgl_selesai')
+                                        <span class="text-danger" id="tgl_selesai">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="lokasi">Lokasi Pengabdian</label>
+                                <input
+                                    class="form-control @error('lokasi')
                                                             is-invalid
                                                         @enderror"
-                                    id="" cols="30" rows="10" name="deskripsi">{{ $data['bahanAjar']->deskripsi }}</textarea>
+                                    type="text" name="lokasi" placeholder="Masukan lokasi pengabdian"
+                                    value="{{ $data['pengabdian']->lokasi }}">
                                 <div class="mt-1">
-                                    @error('deskripsi')
-                                        <span class="text-danger" id="deskripsi">{{ $message }}</span>
+                                    @error('lokasi')
+                                        <span class="text-danger" id="lokasi">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="file_bahan">File Bahan Ajar</label>
+                                <label class="form-label" for="jumlah_peserta">Jumlah
+                                    Peserta</label>
+                                <input
+                                    class="form-control @error('jumlah_peserta')
+                                                            is-invalid
+                                                        @enderror"
+                                    type="number" name="jumlah_peserta" placeholder="Masukan jumlah peserta pengabdian"
+                                    value="{{ $data['pengabdian']->jumlah_peserta }}">
+                                <div class="mt-1">
+                                    @error('jumlah_peserta')
+                                        <span class="text-danger" id="jumlah_peserta">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="laporan_pengabdian">Laporan
+                                    Pengabdian</label>
                                 <input type="file"
-                                    class="form-control @error('file_bahan')
+                                    class="form-control @error('laporan_pengabdian')
                                                             is-invalid
                                                         @enderror"
-                                    name="file_bahan">
-                                @error('file_bahan')
-                                    <span class="text-danger" id="file_bahan">{{ $message }}</span>
+                                    name="laporan_pengabdian">
+                                @error('laporan_pengabdian')
+                                    <span class="text-danger" id="laporan_pengabdian">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="link_bahan">Link Bahan Ajar</label>
-                                <input
-                                    class="form-control @error('link_bahan')
+                                <label class="form-label" for="dokumentasi">Dokumentasi
+                                    Pengabdian</label>
+                                <input type="file"
+                                    class="form-control @error('dokumentasi')
                                                             is-invalid
                                                         @enderror"
-                                    type="text" name="link_bahan" placeholder="Masukan Link Bahan Ajar"
-                                    value="{{ $data['bahanAjar']->link_bahan }}">
+                                    name="dokumentasi">
+                                @error('dokumentasi')
+                                    <span class="text-danger" id="dokumentasi">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="pengabdian_status">Status
+                                    Pengabdian</label>
+                                <select class="form-select @error('pengabdian_status') is-invalid @enderror"
+                                    aria-label="Select sumber dana pengabdian" name="pengabdian_status" required>
+                                    <option selected="">Pilih Sumber Dana Pengabdian</option>
+                                    @foreach ($data['status_pengabdian'] as $pengabdian_status)
+                                        <option value="{{ $pengabdian_status->id }}"
+                                            {{ $data['pengabdian']->pengabdian_status == $pengabdian_status->id ? 'selected' : '' }}>
+                                            {{ $pengabdian_status->name }}</option>
+                                    @endforeach
+                                </select>
                                 <div class="mt-1">
-                                    @error('link_bahan')
-                                        <span class="text-danger" id="link_bahan">{{ $message }}</span>
+                                    @error('pengabdian_status')
+                                        <span class="text-danger" id="pengabdian_status ">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="bahan_ajar_status_penggunaan">Status Penggunaan Bahan
-                                    Ajar</label>
-                                <select class="form-select @error('bahan_ajar_status_penggunaan') is-invalid @enderror"
-                                    aria-label="Select bahan_ajar_status_penggunaan" name="bahan_ajar_status_penggunaan"
-                                    required>
-                                    <option selected="">Pilih Status Penggunaan Bahan Ajar
-                                    </option>
-                                    @foreach ($data['status_penggunaan'] as $bahan_ajar_status_penggunaan)
-                                        <option value="{{ $bahan_ajar_status_penggunaan->id }}"
-                                            {{ $data['bahanAjar']->bahan_ajar_status_penggunaan == $bahan_ajar_status_penggunaan->id ? 'selected' : '' }}>
-                                            {{ $bahan_ajar_status_penggunaan->name }}</option>
-                                    @endforeach
-                                </select>
+                                <label class="form-label" for="catatan">Catatan</label>
+                                <textarea
+                                    class="form-control @error('catatan')
+                                                            is-invalid
+                                                        @enderror"
+                                    id="" cols="30" rows="10" name="catatan">{{ $data['pengabdian']->catatan }}</textarea>
                                 <div class="mt-1">
-                                    @error('bahan_ajar_status_penggunaan')
-                                        <span class="text-danger"
-                                            id="bahan_ajar_status_penggunaan">{{ $message }}</span>
+                                    @error('catatan')
+                                        <span class="text-danger" id="catatan">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -194,9 +227,9 @@
                                 <button class="btn btn-primary b-r-22" type="submit" value="Submit">Submit
                                 </button>
                                 <button class="btn btn-warning b-r-22" value="clear"
-                                    onclick="cleareditFormBahanAjar()">Clear
+                                    onclick="cleareditFormPengabdian()">Clear
                                 </button>
-                                <a class="btn btn-danger b-r-22" href="{{ route('staffdosen.BahanAjar.index') }}">Cancel
+                                <a class="btn btn-danger b-r-22" href="{{ route('staffdosen.Pengabdian.index') }}">Cancel
                                 </a>
                             </div>
                         </form>
@@ -223,8 +256,8 @@
     <script src="{{ asset('assets/js/date_picker.js') }}"></script>
 
     <script type="text/javascript">
-        function cleareditFormBahanAjar() {
-            const form = document.getElementById('editFormKegiatan');
+        function cleareditFormPengabdian() {
+            const form = document.getElementById('editPengabdian');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';
