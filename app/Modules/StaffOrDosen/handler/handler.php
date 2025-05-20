@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class Handler extends Usecase implements Handler_interfaces
 {
 
+    public function __construct() {}
     /**============================================================================
      *  BahanAjar
      * ============================================================================

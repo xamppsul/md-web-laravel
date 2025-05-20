@@ -10,9 +10,9 @@ interface Repository_interfaces
      */
     public function indexBahanAjarRepository($bahanAjarDomain, $request): array;
     public function createBahanAjarRepository();
-    public function storeBahanAjarRepository($request, $bahanAjarDomain): void;
+    public function storeBahanAjarRepository($request, $bahanAjarDomain, string $fileBahanAjar): void;
     public function editBahanAjarRepository(int $id, $bahanAjarDomain): array;
-    public function updateBahanAjarRepository(int $id, $bahanAjarDomain, $request): void;
+    public function updateBahanAjarRepository(int $id, $bahanAjarDomain, $request, string $fileBahanAjar): void;
     public function destroyBahanAjarRepository(int $id, $bahanAjarDomain): void;
 
     //file upload
