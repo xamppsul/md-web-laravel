@@ -93,6 +93,15 @@ class PengabdianDomain
     }
 
     /**
+     * @method getStatusPengabdianDomain
+     * @return array
+     */
+    public function getStatusPengabdianDomain(): array
+    {
+        return DB::select('SELECT * FROM pengabdian_status');
+    }
+
+    /**
      * @method getSumberDanaPengabdianDomain
      * @return array
      */
