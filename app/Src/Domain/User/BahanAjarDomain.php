@@ -105,7 +105,7 @@ class BahanAjarDomain
      */
     public function postDataBahanAjarDomain($request, string $fileBahan): void
     {
-        DB::insert('insert into bahan_ajar 
+        DB::insert('insert into bahan_ajar
             (users_id,
             judul,
             bahan_ajar_jenis,
@@ -143,7 +143,7 @@ class BahanAjarDomain
 
     public function updateDataBahanAjarDomain($id, $request, string $fileBahan): void
     {
-        DB::update('UPDATE bahan_ajar SET 
+        DB::update('UPDATE bahan_ajar SET
             users_id = ?,
             judul = ?,
             bahan_ajar_jenis = ?,
