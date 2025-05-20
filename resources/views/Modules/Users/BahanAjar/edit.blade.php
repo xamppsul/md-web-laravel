@@ -36,7 +36,7 @@
                     <div class="card-header d-flex flex-column gap-2">
                     </div>
                     <div class="card-body">
-                        <form id="bahanAjarForm" class="row g-3 app-form rounded-control"
+                        <form id="editBahanAjar" class="row g-3 app-form rounded-control"
                             action="{{ route('staffdosen.BahanAjar.update', $data['bahanAjar']->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @method('put')
@@ -224,7 +224,7 @@
 
     <script type="text/javascript">
         function cleareditFormBahanAjar() {
-            const form = document.getElementById('editFormKegiatan');
+            const form = document.getElementById('editBahanAjar');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';

@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             StatusPenggunaanBahanAjarSeeder::class,
             SumberDanaPenelitianSeeder::class,
             SumberDanaPengabdianSeeder::class,
+            BidangPengabdianSeeder::class,
         ]);
     }
 }

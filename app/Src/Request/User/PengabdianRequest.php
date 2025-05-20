@@ -8,7 +8,6 @@ class PengabdianRequest
     public static function postRequestData($request): array
     {
         return $request->validate([
-            'users_id' => 'required|exists:users,id',
             'judul' => 'required|string',
             'pengabdian_bidang' => 'required|exists:pengabdian_bidang,id',
             'pengabdian_sumber_dana' => 'required|exists:pengabdian_sumber_dana,id',
@@ -33,7 +32,6 @@ class PengabdianRequest
     public static function updateRequestData($request): array
     {
         return $request->validate([
-            'users_id' => 'required|exists:users,id',
             'judul' => 'required|string',
             'pengabdian_bidang' => 'required|exists:pengabdian_bidang,id',
             'pengabdian_sumber_dana' => 'required|exists:pengabdian_sumber_dana,id',

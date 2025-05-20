@@ -20,12 +20,12 @@
                     <li class="">
                         <a href="#" class="f-s-14 f-w-500">
                             <span>
-                                <i class="ph-duotone  ph-table f-s-16"></i> Bahan Ajar
+                                <i class="ph-duotone  ph-table f-s-16"></i> Pengabdian
                             </span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{ route('staffdosen.BahanAjar.index') }}" class="f-s-14 f-w-500">Data</a>
+                        <a href="{{ route('staffdosen.Pengabdian.index') }}" class="f-s-14 f-w-500">Data</a>
                     </li>
                 </ul>
             </div>
@@ -54,8 +54,8 @@
                                 class="btn btn-light-primary b-r-22" data-bs-target="#collapseFilter"
                                 data-bs-toggle="collapse" type="button"> <i class="ti ti-filter"></i>
                                 Filter</button>
-                            <button type="button" class="btn btn-primary b-r-22" aria-controls="collapseTambahBahanAjar"
-                                aria-expanded="false" data-bs-target="#collapseTambahBahanAjar" data-bs-toggle="collapse"
+                            <button type="button" class="btn btn-primary b-r-22" aria-controls="collapseTambahPengabdian"
+                                aria-expanded="false" data-bs-target="#collapseTambahPengabdian" data-bs-toggle="collapse"
                                 type="button"> <i class="ti ti-text-plus"></i>
                                 Tambah Bahan Ajar</button>
                         </p>
@@ -67,7 +67,7 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('staffdosen.BahanAjar.index') }}" method="GET"
+                                                <form action="{{ route('staffdosen.Pengabdian.index') }}" method="GET"
                                                     class="row g-3 app-form rounded-control" id="filterFormMouMoa">
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="bahan_ajar_jenis">Jenis Bahan
@@ -112,14 +112,14 @@
                                 </div>
                             </div>
                             <!-- collapse tambah mou moa -->
-                            <div class="collapse collapse-horizontal" id="collapseTambahBahanAjar">
+                            <div class="collapse collapse-horizontal" id="collapseTambahPengabdian">
                                 <div class="card card-body dashed-1-secondary w-900">
                                     <!-- Tooltips start -->
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
                                                 <form class="row g-3 app-form rounded-control"
-                                                    action="{{ route('staffdosen.BahanAjar.store') }}" method="POST"
+                                                    action="{{ route('staffdosen.Pengabdian.store') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="col-md-6">

@@ -213,9 +213,9 @@ class Repository implements Repository_interfaces
     public function indexPengabdianRepository($pengabdianDomain, $request): array
     {
         return array(
-            'bidang' => $pengabdianDomain->getBidangPengabdianDomain(),
-            'sumber_dana' => $pengabdianDomain->getSumberDanaPengabdianDomain(),
-            'status' => $pengabdianDomain->getStatusPengabdianDomain(),
+            'bidang_pengabdian' => $pengabdianDomain->getBidangPengabdianDomain(),
+            'sumber_dana_pengabdian' => $pengabdianDomain->getSumberDanaPengabdianDomain(),
+            'status_pengabdian' => $pengabdianDomain->getStatusPengabdianDomain(),
             'pengabdian' => $pengabdianDomain->getAllPengabdianDomain($request),
         );
     }
@@ -250,9 +250,9 @@ class Repository implements Repository_interfaces
     public function editPengabdianRepository(int $id, $pengabdianDomain): array
     {
         return array(
-            'bidang' => $pengabdianDomain->getBidangPengabdianDomain(),
-            'sumber_dana' => $pengabdianDomain->getSumberDanaPengabdianDomain(),
-            'status' => $pengabdianDomain->getStatusPengabdianDomain(),
+            'bidang_pengabdian' => $pengabdianDomain->getBidangPengabdianDomain(),
+            'sumber_dana_pengabdian' => $pengabdianDomain->getSumberDanaPengabdianDomain(),
+            'status_pengabdian' => $pengabdianDomain->getStatusPengabdianDomain(),
             'pengabdian' => $pengabdianDomain->getDetailPengabdianDomain($id)[0],
         );
     }

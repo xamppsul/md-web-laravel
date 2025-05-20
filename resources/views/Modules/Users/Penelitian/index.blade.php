@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Bahan Ajar')
+@section('title', 'Penelitian')
 @section('css')
     <!--font-awesome-css-->
     <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome/css/all.css') }}">
