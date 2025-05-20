@@ -98,10 +98,10 @@ class PenelitianDomain
     /**
      * @method postDataPenelitianDomain
      * @param $request
-     * @param string $fileBahan
+     * @param string $fileLaporanAkhirPenelitian
      * @return void
      */
-    public function postDataPenelitianDomain($request, string $fileBahan): void
+    public function postDataPenelitianDomain($request, string $fileLaporanAkhirPenelitian): void
     {
         DB::insert('insert into penelitian
             (users_id,
@@ -126,7 +126,7 @@ class PenelitianDomain
             $request->penelitian_sumber_dana,
             $request->jumlah_dana,
             $request->anggota_tim,
-            $request->laporan_akhir,
+            $fileLaporanAkhirPenelitian,
             $request->penelitian_status,
             $request->catatan,
             now(),
@@ -137,13 +137,13 @@ class PenelitianDomain
      * @method updateDataPenelitianDomain
      * @param $request
      * @param $id
-     * @param string $fileBahan
+     * @param string $fileLaporanAkhirPenelitian
      * @return void
      */
 
-    public function updateDataPenelitianDomain($id, $request, string $fileBahan): void
+    public function updateDataPenelitianDomain($id, $request, string $fileLaporanAkhirPenelitian): void
     {
-        DB::update('UPDATE bahan_ajar SET 
+        DB::update('UPDATE penelitian SET 
             users_id = ?,
             judul = ?,
             bidang_ilmu = ?,
@@ -167,7 +167,7 @@ class PenelitianDomain
             $request->penelitian_sumber_dana,
             $request->jumlah_dana,
             $request->anggota_tim,
-            $request->laporan_akhir,
+            $fileLaporanAkhirPenelitian,
             $request->penelitian_status,
             $request->catatan,
             now(),

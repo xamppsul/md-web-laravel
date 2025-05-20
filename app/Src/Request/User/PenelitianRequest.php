@@ -8,7 +8,6 @@ class PenelitianRequest
     public static function postRequestData($request): array
     {
         return $request->validate([
-            'users_id' => 'required|exists:users,id',
             'judul' => 'required|string',
             'bidang_ilmu' => 'required|string',
             'tahun' => 'required|integer|digits:4',
@@ -31,7 +30,6 @@ class PenelitianRequest
     public static function updateRequestData($request): array
     {
         return $request->validate([
-            'users_id' => 'required|exists:users,id',
             'judul' => 'required|string',
             'bidang_ilmu' => 'required|string',
             'tahun' => 'required|integer|digits:4',

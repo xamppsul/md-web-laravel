@@ -117,8 +117,8 @@ class Repository implements Repository_interfaces
     public function indexPenelitianRepository($penelitianDomain, $request): array
     {
         return array(
-            'sumber_dana' => $penelitianDomain->getSumberDanaPenelitianDomain(),
-            'status' => $penelitianDomain->getStatusPenelitianDomain(),
+            'sumber_dana_penelitian' => $penelitianDomain->getSumberDanaPenelitianDomain(),
+            'status_penelitian' => $penelitianDomain->getStatusPenelitianDomain(),
             'penelitian' => $penelitianDomain->getAllPenelitianDomain($request),
         );
     }
@@ -152,8 +152,8 @@ class Repository implements Repository_interfaces
     public function editPenelitianRepository(int $id, $penelitianDomain): array
     {
         return array(
-            'sumber_dana' => $penelitianDomain->getSumberDanaPenelitianDomain(),
-            'status' => $penelitianDomain->getStatusPenelitianDomain(),
+            'sumber_dana_penelitian' => $penelitianDomain->getSumberDanaPenelitianDomain(),
+            'status_penelitian' => $penelitianDomain->getStatusPenelitianDomain(),
             'penelitian' => $penelitianDomain->getDetailPenelitianDomain($id)[0],
         );
     }

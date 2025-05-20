@@ -196,7 +196,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->storePenelitianService($request, $penelitianDomain);
             DB::commit();
-            return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil tambah Bahan Ajar');
+            return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil tambah penelitian');
         } catch (\Exception $error) {
             DB::rollBack();
             $penelitianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
@@ -245,7 +245,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->updatePenelitianService($id, $penelitianDomain, $request);
             DB::commit();
-            return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil update Bahan Ajar');
+            return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil update penelitian');
         } catch (\Exception $error) {
             DB::rollBack();
             $penelitianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
@@ -270,7 +270,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->destroyPenelitianService($id, $penelitianDomain);
             DB::commit();
-            return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil delete Bahan Ajar');
+            return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil delete penelitian');
         } catch (\Exception $error) {
             DB::rollBack();
             $penelitianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
@@ -330,7 +330,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->storePengabdianService($request, $pengabdianDomain);
             DB::commit();
-            return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil tambah Bahan Ajar');
+            return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil tambah pengabdian');
         } catch (\Exception $error) {
             DB::rollBack();
             $pengabdianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
@@ -379,7 +379,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->updatePengabdianService($id, $pengabdianDomain, $request);
             DB::commit();
-            return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil update Bahan Ajar');
+            return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil update pengabdian');
         } catch (\Exception $error) {
             DB::rollBack();
             $pengabdianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
@@ -404,7 +404,7 @@ class Usecase extends Services implements Usecase_intefaces
         try {
             $this->destroyPengabdianService($id, $pengabdianDomain);
             DB::commit();
-            return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil delete Bahan Ajar');
+            return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil delete pengabdian');
         } catch (\Exception $error) {
             DB::rollBack();
             $pengabdianDomain->DomainLogInsert($error->getMessage(), $request->route()->getName(), $request->path(), 'error');
