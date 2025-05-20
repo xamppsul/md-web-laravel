@@ -70,29 +70,29 @@
                                                 <form action="{{ route('staffdosen.Penelitian.index') }}" method="GET"
                                                     class="row g-3 app-form rounded-control" id="filterFormMouMoa">
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="sumber_dana">Sumber Dana
+                                                        <label class="form-label" for="penelitian_sumber_dana">Sumber Dana
                                                             Penelitian</label>
                                                         <select class="form-select" aria-label="Select Sumber Dana"
-                                                            name="sumber_dana" required>
+                                                            name="penelitian_sumber_dana" required>
                                                             <option selected="">Pilih Sumber Dana Penelitian</option>
-                                                            @foreach ($data['sumber_dana_penelitian'] as $sumber_dana)
-                                                                <option value="{{ $sumber_dana->id }}"
-                                                                    {{ request('sumber_dana') == $sumber_dana->id ? 'selected' : '' }}>
-                                                                    {{ $sumber_dana->name }}
+                                                            @foreach ($data['sumber_dana_penelitian'] as $penelitian_sumber_dana)
+                                                                <option value="{{ $penelitian_sumber_dana->id }}"
+                                                                    {{ request('penelitian_sumber_dana') == $penelitian_sumber_dana->id ? 'selected' : '' }}>
+                                                                    {{ $penelitian_sumber_dana->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="status">Status
+                                                        <label class="form-label" for="penelitian_status">Status
                                                             Penelitian</label>
                                                         <select class="form-select" aria-label="Select Status Penelitian"
-                                                            name="status" required>
+                                                            name="penelitian_status" required>
                                                             <option selected="">Pilih Status Penelitian</option>
-                                                            @foreach ($data['status_penelitian'] as $status)
-                                                                <option value="{{ $status->id }}"
-                                                                    {{ request('status') == $status->id ? 'selected' : '' }}>
-                                                                    {{ $status->name }}
+                                                            @foreach ($data['status_penelitian'] as $penelitian_status)
+                                                                <option value="{{ $penelitian_status->id }}"
+                                                                    {{ request('penelitian_status') == $penelitian_status->id ? 'selected' : '' }}>
+                                                                    {{ $penelitian_status->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

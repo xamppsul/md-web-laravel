@@ -93,7 +93,7 @@
                                                             <option selected="">Pilih Sumber Dana Pengabdian</option>
                                                             @foreach ($data['sumber_dana_pengabdian'] as $pengabdian_sumber_dana)
                                                                 <option value="{{ $pengabdian_sumber_dana->id }}"
-                                                                    {{ request('pengabdian_sumber_dana ') == $pengabdian_sumber_dana->id ? 'selected' : '' }}>
+                                                                    {{ request('pengabdian_sumber_dana') == $pengabdian_sumber_dana->id ? 'selected' : '' }}>
                                                                     {{ $pengabdian_sumber_dana->name }}
                                                                 </option>
                                                             @endforeach
@@ -107,7 +107,7 @@
                                                             <option selected="">Pilih Status Pengabdian</option>
                                                             @foreach ($data['status_pengabdian'] as $pengabdian_status)
                                                                 <option value="{{ $pengabdian_status->id }}"
-                                                                    {{ request('pengabdian_status  ') == $pengabdian_status->id ? 'selected' : '' }}>
+                                                                    {{ request('pengabdian_status') == $pengabdian_status->id ? 'selected' : '' }}>
                                                                     {{ $pengabdian_status->name }}
                                                                 </option>
                                                             @endforeach
@@ -311,9 +311,9 @@
                                                             Pengabdian</label>
                                                         <select
                                                             class="form-select @error('pengabdian_status') is-invalid @enderror"
-                                                            aria-label="Select sumber dana pengabdian"
-                                                            name="pengabdian_status" required>
-                                                            <option selected="">Pilih Sumber Dana Pengabdian</option>
+                                                            aria-label="Select status pengabdian" name="pengabdian_status"
+                                                            required>
+                                                            <option selected="">Pilih Status Pengabdian</option>
                                                             @foreach ($data['status_pengabdian'] as $pengabdian_status)
                                                                 <option value="{{ $pengabdian_status->id }}"
                                                                     {{ old('pengabdian_status') == $pengabdian_status->id ? 'selected' : '' }}>
