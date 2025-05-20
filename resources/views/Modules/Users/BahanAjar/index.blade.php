@@ -326,7 +326,7 @@
                                         <tr>
                                             <td>{{ $BahanAjar->judul }}</td>
                                             <td>{{ $BahanAjar->bahan_ajar_jenis_name }}</td>
-                                            <td>{{ $BahanAjar->matakuliah }}</td>
+                                            <td>{{ $BahanAjar->mata_kuliah }}</td>
                                             <td>{{ $BahanAjar->program_studi }}</td>
                                             <td>{{ $BahanAjar->semester }}</td>
                                             <td>{{ $BahanAjar->tanggal_terbit }}</td>
@@ -363,59 +363,37 @@
             <!-- Default Datatable end -->
         </div>
         <!-- Data Table end -->
-        @foreach ($data['bahanAjar'] as $mouMoaData)
+        @foreach ($data['bahanAjar'] as $BahanAjar)
             <div aria-hidden="true" class="modal fade" data-bs-backdrop="static"
-                id="detailBahanAjar--{{ $mouMoaData->id }}" tabindex="-1">
+                id="detailBahanAjar--{{ $BahanAjar->id }}" tabindex="-1">
                 <div class="modal-dialog app_modal_sm">
                     <div class="modal-content">
                         <div class="modal-header bg-primary-800">
-                            <h1 class="modal-title fs-5 text-white" id="detailBahanAjar2">Detail Mou Moa</h1>
+                            <h1 class="modal-title fs-5 text-white" id="detailBahanAjar2">Detail Bahan Ajar</h1>
                         </div>
                         <div class="modal-body">
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nomor Dokumen:
-                                {{ $mouMoaData->nomor_dokumen }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Dokumen:
-                                {{ $mouMoaData->mou_moa_jenis_dokumen_name }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Mitra:
-                                {{ $mouMoaData->nama_mitra }}
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Judul:
+                                {{ $BahanAjar->judul }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Bahan Ajar:
+                                {{ $BahanAjar->bahan_ajar_jenis_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Matakuliah:
+                                {{ $BahanAjar->mata_kuliah }}
                             </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Judul Kerjasama:
-                                {{ $mouMoaData->judul_kerjasama }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Klasifikasi:
-                                {{ $mouMoaData->mou_moa_klasifikasi_name }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Mulai:
-                                {{ $mouMoaData->tanggal_mulai }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Akhir:
-                                {{ $mouMoaData->tanggal_akhir }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status:
-                                @if ($mouMoaData->mou_moa_status_name == 'Aktif')
-                                    <td><span
-                                            class="badge text-light-success">{{ $mouMoaData->mou_moa_status_name }}</span>
-                                    </td>
-                                @elseif($mouMoaData->mou_moa_status_name == 'Selesai')
-                                    <td><span
-                                            class="badge text-light-warning">{{ $mouMoaData->mou_moa_status_name }}</span>
-                                    </td>
-                                @else
-                                    <td><span
-                                            class="badge text-light-danger">{{ $mouMoaData->mou_moa_status_name }}</span>
-                                    </td>
-                                @endif
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Program Studi:
+                                {{ $BahanAjar->program_studi }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Terbit:
+                                {{ $BahanAjar->tanggal_terbit }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Deskripsi:
+                                {{ $BahanAjar->deskripsi }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Link:
+                                <a href="{{ $BahanAjar->link_bahan }}" target="_blank"><b>Klik disini</b></a>
                             </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kerjasama:
-                                {{ $mouMoaData->mou_moa_bidang_kerjasama_name }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Penanggung Jawab:
-                                {{ $mouMoaData->users_id }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Keterangan Tambahan:
-                                {{ $mouMoaData->keterangan_tambahan }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Created At:
-                                {{ $mouMoaData->created_at }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Updated At:
-                                {{ $mouMoaData->updated_at }} </p>
-                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen Pendukung:
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status Penggunaan:
+                                {{ $BahanAjar->bahan_ajar_status_penggunaan_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Bahan Ajar:
                             </p>
-                            <iframe src="{{ asset("/laraview/#../docsMouMoa/{$mouMoaData->dokumen_pendukung}") }}"
-                                width="450px" height="300px"></iframe>
+                            <iframe src="{{ asset("/laraview/#../bahan_ajar/{$BahanAjar->file_bahan}") }}" width="450px"
+                                height="300px"></iframe>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close
