@@ -280,7 +280,7 @@
                                                             class="form-select @error('penelitian_status') is-invalid @enderror"
                                                             aria-label="Select penelitian_status" name="penelitian_status"
                                                             required>
-                                                            <option selected="">Pilih Sumber Dana Penelitian
+                                                            <option selected="">Pilih Status Penelitian
                                                             </option>
                                                             @foreach ($data['status_penelitian'] as $penelitian_status)
                                                                 <option value="{{ $penelitian_status->id }}"
