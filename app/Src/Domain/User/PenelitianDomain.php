@@ -40,7 +40,7 @@ class PenelitianDomain
         return DB::select('
             SELECT penelitian.*,
                 penelitian_sumber_dana.name AS penelitian_sumber_dana_name,
-                penelitian_status.name AS penelitian_status_name,
+                penelitian_status.name AS penelitian_status_name
             FROM penelitian
                 INNER JOIN penelitian_sumber_dana ON penelitian.penelitian_sumber_dana = penelitian_sumber_dana.id
                 INNER JOIN penelitian_status ON penelitian.penelitian_status = penelitian_status.id
@@ -65,7 +65,7 @@ class PenelitianDomain
         return DB::select('
             SELECT penelitian.*,
                 penelitian_sumber_dana.name AS penelitian_sumber_dana_name,
-                penelitian_status.name AS penelitian_status_name,
+                penelitian_status.name AS penelitian_status_name
             FROM penelitian
                 INNER JOIN penelitian_sumber_dana ON penelitian.penelitian_sumber_dana = penelitian_sumber_dana.id
                 INNER JOIN penelitian_status ON penelitian.penelitian_status = penelitian_status.id

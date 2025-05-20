@@ -41,7 +41,7 @@ class PengabdianDomain
             SELECT pengabdian.*,
                 pengabdian_bidang.name AS pengabdian_bidang_name,
                 pengabdian_sumber_dana.name AS pengabdian_sumber_dana_name,
-                pengabdian_status.name AS pengabdian_status_name,
+                pengabdian_status.name AS pengabdian_status_name
             FROM pengabdian
                 INNER JOIN pengabdian_bidang ON pengabdian.pengabdian_bidang = pengabdian_bidang.id
                 INNER JOIN pengabdian_sumber_dana ON pengabdian.pengabdian_sumber_dana = pengabdian_sumber_dana.id
@@ -70,7 +70,7 @@ class PengabdianDomain
             SELECT pengabdian.*,
                 pengabdian_bidang.name AS pengabdian_bidang_name,
                 pengabdian_sumber_dana.name AS pengabdian_sumber_dana_name,
-                pengabdian_status.name AS pengabdian_status_name,
+                pengabdian_status.name AS pengabdian_status_name
             FROM pengabdian
                 INNER JOIN pengabdian_bidang ON pengabdian.pengabdian_bidang = pengabdian_bidang.id
                 INNER JOIN pengabdian_sumber_dana ON pengabdian.pengabdian_sumber_dana = pengabdian_sumber_dana.id
