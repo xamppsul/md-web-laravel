@@ -102,7 +102,7 @@
                                                             value="Submit">Submit
                                                         </button>
                                                         <button class="btn btn-warning b-r-22"
-                                                            onclick="clearfilterFormMouMoa()" value="Clear">Clear
+                                                            onclick="clearfilterFormPenelitian()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -469,7 +469,7 @@
         });
     </script> --}}
     <script type="text/javascript">
-        function clearfilterFormMouMoa() {
+        function clearfilterFormPenelitian() {
             const form = document.getElementById('filterFormMouMoa');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {

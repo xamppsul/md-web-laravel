@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Bahan Ajar')
+@section('title', 'Pengabdian')
 @section('css')
     <!--font-awesome-css-->
     <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome/css/all.css') }}">
@@ -70,29 +70,45 @@
                                                 <form action="{{ route('staffdosen.Pengabdian.index') }}" method="GET"
                                                     class="row g-3 app-form rounded-control" id="filterFormMouMoa">
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="bahan_ajar_jenis">Jenis Bahan
-                                                            Ajar</label>
-                                                        <select class="form-select" aria-label="Select Jenis Bahan Ajar"
-                                                            name="bahan_ajar_jenis" required>
-                                                            <option selected="">Pilih Jenis Bahan Ajar</option>
-                                                            @foreach ($data['jenis'] as $bahan_ajar_jenis)
-                                                                <option value="{{ $bahan_ajar_jenis->id }}"
-                                                                    {{ request('bahan_ajar_jenis') == $bahan_ajar_jenis->id ? 'selected' : '' }}>
-                                                                    {{ $bahan_ajar_jenis->name }}
+                                                        <label class="form-label" for="pengabdian_bidang">Jenis Bidang
+                                                            Pengabdian</label>
+                                                        <select class="form-select"
+                                                            aria-label="Select Jenis Bidang Pengabdian"
+                                                            name="pengabdian_bidang" required>
+                                                            <option selected="">Pilih Jenis Bidang Pengabdian</option>
+                                                            @foreach ($data['bidang_pengabdian'] as $pengabdian_bidang)
+                                                                <option value="{{ $pengabdian_bidang->id }}"
+                                                                    {{ request('pengabdian_bidang ') == $pengabdian_bidang->id ? 'selected' : '' }}>
+                                                                    {{ $pengabdian_bidang->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="bahan_ajar_status_penggunaan">Status
-                                                            Penggunaan</label>
-                                                        <select class="form-select" aria-label="Select Status Penggunaan"
-                                                            name="bahan_ajar_status_penggunaan" required>
-                                                            <option selected="">Pilih Status Penggunaan</option>
-                                                            @foreach ($data['status_penggunaan'] as $bahan_ajar_status_penggunaan)
-                                                                <option value="{{ $bahan_ajar_status_penggunaan->id }}"
-                                                                    {{ request('bahan_ajar_status_penggunaan') == $bahan_ajar_status_penggunaan->id ? 'selected' : '' }}>
-                                                                    {{ $bahan_ajar_status_penggunaan->name }}
+                                                        <label class="form-label" for="pengabdian_sumber_dana">Sumber Dana
+                                                            Pengabdian</label>
+                                                        <select class="form-select"
+                                                            aria-label="Select Sumber Dana Pengabdian"
+                                                            name="pengabdian_sumber_dana" required>
+                                                            <option selected="">Pilih Sumber Dana Pengabdian</option>
+                                                            @foreach ($data['sumber_dana_pengabdian'] as $pengabdian_sumber_dana)
+                                                                <option value="{{ $pengabdian_sumber_dana->id }}"
+                                                                    {{ request('pengabdian_sumber_dana ') == $pengabdian_sumber_dana->id ? 'selected' : '' }}>
+                                                                    {{ $pengabdian_sumber_dana->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="pengabdian_status">Status
+                                                            Pengabdian</label>
+                                                        <select class="form-select" aria-label="Select Status Pengabdian"
+                                                            name="pengabdian_status" required>
+                                                            <option selected="">Pilih Status Pengabdian</option>
+                                                            @foreach ($data['sumber_dana_pengabdian'] as $pengabdian_status)
+                                                                <option value="{{ $pengabdian_status->id }}"
+                                                                    {{ request('pengabdian_status  ') == $pengabdian_status->id ? 'selected' : '' }}>
+                                                                    {{ $pengabdian_status->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -102,7 +118,7 @@
                                                             value="Submit">Submit
                                                         </button>
                                                         <button class="btn btn-warning b-r-22"
-                                                            onclick="clearfilterFormMouMoa()" value="Clear">Clear
+                                                            onclick="clearfilterFormPengabdian()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -444,7 +460,7 @@
         });
     </script> --}}
     <script type="text/javascript">
-        function clearfilterFormMouMoa() {
+        function clearfilterFormPengabdian() {
             const form = document.getElementById('filterFormMouMoa');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
