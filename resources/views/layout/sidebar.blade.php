@@ -111,7 +111,8 @@
                     </li>
                     <li class="menu-title"><span>File Manager</span></li>
                     <li class="no-sub">
-                        <a class="" href="{{ route('admin.log-user.index') }}">
+                        <a class="{{ request()->routeis('staffdosen.FileManager.index') ? 'active' : '' }}"
+                            href="{{ route('staffdosen.FileManager.index') }}">
                             <i class="iconoir-drawer"></i> El Finder
                         </a>
                     </li>

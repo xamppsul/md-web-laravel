@@ -28,4 +28,5 @@ Route::middleware(['throttle:30,1', 'auth:user', 'user.staffdosen'])->group(func
         Route::put('/update/{id}', [Handler::class, 'updatePengabdian'])->name('staffdosen.Pengabdian.update');
         Route::delete('/destroy/{id}', [Handler::class, 'destroyPengabdian'])->name('staffdosen.Pengabdian.destroy');
     });
+    Route::get('file-manager', [Handler::class, 'indexFileManager'])->name('staffdosen.FileManager.index');
 });

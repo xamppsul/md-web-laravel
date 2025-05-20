@@ -94,4 +94,9 @@ interface Usecase_intefaces
         $request,
         $pengabdianDomain,
     ): RedirectResponse;
+
+    /**
+     * fileManager
+     */
+    public function indexFileManagerCase(): View|RedirectResponse;
 }

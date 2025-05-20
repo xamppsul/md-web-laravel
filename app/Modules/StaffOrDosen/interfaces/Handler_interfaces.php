@@ -36,4 +36,9 @@ interface Handler_interfaces
     public function editPengabdian(int $id, Request $request): RedirectResponse|view;
     public function updatePengabdian(int $id, Request $request): RedirectResponse;
     public function destroyPengabdian(int $id, Request $request): RedirectResponse;
+
+    /**
+     * file manager
+     */
+    public function indexFileManager(): View|RedirectResponse;
 }

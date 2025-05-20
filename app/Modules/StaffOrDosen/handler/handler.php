@@ -265,4 +265,18 @@ class Handler extends Usecase implements Handler_interfaces
             $this->pengabdianDomain
         );
     }
+
+    /**
+     * =============================================================================
+     * feature: file manager
+     * =============================================================================
+     */
+    /**
+     * @method indexFileManager
+     * @return View
+     */
+    public function indexFileManager(): View|RedirectResponse
+    {
+        return $this->indexFileManagerCase();
+    }
 }
