@@ -4,6 +4,9 @@ namespace App\Modules\StaffOrDosen\handler;
 
 use App\Modules\StaffOrDosen\interfaces\Handler_interfaces;
 use App\Modules\StaffOrDosen\usecase\Usecase;
+use App\Src\Domain\User\BahanAjarDomain;
+use App\Src\Domain\User\PenelitianDomain;
+use App\Src\Domain\User\PengabdianDomain;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,7 +14,14 @@ use Illuminate\Http\Request;
 class Handler extends Usecase implements Handler_interfaces
 {
 
-    public function __construct() {}
+    public function __construct(
+        //domain BahanAjar and request
+        private BahanAjarDomain $bahanAjarDomain,
+        //domain penelitian and request
+        private PenelitianDomain $penelitianDomain,
+        //domain penelitian and request
+        private PengabdianDomain $pengabdianDomain
+    ) {}
     /**============================================================================
      *  BahanAjar
      * ============================================================================
