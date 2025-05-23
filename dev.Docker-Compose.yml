@@ -1,0 +1,66 @@
+version: "1"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+      args:
+        - user=${user-1000}
+        - uid=${uid-1000}
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www
+    networks:
+      - dev-mdfebumk
+
+  dev-mdfebumk-db:
+    image: mysql:8.0
+    container_name: dev-mdfebumk-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: dev_mdfebumk
+      MYSQL_ROOT_PASSWORD: MLtalBcE867g
+      MYSQL_PASSWORD: MLtalBcE867g
+      MYSQL_USER: mdfebumk
+      SERVICE_TAGS: development
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mdfebumk-compose/mysql:/docker-entrypoint-initdb.d
+      - ./mdfebumk-compose/mysql/logs:/var/log/mysql
+      - ./mdfebumk-compose/mysql/data:/var/lib/mysql
+    networks:
+      - dev-mdfebumk
+
+  nginx:
+    image: nginx:stable-perl
+    container_name: dev-mdfebumk-nginx
+    restart: unless-stopped
+    ports:
+      - 8084:80
+    volumes:
+      - ./:/var/www
+      - ./mdfebumk-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - dev-mdfebumk
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: dev-mdfebumk-phpmyadmin
+    ports:
+      - 8085:80
+    links:
+      - dev-mdfebumk-db
+    restart: unless-stopped
+    environment:
+      PMA_HOST: dev-mdfebumk-db
+      PMA_USER: mdfebumk
+      PMA_PASSWORD: MLtalBcE867g
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    networks:
+      - dev-mdfebumk
+
+networks:
+  dev-mdfebumk:
+    driver: bridge
