@@ -419,6 +419,10 @@
                                                                 </div>
                                                                 <div class="avatar-preview">
                                                                     <div id="imgPreview">
+                                                                        <img src="{{ !empty($data['profile']->photo) ? asset("profile_photo/{$data['profile']->photo}") : asset('build/assets/9-AaFbjrgd.png') }}"
+                                                                            class="rounded-circle"
+                                                                            style="width:100%; height:100%; object-fit:cover; border-radius:100%;"
+                                                                            alt="Profile Photo" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -427,7 +431,8 @@
                                                     <div class="person-details">
                                                         <h5 class="f-w-600">{{ Auth::guard('user')->user()->name }}
                                                             <img alt="instagram-check-mark" height="20"
-                                                                src="../assets/images/profile-app/01.png" width="20">
+                                                                src="{{ asset('assets/images/profile-app/01.png') }}"
+                                                                width="20">
                                                         </h5>
                                                         <p>Roles:
                                                             {{ Auth::guard('user')->user()->roles_id == 2 ? 'StaffDosen' : 'FacultyUpps' }}
@@ -1026,23 +1031,24 @@
     <script src="{{ asset('assets/vendor/slick/slick.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/shepherdjs/shepherd.js') }}"></script>
 
-    <!-- js -->
-    <script src="{{ asset('assets/js/profile.js') }}"></script>
-
     <!-- image preview or show data profile on database-->
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the photo from the database or use the default image
-            var photoUrl = @json(
-                !empty($data['profile']->photo)
-                    ? asset("profile_photo/{$data['profile']->photo}")
-                    : asset('build/assets/9-AaFbjrgd.png'));
+            const imageUpload = document.getElementById('imageUpload');
+            const imgPreview = document.getElementById('imgPreview');
 
-            // Set the preview if #imgPreview exists
-            var imgPreview = document.getElementById('imgPreview');
-            if (imgPreview && photoUrl) {
-                imgPreview.innerHTML =
-                    `<img src="${photoUrl}" class="rounded-circle" style="width: 100%; height: 100%; background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 100%; alt="Profile Photo">`;
+            if (imageUpload && imgPreview) {
+                imageUpload.addEventListener('change', function(event) {
+                    const [file] = event.target.files;
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imgPreview.innerHTML =
+                                `<img src="${e.target.result}" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover; border-radius: 100%;" alt="Profile Photo">`;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
             }
         });
     </script>
