@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Src\Middleware\Admin;
+namespace App\Src\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class ElfinderMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,11 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (
-            Auth::guard('admin')->check() &&
-            Auth::guard('admin')->user()->roles_id == 1
+            Auth::guard('admin')->check() ||
+            Auth::guard('user')->check()
         ) {
             return $next($request);
         }
-        return redirect()->route('admin.view.dashboard')->with('error', 'Izin di tolak');
+        abort(401, 'Unauthorized action.');
     }
 }
