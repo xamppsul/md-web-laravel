@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Modules\UppsOrFakultas\handler\Handler;
 
-Route::middleware(['throttle:30,1', 'auth:user', 'user.uppsfaculty'])->group(function () {
+Route::middleware(['auth:user', 'user.uppsfaculty'])->group(function () {
     Route::prefix('aset')->group(function () {
         Route::get('/', [Handler::class, 'indexAsset'])->name('uppsfaculty.Asset.index');
         Route::get('/create', [Handler::class, 'createAsset'])->name('uppsfaculty.Asset.create');
