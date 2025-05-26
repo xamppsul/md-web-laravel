@@ -2,11 +2,12 @@
 
 namespace App\Modules\UppsOrFakultas\usecase;
 
-use App\Modules\UppsOrFakultas\interfaces\Usecase_intefaces;
-use App\Modules\UppsOrFakultas\services\Services;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Modules\UppsOrFakultas\services\Services;
+use App\Modules\UppsOrFakultas\interfaces\Usecase_intefaces;
 
 class Usecase extends Services implements Usecase_intefaces
 {
@@ -200,7 +201,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storeMouMoaService($request, $mouMoaDomain);
+            $this->storeMouMoaService($request, $mouMoaDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('uppsfaculty.MouMoa.index')->with('success', 'Berhasil tambah mou/moa');
         } catch (\Exception $error) {
@@ -251,7 +252,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updateMouMoaService($id, $mouMoaDomain, $request);
+            $this->updateMouMoaService($id, $mouMoaDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('uppsfaculty.MouMoa.index')->with('success', 'Berhasil update mou/moa');
         } catch (\Exception $error) {
@@ -339,7 +340,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storeKegiatanService($request, $kegiatanDomain);
+            $this->storeKegiatanService($request, $kegiatanDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('uppsfaculty.Kegiatan.index')->with('success', 'Berhasil tambah kegiatan');
         } catch (\Exception $error) {
@@ -390,7 +391,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updateKegiatanService($id, $kegiatanDomain, $request);
+            $this->updateKegiatanService($id, $kegiatanDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('uppsfaculty.Kegiatan.index')->with('success', 'Berhasil update kegiatan');
         } catch (\Exception $error) {
