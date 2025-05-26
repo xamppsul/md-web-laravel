@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Modules\StaffOrDosen\handler\Handler;
 
-Route::middleware(['throttle:30,1', 'auth:user', 'user.staffdosen'])->group(function () {
+Route::middleware(['auth:user', 'user.staffdosen'])->group(function () {
     Route::prefix('bahanAjar')->group(function () {
         Route::get('/', [Handler::class, 'indexBahanAjar'])->name('staffdosen.BahanAjar.index');
         Route::get('/create', [Handler::class, 'createBahanAjar'])->name('staffdosen.BahanAjar.create');
