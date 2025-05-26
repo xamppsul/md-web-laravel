@@ -32,6 +32,7 @@ class Handler extends Usecase implements Handler_interfaces
         //domain riwayat jabatan and request
         private RiwayatJabatanDomain $riwayatJabatanDomain,
         private RiwayatJabatanRequest $riwayatJabatanRequest,
+        //domain list publikasi and request
     ) {}
     /**============================================================================
      *  BahanAjar
