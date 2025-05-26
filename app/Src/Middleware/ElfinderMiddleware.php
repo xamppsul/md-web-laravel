@@ -39,6 +39,7 @@ class ElfinderMiddleware
 
         if (Auth::guard('admin')->check()) {
             //admin
+            $this->configureElfinder(public_path('MD_disk')); //get all files from folder base session user in MD_disk
             return $next($request);
         }
         abort(401, 'Unauthorized action.');
