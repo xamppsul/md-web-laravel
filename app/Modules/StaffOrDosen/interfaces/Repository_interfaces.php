@@ -61,4 +61,18 @@ interface Repository_interfaces
 
     //file upload
     public function doUploadFileDocumentSkRiwayatJabatan($request): string;
+
+    /**===========================================================================
+     * feature: ListPublikasi 
+    /**===========================================================================
+     */
+    public function indexListPublikasiRepository($ListPublikasiDomain, $request): array;
+    public function createListPublikasiRepository();
+    public function storeListPublikasiRepository($request, $ListPublikasiDomain, string $fileListPublikasi): void;
+    public function editListPublikasiRepository(int $id, $ListPublikasiDomain): array;
+    public function updateListPublikasiRepository(int $id, $ListPublikasiDomain, $request, string $fileListPublikasi): void;
+    public function destroyListPublikasiRepository(int $id, $ListPublikasiDomain): void;
+
+    //file upload
+    public function doUploadFileListPublikasi($request): string;
 }

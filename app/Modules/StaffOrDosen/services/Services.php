@@ -283,4 +283,73 @@ class Services extends Repository implements Services_interfaces
     {
         $this->destroyRiwayatJabatanRepository($id, $riwayatJabatanDomain);
     }
+
+    /**======================================================================================================================================================================
+     * feature: ListPublikasi
+    /**======================================================================================================================================================================
+     */
+
+    /**
+     * @method indexListPublikasiService
+     * @param $listPublikasiDomain
+     * @return array
+     */
+    public function indexListPublikasiService($listPublikasiDomain, $request): array
+    {
+        return $this->indexListPublikasiRepository($listPublikasiDomain, $request);
+    }
+
+    /**
+     * @method createListPublikasiService
+     * @return mixed
+     */
+    public function createListPublikasiService()
+    {
+        return $this->createListPublikasiRepository();
+    }
+
+    /**
+     * @method storeListPublikasiService
+     * @param $request
+     * @param $listPublikasiDomain
+     * @return void
+     */
+    public function storeListPublikasiService($request, $listPublikasiDomain): void
+    {
+        $this->storeListPublikasiRepository($request, $listPublikasiDomain, $this->doUploadFileListPublikasi($request));
+    }
+
+    /**
+     * @method editListPublikasiService
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @return array
+     */
+    public function editListPublikasiService(int $id, $listPublikasiDomain): array
+    {
+        return $this->editListPublikasiRepository($id, $listPublikasiDomain);
+    }
+
+    /**
+     * @method updateListPublikasiService
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @param $request
+     * @return void
+     */
+    public function updateListPublikasiService(int $id, $listPublikasiDomain, $request): void
+    {
+        $this->updateListPublikasiRepository($id, $listPublikasiDomain, $request, $this->doUploadFileListPublikasi($request));
+    }
+
+    /**
+     * @method destroyListPublikasiService
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @return void
+     */
+    public function destroyListPublikasiService(int $id, $listPublikasiDomain): void
+    {
+        $this->destroyListPublikasiRepository($id, $listPublikasiDomain);
+    }
 }

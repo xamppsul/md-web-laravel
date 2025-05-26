@@ -21,7 +21,7 @@ class JenisListPublikasiSeeder extends Seeder
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
-                'name' => 'Jurnal Nasional',
+                'name' => 'Jurnal International',
                 'keterangan' => 'jenis publikasi Jurnal Internasional',
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],

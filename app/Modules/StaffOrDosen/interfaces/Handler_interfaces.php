@@ -51,4 +51,14 @@ interface Handler_interfaces
     public function editRiwayatJabatan(int $id, Request $request): RedirectResponse|view;
     public function updateRiwayatJabatan(int $id, Request $request): RedirectResponse;
     public function destroyRiwayatJabatan(int $id, Request $request): RedirectResponse;
+
+    /**
+     *  ListPublikasi
+     */
+    public function indexListPublikasi(Request $request): View|RedirectResponse;
+    public function createListPublikasi(): View;
+    public function storeListPublikasi(Request $request);
+    public function editListPublikasi(int $id, Request $request): RedirectResponse|view;
+    public function updateListPublikasi(int $id, Request $request): RedirectResponse;
+    public function destroyListPublikasi(int $id, Request $request): RedirectResponse;
 }

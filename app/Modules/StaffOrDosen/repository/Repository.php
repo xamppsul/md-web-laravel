@@ -403,4 +403,100 @@ class Repository implements Repository_interfaces
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
+
+    /**======================================================================================================================================
+     * feture: ListPublikasi
+    /**======================================================================================================================================
+     */
+    /**
+     * index
+     */
+    /**
+     * @method indexListPublikasiRepository
+     * @param $listPublikasiDomain
+     * @return array
+     */
+    public function indexListPublikasiRepository($listPublikasiDomain, $request): array
+    {
+        return array(
+            'jenis_list_publikasi' => $listPublikasiDomain->getJenisListPublikasiDomain(),
+            'status_list_publikasi' => $listPublikasiDomain->getStatusListPublikasiDomain(),
+            'list_publikasi' => $listPublikasiDomain->getAllListPublikasiDomain($request),
+        );
+    }
+    public function createListPublikasiRepository()
+    {
+        return 'create ListPublikasi repository';
+    }
+    /**
+     * store
+     */
+    /**
+     * @method storeListPublikasiRepository
+     * @param $request
+     * @param $listPublikasiDomain
+     * @param string $fileListPublikasi
+     * @return void
+     */
+    public function storeListPublikasiRepository($request, $listPublikasiDomain, string $fileListPublikasi): void
+    {
+        $listPublikasiDomain->postDataListPublikasiDomain($request, $fileListPublikasi);
+    }
+    /**
+     * edit
+     */
+    /**
+     * @method editListPublikasiRepository
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @return array
+     */
+    public function editListPublikasiRepository(int $id, $listPublikasiDomain): array
+    {
+        return array(
+            'jenis_list_publikasi' => $listPublikasiDomain->getJenisListPublikasiDomain(),
+            'status_list_publikasi' => $listPublikasiDomain->getStatusListPublikasiDomain(),
+            'list_publikasi' => $listPublikasiDomain->getDetailListPublikasiDomain($id)[0],
+        );
+    }
+    /**
+     * update
+     */
+    /**
+     * @method updateListPublikasiRepository
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @param $request
+     * @param string $fileListPublikasi
+     * @return array
+     */
+    public function updateListPublikasiRepository(int $id, $listPublikasiDomain, $request, string $fileListPublikasi): void
+    {
+        $listPublikasiDomain->updateDataListPublikasiDomain($id, $request, $fileListPublikasi);
+    }
+
+    /**
+     * destroy
+     */
+    /**
+     * @method destroyListPublikasiRepository
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @return void
+     */
+    public function destroyListPublikasiRepository(int $id, $listPublikasiDomain): void
+    {
+        $listPublikasiDomain->deleteDataListPublikasiDomain($id);
+    }
+
+    //file upload
+    public function doUploadFileListPublikasi($request): string
+    {
+        $file = $request->file('file_publikasi');
+        $namaFile = time() . "_" . $file->getClientOriginalName();
+        //move upload file
+        $dirUploadFile = 'file_publikasi';
+        $file->move($dirUploadFile, $namaFile);
+        return $namaFile;
+    }
 }

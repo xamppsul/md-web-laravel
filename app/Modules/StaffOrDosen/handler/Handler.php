@@ -5,10 +5,12 @@ namespace App\Modules\StaffOrDosen\handler;
 use App\Modules\StaffOrDosen\interfaces\Handler_interfaces;
 use App\Modules\StaffOrDosen\usecase\Usecase;
 use App\Src\Domain\User\BahanAjarDomain;
+use App\Src\Domain\User\ListPublikasiDomain;
 use App\Src\Domain\User\PenelitianDomain;
 use App\Src\Domain\User\PengabdianDomain;
 use App\Src\Domain\User\RiwayatJabatanDomain;
 use App\Src\Request\User\BahanAjarRequest;
+use App\Src\Request\User\ListPublikasiRequest;
 use App\Src\Request\User\PenelitianRequest;
 use App\Src\Request\User\PengabdianRequest;
 use App\Src\Request\User\RiwayatJabatanRequest;
@@ -33,6 +35,8 @@ class Handler extends Usecase implements Handler_interfaces
         private RiwayatJabatanDomain $riwayatJabatanDomain,
         private RiwayatJabatanRequest $riwayatJabatanRequest,
         //domain list publikasi and request
+        private ListPublikasiDomain $listPublikasiDomain,
+        private ListPublikasiRequest $listPublikasiRequest,
     ) {}
     /**============================================================================
      *  BahanAjar
@@ -363,6 +367,85 @@ class Handler extends Usecase implements Handler_interfaces
             $id,
             $request,
             $this->riwayatJabatanDomain
+        );
+    }
+
+    /**============================================================================
+     *  ListPublikasi
+     * ============================================================================
+     */
+    /**
+     * @method indexListPublikasi
+     * @param $request
+     * @return View|RedirectResponse
+     */
+    public function indexListPublikasi(Request $request): View|RedirectResponse
+    {
+        return $this->indexListPublikasiCase(
+            $this->listPublikasiDomain,
+            $request,
+        );
+    }
+    /**
+     * @method createListPublikasi
+     * @return View
+     */
+    public function createListPublikasi(): View
+    {
+        return view('');
+    }
+    /**
+     * @method storeListPublikasi
+     */
+    public function storeListPublikasi(Request $request)
+    {
+        return $this->storeListPublikasiCase(
+            $request,
+            $this->listPublikasiDomain,
+            $this->listPublikasiRequest,
+        );
+    }
+    /**
+     * @method editListPublikasi
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse|view
+     */
+    public function editListPublikasi(int $id, Request $request): RedirectResponse|view
+    {
+        return $this->editListPublikasiCase(
+            $id,
+            $this->listPublikasiDomain,
+            $request,
+        );
+    }
+    /**
+     * @method updateListPublikasi
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
+     */
+    public function updateListPublikasi(int $id, Request $request): RedirectResponse
+    {
+        return $this->updateListPublikasiCase(
+            $id,
+            $request,
+            $this->listPublikasiDomain,
+            $this->listPublikasiRequest,
+        );
+    }
+    /**
+     * @method destroyListPublikasi
+     * @param int $id
+     * @param $request
+     * @return RedirectResponse
+     */
+    public function destroyListPublikasi(int $id, Request $request): RedirectResponse
+    {
+        return $this->destroyListPublikasiCase(
+            $id,
+            $request,
+            $this->listPublikasiDomain
         );
     }
 }

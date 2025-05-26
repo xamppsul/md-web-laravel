@@ -108,6 +108,7 @@
                             <li><a href="{{ route('staffdosen.Penelitian.index') }}">Penelitian</a></li>
                             <li><a href="{{ route('staffdosen.Pengabdian.index') }}">Pengabdian</a></li>
                             <li><a href="{{ route('staffdosen.RiwayatJabatan.index') }}">Riwayat Jabatan</a></li>
+                            <li><a href="{{ route('staffdosen.ListPublikasi.index') }}">List Publikasi</a></li>
                         </ul>
                     </li>
                     <li class="menu-title"><span>File Manager</span></li>
