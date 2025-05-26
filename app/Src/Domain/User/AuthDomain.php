@@ -289,4 +289,22 @@ class AuthDomain
             ORDER BY riwayat_jabatan.id DESC
         ', [Auth::guard('user')->user()->id]);
     }
+
+    /**
+     * @method getAllListPublikasiDomain
+     * @return array
+     */
+    public function getAllListPublikasiDomain(): array
+    {
+        return DB::select('
+            SELECT list_publikasi.*,
+                list_publikasi_jenis.name AS list_publikasi_jenis_name,
+                list_publikasi_status.name AS list_publikasi_status_name
+            FROM list_publikasi
+                INNER JOIN list_publikasi_jenis ON list_publikasi.list_publikasi_jenis = list_publikasi_jenis.id
+                INNER JOIN list_publikasi_status ON list_publikasi.list_publikasi_status = list_publikasi_status.id
+            WHERE list_publikasi.users_id = ?
+            ORDER BY list_publikasi.id DESC
+        ', [Auth::guard('user')->user()->id]);
+    }
 }

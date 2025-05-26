@@ -27,6 +27,7 @@ interface Repository_interfaces
     public function doUploadPhotoProfileBanner($request): string|bool;
     public function UserDashboardGetBahanAjarRepository($authDomain): array;
     public function UserDashboardGetRiwayatJabatanRepository($authDomain): array;
+    public function UserDashboardGetListPublikasiRepository($authDomain): array;
 
 
     //admin login repo
