@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreignId('list_publikasi_jenis')->references('id')->on('list_publikasi_jenis');
             $table->string('nama_jurnal');
             $table->string('volume');
-            $table->string('nomor');
-            $table->string('tahun_terbit');
-            $table->string('tanggal_terbit');
+            $table->integer('nomor');
+            $table->date('tahun_terbit');
+            $table->date('tanggal_terbit');
             $table->string('penulis_lain');
             $table->string('link_publikasi');
             $table->string('file_publikasi');
