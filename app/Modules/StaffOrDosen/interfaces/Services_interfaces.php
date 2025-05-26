@@ -40,4 +40,14 @@ interface Services_interfaces
     public function editRiwayatJabatanService(int $id, $asetDomain): array;
     public function updateRiwayatJabatanService(int $id, $asetDomain, $request): void;
     public function destroyRiwayatJabatanService(int $id, $asetDomain): void;
+
+    /**
+     * ListPublikasi
+     */
+    public function indexListPublikasiService($asetDomain, $request): array;
+    public function createListPublikasiService();
+    public function storeListPublikasiService($request, $asetDomain): void;
+    public function editListPublikasiService(int $id, $asetDomain): array;
+    public function updateListPublikasiService(int $id, $asetDomain, $request): void;
+    public function destroyListPublikasiService(int $id, $asetDomain): void;
 }

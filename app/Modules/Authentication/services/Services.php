@@ -113,6 +113,7 @@ class Services extends Repository implements Services_interfaces
             'status_ikatan_kerja' => $this->UserDashboardGetUserProfileStatusIkatanKerjaRepository($authDomain),
             'bahanAjar' => $this->UserDashboardGetBahanAjarRepository($authDomain),
             'riwayatJabatan' => $this->UserDashboardGetRiwayatJabatanRepository($authDomain),
+            'list_publikasi' => $this->UserDashboardGetListPublikasiRepository($authDomain),
             'profile' => !empty($this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)) ? $this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)[0] : null,
         );
     }

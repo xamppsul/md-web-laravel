@@ -36,5 +36,13 @@ Route::middleware(['throttle:30,1', 'auth:user', 'user.staffdosen'])->group(func
         Route::put('/update/{id}', [Handler::class, 'updateRiwayatJabatan'])->name('staffdosen.RiwayatJabatan.update');
         Route::delete('/destroy/{id}', [Handler::class, 'destroyRiwayatJabatan'])->name('staffdosen.RiwayatJabatan.destroy');
     });
+    Route::prefix('listPublikasi')->group(function () {
+        Route::get('/', [Handler::class, 'indexListPublikasi'])->name('staffdosen.ListPublikasi.index');
+        Route::get('/create', [Handler::class, 'createListPublikasi'])->name('staffdosen.ListPublikasi.create');
+        Route::post('/store', [Handler::class, 'storeListPublikasi'])->name('staffdosen.ListPublikasi.store');
+        Route::get('/edit/{id}', [Handler::class, 'editListPublikasi'])->name('staffdosen.ListPublikasi.edit');
+        Route::put('/update/{id}', [Handler::class, 'updateListPublikasi'])->name('staffdosen.ListPublikasi.update');
+        Route::delete('/destroy/{id}', [Handler::class, 'destroyListPublikasi'])->name('staffdosen.ListPublikasi.destroy');
+    });
     Route::get('file-manager', [Handler::class, 'indexFileManager'])->name('staffdosen.FileManager.index');
 });

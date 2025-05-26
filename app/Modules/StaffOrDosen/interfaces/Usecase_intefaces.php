@@ -130,4 +130,34 @@ interface Usecase_intefaces
         $request,
         $riwayatJabatanDomain,
     ): RedirectResponse;
+
+    /**
+     * ListPublikasi
+     */
+    public function indexListPublikasiCase(
+        $listPublikasiDomain,
+        $request,
+    ): RedirectResponse|View;
+    public function createListPublikasiCase(): View;
+    public function storeListPublikasiCase(
+        $request,
+        $listPublikasiDomain,
+        $listPublikasiRequest
+    ): RedirectResponse;
+    public function editListPublikasiCase(
+        int $id,
+        $listPublikasiDomain,
+        $request,
+    ): RedirectResponse|View;
+    public function updateListPublikasiCase(
+        int $id,
+        $request,
+        $listPublikasiDomain,
+        $listPublikasiRequest,
+    ): RedirectResponse;
+    public function destroyListPublikasiCase(
+        int $id,
+        $request,
+        $listPublikasiDomain,
+    ): RedirectResponse;
 }
