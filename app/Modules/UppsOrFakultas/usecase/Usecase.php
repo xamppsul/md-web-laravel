@@ -424,4 +424,24 @@ class Usecase extends Services implements Usecase_intefaces
             return redirect()->route('uppsfaculty.Kegiatan.index')->with('error', 'Maaf ada kesalahan sistem,silahkan coba lagi');
         }
     }
+
+    /**
+     * =============================================================================================================================================================
+     * feature: file manager
+     * =============================================================================================================================================================
+     */
+
+    /**
+     * @method indexFileManagerCase
+     * @param $request
+     * @return View|RedirectResponse
+     */
+    public function indexFileManagerCase(): View|RedirectResponse
+    {
+        try {
+            return view('Modules.Users.FileManager.index');
+        } catch (\Exception $error) {
+            return redirect()->route('user.view.dashboard')->with('error', $error->getMessage());
+        }
+    }
 }

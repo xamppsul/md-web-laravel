@@ -28,4 +28,5 @@ Route::middleware(['auth:user', 'user.uppsfaculty'])->group(function () {
         Route::put('/update/{id}', [Handler::class, 'updateKegiatan'])->name('uppsfaculty.Kegiatan.update');
         Route::delete('/destroy/{id}', [Handler::class, 'destroyKegiatan'])->name('uppsfaculty.Kegiatan.destroy');
     });
+    Route::get('file-manager-faculty', [Handler::class, 'indexFileManager'])->name('uppsfaculty.FileManager.index');
 });

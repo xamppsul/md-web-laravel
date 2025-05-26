@@ -10,7 +10,7 @@ return array(
     | The dir where to store the images (relative from public)
     |
     */
-    'dir' => ['docsKegiatanDaftarHadir'],
+    'dir' => ['MD_disk'],
 
     /*
     |--------------------------------------------------------------------------
@@ -61,13 +61,11 @@ return array(
     | If you want custom options, you can set your own roots below.
     |
     */
-
     'roots' => [],
 
     'accessControl' => 'access', // <-- ini harus ada
-    'uploadAllow' => ['all'],
     'uploadDeny'  => ['exe', 'php', 'js'],
-    'uploadOrder' => ['deny', 'allow'],
+    'uploadOrder' => ['deny'],
 
     /*
     |--------------------------------------------------------------------------

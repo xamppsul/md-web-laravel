@@ -100,4 +100,9 @@ interface Usecase_intefaces
         $request,
         $kegiatanDomain,
     ): RedirectResponse;
+
+    /**
+     * fileManager
+     */
+    public function indexFileManagerCase(): View|RedirectResponse;
 }
