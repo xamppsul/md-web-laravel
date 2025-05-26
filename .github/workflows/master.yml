@@ -2,7 +2,7 @@
 name: Deploy Web MD Febi UMK
 on:
   push:
-    branches: [ master ]
+    branches: [ development ]
     paths:
       - 'app/**'
       - 'bootstrap/**'
