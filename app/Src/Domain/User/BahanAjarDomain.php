@@ -41,7 +41,8 @@ class BahanAjarDomain
             SELECT bahan_ajar.*,
                 bahan_ajar_jenis.name AS bahan_ajar_jenis_name,
                 bahan_ajar_status_penggunaan.name AS bahan_ajar_status_penggunaan_name,
-                users.name AS dosen_name
+                users.name AS dosen_name,
+                users.id AS dosen_id
             FROM bahan_ajar
                 INNER JOIN bahan_ajar_jenis ON bahan_ajar.bahan_ajar_jenis = bahan_ajar_jenis.id
                 INNER JOIN bahan_ajar_status_penggunaan ON bahan_ajar.bahan_ajar_status_penggunaan = bahan_ajar_status_penggunaan.id

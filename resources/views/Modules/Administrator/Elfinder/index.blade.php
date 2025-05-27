@@ -60,9 +60,13 @@
     <!-- elfinder -->
     <script type="text/javascript">
         $(document).ready(function() {
+            var csrf_token = '{{ csrf_token() }}';
             $('#elfinder').elfinder({
                 //call route elfinder
-                url: '{{ url('elfinder/connector') }}'
+                url: '{{ url('elfinder/connector') }}',
+                customHeaders: {
+                    'X-CSRF-TOKEN': csrf_token
+                },
             });
         });
     </script>

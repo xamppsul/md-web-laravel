@@ -41,7 +41,8 @@ class ListPublikasiDomain
             SELECT list_publikasi.*,
                 list_publikasi_jenis.name AS list_publikasi_jenis_name,
                 list_publikasi_status.name AS list_publikasi_status_name,
-                users.name AS dosen_name
+                users.name AS dosen_name,
+                users.id AS dosen_id
             FROM list_publikasi
                 INNER JOIN list_publikasi_jenis ON list_publikasi.list_publikasi_jenis = list_publikasi_jenis.id
                 INNER JOIN list_publikasi_status ON list_publikasi.list_publikasi_status = list_publikasi_status.id

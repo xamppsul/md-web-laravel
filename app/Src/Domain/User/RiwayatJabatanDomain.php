@@ -41,7 +41,8 @@ class RiwayatJabatanDomain
             SELECT riwayat_jabatan.*,
                 riwayat_jabatan_jenis.name AS riwayat_jabatan_jenis_name,
                 riwayat_jabatan_status.name AS riwayat_jabatan_status_name,
-                users.name AS dosen_name
+                users.name AS dosen_name,
+                users.id AS dosen_id
             FROM riwayat_jabatan
                 INNER JOIN riwayat_jabatan_jenis ON riwayat_jabatan.riwayat_jabatan_jenis = riwayat_jabatan_jenis.id
                 INNER JOIN riwayat_jabatan_status ON riwayat_jabatan.riwayat_jabatan_status = riwayat_jabatan_status.id

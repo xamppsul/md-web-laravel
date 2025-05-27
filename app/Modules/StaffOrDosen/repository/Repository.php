@@ -97,7 +97,7 @@ class Repository implements Repository_interfaces
         $file = $request->file('file_bahan');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/bahan_ajar");
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/bahan_ajar");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -193,7 +193,7 @@ class Repository implements Repository_interfaces
         $file = $request->file('laporan_akhir');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/laporan_akhir_penelitian");
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_akhir_penelitian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -293,7 +293,7 @@ class Repository implements Repository_interfaces
         $file = $request->file('laporan_pengabdian');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/laporan_pengabdian");
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_pengabdian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -303,7 +303,7 @@ class Repository implements Repository_interfaces
         $file = $request->file('dokumentasi');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/dokumentasi_pengabdian");
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumentasi_pengabdian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -399,7 +399,7 @@ class Repository implements Repository_interfaces
         $file = $request->file('dokumen_sk');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/dokumen_sk_riwayat_jabatan");
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumen_sk_riwayat_jabatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -495,7 +495,7 @@ class Repository implements Repository_interfaces
         $file = $request->file('file_publikasi');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/file_publikasi");
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/file_publikasi");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

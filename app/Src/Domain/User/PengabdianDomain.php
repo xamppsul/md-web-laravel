@@ -42,7 +42,8 @@ class PengabdianDomain
                 pengabdian_bidang.name AS pengabdian_bidang_name,
                 pengabdian_sumber_dana.name AS pengabdian_sumber_dana_name,
                 pengabdian_status.name AS pengabdian_status_name,
-                users.name AS dosen_name
+                users.name AS dosen_name,
+                users.id AS dosen_id
             FROM pengabdian
                 INNER JOIN pengabdian_bidang ON pengabdian.pengabdian_bidang = pengabdian_bidang.id
                 INNER JOIN pengabdian_sumber_dana ON pengabdian.pengabdian_sumber_dana = pengabdian_sumber_dana.id

@@ -25,7 +25,15 @@ return array(
     |        'alias' => 'Local storage',
     |    ]
     */
-    'disks' => [],
+    'disks' => [
+        'local' => [
+            'URL' => env('APP_URL') . '/MD_disk',
+            'alias' => 'Local Disk',
+            'driver' => 'LocalFileSystem',
+            'path' => public_path('MD_disk'),
+            'accessControl' => 'Barryvdh\\Elfinder\\Elfinder::checkAccess',
+        ]
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -50,7 +58,7 @@ return array(
     |
     */
 
-    'access' => null,
+    'access' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +71,6 @@ return array(
     */
     'roots' => [],
 
-    'accessControl' => 'access', // <-- ini harus ada
     'uploadDeny'  => ['exe', 'php', 'js'],
     'uploadOrder' => ['deny'],
 
