@@ -3,6 +3,7 @@
 namespace App\Src\Domain\User;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class KegiatanDomain
 {
@@ -39,20 +40,24 @@ class KegiatanDomain
         return DB::select('
             SELECT kegiatan.*, 
                 kegiatan_jenis.name AS kegiatan_jenis_name, 
-                kegiatan_status.name AS kegiatan_status_name
+                kegiatan_status.name AS kegiatan_status_name,
+                users.name AS faculty_name
             FROM kegiatan
                 INNER JOIN kegiatan_jenis ON kegiatan.kegiatan_jenis = kegiatan_jenis.id
                 INNER JOIN kegiatan_status ON kegiatan.kegiatan_status = kegiatan_status.id
+                INNER JOIN users ON kegiatan.users_id = users.id
             WHERE kegiatan.tempat_lokasi LIKE ?
                 AND kegiatan.tanggal_kegiatan LIKE ?
                 AND kegiatan.kegiatan_jenis LIKE ?
                 AND kegiatan.nama_kegiatan LIKE ?
+                AND kegiatan.users_id = ?
             ORDER BY kegiatan.id DESC
         ', [
             "%$request->tempat_lokasi%",
             "%$request->tanggal_kegiatan%",
             "%$request->kegiatan_jenis%",
-            "%$request->nama_kegiatan%"
+            "%$request->nama_kegiatan%",
+            Auth::guard('user')->user()->id
         ]);
     }
 
@@ -112,7 +117,8 @@ class KegiatanDomain
     public function postDataKegiatanDomain($request, $fileDaftarHadir, $fileKegiatan): void
     {
         DB::insert('insert into kegiatan 
-            (nama_kegiatan,
+            (users_id,
+            nama_kegiatan,
             kegiatan_jenis,
             tanggal_kegiatan,
             tempat_lokasi,
@@ -122,7 +128,8 @@ class KegiatanDomain
             file_kegiatan,
             kegiatan_status,
             keterangan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            Auth::guard('user')->user()->id,
             $request->nama_kegiatan,
             $request->kegiatan_jenis,
             $request->tanggal_kegiatan,
@@ -148,7 +155,8 @@ class KegiatanDomain
 
     public function updateDataKegiatanDomain($id, $request, $fileDaftarHadir, $fileKegiatan): void
     {
-        DB::update('UPDATE kegiatan SET 
+        DB::update('UPDATE kegiatan SET
+            users_id = ?,
             nama_kegiatan = ?,
             kegiatan_jenis = ?,
             tanggal_kegiatan = ?,
@@ -161,6 +169,7 @@ class KegiatanDomain
             keterangan = ?,
             updated_at = ?
             WHERE id = ?', [
+            Auth::guard('user')->user()->id,
             $request->nama_kegiatan,
             $request->kegiatan_jenis,
             $request->tanggal_kegiatan,

@@ -393,14 +393,14 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Daftar Hadir:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../docsKegiatanDaftarHadir/{$kegiatan->file_daftar_hadir}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$kegiatan->faculty_name}/DaftarHadirKegiatan/{$kegiatan->file_daftar_hadir}") }}"
                                 width="450px" height="300px"></iframe>
 
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Kegiatan:
                                 @empty($kegiatan->file_kegiatan)
                                     {{ __('Tidak ada file kegiatan') }}
                                 @else
-                                    <a href="{{ asset("/docsFileKegiatan/{$kegiatan->file_kegiatan}") }}"
+                                    <a href="{{ asset("/MD_disk/{$kegiatan->faculty_name}/DokumentasiKegiatan/{$kegiatan->file_kegiatan}") }}"
                                         target="_blank">Buka file kegiatan</a>
                                 @endempty
                             </p>
