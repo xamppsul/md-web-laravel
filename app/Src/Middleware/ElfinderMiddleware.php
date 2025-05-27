@@ -18,17 +18,10 @@ class ElfinderMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::guard('user')->check()) {
-            //staff
+            //staff or faculty
             $user = Auth::guard('user')->user();
-            if ($user->roles_id == 2) {
-                $basePath = $this->getBasePathStaffDosen($user);
-                if (!$this->validateExistingFolder($basePath)) {
-                    $this->makeFolder($basePath);
-                }
-                $this->configureElfinder($basePath);
-            } else {
-                //upps or faculty
-                $basePath = $this->getBasePathFacultyOrUpps($user);
+            if ($user->roles_id == 2 || $user->roles_id == 3) {
+                $basePath = $this->getBasePath($user);
                 if (!$this->validateExistingFolder($basePath)) {
                     $this->makeFolder($basePath);
                 }
@@ -39,20 +32,18 @@ class ElfinderMiddleware
 
         if (Auth::guard('admin')->check()) {
             //admin
-            $this->configureElfinder(public_path('MD_disk')); //get all files from folder base session user in MD_disk
+            $admin = Auth::guard('admin')->user();
+            if ($admin->roles_id == 1) {
+                $this->configureElfinder(public_path('MD_disk')); //get all files from folder base session user in MD_disk
+            }
             return $next($request);
         }
         abort(401, 'Unauthorized action.');
     }
 
-    private static function getBasePathStaffDosen($user): string
+    private static function getBasePath($user): string
     {
-        return public_path("MD_disk/StaffOrDosen-{$user->name}"); //use of prefix
-    }
-
-    private static function getBasePathFacultyOrUpps($user): string
-    {
-        return public_path("MD_disk/{$user->name}"); // just name of faculty or upps
+        return public_path("MD_disk/{$user->id}-{$user->name}"); //use of prefix is ID
     }
 
     private static function makeFolder($basePath): void
