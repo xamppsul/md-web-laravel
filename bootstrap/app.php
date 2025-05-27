@@ -14,7 +14,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->use([
             //add cors middleware
             \Illuminate\Http\Middleware\HandleCors::class,
-            \App\Src\Middleware\VerifyCsrfTokenMiddleware::class,
         ]);
 
         $middleware->alias([
