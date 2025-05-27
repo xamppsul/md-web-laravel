@@ -40,10 +40,12 @@ class BahanAjarDomain
         return DB::select('
             SELECT bahan_ajar.*,
                 bahan_ajar_jenis.name AS bahan_ajar_jenis_name,
-                bahan_ajar_status_penggunaan.name AS bahan_ajar_status_penggunaan_name
+                bahan_ajar_status_penggunaan.name AS bahan_ajar_status_penggunaan_name,
+                users.name AS dosen_name
             FROM bahan_ajar
                 INNER JOIN bahan_ajar_jenis ON bahan_ajar.bahan_ajar_jenis = bahan_ajar_jenis.id
                 INNER JOIN bahan_ajar_status_penggunaan ON bahan_ajar.bahan_ajar_status_penggunaan = bahan_ajar_status_penggunaan.id
+                INNER JOIN users ON bahan_ajar.users_id = users.id
             WHERE bahan_ajar.bahan_ajar_jenis LIKE ?
                 AND bahan_ajar.bahan_ajar_status_penggunaan LIKE ?
                 AND bahan_ajar.users_id = ?

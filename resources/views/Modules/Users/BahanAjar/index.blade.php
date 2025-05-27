@@ -394,8 +394,9 @@
                                 {{ $BahanAjar->bahan_ajar_status_penggunaan_name }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Bahan Ajar:
                             </p>
-                            <iframe src="{{ asset("/laraview/#../bahan_ajar/{$BahanAjar->file_bahan}") }}" width="450px"
-                                height="300px"></iframe>
+                            <iframe
+                                src="{{ asset("/laraview/#../MD_disk/StaffOrDosen-{$BahanAjar->dosen_name}/bahan_ajar/{$BahanAjar->file_bahan}") }}"
+                                width="450px" height="300px"></iframe>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-light-secondary" data-bs-dismiss="modal" type="button">Close

@@ -40,10 +40,12 @@ class ListPublikasiDomain
         return DB::select('
             SELECT list_publikasi.*,
                 list_publikasi_jenis.name AS list_publikasi_jenis_name,
-                list_publikasi_status.name AS list_publikasi_status_name
+                list_publikasi_status.name AS list_publikasi_status_name,
+                users.name AS dosen_name
             FROM list_publikasi
                 INNER JOIN list_publikasi_jenis ON list_publikasi.list_publikasi_jenis = list_publikasi_jenis.id
                 INNER JOIN list_publikasi_status ON list_publikasi.list_publikasi_status = list_publikasi_status.id
+                INNER JOIN users ON list_publikasi.users_id = users.id
             WHERE list_publikasi.list_publikasi_jenis LIKE ?
                 AND list_publikasi.list_publikasi_status LIKE ?
                 AND list_publikasi.users_id = ?
