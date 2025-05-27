@@ -58,7 +58,7 @@ return array(
     |
     */
 
-    'access' => null,
+    'access' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
 
     /*
     |--------------------------------------------------------------------------
