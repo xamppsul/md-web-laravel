@@ -41,7 +41,8 @@ class PenelitianDomain
             SELECT penelitian.*,
                 penelitian_sumber_dana.name AS penelitian_sumber_dana_name,
                 penelitian_status.name AS penelitian_status_name,
-                users.name AS dosen_name
+                users.name AS dosen_name,
+                users.id AS dosen_id
             FROM penelitian
                 INNER JOIN penelitian_sumber_dana ON penelitian.penelitian_sumber_dana = penelitian_sumber_dana.id
                 INNER JOIN penelitian_status ON penelitian.penelitian_status = penelitian_status.id
