@@ -41,11 +41,13 @@ class PengabdianDomain
             SELECT pengabdian.*,
                 pengabdian_bidang.name AS pengabdian_bidang_name,
                 pengabdian_sumber_dana.name AS pengabdian_sumber_dana_name,
-                pengabdian_status.name AS pengabdian_status_name
+                pengabdian_status.name AS pengabdian_status_name,
+                users.name AS dosen_name
             FROM pengabdian
                 INNER JOIN pengabdian_bidang ON pengabdian.pengabdian_bidang = pengabdian_bidang.id
                 INNER JOIN pengabdian_sumber_dana ON pengabdian.pengabdian_sumber_dana = pengabdian_sumber_dana.id
                 INNER JOIN pengabdian_status ON pengabdian.pengabdian_status = pengabdian_status.id
+                INNER JOIN users ON pengabdian.users_id = users.id
             WHERE pengabdian.pengabdian_bidang LIKE ?
                 AND pengabdian.pengabdian_sumber_dana LIKE ?
                 AND pengabdian.pengabdian_status LIKE ?
