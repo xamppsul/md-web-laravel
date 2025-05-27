@@ -44,5 +44,5 @@ Route::middleware(['auth:user', 'user.staffdosen'])->group(function () {
         Route::put('/update/{id}', [Handler::class, 'updateListPublikasi'])->name('staffdosen.ListPublikasi.update');
         Route::delete('/destroy/{id}', [Handler::class, 'destroyListPublikasi'])->name('staffdosen.ListPublikasi.destroy');
     });
-    Route::get('file-manager', [Handler::class, 'indexFileManager'])->name('staffdosen.FileManager.index');
+    Route::get('file-manager-staffdosen', [Handler::class, 'indexFileManager'])->name('staffdosen.FileManager.index');
 });

@@ -281,4 +281,18 @@ class Handler extends Usecase implements Handler_interfaces
     {
         return $this->destroyKegiatanCase($id, $request, $this->kegiatanDomain);
     }
+
+    /**
+     * =============================================================================
+     * feature: file manager
+     * =============================================================================
+     */
+    /**
+     * @method indexFileManager
+     * @return View
+     */
+    public function indexFileManager(): View|RedirectResponse
+    {
+        return $this->indexFileManagerCase();
+    }
 }

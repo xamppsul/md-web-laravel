@@ -12,9 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->use([
-            \Illuminate\Http\Middleware\HandleCors::class
+            //add cors middleware
+            \Illuminate\Http\Middleware\HandleCors::class,
         ]);
+
         $middleware->alias([
+            'elfinder' => \App\Src\Middleware\ElfinderMiddleware::class,
             'auth' => \App\Src\Middleware\Authenticated::class,
             'user.staffdosen' => \App\Src\Middleware\User\UserStaffOrDosenMiddleware::class,
             'user.uppsfaculty' => \App\Src\Middleware\User\UserUppsOrFakultasMiddleware::class,

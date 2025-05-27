@@ -4,6 +4,7 @@ namespace App\Modules\StaffOrDosen\usecase;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Modules\StaffOrDosen\services\Services;
 use App\Modules\StaffOrDosen\interfaces\Usecase_intefaces;
@@ -60,7 +61,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storeBahanAjarService($request, $bahanAjarDomain);
+            $this->storeBahanAjarService($request, $bahanAjarDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.BahanAjar.index')->with('success', 'Berhasil tambah Bahan Ajar');
         } catch (\Exception $error) {
@@ -109,7 +110,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updateBahanAjarService($id, $bahanAjarDomain, $request);
+            $this->updateBahanAjarService($id, $bahanAjarDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.BahanAjar.index')->with('success', 'Berhasil update Bahan Ajar');
         } catch (\Exception $error) {
@@ -194,7 +195,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storePenelitianService($request, $penelitianDomain);
+            $this->storePenelitianService($request, $penelitianDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil tambah penelitian');
         } catch (\Exception $error) {
@@ -243,7 +244,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updatePenelitianService($id, $penelitianDomain, $request);
+            $this->updatePenelitianService($id, $penelitianDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.Penelitian.index')->with('success', 'Berhasil update penelitian');
         } catch (\Exception $error) {
@@ -328,7 +329,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storePengabdianService($request, $pengabdianDomain);
+            $this->storePengabdianService($request, $pengabdianDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil tambah pengabdian');
         } catch (\Exception $error) {
@@ -377,7 +378,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updatePengabdianService($id, $pengabdianDomain, $request);
+            $this->updatePengabdianService($id, $pengabdianDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.Pengabdian.index')->with('success', 'Berhasil update pengabdian');
         } catch (\Exception $error) {
@@ -482,7 +483,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storeRiwayatJabatanService($request, $riwayatJabatanDomain);
+            $this->storeRiwayatJabatanService($request, $riwayatJabatanDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.RiwayatJabatan.index')->with('success', 'Berhasil tambah Riwayat Jabatan');
         } catch (\Exception $error) {
@@ -531,7 +532,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updateRiwayatJabatanService($id, $riwayatJabatanDomain, $request);
+            $this->updateRiwayatJabatanService($id, $riwayatJabatanDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.RiwayatJabatan.index')->with('success', 'Berhasil update Riwayat Jabatan');
         } catch (\Exception $error) {
@@ -616,7 +617,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->storeListPublikasiService($request, $listPublikasiDomain);
+            $this->storeListPublikasiService($request, $listPublikasiDomain, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.ListPublikasi.index')->with('success', 'Berhasil tambah List Publikasi');
         } catch (\Exception $error) {
@@ -665,7 +666,7 @@ class Usecase extends Services implements Usecase_intefaces
 
         DB::beginTransaction();
         try {
-            $this->updateListPublikasiService($id, $listPublikasiDomain, $request);
+            $this->updateListPublikasiService($id, $listPublikasiDomain, $request, Auth::guard('user')->user());
             DB::commit();
             return redirect()->route('staffdosen.ListPublikasi.index')->with('success', 'Berhasil update List Publikasi');
         } catch (\Exception $error) {

@@ -181,12 +181,12 @@ class Repository implements Repository_interfaces
 
     //============================= file upload ==============================
 
-    public function doUploadFilePendukung($request): string
+    public function doUploadFilePendukung($request, $user): string
     {
         $file = $request->file('dokumen_pendukung');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'docsMouMoa';
+        $dirUploadFile = public_path("MD_disk/{$user->name}/MouMoa");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -276,22 +276,22 @@ class Repository implements Repository_interfaces
         $kegiatanDomain->deleteDataKegiatanDomain($id);
     }
 
-    public function doUploadFileDaftarHadirKegiatan($request): string
+    public function doUploadFileDaftarHadirKegiatan($request, $user): string
     {
         $file = $request->file('file_daftar_hadir');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'docsKegiatanDaftarHadir';
+        $dirUploadFile = public_path("MD_disk/{$user->name}/DaftarHadirKegiatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
 
-    public function doUploadFileDokumentasiKegiatan($request): string
+    public function doUploadFileDokumentasiKegiatan($request, $user): string
     {
         $file = $request->file('file_kegiatan');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'docsFileKegiatan';
+        $dirUploadFile = public_path("MD_disk/{$user->name}/DokumentasiKegiatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

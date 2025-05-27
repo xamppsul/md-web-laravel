@@ -36,4 +36,9 @@ interface Handler_interfaces
     public function editKegiatan(int $id, Request $request): RedirectResponse|view;
     public function updateKegiatan(int $id, Request $request): RedirectResponse;
     public function destroyKegiatan(int $id, Request $request): RedirectResponse;
+
+    /**
+     *File Manager 
+     */
+    public function indexFileManager(): View|RedirectResponse;
 }

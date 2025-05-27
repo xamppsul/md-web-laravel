@@ -529,7 +529,8 @@
                                 {{ $mouMoaData->updated_at }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen Pendukung:
                             </p>
-                            <iframe src="{{ asset("/laraview/#../docsMouMoa/{$mouMoaData->dokumen_pendukung}") }}"
+                            <iframe
+                                src="{{ asset("/laraview/#../MD_disk/{$mouMoaData->penanggung_jawab_name}/MouMoa/{$mouMoaData->dokumen_pendukung}") }}"
                                 width="450px" height="300px"></iframe>
                         </div>
                         <div class="modal-footer">

@@ -18,7 +18,7 @@ class AdminMiddleware
     {
         if (
             Auth::guard('admin')->check() &&
-            Auth::guard('admin')->user()->roles_id == 3
+            Auth::guard('admin')->user()->roles_id == 1
         ) {
             return $next($request);
         }

@@ -92,12 +92,12 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileBahanAjar($request): string
+    public function doUploadFileBahanAjar($request, $user): string
     {
         $file = $request->file('file_bahan');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'bahan_ajar';
+        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/bahan_ajar");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -188,12 +188,12 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileLaporanAkhirPenelitian($request): string
+    public function doUploadFileLaporanAkhirPenelitian($request, $user): string
     {
         $file = $request->file('laporan_akhir');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'laporan_akhir_penelitian';
+        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/laporan_akhir_penelitian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -288,22 +288,22 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileLaporanPengabdian($request): string
+    public function doUploadFileLaporanPengabdian($request, $user): string
     {
         $file = $request->file('laporan_pengabdian');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'laporan_pengabdian';
+        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/laporan_pengabdian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
 
-    public function doUploadFileDokumentasiPengabdian($request): string
+    public function doUploadFileDokumentasiPengabdian($request, $user): string
     {
         $file = $request->file('dokumentasi');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'dokumentasi_pengabdian';
+        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/dokumentasi_pengabdian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -394,12 +394,12 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileDocumentSkRiwayatJabatan($request): string
+    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string
     {
         $file = $request->file('dokumen_sk');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'dokumen_sk_riwayat_jabatan';
+        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/dokumen_sk_riwayat_jabatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -490,12 +490,12 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileListPublikasi($request): string
+    public function doUploadFileListPublikasi($request, $user): string
     {
         $file = $request->file('file_publikasi');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'file_publikasi';
+        $dirUploadFile = public_path("MD_disk/StaffOrDosen-{$user->name}/file_publikasi");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

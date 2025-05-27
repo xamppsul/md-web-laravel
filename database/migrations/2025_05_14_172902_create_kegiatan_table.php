@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kegiatan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('users_id')->references('id')->on('users'); //roles faculty: for campus activity
             $table->string('nama_kegiatan');
             $table->foreignId('kegiatan_jenis')->references('id')->on('kegiatan_jenis');
             $table->date('tanggal_kegiatan');

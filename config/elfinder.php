@@ -10,7 +10,7 @@ return array(
     | The dir where to store the images (relative from public)
     |
     */
-    'dir' => ['docsKegiatanDaftarHadir'],
+    'dir' => ['MD_disk'],
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return array(
 
     'route' => [
         'prefix' => 'elfinder',
-        // 'middleware' => array('auth:admin', 'auth:user'), //Set to null to disable middleware filter
+        'middleware' => ['web', 'elfinder'], //Set to null to disable middleware filter
     ],
 
     /*
@@ -50,7 +50,7 @@ return array(
     |
     */
 
-    'access' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
+    'access' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -61,8 +61,11 @@ return array(
     | If you want custom options, you can set your own roots below.
     |
     */
+    'roots' => [],
 
-    'roots' => null,
+    'accessControl' => 'access', // <-- ini harus ada
+    'uploadDeny'  => ['exe', 'php', 'js'],
+    'uploadOrder' => ['deny'],
 
     /*
     |--------------------------------------------------------------------------
@@ -74,7 +77,7 @@ return array(
     |
     */
 
-    'options' => array(),
+    // 'options' => array(),
 
     /*
     |--------------------------------------------------------------------------
@@ -85,6 +88,6 @@ return array(
     | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1#root-options
     |
     */
-    'root_options' => array(),
+    // 'root_options' => array(),
 
 );

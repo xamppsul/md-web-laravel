@@ -37,9 +37,9 @@ class Services extends Repository implements Services_interfaces
      * @param $bahanAjarDomain
      * @return void
      */
-    public function storeBahanAjarService($request, $bahanAjarDomain): void
+    public function storeBahanAjarService($request, $bahanAjarDomain, $user): void
     {
-        $this->storeBahanAjarRepository($request, $bahanAjarDomain, $this->doUploadFileBahanAjar($request));
+        $this->storeBahanAjarRepository($request, $bahanAjarDomain, $this->doUploadFileBahanAjar($request, $user));
     }
 
     /**
@@ -60,9 +60,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updateBahanAjarService(int $id, $bahanAjarDomain, $request): void
+    public function updateBahanAjarService(int $id, $bahanAjarDomain, $request, $user): void
     {
-        $this->updateBahanAjarRepository($id, $bahanAjarDomain, $request, $this->doUploadFileBahanAjar($request));
+        $this->updateBahanAjarRepository($id, $bahanAjarDomain, $request, $this->doUploadFileBahanAjar($request, $user));
     }
 
     /**
@@ -107,9 +107,9 @@ class Services extends Repository implements Services_interfaces
      * @param $penelitianDomain
      * @return void
      */
-    public function storePenelitianService($request, $penelitianDomain): void
+    public function storePenelitianService($request, $penelitianDomain, $user): void
     {
-        $this->storePenelitianRepository($request, $penelitianDomain, $this->doUploadFileLaporanAkhirPenelitian($request));
+        $this->storePenelitianRepository($request, $penelitianDomain, $this->doUploadFileLaporanAkhirPenelitian($request, $user));
     }
 
     /**
@@ -130,9 +130,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updatePenelitianService(int $id, $penelitianDomain, $request): void
+    public function updatePenelitianService(int $id, $penelitianDomain, $request, $user): void
     {
-        $this->updatePenelitianRepository($id, $penelitianDomain, $request, $this->doUploadFileLaporanAkhirPenelitian($request));
+        $this->updatePenelitianRepository($id, $penelitianDomain, $request, $this->doUploadFileLaporanAkhirPenelitian($request, $user));
     }
 
     /**
@@ -176,9 +176,9 @@ class Services extends Repository implements Services_interfaces
      * @param $pengabdianDomain
      * @return void
      */
-    public function storePengabdianService($request, $pengabdianDomain): void
+    public function storePengabdianService($request, $pengabdianDomain, $user): void
     {
-        $this->storePengabdianRepository($request, $pengabdianDomain, $this->doUploadFileLaporanPengabdian($request), $this->doUploadFileDokumentasiPengabdian($request));
+        $this->storePengabdianRepository($request, $pengabdianDomain, $this->doUploadFileLaporanPengabdian($request, $user), $this->doUploadFileDokumentasiPengabdian($request, $user));
     }
 
     /**
@@ -199,9 +199,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updatePengabdianService(int $id, $pengabdianDomain, $request): void
+    public function updatePengabdianService(int $id, $pengabdianDomain, $request, $user): void
     {
-        $this->updatePengabdianRepository($id, $pengabdianDomain, $request, $this->doUploadFileLaporanPengabdian($request), $this->doUploadFileDokumentasiPengabdian($request));
+        $this->updatePengabdianRepository($id, $pengabdianDomain, $request, $this->doUploadFileLaporanPengabdian($request, $user), $this->doUploadFileDokumentasiPengabdian($request, $user));
     }
 
     /**
@@ -245,9 +245,9 @@ class Services extends Repository implements Services_interfaces
      * @param $riwayatJabatanDomain
      * @return void
      */
-    public function storeRiwayatJabatanService($request, $riwayatJabatanDomain): void
+    public function storeRiwayatJabatanService($request, $riwayatJabatanDomain, $user): void
     {
-        $this->storeRiwayatJabatanRepository($request, $riwayatJabatanDomain, $this->doUploadFileDocumentSkRiwayatJabatan($request));
+        $this->storeRiwayatJabatanRepository($request, $riwayatJabatanDomain, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
     }
 
     /**
@@ -268,9 +268,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updateRiwayatJabatanService(int $id, $riwayatJabatanDomain, $request): void
+    public function updateRiwayatJabatanService(int $id, $riwayatJabatanDomain, $request, $user): void
     {
-        $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request));
+        $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
     }
 
     /**
@@ -314,9 +314,9 @@ class Services extends Repository implements Services_interfaces
      * @param $listPublikasiDomain
      * @return void
      */
-    public function storeListPublikasiService($request, $listPublikasiDomain): void
+    public function storeListPublikasiService($request, $listPublikasiDomain, $user): void
     {
-        $this->storeListPublikasiRepository($request, $listPublikasiDomain, $this->doUploadFileListPublikasi($request));
+        $this->storeListPublikasiRepository($request, $listPublikasiDomain, $this->doUploadFileListPublikasi($request, $user));
     }
 
     /**
@@ -337,9 +337,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updateListPublikasiService(int $id, $listPublikasiDomain, $request): void
+    public function updateListPublikasiService(int $id, $listPublikasiDomain, $request, $user): void
     {
-        $this->updateListPublikasiRepository($id, $listPublikasiDomain, $request, $this->doUploadFileListPublikasi($request));
+        $this->updateListPublikasiRepository($id, $listPublikasiDomain, $request, $this->doUploadFileListPublikasi($request, $user));
     }
 
     /**
