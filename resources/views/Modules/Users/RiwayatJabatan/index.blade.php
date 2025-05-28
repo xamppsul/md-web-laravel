@@ -396,7 +396,7 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen SK:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../dokumen_sk_riwayat_jabatan/{$RiwayatJabatan->dokumen_sk}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$RiwayatJabatan->dosen_id}-{$RiwayatJabatan->dosen_name}/dokumen_sk_riwayat_jabatan/{$RiwayatJabatan->dokumen_sk}") }}"
                                 width="450px" height="300px"></iframe>
                         </div>
                         <div class="modal-footer">

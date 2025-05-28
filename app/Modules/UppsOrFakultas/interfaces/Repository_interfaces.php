@@ -27,7 +27,7 @@ interface Repository_interfaces
     public function destroyMouMoaRepository(int $id, $mouMoaDomain): void;
 
     //file upload
-    public function doUploadFilePendukung($request): string;
+    public function doUploadFilePendukung($request, $user): string;
 
     /**===========================================================================
      * feature: kegiatan 
@@ -40,6 +40,6 @@ interface Repository_interfaces
     public function updateKegiatanRepository(int $id, $kegiatanDomain, $request, string $fileDaftarHadir, string $fileKegiatan): void;
     public function destroyKegiatanRepository(int $id, $kegiatanDomain): void;
 
-    public function doUploadFileDokumentasiKegiatan($request): string;
-    public function doUploadFileDaftarHadirKegiatan($request): string;
+    public function doUploadFileDokumentasiKegiatan($request, $user): string;
+    public function doUploadFileDaftarHadirKegiatan($request, $user): string;
 }

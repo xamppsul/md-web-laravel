@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
             ProfileStatusIkatanKerjaSeeder::class,
             ProfileStatusMengajarSeeder::class,
             ProfileStatusPerkawinanSeeder::class,
+            JenisListPublikasiSeeder::class,
+            StatusListPublikasiSeeder::class,
         ]);
     }
 }

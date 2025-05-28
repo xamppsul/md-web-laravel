@@ -449,10 +449,10 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Laporan Pengabdian:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../laporan_pengabdian/{$Pengabdian->laporan_pengabdian}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$Pengabdian->dosen_id}-{$Pengabdian->dosen_name}/laporan_pengabdian/{$Pengabdian->laporan_pengabdian}") }}"
                                 width="450px" height="300px"></iframe>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumentasi Pengabdian:
-                                <a href="{{ asset("dokumentasi_pengabdian/{$Pengabdian->dokumentasi}") }}"
+                                <a href="{{ asset("MD_disk/{$Pengabdian->dosen_id}-{$Pengabdian->dosen_name}/dokumentasi_pengabdian/{$Pengabdian->dokumentasi}") }}"
                                     target="_blank"><b>Klik Disini</b></a>
                             </p>
                         </div>

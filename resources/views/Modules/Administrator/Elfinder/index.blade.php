@@ -1,19 +1,22 @@
 @extends('layout.master')
-@section('title', 'Elfinder')
+@section('title', 'File Manager')
 @section('css')
     <!-- elFinder CSS + JS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('packages/barryvdh/elfinder/css/elfinder.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('packages/barryvdh/elfinder/css/theme.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
 @endsection
+
+@php
+    $lang = app()->getLocale();
+@endphp
+
 @section('main-content')
     <div class="container-fluid">
 
         <!-- Breadcrumb start -->
         <div class="row m-1">
             <div class="col-12 ">
-                <h4 class="main-title">Elfinder</h4>
+                <h4 class="main-title">FileManager</h4>
                 <ul class="app-line-breadcrumbs mb-3">
                     <li class="">
                         <a class="f-s-14 f-w-500" href="#">
@@ -23,7 +26,7 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a class="f-s-14 f-w-500" href="{{ route('admin.elfinder.index') }}">Show</a>
+                        <a class="f-s-14 f-w-500" href="{{ route('staffdosen.FileManager.index') }}">Show</a>
                     </li>
                 </ul>
             </div>
@@ -51,18 +54,27 @@
 @section('script')
     <!--customizer-->
     <div id="customizer"></div>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    @if ($lang)
+        <!-- elFinder translation (OPTIONAL) -->
+        <script src="{{ asset('packages/barryvdh/elfinder/js/i18n/elfinder.' . $lang . '.js') }}"></script>
+    @endif
+    <!-- jQuery and jQuery UI (REQUIRED) -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <!-- elfinder js -->
     <script src="{{ asset('packages/barryvdh/elfinder/js/elfinder.min.js') }}"></script>
-
     <!-- elfinder -->
     <script type="text/javascript">
         $(document).ready(function() {
+            var csrf_token = '{{ csrf_token() }}';
             $('#elfinder').elfinder({
                 //call route elfinder
-                url: '{{ url('elfinder/connector') }}'
+                url: '{{ url('elfinder/connector') }}',
+                customHeaders: {
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                soundPath: '{{ asset('packages/barryvdh/elfinder/sounds') }}',
             });
         });
     </script>

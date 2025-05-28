@@ -94,6 +94,13 @@
                             <i class="iconoir-activity"></i>Kegiatan
                         </a>
                     </li>
+                    <li class="menu-title"><span>File Manager</span></li>
+                    <li class="no-sub">
+                        <a class="{{ request()->routeis('uppsfaculty.FileManager.index') ? 'active' : '' }}"
+                            href="{{ route('uppsfaculty.FileManager.index') }}">
+                            <i class="iconoir-drawer"></i> El Finder Faculty
+                        </a>
+                    </li>
                 @else
                     <!-- dosen/staff -->
                     <li class="menu-title"><span>Module</span></li>
@@ -108,13 +115,14 @@
                             <li><a href="{{ route('staffdosen.Penelitian.index') }}">Penelitian</a></li>
                             <li><a href="{{ route('staffdosen.Pengabdian.index') }}">Pengabdian</a></li>
                             <li><a href="{{ route('staffdosen.RiwayatJabatan.index') }}">Riwayat Jabatan</a></li>
+                            <li><a href="{{ route('staffdosen.ListPublikasi.index') }}">List Publikasi</a></li>
                         </ul>
                     </li>
                     <li class="menu-title"><span>File Manager</span></li>
                     <li class="no-sub">
                         <a class="{{ request()->routeis('staffdosen.FileManager.index') ? 'active' : '' }}"
                             href="{{ route('staffdosen.FileManager.index') }}">
-                            <i class="iconoir-drawer"></i> El Finder
+                            <i class="iconoir-drawer"></i> El Finder staff Dosen
                         </a>
                     </li>
                 @endif

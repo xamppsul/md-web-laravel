@@ -92,12 +92,12 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileBahanAjar($request): string
+    public function doUploadFileBahanAjar($request, $user): string
     {
         $file = $request->file('file_bahan');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'bahan_ajar';
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/bahan_ajar");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -188,12 +188,12 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileLaporanAkhirPenelitian($request): string
+    public function doUploadFileLaporanAkhirPenelitian($request, $user): string
     {
         $file = $request->file('laporan_akhir');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'laporan_akhir_penelitian';
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_akhir_penelitian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -288,22 +288,22 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileLaporanPengabdian($request): string
+    public function doUploadFileLaporanPengabdian($request, $user): string
     {
         $file = $request->file('laporan_pengabdian');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'laporan_pengabdian';
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_pengabdian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
 
-    public function doUploadFileDokumentasiPengabdian($request): string
+    public function doUploadFileDokumentasiPengabdian($request, $user): string
     {
         $file = $request->file('dokumentasi');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'dokumentasi_pengabdian';
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumentasi_pengabdian");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -394,12 +394,108 @@ class Repository implements Repository_interfaces
     }
 
     //file upload
-    public function doUploadFileDocumentSkRiwayatJabatan($request): string
+    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string
     {
         $file = $request->file('dokumen_sk');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'dokumen_sk_riwayat_jabatan';
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumen_sk_riwayat_jabatan");
+        $file->move($dirUploadFile, $namaFile);
+        return $namaFile;
+    }
+
+    /**======================================================================================================================================
+     * feture: ListPublikasi
+    /**======================================================================================================================================
+     */
+    /**
+     * index
+     */
+    /**
+     * @method indexListPublikasiRepository
+     * @param $listPublikasiDomain
+     * @return array
+     */
+    public function indexListPublikasiRepository($listPublikasiDomain, $request): array
+    {
+        return array(
+            'jenis_list_publikasi' => $listPublikasiDomain->getJenisListPublikasiDomain(),
+            'status_list_publikasi' => $listPublikasiDomain->getStatusListPublikasiDomain(),
+            'list_publikasi' => $listPublikasiDomain->getAllListPublikasiDomain($request),
+        );
+    }
+    public function createListPublikasiRepository()
+    {
+        return 'create ListPublikasi repository';
+    }
+    /**
+     * store
+     */
+    /**
+     * @method storeListPublikasiRepository
+     * @param $request
+     * @param $listPublikasiDomain
+     * @param string $fileListPublikasi
+     * @return void
+     */
+    public function storeListPublikasiRepository($request, $listPublikasiDomain, string $fileListPublikasi): void
+    {
+        $listPublikasiDomain->postDataListPublikasiDomain($request, $fileListPublikasi);
+    }
+    /**
+     * edit
+     */
+    /**
+     * @method editListPublikasiRepository
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @return array
+     */
+    public function editListPublikasiRepository(int $id, $listPublikasiDomain): array
+    {
+        return array(
+            'jenis_list_publikasi' => $listPublikasiDomain->getJenisListPublikasiDomain(),
+            'status_list_publikasi' => $listPublikasiDomain->getStatusListPublikasiDomain(),
+            'list_publikasi' => $listPublikasiDomain->getDetailListPublikasiDomain($id)[0],
+        );
+    }
+    /**
+     * update
+     */
+    /**
+     * @method updateListPublikasiRepository
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @param $request
+     * @param string $fileListPublikasi
+     * @return array
+     */
+    public function updateListPublikasiRepository(int $id, $listPublikasiDomain, $request, string $fileListPublikasi): void
+    {
+        $listPublikasiDomain->updateDataListPublikasiDomain($id, $request, $fileListPublikasi);
+    }
+
+    /**
+     * destroy
+     */
+    /**
+     * @method destroyListPublikasiRepository
+     * @param int $id
+     * @param $listPublikasiDomain
+     * @return void
+     */
+    public function destroyListPublikasiRepository(int $id, $listPublikasiDomain): void
+    {
+        $listPublikasiDomain->deleteDataListPublikasiDomain($id);
+    }
+
+    //file upload
+    public function doUploadFileListPublikasi($request, $user): string
+    {
+        $file = $request->file('file_publikasi');
+        $namaFile = time() . "_" . $file->getClientOriginalName();
+        //move upload file
+        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/file_publikasi");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

@@ -305,6 +305,16 @@ class Repository implements Repository_interfaces
     }
 
     /**
+     * @method UserDashboardGetListPublikasiRepository
+     * @param $authDomain
+     * @return array
+     */
+    public function UserDashboardGetListPublikasiRepository($authDomain): array
+    {
+        return $authDomain->getAllListPublikasiDomain();
+    }
+
+    /**
      * ================================================================================================================================================================
      * feature: auth admin
      * ================================================================================================================================================================

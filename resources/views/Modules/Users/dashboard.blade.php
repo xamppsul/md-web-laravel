@@ -797,35 +797,31 @@
                                                             class="display app-data-table default-data-table">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Position</th>
-                                                                    <th>Office</th>
-                                                                    <th>Age</th>
-                                                                    <th>Start date</th>
-                                                                    <th>Salary</th>
-                                                                    <th>Action</th>
+                                                                    <th>Judul Publikasi</th>
+                                                                    <th>Jenis Publikasi</th>
+                                                                    <th>Nama Jurnal</th>
+                                                                    <th>Volume</th>
+                                                                    <th>Nomor</th>
+                                                                    <th>Tahun Terbit</th>
+                                                                    <th>Tanggal Terbit</th>
+                                                                    <th>Status Publikasi</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>Tiger Nixon</td>
-                                                                    <td><span class="badge text-light-primary">System
-                                                                            Architect</span></td>
-                                                                    <td>Edinburgh</td>
-                                                                    <td>61</td>
-                                                                    <td>$3674.55</td>
-                                                                    <td>$320,800</td>
-                                                                    <td>
-                                                                        <button type="button"
-                                                                            class="btn btn-light-success icon-btn b-r-4">
-                                                                            <i class="ti ti-edit text-success"></i>
-                                                                        </button>
-                                                                        <button type="button"
-                                                                            class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                                            <i class="ti ti-trash"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
+                                                                @foreach ($data['list_publikasi'] as $ListPublikasi)
+                                                                    <tr>
+                                                                        <td>{{ $ListPublikasi->judul_publikasi }}</td>
+                                                                        <td>{{ $ListPublikasi->list_publikasi_jenis_name }}
+                                                                        </td>
+                                                                        <td>{{ $ListPublikasi->nama_jurnal }}</td>
+                                                                        <td>{{ $ListPublikasi->volume }}</td>
+                                                                        <td>{{ $ListPublikasi->nomor }}</td>
+                                                                        <td>{{ $ListPublikasi->tahun_terbit }}</td>
+                                                                        <td>{{ $ListPublikasi->tanggal_terbit }}</td>
+                                                                        <td>{{ $ListPublikasi->list_publikasi_status_name }}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>

@@ -417,7 +417,7 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Laporan Akhir:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../laporan_akhir_penelitian/{$Penelitian->laporan_akhir}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$Penelitian->dosen_id}-{$Penelitian->dosen_name}/laporan_akhir_penelitian/{$Penelitian->laporan_akhir}") }}"
                                 width="450px" height="300px"></iframe>
                         </div>
                         <div class="modal-footer">
