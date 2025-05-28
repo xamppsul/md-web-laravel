@@ -309,6 +309,12 @@ class Services extends Repository implements Services_interfaces
             return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Jika statusnya nonaktif menjabat maka tanggal selesai menjabat wajib di isi');
         }
 
+        if (DB::table('riwayat_jabatan')->where([
+            ['users_id', '=', $user->id],
+            ['riwayat_jabatan_status', '=', 1]
+        ])->first()) {
+            return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Gagal menambahkan riwayat jabatan karena anda masih sementara aktif menjabat');
+        }
         return $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
     }
 
