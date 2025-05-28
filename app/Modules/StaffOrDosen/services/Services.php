@@ -244,9 +244,10 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method storeRiwayatJabatanService
      * @param $request
+     * @param mixed $user
      * @param $riwayatJabatanDomain
      */
-    public function storeRiwayatJabatanService($request, $riwayatJabatanDomain, $user)
+    public function storeRiwayatJabatanService($request, $riwayatJabatanDomain, mixed $user)
     {
         if (
             !empty($request->riwayat_jabatan_status) &&
@@ -289,9 +290,10 @@ class Services extends Repository implements Services_interfaces
      * @method updateRiwayatJabatanService
      * @param int $id
      * @param $riwayatJabatanDomain
+     * @param mixed $user
      * @param $request
      */
-    public function updateRiwayatJabatanService(int $id, $riwayatJabatanDomain, $request, $user)
+    public function updateRiwayatJabatanService(int $id, $riwayatJabatanDomain, $request, mixed $user)
     {
         if (
             !empty($request->riwayat_jabatan_status) &&
