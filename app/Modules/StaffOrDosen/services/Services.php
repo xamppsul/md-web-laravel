@@ -4,6 +4,8 @@ namespace App\Modules\StaffOrDosen\services;
 
 use App\Modules\StaffOrDosen\interfaces\Services_interfaces;
 use App\Modules\StaffOrDosen\repository\Repository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 class Services extends Repository implements Services_interfaces
 {
@@ -243,11 +245,33 @@ class Services extends Repository implements Services_interfaces
      * @method storeRiwayatJabatanService
      * @param $request
      * @param $riwayatJabatanDomain
-     * @return void
      */
-    public function storeRiwayatJabatanService($request, $riwayatJabatanDomain, $user): void
+    public function storeRiwayatJabatanService($request, $riwayatJabatanDomain, $user)
     {
-        $this->storeRiwayatJabatanRepository($request, $riwayatJabatanDomain, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
+        if (
+            !empty($request->riwayat_jabatan_status) &&
+            $request->riwayat_jabatan_status == 1 &&
+            !empty($request->tanggal_selesai)
+        ) {
+            return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Jika statusnya masih aktif menjabat maka tanggal selesai menjabat harus di kosongkan');
+        }
+
+        if (
+            !empty($request->riwayat_jabatan_status) &&
+            $request->riwayat_jabatan_status == 2 &&
+            empty($request->tanggal_selesai)
+        ) {
+            return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Jika statusnya nonaktif menjabat maka tanggal selesai menjabat wajib di isi');
+        }
+
+        if (!DB::table('riwayat_jabatan')->where([
+            ['users_id', '=', $user->id],
+            ['riwayat_jabatan_status', '=', 1]
+        ])->first()) {
+            return $this->storeRiwayatJabatanRepository($request, $riwayatJabatanDomain, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
+        }
+
+        return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Gagal menambahkan riwayat jabatan karena anda masih sementara aktif menjabat');
     }
 
     /**
@@ -266,11 +290,26 @@ class Services extends Repository implements Services_interfaces
      * @param int $id
      * @param $riwayatJabatanDomain
      * @param $request
-     * @return void
      */
-    public function updateRiwayatJabatanService(int $id, $riwayatJabatanDomain, $request, $user): void
+    public function updateRiwayatJabatanService(int $id, $riwayatJabatanDomain, $request, $user)
     {
-        $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
+        if (
+            !empty($request->riwayat_jabatan_status) &&
+            $request->riwayat_jabatan_status == 1 &&
+            !empty($request->tanggal_selesai)
+        ) {
+            return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Jika statusnya masih aktif menjabat maka tanggal selesai menjabat harus di kosongkan');
+        }
+
+        if (
+            !empty($request->riwayat_jabatan_status) &&
+            $request->riwayat_jabatan_status == 2 &&
+            empty($request->tanggal_selesai)
+        ) {
+            return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Jika statusnya nonaktif menjabat maka tanggal selesai menjabat wajib di isi');
+        }
+
+        return $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
     }
 
     /**

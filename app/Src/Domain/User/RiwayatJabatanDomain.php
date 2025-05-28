@@ -50,7 +50,7 @@ class RiwayatJabatanDomain
             WHERE riwayat_jabatan.riwayat_jabatan_jenis LIKE ?
                 AND riwayat_jabatan.riwayat_jabatan_status LIKE ?
                 AND riwayat_jabatan.users_id = ?
-            ORDER BY riwayat_jabatan.id DESC
+            ORDER BY riwayat_jabatan.riwayat_jabatan_status ASC
         ', [
             "%$request->riwayat_jabatan_jenis%",
             "%$request->riwayat_jabatan_status%",
