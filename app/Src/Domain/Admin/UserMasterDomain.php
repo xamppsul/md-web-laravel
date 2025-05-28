@@ -112,8 +112,13 @@ class UserMasterDomain
      * @return void
      */
 
-    public function updateDataUserMasterDomain($id, $request): void
+    public function updateDataUserMasterDomain(int $id, $request): void
     {
+        $user = $this->getDetailUserMasterDomain($id)[0];
+        $oldFolder = public_path("MD_disk/{$user->id}-{$user->name}");
+        $newFolder = public_path("MD_disk/{$id}-{$request->name}");
+        // rename folder before update user data
+        rename($oldFolder, $newFolder);
         DB::update('UPDATE users SET 
             name = ?,
             username = ?,
