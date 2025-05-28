@@ -313,6 +313,9 @@ class Services extends Repository implements Services_interfaces
             ['users_id', '=', $user->id],
             ['riwayat_jabatan_status', '=', 1]
         ])->first()) {
+            if ($request->riwayat_jabatan_status == 2) {
+                return $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
+            }
             return redirect()->route('staffdosen.RiwayatJabatan.index')->with('error', 'Gagal menambahkan riwayat jabatan karena anda masih sementara aktif menjabat');
         }
         return $this->updateRiwayatJabatanRepository($id, $riwayatJabatanDomain, $request, $this->doUploadFileDocumentSkRiwayatJabatan($request, $user));
