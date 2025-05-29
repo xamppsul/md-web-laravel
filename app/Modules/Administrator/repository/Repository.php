@@ -24,6 +24,7 @@ class Repository implements Repository_interfaces
             'aset_kategori' => $asetDomain->getKategoriAsetDomain(),
             'aset_status' => $asetDomain->getStatusAsetDomain(),
             'aset_kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'user_faculty' => $asetDomain->getUserFacultyDomain(),
             'aset' => $asetDomain->getAllAsetDomain($request),
         );
     }

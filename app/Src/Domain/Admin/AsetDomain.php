@@ -40,11 +40,13 @@ class AsetDomain
             SELECT aset.*, 
                 aset_kategori.name AS aset_kategori_name, 
                 aset_kondisi.name AS aset_kondisi_name,
-                aset_status.name AS aset_status_name
+                aset_status.name AS aset_status_name,
+                users.name AS faculty_name
             FROM aset
                 INNER JOIN aset_kategori ON aset.aset_kategori = aset_kategori.id
                 INNER JOIN aset_kondisi ON aset.aset_kondisi = aset_kondisi.id
                 INNER JOIN aset_status ON aset.aset_status = aset_status.id
+                INNER JOIN users ON aset.users_id = users.id
             WHERE aset.aset_kondisi LIKE ? 
                 AND aset.aset_status LIKE ? 
                 AND aset.aset_kategori LIKE ?
@@ -104,6 +106,15 @@ class AsetDomain
     }
 
     /**
+     * @method getFacultyDomain
+     * @return array
+     */
+    public function getUserFacultyDomain(): array
+    {
+        return DB::select('SELECT * FROM users WHERE roles_id = ?', [3]); //get user with role ID:3 is faculty
+    }
+
+    /**
      * @method postDataAsetDomain
      * @param $request
      * @return void
@@ -125,7 +136,7 @@ class AsetDomain
             sumber_dana,
             keterangan,
             created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            $request->users_id,
+            $request->users_id, //store ID user from roles faculty
             $request->kode_aset,
             $request->nama_aset,
             $request->aset_kategori,
@@ -167,7 +178,7 @@ class AsetDomain
             keterangan = ?, 
             updated_at = ?
             WHERE id = ?', [
-            $request->users_id,
+            $request->users_id, //store ID user from roles faculty
             $request->kode_aset,
             $request->nama_aset,
             $request->aset_kategori,

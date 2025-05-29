@@ -8,14 +8,16 @@ class AsetRequest
     public static function postRequestData($request): array
     {
         return $request->validate([
+            'users_id' => 'required|exists:users,id',
             'kode_aset' => 'required|unique:aset,kode_aset',
             'nama_aset' => 'required|string',
-            'kategori_aset' => 'required|exists:kategori_aset,id',
+            'aset_kategori' => 'required|exists:aset_kategori,id',
             'model_merk_aset' => 'required',
-            'tanggal_perolehan_aset' => 'required',
+            'tahun' => 'required|integer',
+            'tanggal_perolehan_aset' => 'required|date',
             'lokasi_aset' => 'required',
-            'kondisi_aset' => 'required|exists:kondisi_aset,id',
-            'status_aset' => 'required|exists:status_aset,id',
+            'aset_kondisi' => 'required|exists:aset_kondisi,id',
+            'aset_status' => 'required|exists:aset_status,id',
             'harga_perolehan_aset' => 'required|integer',
             'sumber_dana_aset' => 'required',
             'keterangan_aset' => 'required',
@@ -25,30 +27,35 @@ class AsetRequest
             'status_aset.integer' => 'pilih status aset',
             'kondisi_aset.integer' => 'pilih kondisi aset',
             'kategori_aset.integer' => 'pilih kategori aset',
-            'exists' => ':attribute tidak di temukan di database'
+            'aset_kategori.exists' => 'kategori aset not found from database',
+            'aset_status.exists' => 'status aset not found from database',
+            'aset_kondisi.exists' => 'kondisi aset not found from database',
+            'users_id.exists' =>  'fakultas not found from database'
         ]);
     }
 
     public static function updateRequestData($request): array
     {
         return $request->validate([
-            'kode_aset' => 'required|string',
+            'users_id' => 'required|exists:users,id',
+            'kode_aset' => 'required',
             'nama_aset' => 'required|string',
-            'kategori_aset' => 'required|integer',
+            'aset_kategori' => 'required|exists:aset_kategori,id',
             'model_merk_aset' => 'required',
-            'tanggal_perolehan_aset' => 'required',
+            'tahun' => 'required|integer',
+            'tanggal_perolehan_aset' => 'required|date',
             'lokasi_aset' => 'required',
-            'kondisi_aset' => 'required|integer',
-            'status_aset' => 'required|integer',
+            'aset_kondisi' => 'required|exists:aset_kondisi,id',
+            'aset_status' => 'required|exists:aset_status,id',
             'harga_perolehan_aset' => 'required|integer',
             'sumber_dana_aset' => 'required',
             'keterangan_aset' => 'required',
         ], [
             'required' => ':attribute wajib di isi',
-            'kode_aset.string' => 'kode aset harus text',
             'status_aset.integer' => 'pilih status aset',
             'kondisi_aset.integer' => 'pilih kondisi aset',
             'kategori_aset.integer' => 'pilih kategori aset',
+            'exists' => ':attribute tidak di temukan di database'
         ]);
     }
 }
