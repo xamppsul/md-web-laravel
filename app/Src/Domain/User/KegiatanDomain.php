@@ -41,6 +41,7 @@ class KegiatanDomain
             SELECT kegiatan.*, 
                 kegiatan_jenis.name AS kegiatan_jenis_name, 
                 kegiatan_status.name AS kegiatan_status_name,
+                users.id AS faculty_id,
                 users.name AS faculty_name
             FROM kegiatan
                 INNER JOIN kegiatan_jenis ON kegiatan.kegiatan_jenis = kegiatan_jenis.id

@@ -66,6 +66,20 @@
                                 </div>
                             </div>
                             <div class="col-12">
+                                <div class="card product-store-card">
+                                    <div class="card-body">
+                                        <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                        <div>
+                                            <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kegiatan Dalam
+                                                Tahun</p>
+                                            <h2 class="text-success-dark mb-0">{{ $data['total_kegiatan_tahun']->total }}
+                                            </h2>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="col-12">
                                 <div class="card project-connect-card">
                                     <div class="card-body pb-0">
                                         <div class="text-center">
@@ -79,13 +93,13 @@
                                         <div class="col-12">
                                             <div class="card ">
                                                 <div class="card-body">
-                                                    <div class="project-expense" id="projectExpense"></div>
+                                                    <div class="project-expense" id="kegiatanDalamTahun"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -927,6 +941,16 @@
     <script src="{{ asset('assets/vendor/slick/slick.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/shepherdjs/shepherd.js') }}"></script>
 
+    <!-- save code grafik -->
+    {{-- @php
+        $years = [];
+        $dummy_data = [];
+        for ($i = date('Y'); $i >= date('Y') - 2; $i--) {
+            $years[] = $i;
+            $dummy_data[] = rand(10, 100);
+        }
+    @endphp --}}
+
     <!-- image preview or show data profile on database-->
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
@@ -956,6 +980,127 @@
                 }
             });
         }
+
+        //save code grafik with apexchart
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var options = {
+        //         series: [{
+        //                 name: 'Kegiatan',
+        //                 // data: []
+        //                 data: [37, 30]
+        //             },
+        //             // {
+        //             //     name: 'Expense',
+        //             //     data: [10, 25, 15, 25, 20, 45, 20]
+        //             // }
+        //         ],
+        //         chart: {
+        //             height: 240,
+        //             type: 'line',
+        //             dropShadow: {
+        //                 enabled: true,
+        //                 top: 0,
+        //                 left: 0,
+        //                 blur: 1,
+        //                 color: ['rgba(var(--primary),1)', 'rgba(var(--success),1)'],
+        //                 opacity: .6
+        //             }
+        //         },
+
+        //         colors: ['rgba(var(--primary),1)', 'rgba(var(--success),1)'],
+        //         dataLabels: {
+        //             enabled: false
+        //         },
+
+        //         stroke: {
+        //             width: 2,
+        //             curve: 'smooth',
+        //             dashArray: [0, 2],
+        //         },
+        //         xaxis: {
+        //             categories: [],
+        //             labels: {
+        //                 show: true,
+        //                 style: {
+        //                     colors: [],
+        //                     fontSize: '14px',
+        //                     fontFamily: '"Montserrat", system-ui',
+        //                     fontWeight: 600,
+        //                 },
+        //             },
+        //             axisBorder: {
+        //                 show: false,
+        //             },
+        //             axisTicks: {
+        //                 show: false,
+        //             },
+        //             tooltip: {
+        //                 enabled: false
+        //             },
+
+        //         },
+        //         grid: {
+        //             show: true,
+        //             borderColor: 'rgba(var(--dark),.2)',
+        //             xaxis: {
+        //                 lines: {
+        //                     show: false
+        //                 }
+        //             },
+        //             yaxis: {
+        //                 lines: {
+        //                     show: true
+        //                 }
+        //             },
+        //         },
+        //         yaxis: {
+        //             show: true,
+        //             labels: {
+        //                 // formatter: function(value) {
+        //                 //     return value + "$";
+        //                 // },
+        //                 style: {
+        //                     colors: [],
+        //                     fontSize: '14px',
+        //                     fontFamily: '"Montserrat", system-ui',
+        //                     fontWeight: 600,
+        //                 },
+        //             },
+        //         },
+        //         legend: {
+        //             show: false
+        //         },
+        //         tooltip: {
+        //             x: {
+        //                 show: false,
+        //             },
+        //             style: {
+        //                 fontSize: '16px',
+        //                 fontFamily: '"Outfit", sans-serif',
+        //             },
+        //         },
+        //         responsive: [{
+        //                 breakpoint: 1399,
+        //                 options: {
+        //                     chart: {
+        //                         height: 220
+        //                     },
+        //                 }
+        //             },
+        //             {
+        //                 breakpoint: 567,
+        //                 options: {
+        //                     yaxis: {
+        //                         show: false,
+        //                     }
+        //                 }
+        //             },
+        //         ]
+        //     };
+
+        //     var chart = new ApexCharts(document.querySelector("#kegiatanDalamTahun"), options);
+        //     chart.render();
+        // })
     </script>
 
 @endsection

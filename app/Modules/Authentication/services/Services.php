@@ -121,6 +121,7 @@ class Services extends Repository implements Services_interfaces
             'total_aset' => $this->UserDashboardGetCountAsetBaseFacultyRepository($authDomain)[0],
             'total_kerjasama' => $this->UserDashboardGetCountKerjasamaBaseFacultyRepository($authDomain)[0],
             'moumoa' => $this->UserDashboardListMouBaseFacultyAndYearRepository($authDomain, $request),
+            'total_kegiatan_tahun' => $this->UserDashboardGetCountTotalKegiatanInYearRepository($authDomain)[0],
             //profile
             'profile' => !empty($this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)) ? $this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)[0] : null,
         );

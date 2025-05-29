@@ -359,4 +359,14 @@ class AuthDomain
             Auth::guard('user')->user()->id
         ]);
     }
+
+    /**
+     * @method getCountTotalKegiatanInYearDomainBaseFaculty
+     * @return array
+     */
+    public function getCountTotalKegiatanInYearDomainBaseFaculty(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM kegiatan
+                WHERE users_id = ? AND tahun = ?", [Auth::guard('user')->user()->id, Carbon::now()->year()]);
+    }
 }

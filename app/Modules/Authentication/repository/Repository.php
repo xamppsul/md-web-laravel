@@ -348,6 +348,16 @@ class Repository implements Repository_interfaces
     }
 
     /**
+     * @method UserDashboardGetCountTotalKegiatanInYearRepository
+     * @param mixed $authDomain
+     * @return array
+     */
+    public function UserDashboardGetCountTotalKegiatanInYearRepository(mixed $authdomain): array
+    {
+        return $authdomain->getCountTotalKegiatanInYearDomainBaseFaculty();
+    }
+
+    /**
      * ================================================================================================================================================================
      * feature: auth admin
      * ================================================================================================================================================================
