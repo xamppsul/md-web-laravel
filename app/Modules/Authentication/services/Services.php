@@ -105,6 +105,7 @@ class Services extends Repository implements Services_interfaces
     public function viewUserDashboardServices($authDomain, int $users_id): array
     {
         return array(
+            //staff
             'total_bahan_ajar' => $this->UserDashboardGetCountTotalBahanAjarRepository($authDomain),
             'total_penelitian' => $this->UserDashboardGetCountTotalPenelitianRepository($authDomain),
             'total_pengabdian' => $this->UserDashboardGetCountTotalPengabdianRepository($authDomain),
@@ -114,6 +115,9 @@ class Services extends Repository implements Services_interfaces
             'bahanAjar' => $this->UserDashboardGetBahanAjarRepository($authDomain),
             'riwayatJabatan' => $this->UserDashboardGetRiwayatJabatanRepository($authDomain),
             'list_publikasi' => $this->UserDashboardGetListPublikasiRepository($authDomain),
+            //faculty
+            'total_aset' => '',
+            'total_kerjasama' => '',
             'profile' => !empty($this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)) ? $this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)[0] : null,
         );
     }

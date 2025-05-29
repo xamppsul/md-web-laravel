@@ -14,6 +14,7 @@ interface Repository_interfaces
     public function UserRedirectLogoutSuccessRepository(string $messageSuccessLogout): RedirectResponse;
     public function UserLoggoutSessionRepository(): void;
     //dashboard user
+    //staff
     public function UserDashboardGetCountTotalBahanAjarRepository($authDomain): int;
     public function UserDashboardGetCountTotalPenelitianRepository($authDomain): int;
     public function UserDashboardGetCountTotalPengabdianRepository($authDomain): int;
@@ -28,7 +29,8 @@ interface Repository_interfaces
     public function UserDashboardGetBahanAjarRepository($authDomain): array;
     public function UserDashboardGetRiwayatJabatanRepository($authDomain): array;
     public function UserDashboardGetListPublikasiRepository($authDomain): array;
-
+    //faculty
+    public function UserDashboardGetCountAsetRepository($authDomain): array;
 
     //admin login repo
     public function AdminValidateLoginByExistingEmailOrUsernameRepository($credentials): bool;

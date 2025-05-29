@@ -247,8 +247,8 @@ class AuthDomain
             !empty($request->jabatan_golongan) ? $request->jabatan_golongan : null,
             !empty($request->profile_status_ikatan_kerja) ? $request->profile_status_ikatan_kerja : null,
             !empty($request->profile_status_mengajar) ? $request->profile_status_mengajar : null,
-            isset($request->photo) && $profile_photo != false ? $profile_photo : $data->photo, //kalo ada request ambil update photonya kalo gak ada keep photo laama
-            isset($request->photo_banner) && $profile_banner != false ? $profile_banner : $data->photo_banner, //kalo ada request ambil update photo bannernya kalo gak ada keep photo banner laama
+            isset($request->photo) && $profile_photo != false ? $profile_photo : $data->photo, //kalo ada request ambil update photonya kalo gak ada keep photo lama
+            isset($request->photo_banner) && $profile_banner != false ? $profile_banner : $data->photo_banner, //kalo ada request ambil update photo bannernya kalo gak ada keep photo banner lama
             now(),
             $users_id
         ]);
@@ -306,5 +306,18 @@ class AuthDomain
             WHERE list_publikasi.users_id = ?
             ORDER BY list_publikasi.id DESC
         ', [Auth::guard('user')->user()->id]);
+    }
+
+    /**
+     * ================== faculty ============================================
+     */
+
+    /**
+     * @method getCountAsetDomain
+     * @return array
+     */
+    public function getCountAsetDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM aset");
     }
 }

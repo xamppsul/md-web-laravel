@@ -314,6 +314,18 @@ class Repository implements Repository_interfaces
         return $authDomain->getAllListPublikasiDomain();
     }
 
+    //faculty
+
+    /**
+     * @method UserDashboardGetCountAsetRepository
+     * @param mixed $authDomain
+     * @return array
+     */
+    public function UserDashboardGetCountAsetRepository(mixed $authdomain): array
+    {
+        return $authdomain->getCountAsetDomain();
+    }
+
     /**
      * ================================================================================================================================================================
      * feature: auth admin

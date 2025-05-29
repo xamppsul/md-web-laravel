@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('aset', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('users_id')->references('id')->on('users');
             $table->string('kode_aset');
             $table->string('nama_aset');
             $table->foreignId('kategori_aset')->references('id')->on('kategori_aset');
