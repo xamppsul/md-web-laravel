@@ -2,6 +2,7 @@
 
 namespace App\Modules\StaffOrDosen\repository;
 
+use Illuminate\Support\Facades\DB;
 use App\Modules\StaffOrDosen\interfaces\Repository_interfaces;
 
 class Repository implements Repository_interfaces
@@ -393,6 +394,12 @@ class Repository implements Repository_interfaces
         $riwayatJabatanDomain->deleteDataRiwayatJabatanDomain($id);
     }
 
+    /**
+     * @method doUploadFileDocumentSkRiwayatJabatan
+     * @param $request
+     * @param $user
+     * @return string
+     */
     //file upload
     public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string
     {
@@ -403,7 +410,6 @@ class Repository implements Repository_interfaces
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
-
     /**======================================================================================================================================
      * feture: ListPublikasi
     /**======================================================================================================================================

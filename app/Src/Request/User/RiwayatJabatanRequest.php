@@ -13,7 +13,7 @@ class RiwayatJabatanRequest
             'unit_kerja' => 'required|string',
             'no_sk_jabatan' => 'required|string',
             'tanggal_sk' => 'required|date',
-            'tanggal_mulai' => 'required|date',
+            'tanggal_mulai' => 'required|date|after_or_equal:tanggal_sk',
             'tanggal_selesai' => 'date|after_or_equal:tanggal_mulai',
             'dokumen_sk' => 'required|required|file|mimes:pdf,doc,docx|max:2048',
             'riwayat_jabatan_status' => 'required|exists:riwayat_jabatan_status,id',
