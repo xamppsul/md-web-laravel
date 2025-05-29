@@ -21,9 +21,9 @@ class Repository implements Repository_interfaces
     public function indexAssetRepository($asetDomain, $request): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset_kategori' => $asetDomain->getKategoriAsetDomain(),
+            'aset_status' => $asetDomain->getStatusAsetDomain(),
+            'aset_kondisi' => $asetDomain->getKondisiAsetDomain(),
             'aset' => $asetDomain->getAllAsetDomain($request),
         );
     }

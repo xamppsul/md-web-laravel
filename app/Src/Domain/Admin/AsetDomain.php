@@ -48,17 +48,11 @@ class AsetDomain
             WHERE aset.aset_kondisi LIKE ? 
                 AND aset.aset_status LIKE ? 
                 AND aset.aset_kategori LIKE ?
-                AND aset.tanggal_perolehan LIKE ? 
-                AND aset.nama_aset LIKE ? 
-                AND aset.kode_aset LIKE ?
             ORDER BY aset.kode_aset DESC
         ', [
             "%$request->kondisi_aset%",
             "%$request->status_aset%",
             "%$request->kategori_aset%"
-            // "%$request->tanggal_perolehan%",
-            // "%$request->nama_aset%",
-            // "%$request->kode_aset%"
         ]);
     }
 

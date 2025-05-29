@@ -190,7 +190,7 @@
                                                         @enderror"
                                                             aria-label="Select kategori aset" name="kategori_aset">
                                                             <option selected="">Pilih Kategori Aset</option>
-                                                            @foreach ($data['kategori'] as $kategoriAset)
+                                                            @foreach ($data['aset_kategori'] as $kategoriAset)
                                                                 <option value="{{ $kategoriAset->id }}"
                                                                     {{ old('kategori_aset') == $kategoriAset->id ? 'selected' : '' }}>
                                                                     {{ $kategoriAset->name }}
@@ -260,7 +260,7 @@
                                                             class="form-select @error('kondisi_aset') is-invalid @enderror"
                                                             aria-label="Select kondisi aset" name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
-                                                            @foreach ($data['kondisi'] as $kondisiAset)
+                                                            @foreach ($data['aset_kondisi'] as $kondisiAset)
                                                                 <option value="{{ $kondisiAset->id }}"
                                                                     {{ old('kondisi_aset') == $kondisiAset->id ? 'selected' : '' }}>
                                                                     {{ $kondisiAset->name }}</option>
@@ -281,7 +281,7 @@
                                                         @enderror"
                                                             aria-label="Select status aset" name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
-                                                            @foreach ($data['status'] as $statusAset)
+                                                            @foreach ($data['aset_status'] as $statusAset)
                                                                 <option value="{{ $statusAset->id }}"
                                                                     {{ old('status_aset') == $statusAset->id ? 'selected' : '' }}>
                                                                     {{ $statusAset->name }}</option>
@@ -382,25 +382,25 @@
                                             <td>{{ $asetData->kode_aset }}</td>
                                             <td>{{ $asetData->nama_aset }}</td>
                                             <td><span
-                                                    class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
+                                                    class="badge text-light-primary">{{ $asetData->aset_kategori_name }}</span>
                                             </td>
                                             <td>{{ $asetData->merek_model }}</td>
 
-                                            @if ($asetData->kondisi_aset_name == 'Baik')
+                                            @if ($asetData->aset_kondisi_name == 'Baik')
                                                 <td><span
-                                                        class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
+                                                        class="badge text-light-success">{{ $asetData->aset_kondisi_name }}</span>
                                                 </td>
-                                            @elseif($asetData->kondisi_aset_name == 'Perlu Perbaikan')
+                                            @elseif($asetData->aset_kondisi_name == 'Perlu Perbaikan')
                                                 <td><span
-                                                        class="badge text-light-warning">{{ $asetData->kondisi_aset_name }}</span>
+                                                        class="badge text-light-warning">{{ $asetData->aset_kondisi_name }}</span>
                                                 </td>
                                             @else
                                                 <td><span
-                                                        class="badge text-light-danger">{{ $asetData->kondisi_aset_name }}</span>
+                                                        class="badge text-light-danger">{{ $asetData->aset_kondisi_name }}</span>
                                                 </td>
                                             @endif
                                             <td><span
-                                                    class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
+                                                    class="badge text-light-info">{{ $asetData->aset_status_name }}</span>
                                             </td>
                                             <td>
                                                 <button type="button" data-item="{{ $asetData->id }}"
@@ -448,7 +448,7 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Aset:
                                 {{ $asetData->nama_aset }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kategori Aset:
-                                <td><span class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
+                                <td><span class="badge text-light-primary">{{ $asetData->aset_kategori_name }}</span>
                                 </td>
                             </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Merek/Model:
@@ -458,19 +458,19 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Lokasi Aset:
                                 {{ $asetData->lokasi_aset }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kondisi Aset:
-                                @if ($asetData->kondisi_aset_name == 'Baik')
-                                    <td><span class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
+                                @if ($asetData->aset_kondisi_name == 'Baik')
+                                    <td><span class="badge text-light-success">{{ $asetData->aset_kondisi_name }}</span>
                                     </td>
-                                @elseif($asetData->kondisi_aset_name == 'Perlu Perbaikan')
-                                    <td><span class="badge text-light-warning">{{ $asetData->kondisi_aset_name }}</span>
+                                @elseif($asetData->aset_kondisi_name == 'Perlu Perbaikan')
+                                    <td><span class="badge text-light-warning">{{ $asetData->aset_kondisi_name }}</span>
                                     </td>
                                 @else
-                                    <td><span class="badge text-light-danger">{{ $asetData->kondisi_aset_name }}</span>
+                                    <td><span class="badge text-light-danger">{{ $asetData->aset_kondisi_name }}</span>
                                     </td>
                                 @endif
                             </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status Aset:
-                                <td><span class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
+                                <td><span class="badge text-light-info">{{ $asetData->aset_status_name }}</span>
                                 </td>
                             </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Harga Perolehan:
