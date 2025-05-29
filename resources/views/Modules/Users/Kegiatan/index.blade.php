@@ -169,6 +169,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label class="form-label" for="tahun_kegiatan">Tahun
+                                                            Kegiatan</label>
+                                                        <select class="form-select @error('tahun') is-invalid @enderror"
+                                                            aria-label="Select tahun aset" name="tahun" required>
+                                                            <option selected="">Pilih Tahun Kegiatan</option>
+                                                            @for ($i = date('Y'); $i >= 1990; $i--)
+                                                                <option value="{{ $i }}"
+                                                                    {{ old('tahun') == $i ? 'selected' : '' }}>
+                                                                    {{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('tahun')
+                                                                <span class="text-danger"
+                                                                    id="tahun">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label class="form-label" for="tanggal_kegiatan">Tanggal
                                                             Kegiatan</label>
                                                         <input
@@ -393,15 +412,15 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Daftar Hadir:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../MD_disk/{$kegiatan->faculty_name}/DaftarHadirKegiatan/{$kegiatan->file_daftar_hadir}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DaftarHadirKegiatan/{$kegiatan->file_daftar_hadir}") }}"
                                 width="450px" height="300px"></iframe>
 
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Kegiatan:
                                 @empty($kegiatan->file_kegiatan)
                                     {{ __('Tidak ada file kegiatan') }}
                                 @else
-                                    <a href="{{ asset("/MD_disk/{$kegiatan->faculty_name}/DokumentasiKegiatan/{$kegiatan->file_kegiatan}") }}"
-                                        target="_blank">Buka file kegiatan</a>
+                                    <a href="{{ asset("/MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DokumentasiKegiatan/{$kegiatan->file_kegiatan}") }}"
+                                        target="_blank"><b>Buka file kegiatan</b></a>
                                 @endempty
                             </p>
                         </div>

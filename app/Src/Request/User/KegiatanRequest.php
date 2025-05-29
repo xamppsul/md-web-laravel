@@ -10,6 +10,7 @@ class KegiatanRequest
         return $request->validate([
             'nama_kegiatan' => 'required|string',
             'kegiatan_jenis' => 'required|exists:kegiatan_jenis,id',
+            'tahun' => 'required|integer',
             'tanggal_kegiatan' => 'required|date',
             'tempat_lokasi' => 'required|string',
             'penyelenggara' => 'required|string',
@@ -33,6 +34,7 @@ class KegiatanRequest
         return $request->validate([
             'nama_kegiatan' => 'required|string',
             'kegiatan_jenis' => 'required|exists:kegiatan_jenis,id',
+            'tahun' => 'required|integer',
             'tanggal_kegiatan' => 'required|date',
             'tempat_lokasi' => 'required|string',
             'penyelenggara' => 'required|string',

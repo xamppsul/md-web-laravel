@@ -110,7 +110,7 @@ interface Usecase_intefaces
     ): RedirectResponse;
 
     //dashboard view
-    public function viewUserDashboardCase($authDomain): View|Throwable;
+    public function viewUserDashboardCase($authDomain, $request): View|Throwable;
 
     public function updateOrCreateUserProfileCase(
         //auth request profile

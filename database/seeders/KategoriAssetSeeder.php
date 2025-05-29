@@ -14,7 +14,7 @@ class KategoriAssetSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('kategori_aset')->insert([
+        DB::table('aset_kategori')->insert([
             [
                 'name' => 'Elektronik',
                 'keterangan' => 'aset elektronik',

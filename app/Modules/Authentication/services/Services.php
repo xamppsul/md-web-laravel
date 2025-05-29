@@ -100,11 +100,14 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method viewUserDashboardServices
      * @param $authDomain
+     * @param int $users_id
+     * @param $request
      * @return array
      */
-    public function viewUserDashboardServices($authDomain, int $users_id): array
+    public function viewUserDashboardServices($authDomain, int $users_id, $request): array
     {
         return array(
+            //staff
             'total_bahan_ajar' => $this->UserDashboardGetCountTotalBahanAjarRepository($authDomain),
             'total_penelitian' => $this->UserDashboardGetCountTotalPenelitianRepository($authDomain),
             'total_pengabdian' => $this->UserDashboardGetCountTotalPengabdianRepository($authDomain),
@@ -114,6 +117,12 @@ class Services extends Repository implements Services_interfaces
             'bahanAjar' => $this->UserDashboardGetBahanAjarRepository($authDomain),
             'riwayatJabatan' => $this->UserDashboardGetRiwayatJabatanRepository($authDomain),
             'list_publikasi' => $this->UserDashboardGetListPublikasiRepository($authDomain),
+            //faculty
+            'total_aset' => $this->UserDashboardGetCountAsetBaseFacultyRepository($authDomain)[0],
+            'total_kerjasama' => $this->UserDashboardGetCountKerjasamaBaseFacultyRepository($authDomain)[0],
+            'moumoa' => $this->UserDashboardListMouBaseFacultyAndYearRepository($authDomain, $request),
+            'total_kegiatan_tahun' => $this->UserDashboardGetCountTotalKegiatanInYearRepository($authDomain)[0],
+            //profile
             'profile' => !empty($this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)) ? $this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)[0] : null,
         );
     }

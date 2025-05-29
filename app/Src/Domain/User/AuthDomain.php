@@ -2,6 +2,7 @@
 
 namespace App\Src\Domain\User;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -247,8 +248,8 @@ class AuthDomain
             !empty($request->jabatan_golongan) ? $request->jabatan_golongan : null,
             !empty($request->profile_status_ikatan_kerja) ? $request->profile_status_ikatan_kerja : null,
             !empty($request->profile_status_mengajar) ? $request->profile_status_mengajar : null,
-            isset($request->photo) && $profile_photo != false ? $profile_photo : $data->photo, //kalo ada request ambil update photonya kalo gak ada keep photo laama
-            isset($request->photo_banner) && $profile_banner != false ? $profile_banner : $data->photo_banner, //kalo ada request ambil update photo bannernya kalo gak ada keep photo banner laama
+            isset($request->photo) && $profile_photo != false ? $profile_photo : $data->photo, //kalo ada request ambil update photonya kalo gak ada keep photo lama
+            isset($request->photo_banner) && $profile_banner != false ? $profile_banner : $data->photo_banner, //kalo ada request ambil update photo bannernya kalo gak ada keep photo banner lama
             now(),
             $users_id
         ]);
@@ -306,5 +307,66 @@ class AuthDomain
             WHERE list_publikasi.users_id = ?
             ORDER BY list_publikasi.id DESC
         ', [Auth::guard('user')->user()->id]);
+    }
+
+    /**
+     * ================== faculty ============================================
+     */
+
+    /**
+     * @method getCountAsetDomainBaseFaculty
+     * @return array
+     */
+    public function getCountAsetDomainBaseFaculty(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM aset WHERE users_id = ?", [Auth::guard('user')->user()->id]);
+    }
+
+    /**
+     * @method getCountKerjasamaDomainBaseFaculty
+     * @return array
+     */
+    public function getCountKerjasamaDomainBaseFaculty(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM mou_moa WHERE users_id = ?", [Auth::guard('user')->user()->id]);
+    }
+
+    /**
+     * @method getListMouDomainBaseFacultyAndYear
+     * @return array
+     */
+    public function getListMouDomainBaseFacultyAndYear($request): array
+    {
+        return DB::select('
+            SELECT mou_moa.*, 
+                mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
+                mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
+                mou_moa_status.name AS mou_moa_status_name,
+                users.id AS penanggung_jawab_id,
+                users.name AS penanggung_jawab_name,
+                mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
+            FROM mou_moa
+                INNER JOIN mou_moa_bidang_kerjasama ON mou_moa.mou_moa_bidang_kerjasama = mou_moa_bidang_kerjasama.id
+                INNER JOIN mou_moa_klasifikasi ON mou_moa.mou_moa_klasifikasi = mou_moa_klasifikasi.id
+                INNER JOIN mou_moa_status ON mou_moa.mou_moa_status = mou_moa_status.id
+                INNER JOIN users ON mou_moa.users_id = users.id
+                INNER JOIN mou_moa_jenis_dokumen ON mou_moa.mou_moa_jenis_dokumen = mou_moa_jenis_dokumen.id
+            WHERE mou_moa.tahun LIKE ?
+                AND mou_moa.users_id = ?
+            ORDER BY (mou_moa.tahun = YEAR(NOW())) DESC, mou_moa.tahun DESC
+        ', [
+            is_null($request->tahun) ? Carbon::now()->year() : "%$request->tahun%", //if request filter is null then send year now and default send request base year selected
+            Auth::guard('user')->user()->id
+        ]);
+    }
+
+    /**
+     * @method getCountTotalKegiatanInYearDomainBaseFaculty
+     * @return array
+     */
+    public function getCountTotalKegiatanInYearDomainBaseFaculty(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM kegiatan
+                WHERE users_id = ? AND tahun = ?", [Auth::guard('user')->user()->id, Carbon::now()->year()]);
     }
 }

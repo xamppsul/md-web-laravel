@@ -2,6 +2,8 @@
 
 namespace App\Modules\StaffOrDosen\interfaces;
 
+use Illuminate\Http\RedirectResponse;
+
 interface Services_interfaces
 {
     /**
@@ -36,9 +38,9 @@ interface Services_interfaces
      */
     public function indexRiwayatJabatanService($asetDomain, $request): array;
     public function createRiwayatJabatanService();
-    public function storeRiwayatJabatanService($request, $asetDomain, $user): void;
+    public function storeRiwayatJabatanService($request, $asetDomain, $user);
     public function editRiwayatJabatanService(int $id, $asetDomain): array;
-    public function updateRiwayatJabatanService(int $id, $asetDomain, $request, $user): void;
+    public function updateRiwayatJabatanService(int $id, $asetDomain, $request, $user);
     public function destroyRiwayatJabatanService(int $id, $asetDomain): void;
 
     /**

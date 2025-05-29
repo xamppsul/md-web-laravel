@@ -1,8 +1,7 @@
 
-name: Deploy Web MD Febi UMK
+name: Deploy CMS MD Febi UMK
 on:
   push:
-    # branches: [ development ]
     branches: [ master ]
     paths:
       - 'app/**'

@@ -180,12 +180,13 @@ class Usecase extends Services implements Usecase_intefaces
     /**
      * @method viewUserDashboardCase
      * @param $authDomain
+     * @param $request
      * @return View|Throwable
      */
-    public function viewUserDashboardCase($authDomain): View|Throwable
+    public function viewUserDashboardCase($authDomain, $request): View|Throwable
     {
         try {
-            $data = $this->viewUserDashboardServices($authDomain, Auth::guard('user')->user()->id);
+            $data = $this->viewUserDashboardServices($authDomain, Auth::guard('user')->user()->id, $request);
             return view('Modules.Users.dashboard', compact('data'));
         } catch (\Throwable $t) {
             return $t;
