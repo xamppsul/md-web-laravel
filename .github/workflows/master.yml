@@ -2,7 +2,6 @@
 name: Deploy CMS MD Febi UMK
 on:
   push:
-    # branches: [ development ]
     branches: [ master ]
     paths:
       - 'app/**'
