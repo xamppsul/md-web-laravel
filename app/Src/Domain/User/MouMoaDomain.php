@@ -2,6 +2,7 @@
 
 namespace App\Src\Domain\User;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MouMoaDomain
@@ -41,6 +42,7 @@ class MouMoaDomain
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
+                users.id AS penanggung_jawab_id,
                 users.name AS penanggung_jawab_name,
                 mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
@@ -169,7 +171,7 @@ class MouMoaDomain
             $request->tanggal_akhir,
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
-            $request->users_id,
+            Auth::guard('user')->user()->id,
             $filePendukung,
             $request->keterangan_tambahan,
             now(),
@@ -212,7 +214,7 @@ class MouMoaDomain
             $request->tanggal_akhir,
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
-            $request->users_id,
+            Auth::guard('user')->user()->id,
             $filePendukung,
             $request->keterangan_tambahan,
             now(),
