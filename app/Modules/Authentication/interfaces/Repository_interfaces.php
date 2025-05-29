@@ -30,7 +30,8 @@ interface Repository_interfaces
     public function UserDashboardGetRiwayatJabatanRepository($authDomain): array;
     public function UserDashboardGetListPublikasiRepository($authDomain): array;
     //faculty
-    public function UserDashboardGetCountAsetRepository($authDomain): array;
+    public function UserDashboardGetCountAsetBaseFacultyRepository($authDomain): array;
+    public function UserDashboardGetCountKerjasamaBaseFacultyRepository($authDomain): array;
 
     //admin login repo
     public function AdminValidateLoginByExistingEmailOrUsernameRepository($credentials): bool;

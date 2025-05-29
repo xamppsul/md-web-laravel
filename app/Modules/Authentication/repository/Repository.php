@@ -317,13 +317,23 @@ class Repository implements Repository_interfaces
     //faculty
 
     /**
-     * @method UserDashboardGetCountAsetRepository
+     * @method UserDashboardGetCountAsetBaseFacultyRepository
      * @param mixed $authDomain
      * @return array
      */
-    public function UserDashboardGetCountAsetRepository(mixed $authdomain): array
+    public function UserDashboardGetCountAsetBaseFacultyRepository(mixed $authdomain): array
     {
-        return $authdomain->getCountAsetDomain();
+        return $authdomain->getCountAsetDomainBaseFaculty();
+    }
+
+    /**
+     * @method UserDashboardGetCountKerjasamaBaseFacultyRepository
+     * @param mixed $authDomain
+     * @return array
+     */
+    public function UserDashboardGetCountKerjasamaBaseFacultyRepository(mixed $authdomain): array
+    {
+        return $authdomain->getCountKerjasamaDomainBaseFaculty();
     }
 
     /**

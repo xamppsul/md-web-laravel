@@ -313,11 +313,20 @@ class AuthDomain
      */
 
     /**
-     * @method getCountAsetDomain
+     * @method getCountAsetDomainBaseFaculty
      * @return array
      */
-    public function getCountAsetDomain(): array
+    public function getCountAsetDomainBaseFaculty(): array
     {
-        return DB::select("SELECT COUNT(*) as total FROM aset");
+        return DB::select("SELECT COUNT(*) as total FROM aset WHERE users_id = ?", [Auth::guard('user')->user()->id]);
+    }
+
+    /**
+     * @method getCountKerjasamaDomainBaseFaculty
+     * @return array
+     */
+    public function getCountKerjasamaDomainBaseFaculty(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM mou_moa WHERE users_id = ?", [Auth::guard('user')->user()->id]);
     }
 }

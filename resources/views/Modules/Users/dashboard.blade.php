@@ -48,7 +48,7 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset</p>
-                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            <h2 class="text-success-dark mb-0">{{ $data['total_aset']->total }}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kerjasama</p>
-                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            <h2 class="text-success-dark mb-0">{{ $data['total_kerjasama']->total }}</h2>
                                         </div>
 
                                     </div>

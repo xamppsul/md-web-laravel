@@ -116,8 +116,8 @@ class Services extends Repository implements Services_interfaces
             'riwayatJabatan' => $this->UserDashboardGetRiwayatJabatanRepository($authDomain),
             'list_publikasi' => $this->UserDashboardGetListPublikasiRepository($authDomain),
             //faculty
-            'total_aset' => '',
-            'total_kerjasama' => '',
+            'total_aset' => $this->UserDashboardGetCountAsetBaseFacultyRepository($authDomain)[0],
+            'total_kerjasama' => $this->UserDashboardGetCountKerjasamaBaseFacultyRepository($authDomain)[0],
             'profile' => !empty($this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)) ? $this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)[0] : null,
         );
     }
