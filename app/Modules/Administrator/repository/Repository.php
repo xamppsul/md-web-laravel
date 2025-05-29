@@ -3,6 +3,7 @@
 namespace App\Modules\Administrator\repository;
 
 use App\Modules\Administrator\interfaces\Repository_interfaces;
+use Illuminate\Support\Facades\DB;
 
 class Repository implements Repository_interfaces
 {
@@ -185,10 +186,17 @@ class Repository implements Repository_interfaces
 
     public function doUploadFilePendukung($request): string
     {
+        //query user base role faculty
+        $DB_USER = DB::table('users')->where([
+            ['roles_id', '=', 3],
+            ['id', '=', $request->users_id]
+        ])->first();
+
+        //init file upload
         $file = $request->file('dokumen_pendukung');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'docsMouMoa';
+        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/MouMoa");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

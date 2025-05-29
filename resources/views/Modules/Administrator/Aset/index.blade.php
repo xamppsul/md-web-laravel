@@ -485,6 +485,10 @@
                         <div class="modal-body">
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kode Aset:
                                 {{ $asetData->kode_aset }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Fakultas:
+                                {{ $asetData->faculty_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tahun Aset:
+                                {{ $asetData->tahun }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Aset:
                                 {{ $asetData->nama_aset }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kategori Aset:

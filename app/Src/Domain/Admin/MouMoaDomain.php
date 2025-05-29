@@ -42,6 +42,7 @@ class MouMoaDomain
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
                 users.name AS penanggung_jawab_name,
+                users.id AS penanggung_jawab_id,
                 mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
                 INNER JOIN mou_moa_bidang_kerjasama ON mou_moa.mou_moa_bidang_kerjasama = mou_moa_bidang_kerjasama.id
@@ -150,6 +151,7 @@ class MouMoaDomain
             nama_mitra,
             judul_kerjasama,
             mou_moa_klasifikasi,
+            tahun,
             tanggal_mulai,
             tanggal_akhir,
             mou_moa_status,
@@ -157,12 +159,13 @@ class MouMoaDomain
             users_id,
             dokumen_pendukung,
             keterangan_tambahan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->nomor_dokumen,
             $request->mou_moa_jenis_dokumen,
             $request->nama_mitra,
             $request->judul_kerjasama,
             $request->mou_moa_klasifikasi,
+            $request->tahun,
             $request->tanggal_mulai,
             $request->tanggal_akhir,
             $request->mou_moa_status,
@@ -190,6 +193,7 @@ class MouMoaDomain
             nama_mitra = ?,
             judul_kerjasama = ?,
             mou_moa_klasifikasi = ?,
+            tahun = ?,
             tanggal_mulai = ?,
             tanggal_akhir = ?,
             mou_moa_status = ?,
@@ -204,6 +208,7 @@ class MouMoaDomain
             $request->nama_mitra,
             $request->judul_kerjasama,
             $request->mou_moa_klasifikasi,
+            $request->tahun,
             $request->tanggal_mulai,
             $request->tanggal_akhir,
             $request->mou_moa_status,
