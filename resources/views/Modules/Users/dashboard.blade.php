@@ -114,11 +114,11 @@
                                                             class="row g-3 app-form rounded-control"
                                                             id="filterFormTahunKegiatan">
                                                             <div class="col-md-6">
-                                                                <label class="form-label" for="tahun">Tahun</label>
+                                                                <label class="form-label" for="tahun">Tahun Mou</label>
                                                                 <select
                                                                     class="form-select @error('tahun') is-invalid @enderror"
-                                                                    aria-label="Select tahun" name="tahun" required>
-                                                                    <option selected="">Pilih Tahun Terbit</option>
+                                                                    aria-label="Select tahun mou" name="tahun" required>
+                                                                    <option selected="">Pilih Tahun Mou</option>
                                                                     @for ($i = date('Y'); $i >= 1990; $i--)
                                                                         <option value="{{ $i }}"
                                                                             {{ request('tahun') == $i ? 'selected' : '' }}>
