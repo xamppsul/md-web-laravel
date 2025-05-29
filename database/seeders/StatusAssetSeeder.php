@@ -14,7 +14,7 @@ class StatusAssetSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('status_aset')->insert([
+        DB::table('aset_status')->insert([
             [
                 'name' => 'Aktif',
                 'keterangan' => 'status aktif',

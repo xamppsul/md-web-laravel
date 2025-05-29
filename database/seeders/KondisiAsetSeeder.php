@@ -14,7 +14,7 @@ class KondisiAsetSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('kondisi_aset')->insert([
+        DB::table('aset_kondisi')->insert([
             [
                 'name' => 'Baik',
                 'keterangan' => 'kondisi baik',
