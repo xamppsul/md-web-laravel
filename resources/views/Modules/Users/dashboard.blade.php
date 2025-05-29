@@ -71,7 +71,7 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kegiatan Dalam
-                                                Tahun</p>
+                                                Tahun: {{ date('Y') }}</p>
                                             <h2 class="text-success-dark mb-0">{{ $data['total_kegiatan_tahun']->total }}
                                             </h2>
                                         </div>
