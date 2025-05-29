@@ -39,6 +39,23 @@
                             @method('put')
                             @csrf
                             <div class="col-md-6">
+                                <label class="form-label" for="users_id">Fakultas</label>
+                                <select class="form-select @error('users_id') is-invalid @enderror"
+                                    aria-label="Select Fakultas" name="users_id" required>
+                                    <option selected="">Pilih Fakultas</option>
+                                    @foreach ($data['user_faculty'] as $users_id)
+                                        <option value="{{ $users_id->id }}"
+                                            {{ $data['aset']->users_id == $users_id->id ? 'selected' : '' }}>
+                                            {{ $users_id->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="mt-1">
+                                    @error('users_id')
+                                        <span class="text-danger" id="users_id">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <label class="form-label" for="kode_aset">Kode Aset</label>
                                 <input class="form-control @error('kode_aset') is-invalid @enderror" id="kode_aset"
                                     name="kode_aset" placeholder="Masukan Kode Aset" type="text"
@@ -64,24 +81,24 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="kategori_aset">Kategori
+                                <label class="form-label" for="aset_kategori">Kategori
                                     Aset</label>
                                 <select
-                                    class="form-select @error('kategori_aset')
+                                    class="form-select @error('aset_kategori')
                                                             is-invalid
                                                         @enderror"
-                                    aria-label="Select kategori aset" name="kategori_aset">
+                                    aria-label="Select kategori aset" name="aset_kategori">
                                     <option selected="">Pilih Kategori Aset</option>
-                                    @foreach ($data['kategori'] as $kategoriAset)
+                                    @foreach ($data['aset_kategori'] as $kategoriAset)
                                         <option value="{{ $kategoriAset->id }}"
-                                            {{ $data['aset']->kategori_aset == $kategoriAset->id ? 'selected' : '' }}>
+                                            {{ $data['aset']->aset_kategori == $kategoriAset->id ? 'selected' : '' }}>
                                             {{ $kategoriAset->name }}
                                         </option>
                                     @endforeach
                                 </select>
                                 <div class="mt-1">
-                                    @error('kategori_aset')
-                                        <span class="text-danger" id="kategori_aset">{{ $message }}</span>
+                                    @error('aset_kategori')
+                                        <span class="text-danger" id="aset_kategori">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -96,6 +113,24 @@
                                 <div class="mt-1">
                                     @error('model_merk_aset')
                                         <span class="text-danger" id="model_merk_aset">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="tahun_aset">Tahun
+                                    Aset</label>
+                                <select class="form-select @error('tahun') is-invalid @enderror"
+                                    aria-label="Select tahun aset" name="tahun" required>
+                                    <option selected="">Pilih Tahun Aset</option>
+                                    @for ($i = date('Y'); $i >= 1990; $i--)
+                                        <option value="{{ $i }}"
+                                            {{ $data['aset']->tahun == $i ? 'selected' : '' }}>
+                                            {{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <div class="mt-1">
+                                    @error('tahun')
+                                        <span class="text-danger" id="tahun">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -130,38 +165,38 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
-                                <select class="form-select @error('kondisi_aset') is-invalid @enderror"
-                                    aria-label="Select kondisi aset" name="kondisi_aset" required>
+                                <label class="form-label" for="aset_kondisi">Kondisi Aset</label>
+                                <select class="form-select @error('aset_kondisi') is-invalid @enderror"
+                                    aria-label="Select kondisi aset" name="aset_kondisi" required>
                                     <option selected="">Pilih Kondisi Aset</option>
-                                    @foreach ($data['kondisi'] as $kondisiAset)
+                                    @foreach ($data['aset_kondisi'] as $kondisiAset)
                                         <option value="{{ $kondisiAset->id }}"
-                                            {{ $data['aset']->kondisi_aset == $kondisiAset->id ? 'selected' : '' }}>
+                                            {{ $data['aset']->aset_kondisi == $kondisiAset->id ? 'selected' : '' }}>
                                             {{ $kondisiAset->name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="mt-1">
-                                    @error('kondisi_aset')
-                                        <span class="text-danger" id="kondisi_aset">{{ $message }}</span>
+                                    @error('aset_kondisi')
+                                        <span class="text-danger" id="aset_kondisi">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="status_aset">Status Aset</label>
+                                <label class="form-label" for="aset_status">Status Aset</label>
                                 <select
-                                    class="form-select @error('status_aset')
+                                    class="form-select @error('aset_status')
                                                             is-invalid
                                                         @enderror"
-                                    aria-label="Select status aset" name="status_aset" required>
+                                    aria-label="Select status aset" name="aset_status" required>
                                     <option selected="">Pilih Status Aset</option>
-                                    @foreach ($data['status'] as $statusAset)
+                                    @foreach ($data['aset_status'] as $statusAset)
                                         <option value="{{ $statusAset->id }}"
-                                            {{ $data['aset']->status_aset == $statusAset->id ? 'selected' : '' }}>
+                                            {{ $data['aset']->aset_status == $statusAset->id ? 'selected' : '' }}>
                                             {{ $statusAset->name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="mt-1">
-                                    @error('status_aset')
+                                    @error('aset_status')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

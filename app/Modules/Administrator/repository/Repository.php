@@ -57,9 +57,10 @@ class Repository implements Repository_interfaces
     public function editAssetRepository(int $id, $asetDomain): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset_kategori' => $asetDomain->getKategoriAsetDomain(),
+            'aset_status' => $asetDomain->getStatusAsetDomain(),
+            'aset_kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'user_faculty' => $asetDomain->getUserFacultyDomain(),
             'aset' => $asetDomain->getDetailAsetDomain($id)[0],
         );
     }
