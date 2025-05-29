@@ -32,6 +32,7 @@ interface Repository_interfaces
     //faculty
     public function UserDashboardGetCountAsetBaseFacultyRepository($authDomain): array;
     public function UserDashboardGetCountKerjasamaBaseFacultyRepository($authDomain): array;
+    public function UserDashboardListMouBaseFacultyAndYearRepository($authDomain, $request): array;
 
     //admin login repo
     public function AdminValidateLoginByExistingEmailOrUsernameRepository($credentials): bool;

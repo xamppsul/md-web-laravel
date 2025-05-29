@@ -337,6 +337,17 @@ class Repository implements Repository_interfaces
     }
 
     /**
+     * @method UserDashboardListMouBaseFacultyAndYearRepository
+     * @param mixed $authDomain
+     * @param $request
+     * @return array
+     */
+    public function UserDashboardListMouBaseFacultyAndYearRepository(mixed $authdomain, $request): array
+    {
+        return $authdomain->getListMouDomainBaseFacultyAndYear($request);
+    }
+
+    /**
      * ================================================================================================================================================================
      * feature: auth admin
      * ================================================================================================================================================================

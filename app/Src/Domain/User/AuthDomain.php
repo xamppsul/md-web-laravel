@@ -2,6 +2,7 @@
 
 namespace App\Src\Domain\User;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -328,5 +329,34 @@ class AuthDomain
     public function getCountKerjasamaDomainBaseFaculty(): array
     {
         return DB::select("SELECT COUNT(*) as total FROM mou_moa WHERE users_id = ?", [Auth::guard('user')->user()->id]);
+    }
+
+    /**
+     * @method getListMouDomainBaseFacultyAndYear
+     * @return array
+     */
+    public function getListMouDomainBaseFacultyAndYear($request): array
+    {
+        return DB::select('
+            SELECT mou_moa.*, 
+                mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
+                mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
+                mou_moa_status.name AS mou_moa_status_name,
+                users.id AS penanggung_jawab_id,
+                users.name AS penanggung_jawab_name,
+                mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
+            FROM mou_moa
+                INNER JOIN mou_moa_bidang_kerjasama ON mou_moa.mou_moa_bidang_kerjasama = mou_moa_bidang_kerjasama.id
+                INNER JOIN mou_moa_klasifikasi ON mou_moa.mou_moa_klasifikasi = mou_moa_klasifikasi.id
+                INNER JOIN mou_moa_status ON mou_moa.mou_moa_status = mou_moa_status.id
+                INNER JOIN users ON mou_moa.users_id = users.id
+                INNER JOIN mou_moa_jenis_dokumen ON mou_moa.mou_moa_jenis_dokumen = mou_moa_jenis_dokumen.id
+            WHERE mou_moa.tahun LIKE ?
+                AND mou_moa.users_id = ?
+            ORDER BY (mou_moa.tahun = YEAR(NOW())) DESC, mou_moa.tahun DESC
+        ', [
+            is_null($request->tahun) ? Carbon::now()->year() : "%$request->tahun%", //if request filter is null then send year now and default send request base year selected
+            Auth::guard('user')->user()->id
+        ]);
     }
 }

@@ -147,33 +147,44 @@
                                         <table id="example" class="display app-data-table default-data-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
-                                                    <th>Action</th>
+                                                    <th>Nomor Dokumen</th>
+                                                    <th>Tahun</th>
+                                                    <th>Jenis Dokumen</th>
+                                                    <th>Penanggung Jawab</th>
+                                                    <th>Nama Mitra</th>
+                                                    <th>Tanggal Mulai</th>
+                                                    <th>Tanggal Akhir</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td><span class="badge text-light-primary">System Architect</span></td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>$3674.55</td>
-                                                    <td>$320,800</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light-success icon-btn b-r-4">
-                                                            <i class="ti ti-edit text-success"></i>
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-light-danger icon-btn b-r-4 delete-btn">
-                                                            <i class="ti ti-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($data['moumoa'] as $mouMoa)
+                                                    <tr>
+                                                        <td>{{ $mouMoa->nomor_dokumen }}</td>
+                                                        <td>{{ $mouMoa->tahun }}</td>
+                                                        <td>{{ $mouMoa->mou_moa_jenis_dokumen_name }}</td>
+                                                        <td>{{ $mouMoa->penanggung_jawab_name }}</td>
+                                                        <td><span
+                                                                class="badge text-light-primary">{{ $mouMoa->nama_mitra }}</span>
+                                                        </td>
+                                                        <td>{{ $mouMoa->tanggal_mulai }}</td>
+                                                        <td>{{ $mouMoa->tanggal_akhir }}</td>
+
+                                                        @if ($mouMoa->mou_moa_status_name == 'Aktif')
+                                                            <td><span
+                                                                    class="badge text-light-success">{{ $mouMoa->mou_moa_status_name }}</span>
+                                                            </td>
+                                                        @elseif($mouMoa->mou_moa_status_name == 'Selesai')
+                                                            <td><span
+                                                                    class="badge text-light-warning">{{ $mouMoa->mou_moa_status_name }}</span>
+                                                            </td>
+                                                        @else
+                                                            <td><span
+                                                                    class="badge text-light-danger">{{ $mouMoa->mou_moa_status_name }}</span>
+                                                            </td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

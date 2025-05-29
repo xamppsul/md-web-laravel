@@ -56,7 +56,7 @@ class MouMoaDomain
                 AND mou_moa.mou_moa_klasifikasi LIKE ?
                 AND mou_moa.mou_moa_status LIKE ?
                 AND mou_moa.mou_moa_bidang_kerjasama LIKE ?
-                AND mou_moa.users_id LIKE ?
+                AND mou_moa.users_id = ?
             ORDER BY mou_moa.nomor_dokumen DESC
         ', [
             "%$request->mou_moa_jenis_dokumen%",
@@ -64,7 +64,7 @@ class MouMoaDomain
             "%$request->mou_moa_klasifikasi%",
             "%$request->mou_moa_status%",
             "%$request->mou_moa_bidang_kerjasama%",
-            "%$request->users_id%"
+            Auth::guard('user')->user()->id
         ]);
     }
 

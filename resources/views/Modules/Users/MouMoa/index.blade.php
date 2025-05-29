@@ -109,7 +109,8 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <!-- disable penanggung jawab: for users will be automatic by sessions input-->
+                                                    {{-- <div class="col-md-6">
                                                         <label class="form-label" for="penanggungJawab">Penanggung
                                                             Jawab</label>
                                                         <select class="form-select" aria-label="Select Kerjasama"
@@ -122,7 +123,7 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="nama_mitra">Mitra</label>
                                                         <input class="form-control" id="nama_mitra"

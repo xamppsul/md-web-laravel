@@ -100,9 +100,11 @@ class Services extends Repository implements Services_interfaces
     /**
      * @method viewUserDashboardServices
      * @param $authDomain
+     * @param int $users_id
+     * @param $request
      * @return array
      */
-    public function viewUserDashboardServices($authDomain, int $users_id): array
+    public function viewUserDashboardServices($authDomain, int $users_id, $request): array
     {
         return array(
             //staff
@@ -118,6 +120,8 @@ class Services extends Repository implements Services_interfaces
             //faculty
             'total_aset' => $this->UserDashboardGetCountAsetBaseFacultyRepository($authDomain)[0],
             'total_kerjasama' => $this->UserDashboardGetCountKerjasamaBaseFacultyRepository($authDomain)[0],
+            'moumoa' => $this->UserDashboardListMouBaseFacultyAndYearRepository($authDomain, $request),
+            //profile
             'profile' => !empty($this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)) ? $this->UserDashboardGetProfileBySessionRepository($authDomain, $users_id)[0] : null,
         );
     }
