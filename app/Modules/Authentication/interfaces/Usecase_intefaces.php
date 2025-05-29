@@ -111,6 +111,7 @@ interface Usecase_intefaces
 
     //dashboard view
     public function viewUserDashboardCase($authDomain, $request): View|Throwable;
+    public function viewAdminDashboardCase($authDomain, $request): View|Throwable;
 
     public function updateOrCreateUserProfileCase(
         //auth request profile

@@ -229,6 +229,22 @@ class Usecase extends Services implements Usecase_intefaces
      * ================================================================================================================================================================
      */
 
+    /**
+     * @method viewAdminDashboardCase
+     * @param $authDomain
+     * @param $request
+     * @return View|Throwable
+     */
+    public function viewAdminDashboardCase($authDomain, $request): View|Throwable
+    {
+        try {
+            $data = $this->viewAdminDashboardServices($authDomain);
+            return view('Modules.Administrator.dashboard', compact('data'));
+        } catch (\Throwable $t) {
+            return $t;
+        }
+    }
+
     public function adminLoginCase(
         //authentication request(login)
         $authRequestLogin,

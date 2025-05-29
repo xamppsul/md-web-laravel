@@ -418,4 +418,6 @@ class Repository implements Repository_interfaces
     {
         Auth::guard('admin')->logout();
     }
+
+    //dashboard admin
 }

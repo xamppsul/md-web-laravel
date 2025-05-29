@@ -174,4 +174,22 @@ class Services extends Repository implements Services_interfaces
         $this->AdminLoggoutSessionRepository();
         return $this->AdminRedirectLogoutSuccessRepository($messageSuccessLogout);
     }
+
+    /**
+     * @method viewAdminDashboardServices
+     * @param $authDomain
+     * @return array
+     */
+
+    public function viewAdminDashboardServices($authDomain): array
+    {
+        return array(
+            'jumlah_dosen' => '',
+            'aktivitas_user' => '',
+            'total_aset_rusak' => '',
+            'total_kerjasama' => '',
+            'total_aset' => '',
+            'total_kegiatan_dalam_tahun' => '',
+        );
+    }
 }

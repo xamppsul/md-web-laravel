@@ -68,59 +68,47 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <form action="{{ route('admin.master.Asset.index') }}" method="GET"
-                                                    class="row g-3 app-form rounded-control" id="filterFormAset">
+                                                    class="row g-3 app-form rounded-control" id="filterFormMasterAset">
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kondisi Aset</label>
-                                                        <select class="form-select" aria-label="Select kondisi aset"
+                                                        <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
+                                                        <select class="form-select" aria-label="Select Kondisi Aset"
                                                             name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
-                                                            <option value="1"
-                                                                {{ request('kondisi_aset') == '1' ? 'selected' : '' }}>Baik
-                                                            </option>
-                                                            <option value="2"
-                                                                {{ request('kondisi_aset') == '2' ? 'selected' : '' }}>Rusak
-                                                            </option>
-                                                            <option value="3"
-                                                                {{ request('kondisi_aset') == '3' ? 'selected' : '' }}>
-                                                                Perlu Perbaikan</option>
+                                                            @foreach ($data['aset_kondisi'] as $kondisi_aset)
+                                                                <option value="{{ $kondisi_aset->id }}"
+                                                                    {{ request('kondisi_aset') == $kondisi_aset->id ? 'selected' : '' }}>
+                                                                    {{ $kondisi_aset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Status Aset</label>
-                                                        <select class="form-select" aria-label="Select status aset"
+                                                        <label class="form-label" for="status_aset">Status Aset</label>
+                                                        <select class="form-select" aria-label="Select Klasifikasi"
                                                             name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
-                                                            <option value="1"
-                                                                {{ request('status_aset') == '1' ? 'selected' : '' }}>Aktif
-                                                            </option>
-                                                            <option value="2"
-                                                                {{ request('status_aset') == '2' ? 'selected' : '' }}>Tidak
-                                                                Aktif</option>
-                                                            <option value="3"
-                                                                {{ request('status_aset') == '3' ? 'selected' : '' }}>
-                                                                Dihapus</option>
+                                                            @foreach ($data['aset_status'] as $status_aset)
+                                                                <option value="{{ $status_aset->id }}"
+                                                                    {{ request('status_aset') == $status_aset->id ? 'selected' : '' }}>
+                                                                    {{ $status_aset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kategori aset</label>
-                                                        <select class="form-select" aria-label="Select kategori aset"
+                                                        <label class="form-label" for="kategori_aset">Kategori aset</label>
+                                                        <select class="form-select" aria-label="Select Klasifikasi"
                                                             name="kategori_aset" required>
                                                             <option selected="">Pilih Kategori Aset</option>
-                                                            <option value="1"
-                                                                {{ request('kategori_aset') == '1' ? 'selected' : '' }}>
-                                                                Elektronik</option>
-                                                            <option value="2"
-                                                                {{ request('kategori_aset') == '2' ? 'selected' : '' }}>
-                                                                Kendaraan</option>
-                                                            <option value="3"
-                                                                {{ request('kategori_aset') == '3' ? 'selected' : '' }}>
-                                                                Furniture</option>
-                                                            <option value="4"
-                                                                {{ request('kategori_aset') == '4' ? 'selected' : '' }}>
-                                                                lainnya</option>
+                                                            @foreach ($data['aset_kategori'] as $kategori_aset)
+                                                                <option value="{{ $kategori_aset->id }}"
+                                                                    {{ request('kategori_aset') == $kategori_aset->id ? 'selected' : '' }}>
+                                                                    {{ $kategori_aset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    {{-- <div class="col-md-6">
                                                         <label class="form-label" for="userName">Tanggal perolehan(aset
                                                             diterima/dibeli)</label>
                                                         <input class="form-control basic-date" type="text"
@@ -139,13 +127,13 @@
                                                         <input class="form-control" id="kode_aset"
                                                             placeholder="Masukan Kode Aset" type="text"
                                                             name="kode_aset" value="{{ request('kode_aset') }}">
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
                                                         </button>
                                                         <button class="btn btn-warning b-r-22"
-                                                            onclick="clearFilterFormAset()" value="Clear">Clear
+                                                            onclick="clearfilterFormMasterAset()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -545,8 +533,8 @@
         });
     </script> --}}
     <script type="text/javascript">
-        function clearFilterFormAset() {
-            const form = document.getElementById('filterFormAset');
+        function clearfilterFormMasterAset() {
+            const form = document.getElementById('filterFormMasterAset');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';
