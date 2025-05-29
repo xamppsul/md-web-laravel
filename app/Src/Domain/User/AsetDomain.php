@@ -2,6 +2,7 @@
 
 namespace App\Src\Domain\User;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AsetDomain
@@ -117,7 +118,8 @@ class AsetDomain
     public function postDataAsetDomain($request): void
     {
         DB::insert('insert into aset 
-            (kode_aset,
+            (users_id,
+            kode_aset,
             nama_aset,
             aset_kategori,
             merek_model,
@@ -129,7 +131,8 @@ class AsetDomain
             harga_perolehan,
             sumber_dana,
             keterangan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            Auth::guard('user')->user()->id,
             $request->kode_aset,
             $request->nama_aset,
             $request->aset_kategori,
@@ -156,6 +159,7 @@ class AsetDomain
     public function updateDataAsetDomain($id, $request): void
     {
         DB::update('UPDATE aset SET 
+            users_id = ?, 
             kode_aset = ?, 
             nama_aset = ?, 
             aset_kategori = ?, 
@@ -170,6 +174,7 @@ class AsetDomain
             keterangan = ?, 
             updated_at = ?
             WHERE id = ?', [
+            Auth::guard('user')->user()->id,
             $request->kode_aset,
             $request->nama_aset,
             $request->aset_kategori,

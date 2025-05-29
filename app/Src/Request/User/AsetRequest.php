@@ -12,7 +12,7 @@ class AsetRequest
             'nama_aset' => 'required|string',
             'aset_kategori' => 'required|exists:aset_kategori,id',
             'model_merk_aset' => 'required',
-            'tahun' => 'required|year',
+            'tahun' => 'required|integer',
             'tanggal_perolehan_aset' => 'required',
             'lokasi_aset' => 'required',
             'aset_kondisi' => 'required|exists:aset_kondisi,id',
@@ -30,11 +30,11 @@ class AsetRequest
     public static function updateRequestData($request): array
     {
         return $request->validate([
-            'kode_aset' => 'required|unique:aset,kode_aset',
+            'kode_aset' => 'required',
             'nama_aset' => 'required|string',
             'aset_kategori' => 'required|exists:aset_kategori,id',
             'model_merk_aset' => 'required',
-            'tahun' => 'required|year',
+            'tahun' => 'required|integer',
             'tanggal_perolehan_aset' => 'required',
             'lokasi_aset' => 'required',
             'aset_kondisi' => 'required|exists:aset_kondisi,id',
