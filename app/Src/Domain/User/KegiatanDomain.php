@@ -129,7 +129,7 @@ class KegiatanDomain
             file_kegiatan,
             kegiatan_status,
             keterangan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             Auth::guard('user')->user()->id,
             $request->nama_kegiatan,
             $request->kegiatan_jenis,
