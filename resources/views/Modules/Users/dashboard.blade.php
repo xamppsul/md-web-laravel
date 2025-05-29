@@ -114,16 +114,14 @@
                                                             class="row g-3 app-form rounded-control"
                                                             id="filterFormTahunKegiatan">
                                                             <div class="col-md-6">
-                                                                <label class="form-label" for="kegiatan_tahun">Tahun
-                                                                    Kegiatan</label>
+                                                                <label class="form-label" for="tahun">Tahun</label>
                                                                 <select
-                                                                    class="form-select @error('kegiatan_tahun') is-invalid @enderror"
-                                                                    aria-label="Select tahun kegiatan" name="kegiatan_tahun"
-                                                                    required>
+                                                                    class="form-select @error('tahun') is-invalid @enderror"
+                                                                    aria-label="Select tahun" name="tahun" required>
                                                                     <option selected="">Pilih Tahun Terbit</option>
                                                                     @for ($i = date('Y'); $i >= 1990; $i--)
                                                                         <option value="{{ $i }}"
-                                                                            {{ request('kegiatan_tahun') == $i ? 'selected' : '' }}>
+                                                                            {{ request('tahun') == $i ? 'selected' : '' }}>
                                                                             {{ $i }}</option>
                                                                     @endfor
                                                                 </select>
