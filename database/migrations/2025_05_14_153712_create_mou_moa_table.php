@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_mitra');
             $table->string('judul_kerjasama');
             $table->foreignId('mou_moa_klasifikasi')->references('id')->on('mou_moa_klasifikasi');
+            $table->year('tahun');
             $table->date('tanggal_mulai');
             $table->date('tanggal_akhir');
             $table->foreignId('mou_moa_status')->references('id')->on('mou_moa_status');

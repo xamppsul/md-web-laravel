@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('users_id')->references('id')->on('users'); //roles faculty: for campus activity
             $table->string('nama_kegiatan');
             $table->foreignId('kegiatan_jenis')->references('id')->on('kegiatan_jenis');
+            $table->year('tahun');
             $table->date('tanggal_kegiatan');
             $table->string('tempat_lokasi');
             $table->string('penyelenggara');

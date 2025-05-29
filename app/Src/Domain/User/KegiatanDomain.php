@@ -41,6 +41,7 @@ class KegiatanDomain
             SELECT kegiatan.*, 
                 kegiatan_jenis.name AS kegiatan_jenis_name, 
                 kegiatan_status.name AS kegiatan_status_name,
+                users.id AS faculty_id,
                 users.name AS faculty_name
             FROM kegiatan
                 INNER JOIN kegiatan_jenis ON kegiatan.kegiatan_jenis = kegiatan_jenis.id
@@ -120,6 +121,7 @@ class KegiatanDomain
             (users_id,
             nama_kegiatan,
             kegiatan_jenis,
+            tahun,
             tanggal_kegiatan,
             tempat_lokasi,
             penyelenggara,
@@ -128,10 +130,11 @@ class KegiatanDomain
             file_kegiatan,
             kegiatan_status,
             keterangan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             Auth::guard('user')->user()->id,
             $request->nama_kegiatan,
             $request->kegiatan_jenis,
+            $request->tahun,
             $request->tanggal_kegiatan,
             $request->tempat_lokasi,
             $request->penyelenggara,
@@ -159,6 +162,7 @@ class KegiatanDomain
             users_id = ?,
             nama_kegiatan = ?,
             kegiatan_jenis = ?,
+            tahun = ?,
             tanggal_kegiatan = ?,
             tempat_lokasi = ?,
             penyelenggara = ?,
@@ -172,6 +176,7 @@ class KegiatanDomain
             Auth::guard('user')->user()->id,
             $request->nama_kegiatan,
             $request->kegiatan_jenis,
+            $request->tahun,
             $request->tanggal_kegiatan,
             $request->tempat_lokasi,
             $request->penyelenggara,

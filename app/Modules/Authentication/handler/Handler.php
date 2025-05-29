@@ -142,7 +142,7 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function viewUserDashboard(): View|Throwable
     {
-        return $this->viewUserDashboardCase($this->authDomain);
+        return $this->viewUserDashboardCase($this->authDomain, $this->request);
     }
 
     /**

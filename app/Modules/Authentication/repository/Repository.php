@@ -314,6 +314,49 @@ class Repository implements Repository_interfaces
         return $authDomain->getAllListPublikasiDomain();
     }
 
+    //faculty
+
+    /**
+     * @method UserDashboardGetCountAsetBaseFacultyRepository
+     * @param mixed $authDomain
+     * @return array
+     */
+    public function UserDashboardGetCountAsetBaseFacultyRepository(mixed $authdomain): array
+    {
+        return $authdomain->getCountAsetDomainBaseFaculty();
+    }
+
+    /**
+     * @method UserDashboardGetCountKerjasamaBaseFacultyRepository
+     * @param mixed $authDomain
+     * @return array
+     */
+    public function UserDashboardGetCountKerjasamaBaseFacultyRepository(mixed $authdomain): array
+    {
+        return $authdomain->getCountKerjasamaDomainBaseFaculty();
+    }
+
+    /**
+     * @method UserDashboardListMouBaseFacultyAndYearRepository
+     * @param mixed $authDomain
+     * @param $request
+     * @return array
+     */
+    public function UserDashboardListMouBaseFacultyAndYearRepository(mixed $authdomain, $request): array
+    {
+        return $authdomain->getListMouDomainBaseFacultyAndYear($request);
+    }
+
+    /**
+     * @method UserDashboardGetCountTotalKegiatanInYearRepository
+     * @param mixed $authDomain
+     * @return array
+     */
+    public function UserDashboardGetCountTotalKegiatanInYearRepository(mixed $authdomain): array
+    {
+        return $authdomain->getCountTotalKegiatanInYearDomainBaseFaculty();
+    }
+
     /**
      * ================================================================================================================================================================
      * feature: auth admin

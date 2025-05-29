@@ -2,6 +2,7 @@
 
 namespace App\Src\Domain\User;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MouMoaDomain
@@ -41,6 +42,7 @@ class MouMoaDomain
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
+                users.id AS penanggung_jawab_id,
                 users.name AS penanggung_jawab_name,
                 mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
@@ -54,7 +56,7 @@ class MouMoaDomain
                 AND mou_moa.mou_moa_klasifikasi LIKE ?
                 AND mou_moa.mou_moa_status LIKE ?
                 AND mou_moa.mou_moa_bidang_kerjasama LIKE ?
-                AND mou_moa.users_id LIKE ?
+                AND mou_moa.users_id = ?
             ORDER BY mou_moa.nomor_dokumen DESC
         ', [
             "%$request->mou_moa_jenis_dokumen%",
@@ -62,7 +64,7 @@ class MouMoaDomain
             "%$request->mou_moa_klasifikasi%",
             "%$request->mou_moa_status%",
             "%$request->mou_moa_bidang_kerjasama%",
-            "%$request->users_id%"
+            Auth::guard('user')->user()->id
         ]);
     }
 
@@ -150,6 +152,7 @@ class MouMoaDomain
             nama_mitra,
             judul_kerjasama,
             mou_moa_klasifikasi,
+            tahun,
             tanggal_mulai,
             tanggal_akhir,
             mou_moa_status,
@@ -157,17 +160,18 @@ class MouMoaDomain
             users_id,
             dokumen_pendukung,
             keterangan_tambahan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->nomor_dokumen,
             $request->mou_moa_jenis_dokumen,
             $request->nama_mitra,
             $request->judul_kerjasama,
             $request->mou_moa_klasifikasi,
+            $request->tahun,
             $request->tanggal_mulai,
             $request->tanggal_akhir,
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
-            $request->users_id,
+            Auth::guard('user')->user()->id,
             $filePendukung,
             $request->keterangan_tambahan,
             now(),
@@ -190,6 +194,7 @@ class MouMoaDomain
             nama_mitra = ?,
             judul_kerjasama = ?,
             mou_moa_klasifikasi = ?,
+            tahun = ?,
             tanggal_mulai = ?,
             tanggal_akhir = ?,
             mou_moa_status = ?,
@@ -204,11 +209,12 @@ class MouMoaDomain
             $request->nama_mitra,
             $request->judul_kerjasama,
             $request->mou_moa_klasifikasi,
+            $request->tahun,
             $request->tanggal_mulai,
             $request->tanggal_akhir,
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
-            $request->users_id,
+            Auth::guard('user')->user()->id,
             $filePendukung,
             $request->keterangan_tambahan,
             now(),
