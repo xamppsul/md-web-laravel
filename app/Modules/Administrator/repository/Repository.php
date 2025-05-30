@@ -218,6 +218,7 @@ class Repository implements Repository_interfaces
         return array(
             'status' => $kegiatanDomain->getStatusKegiatan(),
             'jenis' => $kegiatanDomain->getJenisKegiatan(),
+            'user' => $kegiatanDomain->getUserByRoleFaculty(),
             'kegiatan' => $kegiatanDomain->getAllKegiatanDomain($request),
         );
     }
@@ -254,6 +255,7 @@ class Repository implements Repository_interfaces
         return array(
             'status' => $kegiatanDomain->getStatusKegiatan(),
             'jenis' => $kegiatanDomain->getJenisKegiatan(),
+            'user' => $kegiatanDomain->getUserByRoleFaculty(),
             'kegiatan' => $kegiatanDomain->getDetailKegiatanDomain($id)[0],
         );
     }

@@ -129,6 +129,28 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="col-md-6">
+                                                        <label class="form-label" for="users_id">Fakultas</label>
+                                                        <select
+                                                            class="form-select @error('users_id')
+                                                            is-invalid
+                                                        @enderror"
+                                                            aria-label="Select Penanggung Jawab" name="users_id">
+                                                            <option selected="">Pilih Fakultas</option>
+                                                            @foreach ($data['user'] as $users_id)
+                                                                <option value="{{ $users_id->id }}"
+                                                                    {{ old('users_id') == $users_id->id ? 'selected' : '' }}>
+                                                                    {{ $users_id->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('users_id')
+                                                                <span class="text-danger"
+                                                                    id="users_id">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label class="form-label" for="nama_kegiatan">Nama
                                                             Kegiatan</label>
                                                         <input
@@ -169,6 +191,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label class="form-label" for="tahun_mou_moa">Tahun
+                                                            Kegiatan</label>
+                                                        <select class="form-select @error('tahun') is-invalid @enderror"
+                                                            aria-label="Select tahun kegiatan" name="tahun" required>
+                                                            <option selected="">Pilih Tahun Kegiatan</option>
+                                                            @for ($i = date('Y'); $i >= 1990; $i--)
+                                                                <option value="{{ $i }}"
+                                                                    {{ old('tahun') == $i ? 'selected' : '' }}>
+                                                                    {{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('tahun')
+                                                                <span class="text-danger"
+                                                                    id="tahun">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label class="form-label" for="tanggal_kegiatan">Tanggal
                                                             Kegiatan</label>
                                                         <input
@@ -191,7 +232,7 @@
                                                         <input
                                                             class="form-control @error('tempat_lokasi') is-invalid @enderror"
                                                             id="tempat_lokasi" name="tempat_lokasi"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Tempat Kegiatan" type="text"
                                                             value="{{ old('tempat_lokasi') }}">
                                                         <div class="mt-1">
                                                             @error('tempat_lokasi')
@@ -206,7 +247,7 @@
                                                         <input
                                                             class="form-control @error('penyelenggara') is-invalid @enderror"
                                                             id="penyelenggara" name="penyelenggara"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Penyelenggara" type="text"
                                                             value="{{ old('penyelenggara') }}">
                                                         <div class="mt-1">
                                                             @error('penyelenggara')
@@ -221,7 +262,7 @@
                                                         <input
                                                             class="form-control @error('jumlah_peserta') is-invalid @enderror"
                                                             id="jumlah_peserta" name="jumlah_peserta"
-                                                            placeholder="Masukan Nomor Dokumen" type="number"
+                                                            placeholder="Masukan Jumlah Peserta" type="number"
                                                             value="{{ old('jumlah_peserta') }}">
                                                         <div class="mt-1">
                                                             @error('jumlah_peserta')
@@ -257,7 +298,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kegiatan_status">Jenis
+                                                        <label class="form-label" for="kegiatan_status">Status
                                                             Kegiatan</label>
                                                         <select
                                                             class="form-select @error('kegiatan_status')
