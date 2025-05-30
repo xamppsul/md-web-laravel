@@ -217,22 +217,23 @@
                                         @endif
                                     </li>
 
-                                    @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->roles_id == 1)
+                                    <!-- disable menu profile on admin-->
+                                    {{-- @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->roles_id == 1)
                                         <li>
                                             <a class="f-w-500" href="{{ __('profile') }}" target="_blank">
-                                                {{-- <i class="iconoir-user-love pe-1 f-s-20"></i> Profile --}}
                                                 <i class="iconoir-user-circle pe-1 f-s-20"></i> Admin Profile
                                             </a>
                                         </li>
-                                    @endif
+                                    @endif --}}
 
-                                    @if (Auth::guard('user')->check() && Auth::guard('user')->user()->roles_id == 3)
+                                    <!-- disable menu profile on faculty-->
+                                    {{-- @if (Auth::guard('user')->check() && Auth::guard('user')->user()->roles_id == 3)
                                         <li>
                                             <a class="f-w-500" href="{{ __('profile') }}" target="_blank">
                                                 <i class="iconoir-user-love pe-1 f-s-20"></i> Faculty Profile
                                             </a>
                                         </li>
-                                    @endif
+                                    @endif --}}
                                     <li class="app-divider-v dotted py-1"></li>
                                     <li>
                                         @if (Auth::guard('user')->check())

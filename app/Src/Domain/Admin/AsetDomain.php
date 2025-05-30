@@ -38,27 +38,23 @@ class AsetDomain
     ): array {
         return DB::select('
             SELECT aset.*, 
-                kategori_aset.name AS kategori_aset_name, 
-                kondisi_aset.name AS kondisi_aset_name,
-                status_aset.name AS status_aset_name
+                aset_kategori.name AS aset_kategori_name, 
+                aset_kondisi.name AS aset_kondisi_name,
+                aset_status.name AS aset_status_name,
+                users.name AS faculty_name
             FROM aset
-                INNER JOIN kategori_aset ON aset.kategori_aset = kategori_aset.id
-                INNER JOIN kondisi_aset ON aset.kondisi_aset = kondisi_aset.id
-                INNER JOIN status_aset ON aset.status_aset = status_aset.id
-            WHERE aset.kondisi_aset LIKE ? 
-                AND aset.status_aset LIKE ? 
-                AND aset.kategori_aset LIKE ?
-                AND aset.tanggal_perolehan LIKE ? 
-                AND aset.nama_aset LIKE ? 
-                AND aset.kode_aset LIKE ?
+                INNER JOIN aset_kategori ON aset.aset_kategori = aset_kategori.id
+                INNER JOIN aset_kondisi ON aset.aset_kondisi = aset_kondisi.id
+                INNER JOIN aset_status ON aset.aset_status = aset_status.id
+                INNER JOIN users ON aset.users_id = users.id
+            WHERE aset.aset_kondisi LIKE ? 
+                AND aset.aset_status LIKE ? 
+                AND aset.aset_kategori LIKE ?
             ORDER BY aset.kode_aset DESC
         ', [
             "%$request->kondisi_aset%",
             "%$request->status_aset%",
-            "%$request->kategori_aset%",
-            "%$request->tanggal_perolehan%",
-            "%$request->nama_aset%",
-            "%$request->kode_aset%"
+            "%$request->kategori_aset%"
         ]);
     }
 
@@ -71,13 +67,13 @@ class AsetDomain
     {
         return DB::select('
             SELECT aset.*, 
-            kategori_aset.name AS kategori_aset_name, 
-            kondisi_aset.name AS kondisi_aset_name,
-            status_aset.name AS status_aset_name
+                aset_kategori.name AS aset_kategori_name, 
+                aset_kondisi.name AS aset_kondisi_name,
+                aset_status.name AS aset_status_name
             FROM aset
-            INNER JOIN kategori_aset ON aset.kategori_aset = kategori_aset.id
-            INNER JOIN kondisi_aset ON aset.kondisi_aset = kondisi_aset.id
-            INNER JOIN status_aset ON aset.status_aset = status_aset.id
+                INNER JOIN aset_kategori ON aset.aset_kategori = aset_kategori.id
+                INNER JOIN aset_kondisi ON aset.aset_kondisi = aset_kondisi.id
+                INNER JOIN aset_status ON aset.aset_status = aset_status.id
             WHERE aset.id = ?
         ', [$id]);
     }
@@ -88,7 +84,7 @@ class AsetDomain
      */
     public function getKategoriAsetDomain(): array
     {
-        return DB::select('SELECT * FROM kategori_aset');
+        return DB::select('SELECT * FROM aset_kategori');
     }
 
     /**
@@ -97,7 +93,7 @@ class AsetDomain
      */
     public function getKondisiAsetDomain(): array
     {
-        return DB::select('SELECT * FROM kondisi_aset');
+        return DB::select('SELECT * FROM aset_kondisi');
     }
 
     /**
@@ -106,7 +102,16 @@ class AsetDomain
      */
     public function getStatusAsetDomain(): array
     {
-        return DB::select('SELECT * FROM status_aset');
+        return DB::select('SELECT * FROM aset_status');
+    }
+
+    /**
+     * @method getFacultyDomain
+     * @return array
+     */
+    public function getUserFacultyDomain(): array
+    {
+        return DB::select('SELECT * FROM users WHERE roles_id = ?', [3]); //get user with role ID:3 is faculty
     }
 
     /**
@@ -117,26 +122,30 @@ class AsetDomain
     public function postDataAsetDomain($request): void
     {
         DB::insert('insert into aset 
-            (kode_aset,
+            (users_id,
+            kode_aset,
             nama_aset,
-            kategori_aset,
+            aset_kategori,
             merek_model,
+            tahun,
             tanggal_perolehan,
             lokasi_aset,
-            kondisi_aset,
-            status_aset,
+            aset_kondisi,
+            aset_status,
             harga_perolehan,
             sumber_dana,
             keterangan,
-            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            $request->users_id, //store ID user from roles faculty
             $request->kode_aset,
             $request->nama_aset,
-            $request->kategori_aset,
+            $request->aset_kategori,
             $request->model_merk_aset,
+            $request->tahun,
             $request->tanggal_perolehan_aset,
             $request->lokasi_aset,
-            $request->kondisi_aset,
-            $request->status_aset,
+            $request->aset_kondisi,
+            $request->aset_status,
             $request->harga_perolehan_aset,
             $request->sumber_dana_aset,
             $request->keterangan_aset,
@@ -154,27 +163,31 @@ class AsetDomain
     public function updateDataAsetDomain($id, $request): void
     {
         DB::update('UPDATE aset SET 
+            users_id = ?, 
             kode_aset = ?, 
             nama_aset = ?, 
-            kategori_aset = ?, 
+            aset_kategori = ?, 
             merek_model = ?, 
+            tahun = ?, 
             tanggal_perolehan = ?, 
             lokasi_aset = ?, 
-            kondisi_aset = ?, 
-            status_aset = ?, 
+            aset_kondisi = ?, 
+            aset_status = ?, 
             harga_perolehan = ?, 
             sumber_dana = ?, 
             keterangan = ?, 
             updated_at = ?
             WHERE id = ?', [
+            $request->users_id, //store ID user from roles faculty
             $request->kode_aset,
             $request->nama_aset,
-            $request->kategori_aset,
+            $request->aset_kategori,
             $request->model_merk_aset,
+            $request->tahun,
             $request->tanggal_perolehan_aset,
             $request->lokasi_aset,
-            $request->kondisi_aset,
-            $request->status_aset,
+            $request->aset_kondisi,
+            $request->aset_status,
             $request->harga_perolehan_aset,
             $request->sumber_dana_aset,
             $request->keterangan_aset,

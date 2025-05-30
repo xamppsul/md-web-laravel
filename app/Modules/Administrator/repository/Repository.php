@@ -3,6 +3,7 @@
 namespace App\Modules\Administrator\repository;
 
 use App\Modules\Administrator\interfaces\Repository_interfaces;
+use Illuminate\Support\Facades\DB;
 
 class Repository implements Repository_interfaces
 {
@@ -21,9 +22,10 @@ class Repository implements Repository_interfaces
     public function indexAssetRepository($asetDomain, $request): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset_kategori' => $asetDomain->getKategoriAsetDomain(),
+            'aset_status' => $asetDomain->getStatusAsetDomain(),
+            'aset_kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'user_faculty' => $asetDomain->getUserFacultyDomain(),
             'aset' => $asetDomain->getAllAsetDomain($request),
         );
     }
@@ -56,9 +58,10 @@ class Repository implements Repository_interfaces
     public function editAssetRepository(int $id, $asetDomain): array
     {
         return array(
-            'kategori' => $asetDomain->getKategoriAsetDomain(),
-            'status' => $asetDomain->getStatusAsetDomain(),
-            'kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'aset_kategori' => $asetDomain->getKategoriAsetDomain(),
+            'aset_status' => $asetDomain->getStatusAsetDomain(),
+            'aset_kondisi' => $asetDomain->getKondisiAsetDomain(),
+            'user_faculty' => $asetDomain->getUserFacultyDomain(),
             'aset' => $asetDomain->getDetailAsetDomain($id)[0],
         );
     }
@@ -179,14 +182,21 @@ class Repository implements Repository_interfaces
         $mouMoaDomain->deleteDataMouMoaDomain($id);
     }
 
-    //============================= file upload ==============================
+    //============================= file upload:moumoa ==============================
 
-    public function doUploadFilePendukung($request): string
+    /**
+     * @method doUploadFilePendukung
+     * @param $request
+     * @param $DB_USER
+     * @return string
+     */
+    public function doUploadFilePendukung($request, $DB_USER): string
     {
+        //init file upload
         $file = $request->file('dokumen_pendukung');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
-        $dirUploadFile = 'docsMouMoa';
+        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/MouMoa");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
@@ -208,6 +218,7 @@ class Repository implements Repository_interfaces
         return array(
             'status' => $kegiatanDomain->getStatusKegiatan(),
             'jenis' => $kegiatanDomain->getJenisKegiatan(),
+            'user' => $kegiatanDomain->getUserByRoleFaculty(),
             'kegiatan' => $kegiatanDomain->getAllKegiatanDomain($request),
         );
     }
@@ -244,6 +255,7 @@ class Repository implements Repository_interfaces
         return array(
             'status' => $kegiatanDomain->getStatusKegiatan(),
             'jenis' => $kegiatanDomain->getJenisKegiatan(),
+            'user' => $kegiatanDomain->getUserByRoleFaculty(),
             'kegiatan' => $kegiatanDomain->getDetailKegiatanDomain($id)[0],
         );
     }
@@ -276,22 +288,37 @@ class Repository implements Repository_interfaces
         $kegiatanDomain->deleteDataKegiatanDomain($id);
     }
 
-    public function doUploadFileDaftarHadirKegiatan($request): string
+    //================================================ file upload:kegiatan ===============================================
+    /**
+     * @method doUploadFileDaftarHadirKegiatan
+     * @param $request
+     * @param $DB_USER
+     * @return string
+     */
+    public function doUploadFileDaftarHadirKegiatan($request, $DB_USER): string
     {
         $file = $request->file('file_daftar_hadir');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
         $dirUploadFile = 'docsKegiatanDaftarHadir';
+        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DaftarHadirKegiatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
 
-    public function doUploadFileDokumentasiKegiatan($request): string
+    /**
+     * @method doUploadFileDokumentasiKegiatan
+     * @param $request
+     * @param $DB_USER
+     * @return string
+     */
+    public function doUploadFileDokumentasiKegiatan($request, $DB_USER): string
     {
         $file = $request->file('file_kegiatan');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
         $dirUploadFile = 'docsFileKegiatan';
+        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DokumentasiKegiatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

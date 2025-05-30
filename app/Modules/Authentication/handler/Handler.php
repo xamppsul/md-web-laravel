@@ -218,6 +218,6 @@ class Handler extends Usecase implements Handler_interfaces
      */
     public function viewAdminDashboard(): View
     {
-        return view('Modules.Administrator.dashboard');
+        return $this->viewAdminDashboardCase($this->authDomain, $this->request);
     }
 }

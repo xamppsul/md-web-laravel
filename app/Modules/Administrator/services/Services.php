@@ -107,11 +107,12 @@ class Services extends Repository implements Services_interfaces
      * @method storeMouMoaService
      * @param $request
      * @param $mouMoaDomain
+     * @param $DB_USER
      * @return void
      */
-    public function storeMouMoaService($request, $mouMoaDomain): void
+    public function storeMouMoaService($request, $mouMoaDomain, $DB_USER): void
     {
-        $this->storeMouMoaRepository($request, $mouMoaDomain, $this->doUploadFilePendukung($request));
+        $this->storeMouMoaRepository($request, $mouMoaDomain, $this->doUploadFilePendukung($request, $DB_USER));
     }
 
     /**
@@ -130,11 +131,12 @@ class Services extends Repository implements Services_interfaces
      * @param int $id
      * @param $mouMoaDomain
      * @param $request
+     * @param $DB_USER
      * @return void
      */
-    public function updateMouMoaService(int $id, $mouMoaDomain, $request): void
+    public function updateMouMoaService(int $id, $mouMoaDomain, $request, $DB_USER): void
     {
-        $this->updateMouMoaRepository($id, $mouMoaDomain, $request, $this->doUploadFilePendukung($request));
+        $this->updateMouMoaRepository($id, $mouMoaDomain, $request, $this->doUploadFilePendukung($request, $DB_USER));
     }
 
     /**
@@ -182,9 +184,9 @@ class Services extends Repository implements Services_interfaces
      * @param $fileKegiatan
      * @return void
      */
-    public function storeKegiatanService($request, $kegiatanDomain): void
+    public function storeKegiatanService($request, $kegiatanDomain, $DB_USER): void
     {
-        $this->storeKegiatanRepository($request, $kegiatanDomain, $this->doUploadFileDaftarHadirKegiatan($request), $this->doUploadFileDokumentasiKegiatan($request));
+        $this->storeKegiatanRepository($request, $kegiatanDomain, $this->doUploadFileDaftarHadirKegiatan($request, $DB_USER), $this->doUploadFileDokumentasiKegiatan($request, $DB_USER));
     }
 
     /**
@@ -205,9 +207,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updateKegiatanService(int $id, $kegiatanDomain, $request): void
+    public function updateKegiatanService(int $id, $kegiatanDomain, $request, $DB_USER): void
     {
-        $this->updateKegiatanRepository($id, $kegiatanDomain, $request, $this->doUploadFileDaftarHadirKegiatan($request), $this->doUploadFileDokumentasiKegiatan($request));
+        $this->updateKegiatanRepository($id, $kegiatanDomain, $request, $this->doUploadFileDaftarHadirKegiatan($request, $DB_USER), $this->doUploadFileDokumentasiKegiatan($request, $DB_USER));
     }
 
     /**

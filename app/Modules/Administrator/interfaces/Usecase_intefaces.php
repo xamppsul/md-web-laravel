@@ -50,7 +50,8 @@ interface Usecase_intefaces
     public function storeMouMoaCase(
         $request,
         $mouMoaDomain,
-        $mouMoaRequest
+        $mouMoaRequest,
+        $DB_USER,
     ): RedirectResponse;
     public function editMouMoaCase(
         int $id,
@@ -63,6 +64,7 @@ interface Usecase_intefaces
         $request,
         $mouMoaDomain,
         $mouMoaRequest,
+        $DB_USER,
     ): RedirectResponse;
     public function destroyMouMoaCase(
         int $id,
@@ -81,7 +83,8 @@ interface Usecase_intefaces
     public function storeKegiatanCase(
         $request,
         $kegiatanDomain,
-        $kegiatanRequest
+        $kegiatanRequest,
+        $DB_USER,
     ): RedirectResponse;
     public function editKegiatanCase(
         int $id,
@@ -94,6 +97,7 @@ interface Usecase_intefaces
         $request,
         $kegiatanDomain,
         $kegiatanRequest,
+        $DB_USER,
     ): RedirectResponse;
     public function destroyKegiatanCase(
         int $id,

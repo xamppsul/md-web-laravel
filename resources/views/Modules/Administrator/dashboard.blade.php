@@ -35,7 +35,7 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Aktivitas User</p>
-                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            <h2 class="text-success-dark mb-0">{{ $data['aktivitas_user']->total }}</h2>
                                         </div>
 
                                     </div>
@@ -47,14 +47,14 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Jumlah Dosen</p>
-                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            <h2 class="text-success-dark mb-0">{{ $data['jumlah_dosen']->total }}</h2>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <div class="col-12">
                                     <div class="card product-store-card">
                                         <div class="card-body">
@@ -67,21 +67,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="col-12">
-                                    <div class="card product-store-card">
-                                        <div class="card-body">
-                                            <i class="ph-bold  ph-circle circle-bg-img"></i>
-                                            <div>
-                                                <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Baik</p>
-                                                <h2 class="text-success-dark mb-0">-6,876</h2>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -93,7 +79,7 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Rusak</p>
-                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            <h2 class="text-success-dark mb-0">{{ $data['total_aset_rusak']->total }}</h2>
                                         </div>
 
                                     </div>
@@ -105,7 +91,7 @@
                                         <i class="ph-bold  ph-circle circle-bg-img"></i>
                                         <div>
                                             <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kerjasama</p>
-                                            <h2 class="text-success-dark mb-0">-6,876</h2>
+                                            <h2 class="text-success-dark mb-0">{{ $data['total_kerjasama']->total }}</h2>
                                         </div>
 
                                     </div>
@@ -115,7 +101,7 @@
                     </div>
 
                     <div class="col-md-6 col-xxl-4 ">
-                        <div class="card project-connect-card">
+                        {{-- <div class="card project-connect-card">
                             <div class="card-body pb-0">
                                 <div class="text-center">
                                     <h5 class=" mb-2 f-s-24">Total <span class="text-primary f-w-700">Kegiatan Dalam
@@ -131,6 +117,32 @@
                                             <div class="project-expense" id="projectExpense"></div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="col-12">
+                            <div class="card product-store-card">
+                                <div class="card-body">
+                                    <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                    <div>
+                                        <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Aset Baik</p>
+                                        <h2 class="text-success-dark mb-0">{{ $data['total_aset_baik']->total }} </h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card product-store-card">
+                                <div class="card-body">
+                                    <i class="ph-bold  ph-circle circle-bg-img"></i>
+                                    <div>
+                                        <p class="text-success f-s-18 f-w-600 txt-ellipsis-1">📝 Total Kegiatan Dalam Tahun:
+                                            {{ date('Y') }}</p>
+                                        <h2 class="text-success-dark mb-0">{{ $data['total_kegiatan_dalam_tahun']->total }}
+                                        </h2>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
