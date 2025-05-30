@@ -285,10 +285,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="tahun_aset">Tahun
+                                                        <label class="form-label" for="tahun_mou_moa">Tahun
                                                             Mou/Moa</label>
                                                         <select class="form-select @error('tahun') is-invalid @enderror"
-                                                            aria-label="Select tahun aset" name="tahun" required>
+                                                            aria-label="Select tahun mou/moa" name="tahun" required>
                                                             <option selected="">Pilih Tahun Mou/Moa</option>
                                                             @for ($i = date('Y'); $i >= 1990; $i--)
                                                                 <option value="{{ $i }}"

@@ -52,9 +52,11 @@ class MouMoaRequest
             'dokumen_pendukung' => 'required|file|mimes:pdf,doc,docx|max:2048',
             'keterangan_tambahan' => 'required|string',
         ], [
-            'unique' => ':attribute sudah tersedia harap gunakan yang lain',
             'required' => ':attribute wajib di isi',
-            'exists' => ':attribute tidak ditemukan di database',
+            'users_id.exists' => 'penanggung jawab tidak ditemukan di database',
+            'mou_moa_klasifikasi.exists' => 'klasifikasi tidak ditemukan di database',
+            'mou_moa_bidang_kerjasama.exists' => 'bidang kerjasama tidak ditemukan di database',
+            'mou_moa_jenis_dokumen.exists' => 'jenis dokumen tidak ditemukan di database',
             'dokumen_pendukung.required' => 'Dokumen pendukung wajib diisi',
             'dokumen_pendukung.file' => 'File dokumen tidak valid',
             'dokumen_pendukung.mimes' => 'Tipe file harus pdf, doc, docx',

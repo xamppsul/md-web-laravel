@@ -79,6 +79,7 @@ class MouMoaDomain
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
+                users.id AS penanggung_jawab_id,
                 users.name AS penanggung_jawab_name,
                 mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
