@@ -18,9 +18,9 @@ interface Services_interfaces
      */
     public function indexMouMoaService($mouMoaDomain, $request): array;
     public function createMouMoaService();
-    public function storeMouMoaService($request, $mouMoaDomain): void;
+    public function storeMouMoaService($request, $mouMoaDomain, $DB_USER): void;
     public function editMouMoaService(int $id, $mouMoaDomain): array;
-    public function updateMouMoaService(int $id, $mouMoaDomain, $request): void;
+    public function updateMouMoaService(int $id, $mouMoaDomain, $request, $DB_USER): void;
     public function destroyMouMoaService(int $id, $mouMoaDomain): void;
     /**
      * master kegiatan

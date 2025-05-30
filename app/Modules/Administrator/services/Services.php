@@ -107,11 +107,12 @@ class Services extends Repository implements Services_interfaces
      * @method storeMouMoaService
      * @param $request
      * @param $mouMoaDomain
+     * @param $DB_USER
      * @return void
      */
-    public function storeMouMoaService($request, $mouMoaDomain): void
+    public function storeMouMoaService($request, $mouMoaDomain, $DB_USER): void
     {
-        $this->storeMouMoaRepository($request, $mouMoaDomain, $this->doUploadFilePendukung($request));
+        $this->storeMouMoaRepository($request, $mouMoaDomain, $this->doUploadFilePendukung($request, $DB_USER));
     }
 
     /**
@@ -130,11 +131,12 @@ class Services extends Repository implements Services_interfaces
      * @param int $id
      * @param $mouMoaDomain
      * @param $request
+     * @param $DB_USER
      * @return void
      */
-    public function updateMouMoaService(int $id, $mouMoaDomain, $request): void
+    public function updateMouMoaService(int $id, $mouMoaDomain, $request, $DB_USER): void
     {
-        $this->updateMouMoaRepository($id, $mouMoaDomain, $request, $this->doUploadFilePendukung($request));
+        $this->updateMouMoaRepository($id, $mouMoaDomain, $request, $this->doUploadFilePendukung($request, $DB_USER));
     }
 
     /**

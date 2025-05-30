@@ -18,13 +18,14 @@ use App\Src\Request\Admin\Master\MouMoaRequest;
 use App\Src\Request\Admin\Master\KegiatanRequest;
 use App\Src\Request\Admin\Master\UserMasterRequest;
 use App\Modules\Administrator\interfaces\Handler_interfaces;
+use Illuminate\Support\Facades\DB;
 
 class Handler extends Usecase implements Handler_interfaces
 {
     /**
      * construct injection
      */
-
+    private $DB;
     public function __construct(
         //aset
         private AsetDomain $asetDomain,
@@ -43,7 +44,9 @@ class Handler extends Usecase implements Handler_interfaces
         private ElfinderDomain $elfinderDomain,
         //log
         private LogUserDomain $logUserDomain,
-    ) {}
+    ) {
+        $this->DB = DB::table('users');
+    }
     /**
      * ==============================================================================================================================
      * feature: master data asset
@@ -164,6 +167,7 @@ class Handler extends Usecase implements Handler_interfaces
             $request,
             $this->mouMoaDomain,
             $this->mouMoaRequest,
+            $this->DB->where([['roles_id', '=', 3], ['id', '=', $request->users_id]])->first(),
         );
     }
 
@@ -196,6 +200,7 @@ class Handler extends Usecase implements Handler_interfaces
             $request,
             $this->mouMoaDomain,
             $this->mouMoaRequest,
+            $this->DB->where([['roles_id', '=', 3], ['id', '=', $request->users_id]])->first(),
         );
     }
 

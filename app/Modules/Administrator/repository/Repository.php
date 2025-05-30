@@ -184,14 +184,8 @@ class Repository implements Repository_interfaces
 
     //============================= file upload ==============================
 
-    public function doUploadFilePendukung($request): string
+    public function doUploadFilePendukung($request, $DB_USER): string
     {
-        //query user base role faculty
-        $DB_USER = DB::table('users')->where([
-            ['roles_id', '=', 3],
-            ['id', '=', $request->users_id]
-        ])->first();
-
         //init file upload
         $file = $request->file('dokumen_pendukung');
         $namaFile = time() . "_" . $file->getClientOriginalName();

@@ -194,13 +194,14 @@ class Usecase extends Services implements Usecase_intefaces
     public function storeMouMoaCase(
         $request,
         $mouMoaDomain,
-        $mouMoaRequest
+        $mouMoaRequest,
+        $DB_USER
     ): RedirectResponse {
         $mouMoaRequest->postRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->storeMouMoaService($request, $mouMoaDomain);
+            $this->storeMouMoaService($request, $mouMoaDomain, $DB_USER);
             DB::commit();
             return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil tambah mou/moa');
         } catch (\Exception $error) {
@@ -246,12 +247,13 @@ class Usecase extends Services implements Usecase_intefaces
         $request,
         $mouMoaDomain,
         $mouMoaRequest,
+        $DB_USER,
     ): RedirectResponse {
         $mouMoaRequest->updateRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->updateMouMoaService($id, $mouMoaDomain, $request);
+            $this->updateMouMoaService($id, $mouMoaDomain, $request, $DB_USER);
             DB::commit();
             return redirect()->route('admin.master.MouMoa.index')->with('success', 'Berhasil update mou/moa');
         } catch (\Exception $error) {
