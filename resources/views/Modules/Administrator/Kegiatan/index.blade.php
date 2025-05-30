@@ -450,7 +450,7 @@
                                     {{ __('Tidak ada file kegiatan') }}
                                 @else
                                     <a href="{{ asset("/MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DokumentasiKegiatan/{$kegiatan->file_kegiatan}") }}"
-                                        target="_blank">Buka file kegiatan</a>
+                                        target="_blank"><b>Buka file kegiatan</b></a>
                                 @endempty
                             </p>
                         </div>
