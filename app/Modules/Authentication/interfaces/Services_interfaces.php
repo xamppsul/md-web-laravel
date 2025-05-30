@@ -49,5 +49,6 @@ interface Services_interfaces
     ): void;
 
     public function viewUserDashboardServices($authDomain, int $users_id, $request): array;
+    public function viewAdminDashboardServices($authDomain): array;
     public function updateOrCreateUserProfileServices($authDomain, $request, int $users_id): mixed;
 }

@@ -2,7 +2,6 @@
 
 namespace App\Src\Domain\User;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -355,7 +354,7 @@ class AuthDomain
                 AND mou_moa.users_id = ?
             ORDER BY (mou_moa.tahun = YEAR(NOW())) DESC, mou_moa.tahun DESC
         ', [
-            is_null($request->tahun) ? Carbon::now()->year() : "%$request->tahun%", //if request filter is null then send year now and default send request base year selected
+            is_null($request->tahun) ? date('Y') : "%$request->tahun%", //if request filter is null then send year now and default send request base year selected
             Auth::guard('user')->user()->id
         ]);
     }
@@ -367,6 +366,62 @@ class AuthDomain
     public function getCountTotalKegiatanInYearDomainBaseFaculty(): array
     {
         return DB::select("SELECT COUNT(*) as total FROM kegiatan
-                WHERE users_id = ? AND tahun = ?", [Auth::guard('user')->user()->id, Carbon::now()->year()]);
+                WHERE users_id = ? AND tahun = ?", [Auth::guard('user')->user()->id, date('Y')]);
+    }
+
+    //================================ admin ====================================
+
+    /**
+     * @method getCountTotalKegiatanInYearDomain
+     * @return array
+     */
+    public function getCountTotalKegiatanInYearDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM kegiatan WHERE tahun = ?", [date('Y')]);
+    }
+
+    /**
+     * @method getCountTotalDosenDomain
+     * @return array
+     */
+    public function getCountTotalDosenDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM users WHERE roles_id = ?", [2]);
+    }
+
+    /**
+     * @method getCountTotalBadAsetDomain
+     * @return array
+     */
+    public function getCountTotalBadAsetDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM aset WHERE aset_kondisi = ?", [2]);
+    }
+
+    /**
+     * @method getCountTotalGoodAsetDomain
+     * @return array
+     */
+    public function getCountTotalGoodAsetDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM aset WHERE aset_kondisi = ?", [1]);
+    }
+
+    /**
+     * @method getCountTotalActivityUserDomain
+     * @return array
+     */
+    public function getCountTotalActivityUserDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM user_activity");
+    }
+
+    /**
+     * @method getCountTotalKerjasamaDomain
+     * @return array
+     */
+    public function getCountTotalKerjasamaDomain(): array
+    {
+        return DB::select("SELECT COUNT(*) as total FROM mou_moa");
     }
 }

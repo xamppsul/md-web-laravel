@@ -285,6 +285,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label class="form-label" for="tahun_mou_moa">Tahun
+                                                            Mou/Moa</label>
+                                                        <select class="form-select @error('tahun') is-invalid @enderror"
+                                                            aria-label="Select tahun mou/moa" name="tahun" required>
+                                                            <option selected="">Pilih Tahun Mou/Moa</option>
+                                                            @for ($i = date('Y'); $i >= 1990; $i--)
+                                                                <option value="{{ $i }}"
+                                                                    {{ old('tahun') == $i ? 'selected' : '' }}>
+                                                                    {{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('tahun')
+                                                                <span class="text-danger"
+                                                                    id="tahun">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label class="form-label" for="tanggal_mulai">Tanggal
                                                             Mulai</label>
                                                         <input
@@ -409,6 +428,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nomor Dokumen</th>
+                                        <th>Tahun</th>
                                         <th>Jenis Dokumen</th>
                                         <th>Penanggung Jawab</th>
                                         <th>Nama Mitra</th>
@@ -422,6 +442,7 @@
                                     @foreach ($data['moumoa'] as $mouMoa)
                                         <tr>
                                             <td>{{ $mouMoa->nomor_dokumen }}</td>
+                                            <td>{{ $mouMoa->tahun }}</td>
                                             <td>{{ $mouMoa->mou_moa_jenis_dokumen_name }}</td>
                                             <td>{{ $mouMoa->penanggung_jawab_name }}</td>
                                             <td><span class="badge text-light-primary">{{ $mouMoa->nama_mitra }}</span>
@@ -485,6 +506,8 @@
                         <div class="modal-body">
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nomor Dokumen:
                                 {{ $mouMoaData->nomor_dokumen }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tahun:
+                                {{ $mouMoaData->tahun }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Dokumen:
                                 {{ $mouMoaData->mou_moa_jenis_dokumen_name }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Mitra:
@@ -525,7 +548,8 @@
                                 {{ $mouMoaData->updated_at }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Dokumen Pendukung:
                             </p>
-                            <iframe src="{{ asset("/laraview/#../docsMouMoa/{$mouMoaData->dokumen_pendukung}") }}"
+                            <iframe
+                                src="{{ asset("/laraview/#../MD_disk/{$mouMoaData->penanggung_jawab_id}-{$mouMoaData->penanggung_jawab_name}/MouMoa/{$mouMoaData->dokumen_pendukung}") }}"
                                 width="450px" height="300px"></iframe>
                         </div>
                         <div class="modal-footer">

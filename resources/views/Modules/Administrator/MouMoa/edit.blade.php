@@ -147,6 +147,24 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <label class="form-label" for="tahun_mou_moa">Tahun
+                                    Mou/Moa</label>
+                                <select class="form-select @error('tahun') is-invalid @enderror"
+                                    aria-label="Select tahun mou/moa" name="tahun" required>
+                                    <option selected="">Pilih Tahun Mou/Moa</option>
+                                    @for ($i = date('Y'); $i >= 1990; $i--)
+                                        <option value="{{ $i }}"
+                                            {{ $data['moumoa']->tahun == $i ? 'selected' : '' }}>
+                                            {{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <div class="mt-1">
+                                    @error('tahun')
+                                        <span class="text-danger" id="tahun">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <label class="form-label" for="tanggal_mulai">Tanggal
                                     Mulai</label>
                                 <input
@@ -244,7 +262,7 @@
                                     {{ __('pendukung belum ada harap upload dokumen pendukung') }}
                                 @else
                                     <div class="mb-10">
-                                        <a href="{{ asset('docsMouMoa/' . $data['moumoa']->dokumen_pendukung) }}"
+                                        <a href="{{ asset("MD_disk/{$data['moumoa']->penanggung_jawab_id}-{$data['moumoa']->penanggung_jawab_name}/MouMoa/{$data['moumoa']->dokumen_pendukung}") }}"
                                             target="_blank">
                                             <b>Document:</b> Tersedia silahkan lihat dokumen
                                         </a>

@@ -129,6 +129,28 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="col-md-6">
+                                                        <label class="form-label" for="users_id">Fakultas</label>
+                                                        <select
+                                                            class="form-select @error('users_id')
+                                                            is-invalid
+                                                        @enderror"
+                                                            aria-label="Select Penanggung Jawab" name="users_id">
+                                                            <option selected="">Pilih Fakultas</option>
+                                                            @foreach ($data['user'] as $users_id)
+                                                                <option value="{{ $users_id->id }}"
+                                                                    {{ old('users_id') == $users_id->id ? 'selected' : '' }}>
+                                                                    {{ $users_id->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('users_id')
+                                                                <span class="text-danger"
+                                                                    id="users_id">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label class="form-label" for="nama_kegiatan">Nama
                                                             Kegiatan</label>
                                                         <input
@@ -169,6 +191,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label class="form-label" for="tahun_mou_moa">Tahun
+                                                            Kegiatan</label>
+                                                        <select class="form-select @error('tahun') is-invalid @enderror"
+                                                            aria-label="Select tahun kegiatan" name="tahun" required>
+                                                            <option selected="">Pilih Tahun Kegiatan</option>
+                                                            @for ($i = date('Y'); $i >= 1990; $i--)
+                                                                <option value="{{ $i }}"
+                                                                    {{ old('tahun') == $i ? 'selected' : '' }}>
+                                                                    {{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('tahun')
+                                                                <span class="text-danger"
+                                                                    id="tahun">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label class="form-label" for="tanggal_kegiatan">Tanggal
                                                             Kegiatan</label>
                                                         <input
@@ -191,7 +232,7 @@
                                                         <input
                                                             class="form-control @error('tempat_lokasi') is-invalid @enderror"
                                                             id="tempat_lokasi" name="tempat_lokasi"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Tempat Kegiatan" type="text"
                                                             value="{{ old('tempat_lokasi') }}">
                                                         <div class="mt-1">
                                                             @error('tempat_lokasi')
@@ -206,7 +247,7 @@
                                                         <input
                                                             class="form-control @error('penyelenggara') is-invalid @enderror"
                                                             id="penyelenggara" name="penyelenggara"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Penyelenggara" type="text"
                                                             value="{{ old('penyelenggara') }}">
                                                         <div class="mt-1">
                                                             @error('penyelenggara')
@@ -221,7 +262,7 @@
                                                         <input
                                                             class="form-control @error('jumlah_peserta') is-invalid @enderror"
                                                             id="jumlah_peserta" name="jumlah_peserta"
-                                                            placeholder="Masukan Nomor Dokumen" type="number"
+                                                            placeholder="Masukan Jumlah Peserta" type="number"
                                                             value="{{ old('jumlah_peserta') }}">
                                                         <div class="mt-1">
                                                             @error('jumlah_peserta')
@@ -257,7 +298,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kegiatan_status">Jenis
+                                                        <label class="form-label" for="kegiatan_status">Status
                                                             Kegiatan</label>
                                                         <select
                                                             class="form-select @error('kegiatan_status')
@@ -316,7 +357,9 @@
                             <table id="example" class="display app-data-table default-data-table">
                                 <thead>
                                     <tr>
+                                        <th>Fakultas</th>
                                         <th>Nama Kegiatan</th>
+                                        <th>Tahun</th>
                                         <th>Jenis Kegiatan</th>
                                         <th>Tempat/Lokasi Kegiatan</th>
                                         <th>Jumlah Peserta</th>
@@ -327,7 +370,9 @@
                                 <tbody>
                                     @foreach ($data['kegiatan'] as $kegiatan)
                                         <tr>
+                                            <td>{{ $kegiatan->faculty_name }}</td>
                                             <td>{{ $kegiatan->nama_kegiatan }}</td>
+                                            <td>{{ $kegiatan->tahun }}</td>
                                             <td>{{ $kegiatan->kegiatan_jenis_name }}</td>
                                             <td>{{ $kegiatan->tempat_lokasi }}</td>
                                             </td>
@@ -374,10 +419,14 @@
                             <h1 class="modal-title fs-5 text-white" id="detailKegiatan2">Detail Kegiatan</h1>
                         </div>
                         <div class="modal-body">
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Fakultas:
+                                {{ $kegiatan->faculty_name }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Kegiatan:
                                 {{ $kegiatan->nama_kegiatan }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Kegiatan:
                                 {{ $kegiatan->kegiatan_jenis_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tahun:
+                                {{ $kegiatan->tahun }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Kegiatan:
                                 {{ $kegiatan->tanggal_kegiatan }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tempat/Lokasi Kegiatan:
@@ -393,15 +442,15 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Daftar Hadir:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../docsKegiatanDaftarHadir/{$kegiatan->file_daftar_hadir}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DaftarHadirKegiatan/{$kegiatan->file_daftar_hadir}") }}"
                                 width="450px" height="300px"></iframe>
 
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Kegiatan:
                                 @empty($kegiatan->file_kegiatan)
                                     {{ __('Tidak ada file kegiatan') }}
                                 @else
-                                    <a href="{{ asset("/docsFileKegiatan/{$kegiatan->file_kegiatan}") }}"
-                                        target="_blank">Buka file kegiatan</a>
+                                    <a href="{{ asset("/MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DokumentasiKegiatan/{$kegiatan->file_kegiatan}") }}"
+                                        target="_blank"><b>Buka file kegiatan</b></a>
                                 @endempty
                             </p>
                         </div>

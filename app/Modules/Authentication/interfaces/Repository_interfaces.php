@@ -71,4 +71,11 @@ interface Repository_interfaces
         //domain
         $authDomain,
     ): void;
+    //dashboard
+    public function CountTotalKegiatanInYearRepository($authDomain): array;
+    public function CountTotalDosenRepository($authDomain): array;
+    public function CountTotalBadAsetRepository($authDomain): array;
+    public function CountTotalGoodAsetRepository($authDomain): array;
+    public function CountTotalActivityUserRepository($authDomain): array;
+    public function CountTotalKerjasamaRepository($authDomain): array;
 }

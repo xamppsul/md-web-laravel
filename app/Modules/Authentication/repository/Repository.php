@@ -418,4 +418,60 @@ class Repository implements Repository_interfaces
     {
         Auth::guard('admin')->logout();
     }
+
+    //dashboard admin
+
+    /**
+     * @method CountTotalKegiatanInYearRepository
+     * @return array
+     */
+    public function CountTotalKegiatanInYearRepository($authDomain): array
+    {
+        return $authDomain->getCountTotalKegiatanInYearDomain();
+    }
+    /**
+     * @method CountTotalKegiatanInYearRepository
+     * @return array
+     */
+
+    public function CountTotalDosenRepository($authDomain): array
+    {
+        return $authDomain->getCountTotalDosenDomain();
+    }
+    /**
+     * @method CountTotalKegiatanInYearRepository
+     * @return array
+     */
+
+    public function CountTotalBadAsetRepository($authDomain): array
+    {
+        return $authDomain->getCountTotalBadAsetDomain();
+    }
+    /**
+     * @method CountTotalKegiatanInYearRepository
+     * @return array
+     */
+
+    public function CountTotalGoodAsetRepository($authDomain): array
+    {
+        return $authDomain->getCountTotalGoodAsetDomain();
+    }
+    /**
+     * @method CountTotalKegiatanInYearRepository
+     * @return array
+     */
+
+    public function CountTotalActivityUserRepository($authDomain): array
+    {
+        return $authDomain->getCountTotalActivityUserDomain();
+    }
+    /**
+     * @method CountTotalKegiatanInYearRepository
+     * @return array
+     */
+
+    public function CountTotalKerjasamaRepository($authDomain): array
+    {
+        return $authDomain->getCountTotalKerjasamaDomain();
+    }
 }

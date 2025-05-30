@@ -68,59 +68,47 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <form action="{{ route('admin.master.Asset.index') }}" method="GET"
-                                                    class="row g-3 app-form rounded-control" id="filterFormAset">
+                                                    class="row g-3 app-form rounded-control" id="filterFormMasterAset">
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kondisi Aset</label>
-                                                        <select class="form-select" aria-label="Select kondisi aset"
+                                                        <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
+                                                        <select class="form-select" aria-label="Select Kondisi Aset"
                                                             name="kondisi_aset" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
-                                                            <option value="1"
-                                                                {{ request('kondisi_aset') == '1' ? 'selected' : '' }}>Baik
-                                                            </option>
-                                                            <option value="2"
-                                                                {{ request('kondisi_aset') == '2' ? 'selected' : '' }}>Rusak
-                                                            </option>
-                                                            <option value="3"
-                                                                {{ request('kondisi_aset') == '3' ? 'selected' : '' }}>
-                                                                Perlu Perbaikan</option>
+                                                            @foreach ($data['aset_kondisi'] as $kondisi_aset)
+                                                                <option value="{{ $kondisi_aset->id }}"
+                                                                    {{ request('kondisi_aset') == $kondisi_aset->id ? 'selected' : '' }}>
+                                                                    {{ $kondisi_aset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Status Aset</label>
-                                                        <select class="form-select" aria-label="Select status aset"
+                                                        <label class="form-label" for="status_aset">Status Aset</label>
+                                                        <select class="form-select" aria-label="Select Klasifikasi"
                                                             name="status_aset" required>
                                                             <option selected="">Pilih Status Aset</option>
-                                                            <option value="1"
-                                                                {{ request('status_aset') == '1' ? 'selected' : '' }}>Aktif
-                                                            </option>
-                                                            <option value="2"
-                                                                {{ request('status_aset') == '2' ? 'selected' : '' }}>Tidak
-                                                                Aktif</option>
-                                                            <option value="3"
-                                                                {{ request('status_aset') == '3' ? 'selected' : '' }}>
-                                                                Dihapus</option>
+                                                            @foreach ($data['aset_status'] as $status_aset)
+                                                                <option value="{{ $status_aset->id }}"
+                                                                    {{ request('status_aset') == $status_aset->id ? 'selected' : '' }}>
+                                                                    {{ $status_aset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="userName">Kategori aset</label>
-                                                        <select class="form-select" aria-label="Select kategori aset"
+                                                        <label class="form-label" for="kategori_aset">Kategori aset</label>
+                                                        <select class="form-select" aria-label="Select Klasifikasi"
                                                             name="kategori_aset" required>
                                                             <option selected="">Pilih Kategori Aset</option>
-                                                            <option value="1"
-                                                                {{ request('kategori_aset') == '1' ? 'selected' : '' }}>
-                                                                Elektronik</option>
-                                                            <option value="2"
-                                                                {{ request('kategori_aset') == '2' ? 'selected' : '' }}>
-                                                                Kendaraan</option>
-                                                            <option value="3"
-                                                                {{ request('kategori_aset') == '3' ? 'selected' : '' }}>
-                                                                Furniture</option>
-                                                            <option value="4"
-                                                                {{ request('kategori_aset') == '4' ? 'selected' : '' }}>
-                                                                lainnya</option>
+                                                            @foreach ($data['aset_kategori'] as $kategori_aset)
+                                                                <option value="{{ $kategori_aset->id }}"
+                                                                    {{ request('kategori_aset') == $kategori_aset->id ? 'selected' : '' }}>
+                                                                    {{ $kategori_aset->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    {{-- <div class="col-md-6">
                                                         <label class="form-label" for="userName">Tanggal perolehan(aset
                                                             diterima/dibeli)</label>
                                                         <input class="form-control basic-date" type="text"
@@ -139,13 +127,13 @@
                                                         <input class="form-control" id="kode_aset"
                                                             placeholder="Masukan Kode Aset" type="text"
                                                             name="kode_aset" value="{{ request('kode_aset') }}">
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-12">
                                                         <button class="btn btn-primary b-r-22" type="submit"
                                                             value="Submit">Submit
                                                         </button>
                                                         <button class="btn btn-warning b-r-22"
-                                                            onclick="clearFilterFormAset()" value="Clear">Clear
+                                                            onclick="clearfilterFormMasterAset()" value="Clear">Clear
                                                         </button>
                                                     </div>
                                                 </form>
@@ -164,6 +152,24 @@
                                                 <form class="row g-3 app-form rounded-control"
                                                     action="{{ route('admin.master.Asset.store') }}" method="POST">
                                                     @csrf
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="users_id">Fakultas</label>
+                                                        <select class="form-select @error('users_id') is-invalid @enderror"
+                                                            aria-label="Select Fakultas" name="users_id" required>
+                                                            <option selected="">Pilih Fakultas</option>
+                                                            @foreach ($data['user_faculty'] as $users_id)
+                                                                <option value="{{ $users_id->id }}"
+                                                                    {{ old('users_id') == $users_id->id ? 'selected' : '' }}>
+                                                                    {{ $users_id->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('users_id')
+                                                                <span class="text-danger"
+                                                                    id="users_id">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label" for="kode_aset">Kode Aset</label>
                                                         <input
@@ -194,25 +200,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kategori_aset">Kategori
+                                                        <label class="form-label" for="aset_kategori">Kategori
                                                             Aset</label>
                                                         <select
-                                                            class="form-select @error('kategori_aset')
+                                                            class="form-select @error('aset_kategori')
                                                             is-invalid
                                                         @enderror"
-                                                            aria-label="Select kategori aset" name="kategori_aset">
+                                                            aria-label="Select kategori aset" name="aset_kategori">
                                                             <option selected="">Pilih Kategori Aset</option>
-                                                            @foreach ($data['kategori'] as $kategoriAset)
+                                                            @foreach ($data['aset_kategori'] as $kategoriAset)
                                                                 <option value="{{ $kategoriAset->id }}"
-                                                                    {{ old('kategori_aset') == $kategoriAset->id ? 'selected' : '' }}>
+                                                                    {{ old('aset_kategori') == $kategoriAset->id ? 'selected' : '' }}>
                                                                     {{ $kategoriAset->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                         <div class="mt-1">
-                                                            @error('kategori_aset')
+                                                            @error('aset_kategori')
                                                                 <span class="text-danger"
-                                                                    id="kategori_aset">{{ $message }}</span>
+                                                                    id="aset_kategori">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -229,6 +235,25 @@
                                                             @error('model_merk_aset')
                                                                 <span class="text-danger"
                                                                     id="model_merk_aset">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label" for="tahun_aset">Tahun
+                                                            Aset</label>
+                                                        <select class="form-select @error('tahun') is-invalid @enderror"
+                                                            aria-label="Select tahun aset" name="tahun" required>
+                                                            <option selected="">Pilih Tahun Aset</option>
+                                                            @for ($i = date('Y'); $i >= 1990; $i--)
+                                                                <option value="{{ $i }}"
+                                                                    {{ old('tahun') == $i ? 'selected' : '' }}>
+                                                                    {{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                        <div class="mt-1">
+                                                            @error('tahun')
+                                                                <span class="text-danger"
+                                                                    id="tahun">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -267,41 +292,42 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kondisi_aset">Kondisi Aset</label>
+                                                        <label class="form-label" for="aset_kondisi">Kondisi Aset</label>
                                                         <select
-                                                            class="form-select @error('kondisi_aset') is-invalid @enderror"
-                                                            aria-label="Select kondisi aset" name="kondisi_aset" required>
+                                                            class="form-select @error('aset_kondisi') is-invalid @enderror"
+                                                            aria-label="Select kondisi aset" name="aset_kondisi" required>
                                                             <option selected="">Pilih Kondisi Aset</option>
-                                                            @foreach ($data['kondisi'] as $kondisiAset)
+                                                            @foreach ($data['aset_kondisi'] as $kondisiAset)
                                                                 <option value="{{ $kondisiAset->id }}"
-                                                                    {{ old('kondisi_aset') == $kondisiAset->id ? 'selected' : '' }}>
+                                                                    {{ old('aset_kondisi') == $kondisiAset->id ? 'selected' : '' }}>
                                                                     {{ $kondisiAset->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         <div class="mt-1">
-                                                            @error('kondisi_aset')
+                                                            @error('aset_kondisi')
                                                                 <span class="text-danger"
-                                                                    id="kondisi_aset">{{ $message }}</span>
+                                                                    id="aset_kondisi">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="status_aset">Status Aset</label>
+                                                        <label class="form-label" for="aset_status">Status Aset</label>
                                                         <select
-                                                            class="form-select @error('status_aset')
+                                                            class="form-select @error('aset_status')
                                                             is-invalid
                                                         @enderror"
-                                                            aria-label="Select status aset" name="status_aset" required>
+                                                            aria-label="Select status aset" name="aset_status" required>
                                                             <option selected="">Pilih Status Aset</option>
-                                                            @foreach ($data['status'] as $statusAset)
+                                                            @foreach ($data['aset_status'] as $statusAset)
                                                                 <option value="{{ $statusAset->id }}"
-                                                                    {{ old('status_aset') == $statusAset->id ? 'selected' : '' }}>
+                                                                    {{ old('aset_status') == $statusAset->id ? 'selected' : '' }}>
                                                                     {{ $statusAset->name }}</option>
                                                             @endforeach
                                                         </select>
                                                         <div class="mt-1">
-                                                            @error('status_aset')
-                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @error('aset_status')
+                                                                <span class="text-danger"
+                                                                    id="aset_status">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -383,8 +409,8 @@
                                         <th>Nama Aset</th>
                                         <th>Kategori Aset</th>
                                         <th>Merk</th>
-                                        <th>Kondisi Aset</th>
-                                        <th>Status Aset</th>
+                                        <th>Tahun</th>
+                                        <th>Fakultas</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -394,26 +420,28 @@
                                             <td>{{ $asetData->kode_aset }}</td>
                                             <td>{{ $asetData->nama_aset }}</td>
                                             <td><span
-                                                    class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
+                                                    class="badge text-light-primary">{{ $asetData->aset_kategori_name }}</span>
                                             </td>
                                             <td>{{ $asetData->merek_model }}</td>
+                                            <td>{{ $asetData->tahun }}</td>
+                                            <td>{{ $asetData->faculty_name }}</td>
 
-                                            @if ($asetData->kondisi_aset_name == 'Baik')
+                                            {{-- @if ($asetData->aset_kondisi_name == 'Baik')
                                                 <td><span
-                                                        class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
+                                                        class="badge text-light-success">{{ $asetData->aset_kondisi_name }}</span>
                                                 </td>
-                                            @elseif($asetData->kondisi_aset_name == 'Perlu Perbaikan')
+                                            @elseif($asetData->aset_kondisi_name == 'Perlu Perbaikan')
                                                 <td><span
-                                                        class="badge text-light-warning">{{ $asetData->kondisi_aset_name }}</span>
+                                                        class="badge text-light-warning">{{ $asetData->aset_kondisi_name }}</span>
                                                 </td>
                                             @else
                                                 <td><span
-                                                        class="badge text-light-danger">{{ $asetData->kondisi_aset_name }}</span>
+                                                        class="badge text-light-danger">{{ $asetData->aset_kondisi_name }}</span>
                                                 </td>
                                             @endif
                                             <td><span
-                                                    class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
-                                            </td>
+                                                    class="badge text-light-info">{{ $asetData->aset_status_name }}</span>
+                                            </td> --}}
                                             <td>
                                                 <button type="button" data-item="{{ $asetData->id }}"
                                                     data-bs-target="#detailAset--{{ $asetData->id }}"
@@ -457,10 +485,14 @@
                         <div class="modal-body">
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kode Aset:
                                 {{ $asetData->kode_aset }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Fakultas:
+                                {{ $asetData->faculty_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tahun Aset:
+                                {{ $asetData->tahun }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Aset:
                                 {{ $asetData->nama_aset }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kategori Aset:
-                                <td><span class="badge text-light-primary">{{ $asetData->kategori_aset_name }}</span>
+                                <td><span class="badge text-light-primary">{{ $asetData->aset_kategori_name }}</span>
                                 </td>
                             </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Merek/Model:
@@ -470,19 +502,19 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Lokasi Aset:
                                 {{ $asetData->lokasi_aset }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Kondisi Aset:
-                                @if ($asetData->kondisi_aset_name == 'Baik')
-                                    <td><span class="badge text-light-success">{{ $asetData->kondisi_aset_name }}</span>
+                                @if ($asetData->aset_kondisi_name == 'Baik')
+                                    <td><span class="badge text-light-success">{{ $asetData->aset_kondisi_name }}</span>
                                     </td>
-                                @elseif($asetData->kondisi_aset_name == 'Perlu Perbaikan')
-                                    <td><span class="badge text-light-warning">{{ $asetData->kondisi_aset_name }}</span>
+                                @elseif($asetData->aset_kondisi_name == 'Perlu Perbaikan')
+                                    <td><span class="badge text-light-warning">{{ $asetData->aset_kondisi_name }}</span>
                                     </td>
                                 @else
-                                    <td><span class="badge text-light-danger">{{ $asetData->kondisi_aset_name }}</span>
+                                    <td><span class="badge text-light-danger">{{ $asetData->aset_kondisi_name }}</span>
                                     </td>
                                 @endif
                             </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Status Aset:
-                                <td><span class="badge text-light-info">{{ $asetData->status_aset_name }}</span>
+                                <td><span class="badge text-light-info">{{ $asetData->aset_status_name }}</span>
                                 </td>
                             </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Harga Perolehan:
@@ -545,8 +577,8 @@
         });
     </script> --}}
     <script type="text/javascript">
-        function clearFilterFormAset() {
-            const form = document.getElementById('filterFormAset');
+        function clearfilterFormMasterAset() {
+            const form = document.getElementById('filterFormMasterAset');
             Array.from(form.elements).forEach(element => {
                 if (element.type !== 'button' && element.type !== 'submit' && element.type !== 'reset') {
                     element.value = '';

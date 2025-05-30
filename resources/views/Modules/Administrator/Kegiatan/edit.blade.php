@@ -41,6 +41,27 @@
                             @method('put')
                             @csrf
                             <div class="col-md-6">
+                                <label class="form-label" for="users_id">Fakultas</label>
+                                <select
+                                    class="form-select @error('users_id')
+                                    is-invalid
+                                @enderror"
+                                    aria-label="Select Penanggung Jawab" name="users_id">
+                                    <option selected="">Pilih Fakultas</option>
+                                    @foreach ($data['user'] as $users_id)
+                                        <option value="{{ $users_id->id }}"
+                                            {{ $data['kegiatan']->users_id == $users_id->id ? 'selected' : '' }}>
+                                            {{ $users_id->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="mt-1">
+                                    @error('users_id')
+                                        <span class="text-danger" id="users_id">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <label class="form-label" for="nama_kegiatan">Nama
                                     Kegiatan</label>
                                 <input
@@ -74,6 +95,24 @@
                                 <div class="mt-1">
                                     @error('kegiatan_jenis')
                                         <span class="text-danger" id="kegiatan_jenis">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="tahun_mou_moa">Tahun
+                                    Kegiatan</label>
+                                <select class="form-select @error('tahun') is-invalid @enderror"
+                                    aria-label="Select tahun kegiatan" name="tahun" required>
+                                    <option selected="">Pilih Tahun Kegiatan</option>
+                                    @for ($i = date('Y'); $i >= 1990; $i--)
+                                        <option value="{{ $i }}"
+                                            {{ $data['kegiatan']->tahun == $i ? 'selected' : '' }}>
+                                            {{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <div class="mt-1">
+                                    @error('tahun')
+                                        <span class="text-danger" id="tahun">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>

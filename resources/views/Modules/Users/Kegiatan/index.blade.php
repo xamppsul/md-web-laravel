@@ -210,7 +210,7 @@
                                                         <input
                                                             class="form-control @error('tempat_lokasi') is-invalid @enderror"
                                                             id="tempat_lokasi" name="tempat_lokasi"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Tempat Kegiatan" type="text"
                                                             value="{{ old('tempat_lokasi') }}">
                                                         <div class="mt-1">
                                                             @error('tempat_lokasi')
@@ -225,7 +225,7 @@
                                                         <input
                                                             class="form-control @error('penyelenggara') is-invalid @enderror"
                                                             id="penyelenggara" name="penyelenggara"
-                                                            placeholder="Masukan Nomor Dokumen" type="text"
+                                                            placeholder="Masukan Penyelenggara" type="text"
                                                             value="{{ old('penyelenggara') }}">
                                                         <div class="mt-1">
                                                             @error('penyelenggara')
@@ -240,7 +240,7 @@
                                                         <input
                                                             class="form-control @error('jumlah_peserta') is-invalid @enderror"
                                                             id="jumlah_peserta" name="jumlah_peserta"
-                                                            placeholder="Masukan Nomor Dokumen" type="number"
+                                                            placeholder="Masukan Jumlah Peserta" type="number"
                                                             value="{{ old('jumlah_peserta') }}">
                                                         <div class="mt-1">
                                                             @error('jumlah_peserta')
@@ -276,7 +276,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label" for="kegiatan_status">Jenis
+                                                        <label class="form-label" for="kegiatan_status">Status
                                                             Kegiatan</label>
                                                         <select
                                                             class="form-select @error('kegiatan_status')
