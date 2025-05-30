@@ -182,8 +182,14 @@ class Repository implements Repository_interfaces
         $mouMoaDomain->deleteDataMouMoaDomain($id);
     }
 
-    //============================= file upload ==============================
+    //============================= file upload:moumoa ==============================
 
+    /**
+     * @method doUploadFilePendukung
+     * @param $request
+     * @param $DB_USER
+     * @return string
+     */
     public function doUploadFilePendukung($request, $DB_USER): string
     {
         //init file upload
@@ -280,22 +286,37 @@ class Repository implements Repository_interfaces
         $kegiatanDomain->deleteDataKegiatanDomain($id);
     }
 
-    public function doUploadFileDaftarHadirKegiatan($request): string
+    //================================================ file upload:kegiatan ===============================================
+    /**
+     * @method doUploadFileDaftarHadirKegiatan
+     * @param $request
+     * @param $DB_USER
+     * @return string
+     */
+    public function doUploadFileDaftarHadirKegiatan($request, $DB_USER): string
     {
         $file = $request->file('file_daftar_hadir');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
         $dirUploadFile = 'docsKegiatanDaftarHadir';
+        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DaftarHadirKegiatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }
 
-    public function doUploadFileDokumentasiKegiatan($request): string
+    /**
+     * @method doUploadFileDokumentasiKegiatan
+     * @param $request
+     * @param $DB_USER
+     * @return string
+     */
+    public function doUploadFileDokumentasiKegiatan($request, $DB_USER): string
     {
         $file = $request->file('file_kegiatan');
         $namaFile = time() . "_" . $file->getClientOriginalName();
         //move upload file
         $dirUploadFile = 'docsFileKegiatan';
+        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DokumentasiKegiatan");
         $file->move($dirUploadFile, $namaFile);
         return $namaFile;
     }

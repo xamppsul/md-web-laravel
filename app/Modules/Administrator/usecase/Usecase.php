@@ -330,18 +330,20 @@ class Usecase extends Services implements Usecase_intefaces
      * @param $request
      * @param $kegiatanDomain
      * @param $kegiatanRequest
+     * @param $DB_USER
      * @return RedirectResponse
      */
     public function storeKegiatanCase(
         $request,
         $kegiatanDomain,
-        $kegiatanRequest
+        $kegiatanRequest,
+        $DB_USER
     ): RedirectResponse {
         $kegiatanRequest->postRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->storeKegiatanService($request, $kegiatanDomain);
+            $this->storeKegiatanService($request, $kegiatanDomain, $DB_USER);
             DB::commit();
             return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil tambah kegiatan');
         } catch (\Exception $error) {
@@ -380,6 +382,7 @@ class Usecase extends Services implements Usecase_intefaces
      * @param $request
      * @param $kegiatanDomain
      * @param $kegiatanRequest
+     * @param $DB_USER
      * @return RedirectResponse
      */
     public function updateKegiatanCase(
@@ -387,12 +390,13 @@ class Usecase extends Services implements Usecase_intefaces
         $request,
         $kegiatanDomain,
         $kegiatanRequest,
+        $DB_USER,
     ): RedirectResponse {
         $kegiatanRequest->updateRequestData($request);
 
         DB::beginTransaction();
         try {
-            $this->updateKegiatanService($id, $kegiatanDomain, $request);
+            $this->updateKegiatanService($id, $kegiatanDomain, $request, $DB_USER);
             DB::commit();
             return redirect()->route('admin.master.Kegiatan.index')->with('success', 'Berhasil update kegiatan');
         } catch (\Exception $error) {

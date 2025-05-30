@@ -184,9 +184,9 @@ class Services extends Repository implements Services_interfaces
      * @param $fileKegiatan
      * @return void
      */
-    public function storeKegiatanService($request, $kegiatanDomain): void
+    public function storeKegiatanService($request, $kegiatanDomain, $DB_USER): void
     {
-        $this->storeKegiatanRepository($request, $kegiatanDomain, $this->doUploadFileDaftarHadirKegiatan($request), $this->doUploadFileDokumentasiKegiatan($request));
+        $this->storeKegiatanRepository($request, $kegiatanDomain, $this->doUploadFileDaftarHadirKegiatan($request, $DB_USER), $this->doUploadFileDokumentasiKegiatan($request, $DB_USER));
     }
 
     /**
@@ -207,9 +207,9 @@ class Services extends Repository implements Services_interfaces
      * @param $request
      * @return void
      */
-    public function updateKegiatanService(int $id, $kegiatanDomain, $request): void
+    public function updateKegiatanService(int $id, $kegiatanDomain, $request, $DB_USER): void
     {
-        $this->updateKegiatanRepository($id, $kegiatanDomain, $request, $this->doUploadFileDaftarHadirKegiatan($request), $this->doUploadFileDokumentasiKegiatan($request));
+        $this->updateKegiatanRepository($id, $kegiatanDomain, $request, $this->doUploadFileDaftarHadirKegiatan($request, $DB_USER), $this->doUploadFileDokumentasiKegiatan($request, $DB_USER));
     }
 
     /**

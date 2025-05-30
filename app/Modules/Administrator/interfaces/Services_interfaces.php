@@ -27,9 +27,9 @@ interface Services_interfaces
      */
     public function indexKegiatanService($kegiatanDomain, $request): array;
     public function createKegiatanService();
-    public function storeKegiatanService($request, $kegiatanDomain): void;
+    public function storeKegiatanService($request, $kegiatanDomain, $DB_USER): void;
     public function editKegiatanService(int $id, $kegiatanDomain): array;
-    public function updateKegiatanService(int $id, $kegiatanDomain, $request): void;
+    public function updateKegiatanService(int $id, $kegiatanDomain, $request, $DB_USER): void;
     public function destroyKegiatanService(int $id, $kegiatanDomain): void;
 
     /**

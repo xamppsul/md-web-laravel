@@ -83,7 +83,8 @@ interface Usecase_intefaces
     public function storeKegiatanCase(
         $request,
         $kegiatanDomain,
-        $kegiatanRequest
+        $kegiatanRequest,
+        $DB_USER,
     ): RedirectResponse;
     public function editKegiatanCase(
         int $id,
@@ -96,6 +97,7 @@ interface Usecase_intefaces
         $request,
         $kegiatanDomain,
         $kegiatanRequest,
+        $DB_USER,
     ): RedirectResponse;
     public function destroyKegiatanCase(
         int $id,

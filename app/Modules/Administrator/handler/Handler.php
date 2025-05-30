@@ -252,6 +252,7 @@ class Handler extends Usecase implements Handler_interfaces
             $request,
             $this->kegiatanDomain,
             $this->kegiatanRequest,
+            $this->DB->where([['roles_id', '=', 3], ['id', '=', $request->users_id]])->first(),
         );
     }
 
@@ -284,6 +285,7 @@ class Handler extends Usecase implements Handler_interfaces
             $request,
             $this->kegiatanDomain,
             $this->kegiatanRequest,
+            $this->DB->where([['roles_id', '=', 3], ['id', '=', $request->users_id]])->first(),
         );
     }
 

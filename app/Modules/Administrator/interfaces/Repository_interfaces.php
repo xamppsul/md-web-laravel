@@ -40,6 +40,9 @@ interface Repository_interfaces
     public function updateKegiatanRepository(int $id, $kegiatanDomain, $request, string $fileDaftarHadir, string $fileKegiatan): void;
     public function destroyKegiatanRepository(int $id, $kegiatanDomain): void;
 
+    public function doUploadFileDaftarHadirKegiatan($request, $DB_USER): string;
+    public function doUploadFileDokumentasiKegiatan($request, $DB_USER): string;
+
     /**
      * ============================================================================
      * feature: master data user

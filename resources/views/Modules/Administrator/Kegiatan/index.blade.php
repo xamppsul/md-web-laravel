@@ -316,7 +316,9 @@
                             <table id="example" class="display app-data-table default-data-table">
                                 <thead>
                                     <tr>
+                                        <th>Fakultas</th>
                                         <th>Nama Kegiatan</th>
+                                        <th>Tahun</th>
                                         <th>Jenis Kegiatan</th>
                                         <th>Tempat/Lokasi Kegiatan</th>
                                         <th>Jumlah Peserta</th>
@@ -327,7 +329,9 @@
                                 <tbody>
                                     @foreach ($data['kegiatan'] as $kegiatan)
                                         <tr>
+                                            <td>{{ $kegiatan->faculty_name }}</td>
                                             <td>{{ $kegiatan->nama_kegiatan }}</td>
+                                            <td>{{ $kegiatan->tahun }}</td>
                                             <td>{{ $kegiatan->kegiatan_jenis_name }}</td>
                                             <td>{{ $kegiatan->tempat_lokasi }}</td>
                                             </td>
@@ -374,10 +378,14 @@
                             <h1 class="modal-title fs-5 text-white" id="detailKegiatan2">Detail Kegiatan</h1>
                         </div>
                         <div class="modal-body">
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Fakultas:
+                                {{ $kegiatan->faculty_name }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Nama Kegiatan:
                                 {{ $kegiatan->nama_kegiatan }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Jenis Kegiatan:
                                 {{ $kegiatan->kegiatan_jenis_name }} </p>
+                            <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tahun:
+                                {{ $kegiatan->tahun }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tanggal Kegiatan:
                                 {{ $kegiatan->tanggal_kegiatan }} </p>
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> Tempat/Lokasi Kegiatan:
@@ -393,14 +401,14 @@
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Daftar Hadir:
                             </p>
                             <iframe
-                                src="{{ asset("/laraview/#../docsKegiatanDaftarHadir/{$kegiatan->file_daftar_hadir}") }}"
+                                src="{{ asset("/laraview/#../MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DaftarHadirKegiatan/{$kegiatan->file_daftar_hadir}") }}"
                                 width="450px" height="300px"></iframe>
 
                             <p><i class="ti ti-arrow-big-right text-secondary f-w-600"></i> File Kegiatan:
                                 @empty($kegiatan->file_kegiatan)
                                     {{ __('Tidak ada file kegiatan') }}
                                 @else
-                                    <a href="{{ asset("/docsFileKegiatan/{$kegiatan->file_kegiatan}") }}"
+                                    <a href="{{ asset("/MD_disk/{$kegiatan->faculty_id}-{$kegiatan->faculty_name}/DokumentasiKegiatan/{$kegiatan->file_kegiatan}") }}"
                                         target="_blank">Buka file kegiatan</a>
                                 @endempty
                             </p>
