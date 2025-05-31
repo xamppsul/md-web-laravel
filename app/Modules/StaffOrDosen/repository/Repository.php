@@ -197,15 +197,24 @@ class Repository implements Repository_interfaces
         $penelitianDomain->deleteDataPenelitianDomain($id);
     }
 
+    /**
+     * @method doUploadFileLaporanAkhirPenelitian
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileLaporanAkhirPenelitian($request, $user): string
+    public function doUploadFileLaporanAkhirPenelitian($request, $user): string|bool
     {
-        $file = $request->file('laporan_akhir');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_akhir_penelitian");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('laporan_akhir'))) {
+            $file = $request->file('laporan_akhir');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_akhir_penelitian");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================

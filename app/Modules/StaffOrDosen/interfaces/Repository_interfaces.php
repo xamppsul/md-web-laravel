@@ -31,7 +31,7 @@ interface Repository_interfaces
     public function destroyPenelitianRepository(int $id, $penelitianDomain): void;
 
     //file upload
-    public function doUploadFileLaporanAkhirPenelitian($request, $user): string;
+    public function doUploadFileLaporanAkhirPenelitian($request, $user): string|bool;
 
     /**===========================================================================
      * feature: Pengabdian 

@@ -16,7 +16,7 @@ class PenelitianRequest
             'penelitian_sumber_dana' => 'required|exists:penelitian_sumber_dana,id',
             'jumlah_dana' => 'required|integer',
             'anggota_tim' => 'required|string',
-            'laporan_akhir' => 'required|required|file|mimes:pdf,doc,docx|max:2048',
+            'laporan_akhir' => 'required|file|mimes:pdf,doc,docx|max:2048',
             'penelitian_status' => 'required|exists:penelitian_status,id',
             'catatan' => 'required|string',
         ], [
@@ -38,7 +38,7 @@ class PenelitianRequest
             'penelitian_sumber_dana' => 'required|exists:penelitian_sumber_dana,id',
             'jumlah_dana' => 'required|integer',
             'anggota_tim' => 'required|string',
-            'laporan_akhir' => 'required|required|file|mimes:pdf,doc,docx|max:2048',
+            'laporan_akhir' => 'file|mimes:pdf,doc,docx|max:2048',
             'penelitian_status' => 'required|exists:penelitian_status,id',
             'catatan' => 'required|string',
         ], [

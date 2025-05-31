@@ -146,6 +146,7 @@ class PenelitianDomain
 
     public function updateDataPenelitianDomain($id, $request, string $fileLaporanAkhirPenelitian): void
     {
+        $data = $this->getDetailPenelitianDomain($id)[0];
         DB::update('UPDATE penelitian SET 
             users_id = ?,
             judul = ?,
@@ -170,7 +171,7 @@ class PenelitianDomain
             $request->penelitian_sumber_dana,
             $request->jumlah_dana,
             $request->anggota_tim,
-            $fileLaporanAkhirPenelitian,
+            !empty($request->laporan_akhir) ? $fileLaporanAkhirPenelitian : $data->laporan_akhir,
             $request->penelitian_status,
             $request->catatan,
             now(),
