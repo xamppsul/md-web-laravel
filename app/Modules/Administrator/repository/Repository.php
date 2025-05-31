@@ -296,34 +296,40 @@ class Repository implements Repository_interfaces
      * @method doUploadFileDaftarHadirKegiatan
      * @param $request
      * @param $DB_USER
-     * @return string
+     * @return string|bool
      */
-    public function doUploadFileDaftarHadirKegiatan($request, $DB_USER): string
+    public function doUploadFileDaftarHadirKegiatan($request, $DB_USER): string|bool
     {
-        $file = $request->file('file_daftar_hadir');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = 'docsKegiatanDaftarHadir';
-        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DaftarHadirKegiatan");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_daftar_hadir'))) {
+            $file = $request->file('file_daftar_hadir');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = 'docsKegiatanDaftarHadir';
+            $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DaftarHadirKegiatan");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**
      * @method doUploadFileDokumentasiKegiatan
      * @param $request
      * @param $DB_USER
-     * @return string
+     * @return string|bool
      */
-    public function doUploadFileDokumentasiKegiatan($request, $DB_USER): string
+    public function doUploadFileDokumentasiKegiatan($request, $DB_USER): string|bool
     {
-        $file = $request->file('file_kegiatan');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = 'docsFileKegiatan';
-        $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DokumentasiKegiatan");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_kegiatan'))) {
+            $file = $request->file('file_kegiatan');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = 'docsFileKegiatan';
+            $dirUploadFile = public_path("MD_disk/{$DB_USER->id}-{$DB_USER->name}/DokumentasiKegiatan");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
 
