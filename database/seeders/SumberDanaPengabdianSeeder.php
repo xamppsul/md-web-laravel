@@ -16,18 +16,13 @@ class SumberDanaPengabdianSeeder extends Seeder
     {
         DB::table('pengabdian_sumber_dana')->insert([
             [
-                'name' => 'Apbn',
-                'description' => 'submber dana pengabdian dari Apbn',
+                'name' => 'Mandiri',
+                'description' => 'submber dana penelitian dari Mandiri',
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
-                'name' => 'Hibah',
-                'description' => 'submber dana pengabdian dari Hibah',
-                'created_at' => Carbon::now()->timezone(config('app.timezone')),
-            ],
-            [
-                'name' => 'Sponsor',
-                'description' => 'submber dana pengabdian dari Sponsor',
+                'name' => 'ABPD',
+                'description' => 'submber dana penelitian dari APBD',
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ]
         ]);

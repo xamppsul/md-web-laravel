@@ -21,7 +21,7 @@
                     </li>
                     <li class="active">
                         <a class="f-s-14 f-w-500"
-                            href="{{ route('staffdosen.BahanAjar.edit', $data['bahanAjar']->id) }}">Bahan Ajar</a>
+                            href="{{ route('staffdosen.BahanAjar.edit', $data['bahanAjar']->id) }}">Pendidikan</a>
                     </li>
                 </ul>
             </div>
