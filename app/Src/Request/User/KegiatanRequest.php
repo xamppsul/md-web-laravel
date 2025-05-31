@@ -39,8 +39,8 @@ class KegiatanRequest
             'tempat_lokasi' => 'required|string',
             'penyelenggara' => 'required|string',
             'jumlah_peserta' => 'required|integer',
-            'file_daftar_hadir' => 'required|file|mimes:pdf,doc,docx,xls|max:2048',
-            'file_kegiatan' => 'required|file|mimes:jpg,png,jpeg|max:2048',
+            'file_daftar_hadir' => 'file|mimes:pdf,doc,docx,xls|max:2048',
+            'file_kegiatan' => 'file|mimes:jpg,png,jpeg|max:2048',
             'kegiatan_status' => 'required|exists:kegiatan_status,id',
             'keterangan' => 'required|string',
         ], [
