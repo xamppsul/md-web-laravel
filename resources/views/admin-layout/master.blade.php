@@ -3,11 +3,11 @@
 
 <head>
     <!-- All meta and title start-->
-    @include('layout.head')
+    @include('admin-layout.head')
     <!-- meta and title end-->
 
     <!-- css start-->
-    @include('layout.css')
+    @include('admin-layout.css')
     <!-- css end-->
 </head>
 
@@ -20,13 +20,13 @@
         <!-- Loader end-->
 
         <!-- Menu Navigation start -->
-        @include('layout.sidebar')
+        @include('admin-layout.sidebar')
         <!-- Menu Navigation end -->
 
 
         <div class="app-content">
             <!-- Header Section start -->
-            @include('layout.header', ['profile' => !empty($profile) ? $profile : ''])
+            @include('admin-layout.header', ['profile' => !empty($profile) ? $profile : ''])
             <!-- Header Section end -->
 
             <!-- Main Section start -->
@@ -45,7 +45,7 @@
         </div>
 
         <!-- Footer Section start -->
-        @include('layout.footer')
+        @include('admin-layout.footer')
         <!-- Footer Section end -->
     </div>
 </body>
@@ -54,7 +54,7 @@
 <div id="customizer"></div>
 
 <!-- scripts start-->
-@include('layout.script')
+@include('admin-layout.script')
 <!-- scripts end-->
 
 </html>

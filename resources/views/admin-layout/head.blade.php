@@ -8,4 +8,4 @@
 <meta name="author" content="la-themes">
 <link rel="icon" href="{{ asset('assets/images/logo/umk.png') }}" type="image/x-icon">
 <link rel="shortcut icon" href="{{ asset('assets/images/logo/umk.png') }}" type="image/x-icon">
-<title>@yield('title') | MD Feb UMK</title>
+<title>@yield('title') | Admin MD Feb UMK</title>
