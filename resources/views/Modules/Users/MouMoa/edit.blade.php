@@ -263,9 +263,9 @@
                                     {{ __('pendukung belum ada harap upload dokumen pendukung') }}
                                 @else
                                     <div class="mb-10">
-                                        <a href="{{ asset('docsMouMoa/' . $data['moumoa']->dokumen_pendukung) }}"
+                                        <a href="{{ asset("MD_disk/{$data['moumoa']->penanggung_jawab_id}-{$data['moumoa']->penanggung_jawab_name}/MouMoa/{$data['moumoa']->dokumen_pendukung}") }}"
                                             target="_blank">
-                                            <b>Document:</b> Tersedia silahkan lihat dokumen
+                                            Document:<b> Click Here</b>
                                         </a>
                                     </div>
                                 @endempty

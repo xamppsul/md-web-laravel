@@ -180,15 +180,23 @@ class Repository implements Repository_interfaces
     }
 
     //============================= file upload ==============================
-
-    public function doUploadFilePendukung($request, $user): string
+    /**
+     * @method doUploadFilePendukung
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
+    public function doUploadFilePendukung($request, $user): string|bool
     {
-        $file = $request->file('dokumen_pendukung');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/MouMoa");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('dokumen_pendukung'))) {
+            $file = $request->file('dokumen_pendukung');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/MouMoa");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
