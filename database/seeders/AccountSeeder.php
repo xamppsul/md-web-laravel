@@ -19,17 +19,17 @@ class AccountSeeder extends Seeder
             'name' => 'Administrator',
             'username' => 'administrator',
             'email' => 'administrator@gmail.com',
-            'password' => Hash::make('administrator'),
+            'password' => Hash::make('administrator!!@9321'),
             'roles_id' => 1,
             'created_at' => Carbon::now()->timezone(config('app.timezone')),
         ]);
 
         DB::table('users')->insert([
             [
-                'name' => 'Staff',
-                'username' => 'staffdosen',
-                'email' => 'staffdosen@gmail.com',
-                'password' => Hash::make('staffdosen'),
+                'name' => 'Dosen',
+                'username' => 'dosen',
+                'email' => 'dosen@gmail.com',
+                'password' => Hash::make('dosen!!@9321'),
                 'roles_id' => 2,
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
@@ -37,15 +37,15 @@ class AccountSeeder extends Seeder
                 'name' => 'samsul',
                 'username' => 'samsuldosen',
                 'email' => 'muhdevapp@gmail.com',
-                'password' => Hash::make('samsul123'),
+                'password' => Hash::make('Codingweb1129321!@#$'),
                 'roles_id' => 2,
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ],
             [
-                'name' => 'Uppsfakultas',
-                'username' => 'uppsfakultas',
-                'email' => 'uppsfakultas@gmail.com',
-                'password' => Hash::make('uppsfakultas'),
+                'name' => 'FEBI UMK',
+                'username' => 'fakultas',
+                'email' => 'fakultas@gmail.com',
+                'password' => Hash::make('fakultas!!@9321'),
                 'roles_id' => 3,
                 'created_at' => Carbon::now()->timezone(config('app.timezone')),
             ]
