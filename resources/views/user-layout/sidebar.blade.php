@@ -62,14 +62,14 @@
                         <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#ui-kits">
 
                             <i class="iconoir-book"></i>
-                            Pendidikan
+                            Catur Darma
                         </a>
                         <ul class="collapse" id="ui-kits">
-                            <li><a href="{{ route('staffdosen.BahanAjar.index') }}">Bahan Ajar</a></li>
+                            <li><a href="{{ route('staffdosen.BahanAjar.index') }}">Pendidikan</a></li>
                             <li><a href="{{ route('staffdosen.Penelitian.index') }}">Penelitian</a></li>
+                            <li><a href="{{ route('staffdosen.ListPublikasi.index') }}">Publikasi</a></li>
                             <li><a href="{{ route('staffdosen.Pengabdian.index') }}">Pengabdian</a></li>
                             <li><a href="{{ route('staffdosen.RiwayatJabatan.index') }}">Riwayat Jabatan</a></li>
-                            <li><a href="{{ route('staffdosen.ListPublikasi.index') }}">List Publikasi</a></li>
                         </ul>
                     </li>
                     <li class="menu-title"><span>File Manager</span></li>
