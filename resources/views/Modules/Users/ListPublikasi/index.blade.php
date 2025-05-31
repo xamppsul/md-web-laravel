@@ -20,7 +20,7 @@
                     <li class="">
                         <a href="#" class="f-s-14 f-w-500">
                             <span>
-                                <i class="ph-duotone  ph-table f-s-16"></i> List Publikasi
+                                <i class="ph-duotone  ph-table f-s-16"></i> Publikasi
                             </span>
                         </a>
                     </li>
