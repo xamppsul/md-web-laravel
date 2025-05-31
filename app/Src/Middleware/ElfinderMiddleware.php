@@ -88,6 +88,16 @@ class ElfinderMiddleware
                     'path'          => $basePath,
                     'URL'           => env('APP_URL') . "/MD_disk/{$session->id}-{$session->name}",
                     'accessControl' => Elfinder::class . '@checkAccess',
+                    'uploadDeny'  => ['all'],
+                    'uploadAllow' => [
+                        'image',
+                        'application/pdf',
+                        'application/vnd.ms-excel',
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'application/msword',
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                    ],
+                    'uploadOrder' => ['deny', 'allow'],
                 ],
             ]);
         } else {
@@ -98,6 +108,16 @@ class ElfinderMiddleware
                     'path'          => $basePath,
                     'URL'           => env('APP_URL') . "/MD_disk",
                     'accessControl' => Elfinder::class . '@checkAccess',
+                    'uploadDeny'  => ['all'],
+                    'uploadAllow' => [
+                        'image',
+                        'application/pdf',
+                        'application/vnd.ms-excel',
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'application/msword',
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                    ],
+                    'uploadOrder' => ['deny', 'allow'],
                 ],
             ]);
         }
