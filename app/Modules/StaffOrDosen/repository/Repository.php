@@ -513,14 +513,23 @@ class Repository implements Repository_interfaces
         $listPublikasiDomain->deleteDataListPublikasiDomain($id);
     }
 
+    /**
+     * @method doUploadFileListPublikasi
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileListPublikasi($request, $user): string
+    public function doUploadFileListPublikasi($request, $user): string|bool
     {
-        $file = $request->file('file_publikasi');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/file_publikasi");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_publikasi'))) {
+            $file = $request->file('file_publikasi');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/file_publikasi");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 }
