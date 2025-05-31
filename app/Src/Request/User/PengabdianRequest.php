@@ -16,8 +16,8 @@ class PengabdianRequest
             'tgl_selesai' => 'required|date|after_or_equal:tgl_mulai',
             'lokasi' => 'required|string',
             'jumlah_peserta' => 'required|integer',
-            'laporan_pengabdian' => 'required|required|file|mimes:pdf,doc,docx|max:2048',
-            'dokumentasi' => 'required|required|file|mimes:jpg,png,jpeg|max:2048',
+            'laporan_pengabdian' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'dokumentasi' => 'required|file|mimes:jpg,png,jpeg|max:2048',
             'pengabdian_status' => 'required|exists:pengabdian_status,id',
             'catatan' => 'required|string',
         ], [
@@ -40,8 +40,8 @@ class PengabdianRequest
             'tgl_selesai' => 'required|date|after_or_equal:tgl_mulai',
             'lokasi' => 'required|string',
             'jumlah_peserta' => 'required|integer',
-            'laporan_pengabdian' => 'required|required|file|mimes:pdf,doc,docx|max:2048',
-            'dokumentasi' => 'required|required|file|mimes:jpg,png,jpeg|max:2048',
+            'laporan_pengabdian' => 'file|mimes:pdf,doc,docx|max:2048',
+            'dokumentasi' => 'file|mimes:jpg,png,jpeg|max:2048',
             'pengabdian_status' => 'required|exists:pengabdian_status,id',
             'catatan' => 'required|string',
         ], [

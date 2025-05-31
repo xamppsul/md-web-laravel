@@ -306,25 +306,43 @@ class Repository implements Repository_interfaces
         $pengabdianDomain->deleteDataPengabdianDomain($id);
     }
 
+    /**
+     * @method doUploadFileLaporanPengabdian
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileLaporanPengabdian($request, $user): string
+    public function doUploadFileLaporanPengabdian($request, $user): string|bool
     {
-        $file = $request->file('laporan_pengabdian');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_pengabdian");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('laporan_pengabdian'))) {
+            $file = $request->file('laporan_pengabdian');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_pengabdian");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
-    public function doUploadFileDokumentasiPengabdian($request, $user): string
+    /**
+     * @method doUploadFileDokumentasiPengabdian
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
+    public function doUploadFileDokumentasiPengabdian($request, $user): string|bool
     {
-        $file = $request->file('dokumentasi');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumentasi_pengabdian");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('dokumentasi'))) {
+            $file = $request->file('dokumentasi');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumentasi_pengabdian");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
