@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('user-layout.master')
 @section('title', 'Pengabdian Edit')
 @section('css')
     <!-- flatpickr css-->
