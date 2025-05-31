@@ -27,7 +27,7 @@ interface Repository_interfaces
     public function destroyMouMoaRepository(int $id, $mouMoaDomain): void;
 
     //file upload
-    public function doUploadFilePendukung($request, $DB_USER): string;
+    public function doUploadFilePendukung($request, $DB_USER): string|bool;
 
     /**===========================================================================
      * feature: master data kegiatan 
