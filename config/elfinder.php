@@ -71,9 +71,6 @@ return array(
     */
     'roots' => [],
 
-    'uploadDeny'  => ['exe', 'php', 'js'],
-    'uploadOrder' => ['deny'],
-
     /*
     |--------------------------------------------------------------------------
     | Options

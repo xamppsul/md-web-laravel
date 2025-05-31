@@ -205,26 +205,8 @@
                                                 <p class="f-s-12 mb-0 text-secondary">
                                                     {{ Auth::guard('user')->user()->email }}</p>
                                             </div>
-                                        @elseif(Auth::guard('admin')->check())
-                                            <div class="text-center mt-2">
-                                                <h6 class="mb-0"> {{ Auth::guard('admin')->user()->name }} <img
-                                                        alt="instagram-check-mark" class="w-20 h-20"
-                                                        src="{{ asset('/assets/images/profile-app/01.png') }}"></h6>
-                                                <p class="f-s-12 mb-0 text-secondary">
-                                                    {{ Auth::guard('admin')->user()->email }}</p>
-                                                <p class="f-s-12 mb-0 text-secondary">
-                                            </div>
                                         @endif
                                     </li>
-
-                                    <!-- disable menu profile on admin-->
-                                    {{-- @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->roles_id == 1)
-                                        <li>
-                                            <a class="f-w-500" href="{{ __('profile') }}" target="_blank">
-                                                <i class="iconoir-user-circle pe-1 f-s-20"></i> Admin Profile
-                                            </a>
-                                        </li>
-                                    @endif --}}
 
                                     <!-- disable menu profile on faculty-->
                                     {{-- @if (Auth::guard('user')->check() && Auth::guard('user')->user()->roles_id == 3)
@@ -247,17 +229,6 @@
                                                     <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i>
                                                     {{ __('logout') }}
                                                 </a>
-                                            @elseif(Auth::guard('admin')->check())
-                                                <form action="{{ route('admin.do.logout') }}" method="POST"
-                                                    id="admin.do.logout">
-                                                    @csrf
-                                                    <a class="mb-0 btn btn-light-danger btn-sm justify-content-center "
-                                                        href="{{ route('admin.do.logout') }}"
-                                                        onclick="event.preventDefault(); document.getElementById('admin.do.logout').submit();"
-                                                        role="button">
-                                                        <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i>
-                                                        {{ __('logout') }}
-                                                    </a>
                                         @endif
                                         </form>
                                     </li>

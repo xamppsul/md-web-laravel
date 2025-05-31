@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('user-layout.master')
 @section('title', 'Master Asset')
 @section('css')
     <!--font-awesome-css-->

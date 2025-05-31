@@ -1,7 +1,7 @@
 @section('title', 'User Login')
-@include('layout.head')
+@include('user-layout.head')
 
-@include('layout.css')
+@include('user-layout.css')
 
 <body>
     <div class="app-wrapper d-block">
@@ -136,4 +136,4 @@
     </div>
 
 </body>
-@include('layout.script')
+@include('user-layout.script')

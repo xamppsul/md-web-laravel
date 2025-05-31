@@ -1,7 +1,7 @@
 @section('title', 'Not Found')
-@include('layout.head')
+@include('user-layout.head')
 
-@include('layout.css')
+@include('user-layout.css')
 
 <div class="error-container p-0">
     <div class="container">

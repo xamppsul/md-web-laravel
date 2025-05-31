@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('user-layout.master')
 @section('title', 'File Manager')
 @section('css')
     <!-- elFinder CSS + JS -->

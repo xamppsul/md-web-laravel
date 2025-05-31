@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin-layout.master')
 @section('title', 'Mou/Moa Edit')
 @section('css')
     <!-- flatpickr css-->
