@@ -1,4 +1,4 @@
-@extends('layout.master', ['profile' => $data['profile']])
+@extends('user-layout.master', ['profile' => $data['profile']])
 @section('title', 'User Dashboard | MD Project')
 @section('css')
     <!-- glight css -->

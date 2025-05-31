@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('user-layout.master')
 @section('title', 'Penelitian')
 @section('css')
     <!--font-awesome-css-->

@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin-layout.master')
 @section('title', 'Master MouMoa')
 @section('css')
     <!--font-awesome-css-->

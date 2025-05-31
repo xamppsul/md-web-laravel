@@ -1,7 +1,7 @@
 @section('title', 'Administrator Login')
-@include('layout.head')
+@include('admin-layout.head')
 
-@include('layout.css')
+@include('admin-layout.css')
 
 <body class="sign-in-bg">
     <div class="app-wrapper d-block">
@@ -111,4 +111,4 @@
 
 
 </body>
-@include('layout.script')
+@include('admin-layout.script')

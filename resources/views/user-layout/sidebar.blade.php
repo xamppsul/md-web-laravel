@@ -15,58 +15,12 @@
                 <span>Dashboard</span>
             </li>
 
-            <!-- menu home for admin session -->
-            @if (Auth::guard('admin')->check())
-                <li class="no-sub">
-                    <a class="{{ request()->routeis('admin.view.dashboard') ? 'active' : '' }}"
-                        href="{{ route('admin.view.dashboard') }}">
-                        <i class="iconoir-home-alt"></i>Home
-                    </a>
-                </li>
-            @endif
-
             <!-- menu home for user session -->
             @if (Auth::guard('user')->check())
                 <li class="no-sub">
                     <a class="{{ request()->routeis('user.view.dashboard') ? 'active' : '' }}"
                         href="{{ route('user.view.dashboard') }}">
                         <i class="iconoir-home-alt"></i>Home
-                    </a>
-                </li>
-            @endif
-
-            <!-- menus for admin session-->
-            @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->roles_id == 1)
-                <li class="menu-title"><span>Master</span></li>
-                <li>
-                    <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#ui-kits">
-
-                        <i class="iconoir-hard-drive"></i>
-                        Master Data
-                    </a>
-                    <ul class="collapse" id="ui-kits">
-                        <li><a href="{{ route('admin.master.Asset.index') }}">Aset</a></li>
-                        <li><a href="{{ route('admin.master.MouMoa.index') }}">Mou/Moa</a></li>
-                        <li><a href="{{ route('admin.master.Kegiatan.index') }}">Kegiatan</a></li>
-                        <li><a href="{{ route('admin.master.UserMaster.index') }}">User</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title"><span>File Manager</span></li>
-                <li>
-                    <a aria-expanded="false" class="" data-bs-toggle="collapse" href="#file-manager">
-
-                        <i class="iconoir-drawer"></i>
-                        El Finder
-                    </a>
-                    <ul class="collapse" id="file-manager">
-                        <li><a href="{{ route('admin.elfinder.index') }}">User Directory</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title"><span>Logs</span></li>
-                <li class="no-sub">
-                    <a class="{{ request()->routeis('admin.log-user.index') ? 'active' : '' }}"
-                        href="{{ route('admin.log-user.index') }}">
-                        <i class="iconoir-database-warning"></i> Log
                     </a>
                 </li>
             @endif
