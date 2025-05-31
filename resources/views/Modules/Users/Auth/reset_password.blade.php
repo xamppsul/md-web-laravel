@@ -1,7 +1,7 @@
 @section('title', 'Password Reset Account')
-@include('layout.head')
+@include('user-layout.head')
 
-@include('layout.css')
+@include('user-layout.css')
 
 <body>
     <div class="app-wrapper d-block">
