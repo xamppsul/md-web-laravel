@@ -434,17 +434,20 @@ class Repository implements Repository_interfaces
      * @method doUploadFileDocumentSkRiwayatJabatan
      * @param $request
      * @param $user
-     * @return string
+     * @return string|bool
      */
     //file upload
-    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string
+    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string|bool
     {
-        $file = $request->file('dokumen_sk');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumen_sk_riwayat_jabatan");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('dokumen_sk'))) {
+            $file = $request->file('dokumen_sk');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumen_sk_riwayat_jabatan");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
     /**======================================================================================================================================
      * feture: ListPublikasi

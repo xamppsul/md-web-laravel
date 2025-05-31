@@ -35,7 +35,7 @@ class RiwayatJabatanRequest
             'tanggal_sk' => 'required|date',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'date|after_or_equal:tanggal_mulai',
-            'dokumen_sk' => 'required|required|file|mimes:pdf,doc,docx|max:2048',
+            'dokumen_sk' => 'file|mimes:pdf,doc,docx|max:2048',
             'riwayat_jabatan_status' => 'required|exists:riwayat_jabatan_status,id',
             'keterangan' => 'required|string',
         ], [
