@@ -144,6 +144,7 @@ class BahanAjarDomain
 
     public function updateDataBahanAjarDomain($id, $request, string $fileBahan): void
     {
+        $data = $this->getDetailBahanAjarDomain($id)[0];
         DB::update('UPDATE bahan_ajar SET
             users_id = ?,
             judul = ?,
@@ -166,7 +167,7 @@ class BahanAjarDomain
             $request->semester,
             $request->tanggal_terbit,
             $request->deskripsi,
-            $fileBahan,
+            !empty($request->file_bahan) ?  $fileBahan : $data->file_bahan, //keep current file if isn't request upload file bahan ajar
             $request->link_bahan,
             $request->bahan_ajar_status_penggunaan,
             now(),

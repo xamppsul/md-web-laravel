@@ -16,7 +16,7 @@ interface Repository_interfaces
     public function destroyBahanAjarRepository(int $id, $bahanAjarDomain): void;
 
     //file upload
-    public function doUploadFileBahanAjar($request, $user): string;
+    public function doUploadFileBahanAjar($request, $user): string|bool;
 
 
     /**===========================================================================

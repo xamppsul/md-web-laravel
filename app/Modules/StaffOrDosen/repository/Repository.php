@@ -92,15 +92,24 @@ class Repository implements Repository_interfaces
         $bahanAjarDomain->deleteDataBahanAjarDomain($id);
     }
 
+    /**
+     * @method doUploadFileBahanAjar
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileBahanAjar($request, $user): string
+    public function doUploadFileBahanAjar($request, $user): string|bool
     {
-        $file = $request->file('file_bahan');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/bahan_ajar");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_bahan'))) {
+            $file = $request->file('file_bahan');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/bahan_ajar");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
