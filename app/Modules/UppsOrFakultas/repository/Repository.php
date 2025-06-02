@@ -180,15 +180,23 @@ class Repository implements Repository_interfaces
     }
 
     //============================= file upload ==============================
-
-    public function doUploadFilePendukung($request, $user): string
+    /**
+     * @method doUploadFilePendukung
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
+    public function doUploadFilePendukung($request, $user): string|bool
     {
-        $file = $request->file('dokumen_pendukung');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/MouMoa");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('dokumen_pendukung'))) {
+            $file = $request->file('dokumen_pendukung');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/MouMoa");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
@@ -276,23 +284,41 @@ class Repository implements Repository_interfaces
         $kegiatanDomain->deleteDataKegiatanDomain($id);
     }
 
-    public function doUploadFileDaftarHadirKegiatan($request, $user): string
+    /**
+     * @method doUploadFileDaftarHadirKegiatan
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
+    public function doUploadFileDaftarHadirKegiatan($request, $user): string|bool
     {
-        $file = $request->file('file_daftar_hadir');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/DaftarHadirKegiatan");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_daftar_hadir'))) {
+            $file = $request->file('file_daftar_hadir');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/DaftarHadirKegiatan");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
-    public function doUploadFileDokumentasiKegiatan($request, $user): string
+    /**
+     * @method doUploadFileDokumentasiKegiatan
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
+    public function doUploadFileDokumentasiKegiatan($request, $user): string|bool
     {
-        $file = $request->file('file_kegiatan');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/DokumentasiKegiatan");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_kegiatan'))) {
+            $file = $request->file('file_kegiatan');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/DokumentasiKegiatan");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 }

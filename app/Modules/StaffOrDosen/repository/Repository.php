@@ -92,15 +92,24 @@ class Repository implements Repository_interfaces
         $bahanAjarDomain->deleteDataBahanAjarDomain($id);
     }
 
+    /**
+     * @method doUploadFileBahanAjar
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileBahanAjar($request, $user): string
+    public function doUploadFileBahanAjar($request, $user): string|bool
     {
-        $file = $request->file('file_bahan');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/bahan_ajar");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_bahan'))) {
+            $file = $request->file('file_bahan');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/bahan_ajar");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
@@ -188,15 +197,24 @@ class Repository implements Repository_interfaces
         $penelitianDomain->deleteDataPenelitianDomain($id);
     }
 
+    /**
+     * @method doUploadFileLaporanAkhirPenelitian
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileLaporanAkhirPenelitian($request, $user): string
+    public function doUploadFileLaporanAkhirPenelitian($request, $user): string|bool
     {
-        $file = $request->file('laporan_akhir');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_akhir_penelitian");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('laporan_akhir'))) {
+            $file = $request->file('laporan_akhir');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_akhir_penelitian");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
@@ -288,25 +306,43 @@ class Repository implements Repository_interfaces
         $pengabdianDomain->deleteDataPengabdianDomain($id);
     }
 
+    /**
+     * @method doUploadFileLaporanPengabdian
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileLaporanPengabdian($request, $user): string
+    public function doUploadFileLaporanPengabdian($request, $user): string|bool
     {
-        $file = $request->file('laporan_pengabdian');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_pengabdian");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('laporan_pengabdian'))) {
+            $file = $request->file('laporan_pengabdian');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/laporan_pengabdian");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
-    public function doUploadFileDokumentasiPengabdian($request, $user): string
+    /**
+     * @method doUploadFileDokumentasiPengabdian
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
+    public function doUploadFileDokumentasiPengabdian($request, $user): string|bool
     {
-        $file = $request->file('dokumentasi');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumentasi_pengabdian");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('dokumentasi'))) {
+            $file = $request->file('dokumentasi');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumentasi_pengabdian");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 
     /**======================================================================================================================================
@@ -398,17 +434,20 @@ class Repository implements Repository_interfaces
      * @method doUploadFileDocumentSkRiwayatJabatan
      * @param $request
      * @param $user
-     * @return string
+     * @return string|bool
      */
     //file upload
-    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string
+    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string|bool
     {
-        $file = $request->file('dokumen_sk');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumen_sk_riwayat_jabatan");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('dokumen_sk'))) {
+            $file = $request->file('dokumen_sk');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/dokumen_sk_riwayat_jabatan");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
     /**======================================================================================================================================
      * feture: ListPublikasi
@@ -495,14 +534,23 @@ class Repository implements Repository_interfaces
         $listPublikasiDomain->deleteDataListPublikasiDomain($id);
     }
 
+    /**
+     * @method doUploadFileListPublikasi
+     * @param $request
+     * @param $user
+     * @return string|bool
+     */
     //file upload
-    public function doUploadFileListPublikasi($request, $user): string
+    public function doUploadFileListPublikasi($request, $user): string|bool
     {
-        $file = $request->file('file_publikasi');
-        $namaFile = time() . "_" . $file->getClientOriginalName();
-        //move upload file
-        $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/file_publikasi");
-        $file->move($dirUploadFile, $namaFile);
-        return $namaFile;
+        if (!empty($request->file('file_publikasi'))) {
+            $file = $request->file('file_publikasi');
+            $namaFile = time() . "_" . $file->getClientOriginalName();
+            //move upload file
+            $dirUploadFile = public_path("MD_disk/{$user->id}-{$user->name}/file_publikasi");
+            $file->move($dirUploadFile, $namaFile);
+            return $namaFile;
+        }
+        return false;
     }
 }

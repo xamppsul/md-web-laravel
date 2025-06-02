@@ -36,7 +36,7 @@ class BahanAjarRequest
             'semester' => 'required|integer',
             'tanggal_terbit' => 'required|date',
             'deskripsi' => 'required|string',
-            'file_bahan' => 'required||file|mimes:pdf,doc,docx|max:2048',
+            'file_bahan' => 'file|mimes:pdf,doc,docx|max:2048',
             'link_bahan' => 'required|string',
             'bahan_ajar_status_penggunaan' => 'required|exists:bahan_ajar_status_penggunaan,id',
         ], [

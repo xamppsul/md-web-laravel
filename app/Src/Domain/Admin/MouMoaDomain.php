@@ -181,13 +181,14 @@ class MouMoaDomain
     /**
      * @method updateDataMouMoaDomain
      * @param $request
-     * @param $id
-     * @param $filePendukung
+     * @param int $id
+     * @param string $filePendukung
      * @return void
      */
 
-    public function updateDataMouMoaDomain($id, $request, $filePendukung): void
+    public function updateDataMouMoaDomain(int $id, $request, string $filePendukung): void
     {
+        $data = $this->getDetailMouMoaDomain($id)[0];
         DB::update('UPDATE mou_moa SET 
             nomor_dokumen = ?,
             mou_moa_jenis_dokumen = ?,
@@ -215,7 +216,7 @@ class MouMoaDomain
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
             $request->users_id,
-            $filePendukung,
+            !empty($request->dokumen_pendukung) ? $filePendukung : $data->dokumen_pendukung,
             $request->keterangan_tambahan,
             now(),
             $id

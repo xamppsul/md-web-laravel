@@ -150,14 +150,15 @@ class KegiatanDomain
     /**
      * @method updateDataKegiatanDomain
      * @param $request
-     * @param $id
-     * @param $fileDaftarHadir
-     * @param $fileKegiatan
+     * @param int $id
+     * @param string $fileDaftarHadir
+     * @param string $fileKegiatan
      * @return void
      */
 
-    public function updateDataKegiatanDomain($id, $request, $fileDaftarHadir, $fileKegiatan): void
+    public function updateDataKegiatanDomain(int $id, $request, string $fileDaftarHadir, string $fileKegiatan): void
     {
+        $data = $this->getDetailKegiatanDomain($id)[0];
         DB::update('UPDATE kegiatan SET
             users_id = ?,
             nama_kegiatan = ?,
@@ -181,8 +182,8 @@ class KegiatanDomain
             $request->tempat_lokasi,
             $request->penyelenggara,
             $request->jumlah_peserta,
-            $fileDaftarHadir,
-            $fileKegiatan,
+            !empty($request->file_daftar_hadir) ? $fileDaftarHadir : $data->file_daftar_hadir,
+            !empty($request->file_kegiatan) ? $fileKegiatan : $data->file_kegiatan,
             $request->kegiatan_status,
             $request->keterangan,
             now(),

@@ -44,7 +44,7 @@ class MouMoaRequest
             'tanggal_akhir' => 'required|date|after_or_equal:tanggal_mulai',
             'mou_moa_status' => 'required|exists:mou_moa_status,id',
             'mou_moa_bidang_kerjasama' => 'required|exists:mou_moa_bidang_kerjasama,id',
-            'dokumen_pendukung' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'dokumen_pendukung' => 'file|mimes:pdf,doc,docx|max:2048',
             'keterangan_tambahan' => 'required|string',
         ], [
             'unique' => ':attribute sudah tersedia harap gunakan yang lain',

@@ -145,6 +145,7 @@ class RiwayatJabatanDomain
 
     public function updateDataRiwayatJabatanDomain($id, $request, string $fileDocumentSkRiwayatJabatan): void
     {
+        $data = $this->getDetailRiwayatJabatanDomain($id)[0];
         DB::update('UPDATE riwayat_jabatan SET
             users_id = ?,
             nama_jabatan = ?,
@@ -168,7 +169,7 @@ class RiwayatJabatanDomain
             $request->tanggal_mulai,
             //tanggal selesai menjabat optional
             !empty($request->tanggal_selesai) ? $request->tanggal_selesai : null,
-            $fileDocumentSkRiwayatJabatan,
+            !empty($request->dokumen_sk) ? $fileDocumentSkRiwayatJabatan : $data->dokumen_sk, //default is current data if isn't request upload document sk
             $request->riwayat_jabatan_status,
             $request->keterangan,
             now(),

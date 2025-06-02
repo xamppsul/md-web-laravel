@@ -80,6 +80,7 @@ class MouMoaDomain
                 mou_moa_bidang_kerjasama.name AS mou_moa_bidang_kerjasama_name, 
                 mou_moa_klasifikasi.name AS mou_moa_klasifikasi_name,
                 mou_moa_status.name AS mou_moa_status_name,
+                users.id AS penanggung_jawab_id,
                 users.name AS penanggung_jawab_name,
                 mou_moa_jenis_dokumen.name AS mou_moa_jenis_dokumen_name
             FROM mou_moa
@@ -181,13 +182,14 @@ class MouMoaDomain
     /**
      * @method updateDataMouMoaDomain
      * @param $request
-     * @param $id
-     * @param $filePendukung
+     * @param int $id
+     * @param string $filePendukung
      * @return void
      */
 
-    public function updateDataMouMoaDomain($id, $request, $filePendukung): void
+    public function updateDataMouMoaDomain(int $id, $request, string $filePendukung): void
     {
+        $data = $this->getDetailMouMoaDomain($id)[0];
         DB::update('UPDATE mou_moa SET 
             nomor_dokumen = ?,
             mou_moa_jenis_dokumen = ?,
@@ -215,7 +217,7 @@ class MouMoaDomain
             $request->mou_moa_status,
             $request->mou_moa_bidang_kerjasama,
             Auth::guard('user')->user()->id,
-            $filePendukung,
+            !empty($request->dokumen_pendukung) ? $filePendukung : $data->dokumen_pendukung, // current data keep event isn't request upload doc pendukung
             $request->keterangan_tambahan,
             now(),
             $id

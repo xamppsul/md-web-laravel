@@ -150,6 +150,7 @@ class ListPublikasiDomain
 
     public function updateDataListPublikasiDomain($id, $request, string $file_publikasi): void
     {
+        $data = $this->getDetailListPublikasiDomain($id)[0];
         DB::update('UPDATE list_publikasi SET
             users_id = ?,
             judul_publikasi = ?,
@@ -177,7 +178,7 @@ class ListPublikasiDomain
             $request->tanggal_terbit,
             $request->penulis_lain,
             $request->link_publikasi,
-            $file_publikasi,
+            !empty($request->file_publikasi) ? $file_publikasi : $data->file_publikasi, //keep current data if isn't request upload file publikasi
             $request->doi,
             $request->list_publikasi_status,
             $request->keterangan,

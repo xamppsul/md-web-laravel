@@ -165,6 +165,7 @@ class PengabdianDomain
 
     public function updateDataPengabdianDomain($id, $request, string $fileLaporanPengabdian, string $fileDokumentasiPengabdian): void
     {
+        $data = $this->getDetailPengabdianDomain($id)[0];
         DB::update('UPDATE pengabdian SET 
             users_id = ?,
             judul = ?,
@@ -190,8 +191,8 @@ class PengabdianDomain
             $request->tgl_selesai,
             $request->lokasi,
             $request->jumlah_peserta,
-            $fileLaporanPengabdian,
-            $fileDokumentasiPengabdian,
+            !empty($request->laporan_pengabdian) ? $fileLaporanPengabdian : $data->laporan_pengabdian,
+            !empty($request->dokumentasi) ? $fileDokumentasiPengabdian : $data->dokumentasi,
             $request->pengabdian_status,
             $request->catatan,
             now(),

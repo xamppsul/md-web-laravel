@@ -16,7 +16,7 @@ interface Repository_interfaces
     public function destroyBahanAjarRepository(int $id, $bahanAjarDomain): void;
 
     //file upload
-    public function doUploadFileBahanAjar($request, $user): string;
+    public function doUploadFileBahanAjar($request, $user): string|bool;
 
 
     /**===========================================================================
@@ -31,7 +31,7 @@ interface Repository_interfaces
     public function destroyPenelitianRepository(int $id, $penelitianDomain): void;
 
     //file upload
-    public function doUploadFileLaporanAkhirPenelitian($request, $user): string;
+    public function doUploadFileLaporanAkhirPenelitian($request, $user): string|bool;
 
     /**===========================================================================
      * feature: Pengabdian 
@@ -45,8 +45,8 @@ interface Repository_interfaces
     public function destroyPengabdianRepository(int $id, $PengabdianDomain): void;
 
     //file upload
-    public function doUploadFileLaporanPengabdian($request, $user): string;
-    public function doUploadFileDokumentasiPengabdian($request, $user): string;
+    public function doUploadFileLaporanPengabdian($request, $user): string|bool;
+    public function doUploadFileDokumentasiPengabdian($request, $user): string|bool;
 
     /**===========================================================================
      * feature: RiwayatJabatan 
@@ -60,7 +60,7 @@ interface Repository_interfaces
     public function destroyRiwayatJabatanRepository(int $id, $riwayatJabatanDomain): void;
 
     //file upload
-    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string;
+    public function doUploadFileDocumentSkRiwayatJabatan($request, $user): string|bool;
 
     /**===========================================================================
      * feature: ListPublikasi 
@@ -74,5 +74,5 @@ interface Repository_interfaces
     public function destroyListPublikasiRepository(int $id, $ListPublikasiDomain): void;
 
     //file upload
-    public function doUploadFileListPublikasi($request, $user): string;
+    public function doUploadFileListPublikasi($request, $user): string|bool;
 }
