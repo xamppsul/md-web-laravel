@@ -4,13 +4,19 @@ services:
     build:
       context: ./
       dockerfile: dev.Dockerfile
-      args:
-        - user=${user-1000}
-        - uid=${uid-1000}
+    restart: unless-stopped
     ports:
-      - "9000:9000"
+      - "8085:8085"
     volumes:
       - ./:/var/www
+    depends_on:
+      - dev-mdfebumk-db
+    environment:
+      DB_HOST: dev-mdfebumk-db
+      DB_PORT: 3306
+      DB_DATABASE: dev_mdfebumk
+      DB_USERNAME: mdfebumk
+      DB_PASSWORD: MLtalBcE867g
     networks:
       - dev-mdfebumk
 
@@ -32,23 +38,11 @@ services:
     networks:
       - dev-mdfebumk
 
-  nginx:
-    image: nginx:stable-perl
-    container_name: dev-mdfebumk-nginx
-    restart: unless-stopped
-    ports:
-      - 8084:80
-    volumes:
-      - ./:/var/www
-      - ./mdfebumk-compose/nginx:/etc/nginx/conf.d/
-    networks:
-      - dev-mdfebumk
-
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: dev-mdfebumk-phpmyadmin
     ports:
-      - 8085:80
+      - 7075:80
     links:
       - dev-mdfebumk-db
     restart: unless-stopped

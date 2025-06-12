@@ -1,13 +1,5 @@
-FROM php:8.2-fpm
-
-# Arguments define in dev-docker-compose.yml
-ARG user
-ARG uid
-
-ENV user=${user}
-ENV uid=${uid}
-
-RUN mkdir -p /var/www
+# Use the official PHP image with Apache
+FROM php:8.2-cli
 
 # Set working directory
 WORKDIR /var/www
@@ -16,24 +8,26 @@ WORKDIR /var/www
 RUN apt-get update && apt-get install -y \
     git \
     curl \
+    unzip \
+    libzip-dev \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    && docker-php-ext-install pdo_mysql zip mbstring exif pcntl bcmath
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd opcache
+# Copy existing application directory contents
+COPY . .
 
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Set permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www
 
-# Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+# Expose port 8085 stagging server
+EXPOSE 8085
 
-USER $user
+# Start Laravel's built-in server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8085"]

@@ -24,11 +24,13 @@ dev-docker-mdfebumk-build:
 #================================================== migration ========================================
 dev-docker-mdfebumk-migrate:
 	docker compose -f dev.Docker-Compose.yml exec app php artisan migrate
+	docker compose -f dev.Docker-Compose.yml exec app php artisan db:seed
 dev-docker-mdfebumk-migrate-rollback:
 	docker compose -f dev.Docker-Compose.yml exec app php artisan migrate:rollback
 #exec run migrate refresh
 dev-docker-mdfebumk-refresh:
 	docker compose -f dev.Docker-Compose.yml exec app php artisan migrate:refresh
+	docker compose -f dev.Docker-Compose.yml exec app php artisan db:seed
 #exec run seeder
 dev-docker-mdfebumk-seed:
 	docker compose -f dev.Docker-Compose.yml exec app php artisan db:seed
