@@ -3,58 +3,56 @@ services:
   app:
     build:
       context: ./
-      dockerfile: dev.Dockerfile
+      dockerfile: dockerfile
     restart: unless-stopped
     ports:
       - "8085:8085"
     volumes:
       - ./:/var/www
     depends_on:
-      - dev-mdfebumk-db
+      - mdfebumk-db
     environment:
-      DB_HOST: dev-mdfebumk-db
+      DB_HOST: mdfebumk-db
       DB_PORT: 3306
-      DB_DATABASE: dev_mdfebumk
+      DB_DATABASE: mdfebumk
       DB_USERNAME: mdfebumk
       DB_PASSWORD: MLtalBcE867g
     networks:
-      - dev-mdfebumk
+      - mdfebumk
 
-  dev-mdfebumk-db:
+  mdfebumk-db:
     image: mysql:8.0
-    container_name: dev-mdfebumk-mysql
+    container_name: mdfebumk-mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: dev_mdfebumk
+      MYSQL_DATABASE: mdfebumk
       MYSQL_ROOT_PASSWORD: MLtalBcE867g
       MYSQL_PASSWORD: MLtalBcE867g
       MYSQL_USER: mdfebumk
-      SERVICE_TAGS: development
-      SERVICE_NAME: mysql
     volumes:
       - ./mdfebumk-compose/mysql:/docker-entrypoint-initdb.d
       - ./mdfebumk-compose/mysql/logs:/var/log/mysql
       - ./mdfebumk-compose/mysql/data:/var/lib/mysql
     networks:
-      - dev-mdfebumk
+      - mdfebumk
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: dev-mdfebumk-phpmyadmin
+    container_name: mdfebumk-phpmyadmin
     ports:
       - 7075:80
     links:
-      - dev-mdfebumk-db
+      - mdfebumk-db
     restart: unless-stopped
     environment:
-      PMA_HOST: dev-mdfebumk-db
+      PMA_HOST: mdfebumk-db
       PMA_USER: mdfebumk
       PMA_PASSWORD: MLtalBcE867g
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     networks:
-      - dev-mdfebumk
+      - mdfebumk
 
 networks:
-  dev-mdfebumk:
+  mdfebumk:
     driver: bridge
