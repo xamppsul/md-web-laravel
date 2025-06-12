@@ -40,48 +40,6 @@ dev-docker-mdfebumk-composer:
 #=========================================== END::exec docker app:development ============================
 
 
-
-#=========================================== BEGIN::exec docker app:production ============================
-prod-docker-mdfebumk-start:
-	docker compose -f prod.Docker-Compose.yml up -d
-#stop docker mdfebumk
-prod-docker-mdfebumk-stop:
-	docker compose -f prod.Docker-Compose.yml down
-#list docker mdfebumk
-prod-docker-mdfebumk-container:
-	docker compose -f prod.Docker-Compose.yml ps
-#list docker images
-prod-docker-mdfebumk-images:
-	docker image ls
-#restart docker mdfebumk
-prod-docker-mdfebumk-restart:
-	docker compose -f prod.Docker-Compose.yml restart
-#logs docker mdfebumk
-prod-docker-mdfebumk-logs:
-	docker compose -f prod.Docker-Compose.yml logs -f
-#build docker mdfebumk
-prod-docker-mdfebumk-build:
-	docker compose -f prod.Docker-Compose.yml build app
-
-#===================================================== migration ===========================================
-#exec run migrate only
-prod-docker-mdfebumk-migrate:
-	docker compose -f prod.Docker-Compose.yml exec app php artisan migrate
-prod-docker-mdfebumk-migrate-rollback:
-	docker compose -f prod.Docker-Compose.yml exec app php artisan migrate:rollback
-#exec run migrate refresh
-prod-docker-mdfebumk-refresh:
-	docker compose -f prod.Docker-Compose.yml exec app php artisan migrate:refresh
-#exec run seeder
-prod-docker-mdfebumk-seed:
-	docker compose -f prod.Docker-Compose.yml exec app php artisan db:seed
-#exec app docker via composer install
-prod-docker-mdfebumk-composer:
-	docker compose -f prod.Docker-Compose.yml exec app composer install
-#=========================================== END::exec docker app:production ============================
-
-
-
 #=========================================== BEGIN::exec local app ============================
 #run app mdfebumk via shell
 mdfebumk-serve-port:
